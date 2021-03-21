@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'base/css/navbar.css' %}" />
+    <link rel="stylesheet" href="{% static 'base/css/base.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;700&family=Open+Sans:wght@300;400;700&family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+      rel="stylesheet"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/c1e316d6ea.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>{% block title %} Aurora {% endblock title %}</title>
+  </head>
+
+  <body>
+    {% include "templates/navbar.html" %} {% block content %}
+    <h1>Hello World</h1>
+    {% endblock content %}
+    <script src="{% static 'base/js/navbar.js' %}"></script>
+    <script src="{% static 'base/js/anime.min.js' %}"></script>
+    <script src="{% static 'base/js/base.js' %}"></script>
+  </body>
+</html>

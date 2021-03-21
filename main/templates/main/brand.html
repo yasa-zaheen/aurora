@@ -1,0 +1,168 @@
+{% extends "templates/base.html" %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'main/css/brand.css' %}" />
+
+<div class="main">
+  <div class="col1">
+    <div class="filter-price">
+      <h1 class="filter">Filter by price</h1>
+      <input type="range" class="filter-price" min="5" max="10000" step="1" />
+      <p class="filter-price"></p>
+    </div>
+
+    <div class="filter-seller-ratings">
+      <h1 class="filter">Filter by seller ratings</h1>
+      <input
+        type="range"
+        class="filter-seller-ratings"
+        min="1"
+        max="5"
+        step="0.5"
+      />
+      <p class="filter-seller-ratings"></p>
+    </div>
+
+    <div class="filter-condition">
+      <h1 class="filter">Filter by Condition</h1>
+      <p class="filter-condition">
+        <input
+          class="filter-condition"
+          type="checkbox"
+          name="filter-condition"
+        />
+        Brand New
+      </p>
+      <p class="filter-condition">
+        <input
+          class="filter-condition"
+          type="checkbox"
+          name="filter-condition"
+        />
+        Used
+      </p>
+      <p class="filter-condition">
+        <input
+          class="filter-condition"
+          type="checkbox"
+          name="filter-condition"
+        />
+        Not Specified
+      </p>
+    </div>
+
+    <div class="filter-delivery">
+      <h1 class="filter">Filter by Delivery</h1>
+      <p class="filter-delivery">
+        <input class="filter-delivery" type="checkbox" name="filter-delivery" />
+        Free International Shipping
+      </p>
+      <p class="filter-delivery">
+        <input class="filter-delivery" type="checkbox" name="filter-delivery" />
+        International Shipping
+      </p>
+      <p class="filter-delivery">
+        <input class="filter-delivery" type="checkbox" name="filter-delivery" />
+        Free Shipping
+      </p>
+    </div>
+
+    <div class="filter-returns">
+      <h1 class="filter">Filter by returns</h1>
+      <p class="filter-returns">
+        <input
+          class="filter-returns"
+          type="checkbox"
+          name="filter-returns"
+        />Free returns
+      </p>
+      <p class="filter-returns">
+        <input
+          class="filter-returns"
+          type="checkbox"
+          name="filter-returns"
+        />Paid returns
+      </p>
+      <p class="filter-returns">
+        <input class="filter-returns" type="checkbox" name="filter-returns" />No
+        returns
+      </p>
+    </div>
+
+    <div class="filter-seller-account">
+      <h1 class="filter">Filter by Seller Account</h1>
+      <p class="filter-seller-account">
+        <input
+          class="filter-seller-account"
+          type="checkbox"
+          name="filter-seller-account"
+        />New seller
+      </p>
+      <p class="filter-seller-account">
+        <input
+          class="filter-seller-account"
+          type="checkbox"
+          name="filter-seller-account"
+        />Verired seller
+      </p>
+      <p class="filter-seller-account">
+        <input
+          class="filter-seller-account"
+          type="checkbox"
+          name="filter-seller-account"
+        />Top rated seller
+      </p>
+    </div>
+  </div>
+  <div class="col2">
+    <div class="brand-img">
+      <p class="brand">Dell</p>
+      <button class="show-search">
+        <span class="material-icons search">search</span>
+      </button>
+      <div class="search-cont">
+        <input type="text" class="search" placeholder="Search" />
+        <button class="search">
+          <span class="material-icons search">search</span>
+        </button>
+      </div>
+      <img src="{% static 'base/img/brands/dell.jpg' %}" alt="" class="vis" />
+    </div>
+    <div class="prods-cont">
+      <a href="{% url 'main:product' %}" class="prod-card">
+        <div class="prod-img-cont">
+          <img class="blur" src="{% static 'base/img/test_products/test12.png' %}"></img>
+          <img class="vis" src="{% static 'base/img/test_products/test12.png' %}"></img>
+
+          <p class="pop-account">Verified Seller</p>
+          <button class="account"><span class="material-icons">
+            verified
+            </span></button>
+     
+        </div>
+        <div class="prod-text-cont">
+          <p class="prod-name">[Review Unit] Dell XPS 17 9700 i7-10750GH GTX 1650 Ti 4GB GDDR6</p>
+
+          <p class="pop-price">Price</p>
+          <button class="price">USD 1450.00</button>
+
+          <p class="pop-save">Save</p>
+          <button class="save"><span class="material-icons">
+            favorite_border
+            </span></button>
+            
+          <p class="pop-cart">Add to cart</p>
+          <button class="add-to-cart">
+            <img src="{% static 'base/img/cart.svg' %}">
+          </button>
+
+          <p class="pop-shipping">Shipping</p>
+          <button class="shipping">USD 0</button>
+
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'main/js/brand.js' %}"></script>
+
+{% endblock content %}

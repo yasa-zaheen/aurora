@@ -1,0 +1,234 @@
+{% extends "templates/base.html" %} {% load static %} {% block content %}
+<link
+  href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="{% static 'main/css/index.css' %}" />
+
+<div class="main">
+  <div class="banner-container">
+    <img
+      src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8YXVyb3JhfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=60"
+      class="banner"
+    />
+  </div>
+
+  <div class="search-cont">
+    <input type="text" class="search" placeholder="Search" />
+    <button class="search">
+      <span class="material-icons search">search</span>
+    </button>
+  </div>
+
+  <h1 class="title-categories">Explore Popular Categories</h1>
+
+  <div class="categories">
+    {% for category in all_categories %}
+
+    <a class="cat-card" href="{% url 'main:category' category.id %}">
+      <img src="{{ category.image.url }}" class="vis" />
+      <p class="cat">{{category.name}}</p>
+    </a>
+
+    {% endfor %}
+  </div>
+
+  <h1 class="title-categories">Check Out Our Trending Products</h1>
+
+  <div class="products">
+    <div class="prod-card">
+      <div class="prod-img-cont">
+        <img
+          src="https://images.pexels.com/photos/1279107/pexels-photo-1279107.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+          alt=""
+          class="vis"
+        />
+        <button class="prod-account">
+          <span class="material-icons"> stars </span>
+          <p>Top Rated Seller</p>
+        </button>
+      </div>
+
+      <div class="prod-wrapper">
+        <div class="prod-text-cont">
+          <p class="prod-name">
+            Google Home Mini with Google Assistant Voice Enabled Chalk Grey New
+            In Retail
+          </p>
+          <div class="prod-ratings">
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star_border </span>
+          </div>
+          <p class="prod-price">USD 23.95</p>
+          <p class="prod-shipping">+$27.05 shipping estimate</p>
+        </div>
+
+        <div class="prod-buttons-cont">
+          <button class="prod-add-to-cart">
+            <span class="material-icons"> add_shopping_cart </span>
+            <p>Add to cart</p>
+          </button>
+          <button class="prod-add-to-wishlist">
+            <span class="material-icons"> star_border </span>
+            <p>Add to wishlist</p>
+          </button>
+          <button class="prod-add-to-watchlist">
+            <span class="material-icons-outlined"> remove_red_eye </span>
+            <p>Add to watchlist</p>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-cont">
+        <img
+          src="https://images.pexels.com/photos/393047/pexels-photo-393047.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+          alt=""
+          class="vis"
+        />
+        <button class="prod-account">
+          <span class="material-icons"> stars </span>
+          <p>Top Rated Seller</p>
+        </button>
+      </div>
+
+      <div class="prod-wrapper">
+        <div class="prod-text-cont">
+          <p class="prod-name">
+            Apple Watch Series 5 - GPS - GPS + Cellular - 40MM 44MM - Gray -
+            Silver - Gold
+          </p>
+          <div class="prod-ratings">
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star_border </span>
+            <span class="material-icons prod-ratings"> star_border </span>
+          </div>
+          <p class="prod-price">USD 279.00</p>
+          <p class="prod-shipping">+$25.43 shipping estimate</p>
+        </div>
+
+        <div class="prod-buttons-cont">
+          <button class="prod-add-to-cart">
+            <span class="material-icons"> add_shopping_cart </span>
+            <p>Add to cart</p>
+          </button>
+          <button class="prod-add-to-wishlist">
+            <span class="material-icons"> star_border </span>
+            <p>Add to wishlist</p>
+          </button>
+          <button class="prod-add-to-watchlist">
+            <span class="material-icons-outlined"> remove_red_eye </span>
+            <p>Add to watchlist</p>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-cont">
+        <img
+          src="https://images.pexels.com/photos/5052880/pexels-photo-5052880.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+          alt=""
+          class="vis"
+        />
+        <button class="prod-account">
+          <span class="material-icons"> stars </span>
+          <p>Top Rated Seller</p>
+        </button>
+      </div>
+
+      <div class="prod-wrapper">
+        <div class="prod-text-cont">
+          <p class="prod-name">
+            Apple iPhone 12 Pro - 256gb - Unlocked - Factory Sealed - Factory
+            Warranty
+          </p>
+          <div class="prod-ratings">
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star_border </span>
+          </div>
+          <p class="prod-price">USD 23.95</p>
+          <p class="prod-shipping">+$27.05 shipping estimate</p>
+        </div>
+
+        <div class="prod-buttons-cont">
+          <button class="prod-add-to-cart">
+            <span class="material-icons"> add_shopping_cart </span>
+            <p>Add to cart</p>
+          </button>
+          <button class="prod-add-to-wishlist">
+            <span class="material-icons"> star_border </span>
+            <p>Add to wishlist</p>
+          </button>
+          <button class="prod-add-to-watchlist">
+            <span class="material-icons-outlined"> remove_red_eye </span>
+            <p>Add to watchlist</p>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-cont">
+        <img
+          src="https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+          alt=""
+          class="vis"
+        />
+        <button class="prod-account">
+          <span class="material-icons"> stars </span>
+          <p>Top Rated Seller</p>
+        </button>
+      </div>
+
+      <div class="prod-wrapper">
+        <div class="prod-text-cont">
+          <p class="prod-name">
+            Apple MacBook Air 13" - M1 Chip 8GB 256GB - Gold - MGND3LL/A -
+            Flawless 2 Cycles
+          </p>
+          <div class="prod-ratings">
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star_border </span>
+          </div>
+          <p class="prod-price">USD 979.00</p>
+          <p class="prod-shipping">+$100.00 shipping estimate</p>
+        </div>
+
+        <div class="prod-buttons-cont">
+          <button class="prod-add-to-cart">
+            <span class="material-icons"> add_shopping_cart </span>
+            <p>Add to cart</p>
+          </button>
+          <button class="prod-add-to-wishlist">
+            <span class="material-icons"> star_border </span>
+            <p>Add to wishlist</p>
+          </button>
+          <button class="prod-add-to-watchlist">
+            <span class="material-icons-outlined"> remove_red_eye </span>
+            <p>Add to watchlist</p>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer"></div>
+</div>
+
+<script type="text/javascript" src="{% static 'main/js/index.js' %}"></script>
+<script type="text/javascript" src="{% static 'base/js/base.js' %}"></script>
+
+{% endblock content %}

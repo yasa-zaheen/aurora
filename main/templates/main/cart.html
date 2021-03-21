@@ -1,0 +1,92 @@
+{% extends "templates/base.html" %} {% load static %}
+<hr />
+{% block content %}
+<link rel="stylesheet" href="{% static 'main/css/cart.css' %}" />
+
+<div class="main">
+  <div class="cart">
+    <div class="cart-header">
+      <p class="cart-header">My Cart</p>
+    </div>
+
+    <div class="prods-cont">
+      <a href="{% url 'main:product' %}" class="prod-card">
+        <div class="prod-img-cont">
+          <img class="blur" src="{% static 'base/img/test_products/test.jpg' %}"></img>
+          <img class="vis" src="{% static 'base/img/test_products/test.jpg' %}"></img>
+
+          <p class="pop-account">Top Rated Seller</p>
+          <button class="account"><span class="material-icons">
+            stars
+            </span></button>
+    
+        </div>
+        <div class="prod-text-cont">
+          <p class="prod-name">Apple Watch Series 5 44mm Space Gray Black Sport Band GPS Cellular READ PLEASE</p>
+
+          <p class="pop-price">Price</p>
+          <button class="price">USD 239.00</button>
+
+          <p class="pop-save">Save</p>
+          <button class="save"><span class="material-icons">
+            favorite_border
+            </span></button>
+            
+          <p class="pop-cart">Add to cart</p>
+          <button class="add-to-cart">
+            <img src="{% static 'base/img/cart.svg' %}">
+          </button>
+
+          <p class="pop-shipping">Shipping</p>
+          <button class="shipping">USD 32.98</button>
+
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="info">
+    <div class="account">
+      <p class="account-header">
+        <span class="material-icons account-icon"> alternate_email </span
+        >Account Information
+      </p>
+      <p class="account-info">yasa.zaheen</p>
+    </div>
+    <div class="shipping">
+      <p class="shipping-header">
+        <span class="material-icons shipping-icon"> location_on </span>Shipping
+        Information
+      </p>
+      <p class="shipping-info">
+        Shipping to <b>Yasa Zaheen</b> at
+        <b>House no 9/10, Road no. 2, Monsurabad R/A, Adabar, Dhaka-1207. </b>
+        Contact at <b>+880 17 1155 6248</b>
+      </p>
+    </div>
+    <div class="price-calculator">
+      <p class="items-text">Total items</p>
+      <p class="items">15</p>
+      <p class="total-price-text">Total Price</p>
+      <p class="total-price">USD 1346.75</p>
+    </div>
+    <button class="payments-button">Proceed to payments</button>
+  </div>
+</div>
+
+<script>
+  const imageResizer = () => {
+    const visImgs = document.querySelectorAll("img.vis");
+
+    visImgs.forEach((visImg) => {
+      if (visImg.clientWidth > visImg.clientHeight) {
+        visImg.style.width = "auto";
+        visImg.style.height = "100%";
+      }
+    });
+  };
+
+  imageResizer();
+</script>
+
+{% endblock content %}

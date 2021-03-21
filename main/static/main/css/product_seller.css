@@ -1,0 +1,425 @@
+/* --- Main ---  */
+
+div.main-cont {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  padding: 0px 12.5px;
+  background-color: #fafafa;
+}
+
+div.col1,
+div.col2 {
+  height: fit-content;
+  padding: 12.5px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+div.col1 {
+  width: calc(100% - (70vw + 150px + 25px));
+  margin-left: 12.5px;
+  padding-top: 25px;
+}
+div.col2 {
+  align-items: flex-start;
+  width: calc(70vw + 150px);
+}
+
+/* ------ Col 1 ------  */
+
+/* --- Seller Profile ---  */
+
+div.seller-profile {
+  width: 100%;
+  height: 30vh;
+  display: grid;
+  grid-template-columns: calc(113px) calc(100% - 113px);
+  border-radius: 15px;
+  grid-column: 1 / span 2;
+  border: 5px solid #f5f5f5;
+  border-style: dashed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c0c0c0;
+  font-size: 20px;
+}
+
+/* --- Seller Communication ---  */
+
+div.seller-communication,
+div.seller-shipping,
+div.seller-returns,
+div.seller-delivery,
+div.seller-recommendation,
+div.seller-prods-sold,
+div.seller-joined {
+  width: 100%;
+  height: fit-content;
+  margin: 0px 0px 25px 0px;
+  border-radius: 15px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #fafafa;
+  box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
+
+}
+div.seller-communication {
+  background-color: #ee6c4d;
+  
+}
+div.seller-shipping {
+  background-color: #3d5a80;
+  justify-self: flex-end;
+}
+div.seller-returns {
+  background-color: #98c1d9;
+}
+div.seller-delivery {
+  background-color: #293241;
+  justify-self: flex-end;
+}
+div.seller-recommendation {
+  background-color: #2a9d8f;
+  grid-column: 1 / span 2;
+  width: 100%;
+}
+div.seller-prods-sold {
+  background-color: #f5f5f5;
+  grid-column: 1;
+}
+div.seller-joined {
+  background-color: #f5f5f5;
+  grid-column: 2;
+  justify-self: end;
+}
+
+div.seller-communication-service-rate,
+div.seller-shipping-service-rate,
+div.seller-returns-service-rate,
+div.seller-delivery-service-rate,
+div.seller-recommendation-rate {
+  height: 5px;
+  width: 100%;
+  border-radius: 15px;
+  background-color: #fafafa;
+  display: flex;
+}
+
+div.seller-communication-service-rate-percentage,
+div.seller-shipping-service-rate-percentage,
+div.seller-returns-service-rate-percentage,
+div.seller-delivery-service-rate-percentage,
+div.seller-recommendation-positive-rate-percentage,
+div.seller-recommendation-neutral-rate-percentage,
+div.seller-recommendation-negative-rate-percentage {
+  height: 100%;
+  border-radius: 15px;
+  filter: brightness(0.75);
+}
+div.seller-communication-service-rate-percentage {
+  background-color: #ee6c4d;
+  width: 83%;
+}
+div.seller-shipping-service-rate-percentage {
+  background-color: #3d5a80;
+  width: 95%;
+}
+div.seller-returns-service-rate-percentage {
+  width: 100%;
+  background-color: #98c1d9;
+}
+div.seller-delivery-service-rate-percentage {
+  width: 74%;
+  background-color: #293241;
+}
+div.seller-recommendation-positive-rate-percentage {
+  width: 70%;
+  background-color: #98c1d9;
+  border-radius: 15px 0px 0px 15px;
+  filter: none;
+}
+div.seller-recommendation-negative-rate-percentage {
+  width: 30%;
+  filter: none;
+  background-color: #ef233c;
+  border-radius: 0px 15px 15px 0px;
+}
+
+p.seller-communication,
+p.seller-shipping,
+p.seller-returns,
+p.seller-delivery,
+p.seller-recommendation,
+p.seller-prods-sold,
+p.seller-joined {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  color: #fafafa;
+}
+
+p.seller-prods-sold,
+p.seller-joined {
+  color: #2f2f2f;
+}
+
+p.seller-communication-service-rate,
+p.seller-shipping-service-rate,
+p.seller-returns-service-rate,
+p.seller-delivery-service-rate,
+p.seller-recommendation-rate {
+  font-family: "Poppins", sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #fafafa;
+  margin: 12.5px 0px;
+}
+
+p.seller-prods-sold-no,
+p.seller-joined-date {
+  font-size: 25px;
+  font-family: "Nunito Sans";
+  font-weight: 500;
+  margin-top: 12.5px;
+}
+
+span.seller-communication,
+span.seller-shipping,
+span.seller-returns,
+span.seller-delivery,
+span.seller-recommendation,
+span.seller-prods-sold,
+span.seller-joined {
+  width: fit-content;
+  border-radius: 100%;
+  padding: 6.25px;
+  font-size: 12.5px;
+  margin-right: 12.5px;
+  color: #fafafa;
+  background-color: #fafafa2f;
+  cursor: pointer;
+}
+
+span.seller-prods-sold,
+span.seller-joined {
+  color: #2f2f2f;
+  background-color: #2f2f2f2f;
+}
+
+/* Seller Reviews  */
+
+div.seller-reviews-cont {
+  grid-column: 1 / span 2;
+  width: 100%;
+  overflow-x: scroll;
+  height: fit-content;
+  padding-top: 25px;
+  border-radius: 15px;
+  display: flex;
+}
+
+div.prod-review {
+  height: 35vh;
+  min-width: 15vw;
+  max-width: 15vw;
+  position: relative;
+  background-color: #f5f5f5;
+  border-radius: 15px;
+  position: relative;
+  cursor: pointer;
+  margin-right: 12.5px;
+}
+div.prod-review:hover {
+  transform: translateY(-5px);
+}
+div.prod-review:active {
+  transform: translateY(0px);
+}
+div.prod-reviews::-webkit-scrollbar {
+  display: none;
+}
+
+div.prod-buyer {
+  background-color: #ee6c4d;
+  width: 100%;
+  height: 66px;
+  position: absolute;
+  bottom: 0px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+}
+
+div.prod-buyer-img {
+  overflow: hidden;
+  position: relative;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 12.5px;
+}
+
+p.prod-review-buyer {
+  color: white;
+  margin-left: 12.5px;
+}
+
+p.prod-buyer-review {
+  color: #2f2f2f;
+  width: 100%;
+  padding: 55px 25px;
+  font-family: "Roboto", sans-serif;
+}
+
+span.quote-sign {
+  font-size: 30px;
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  color: #ee6c4d;
+}
+
+/* ------ Col 2 ------  */
+
+/* --- Seller Cover ---  */
+
+div.seller-cover {
+  height: 30vh;
+  background-color: #fafafa;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+div.seller-contact,
+div.seller-social-media {
+  height: fit-content;
+  width: fit-content;
+  padding: 12.5px;
+  border-radius: 15px;
+  display: flex;
+}
+div.seller-social-media {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+div.seller-contact {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+p.seller-contact,
+p.seller-social-media {
+  font-size: 0px;
+  position: absolute;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  opacity: 0;
+}
+
+button.seller-cover-instagram,
+button.seller-cover-twitter,
+button.seller-cover-facebook,
+button.seller-cover-website,
+button.seller-cover-email,
+button.seller-cover-phone {
+  height: 44px;
+  width: 44px;
+  border-radius: 15px;
+  background: transparent;
+  font-size: 20px;
+  transition: 0.25s ease all;
+  position: relative;
+}
+button.seller-cover-instagram,
+button.seller-cover-twitter,
+button.seller-cover-facebook {
+  margin-right: 12.5px;
+}
+button.seller-cover-website,
+button.seller-cover-email,
+button.seller-cover-phone {
+  margin-left: 12.5px;
+}
+
+button.seller-cover-instagram {
+  background-color: #e1306c;
+}
+button.seller-cover-twitter {
+  background-color: #1da1f2;
+}
+button.seller-cover-facebook {
+  background-color: #4267b2;
+}
+button.seller-cover-website {
+  background-color: rgb(0, 122, 255);
+}
+button.seller-cover-email {
+  background-color: #b23121;
+}
+button.seller-cover-phone {
+  background-color: rgb(52, 199, 89);
+}
+
+button.seller-cover-instagram:hover,
+button.seller-cover-twitter:hover,
+button.seller-cover-facebook:hover,
+button.seller-cover-website:hover,
+button.seller-cover-email:hover,
+button.seller-cover-phone:hover {
+  width: 150px;
+  border-radius: 15px;
+}
+
+button.seller-cover-instagram:hover i,
+button.seller-cover-twitter:hover i,
+button.seller-cover-facebook:hover i,
+button.seller-cover-website:hover i,
+button.seller-cover-email:hover i,
+button.seller-cover-phone:hover i {
+  font-size: 0px;
+}
+
+button.seller-cover-instagram:hover p,
+button.seller-cover-twitter:hover p,
+button.seller-cover-facebook:hover p,
+button.seller-cover-website:hover p,
+button.seller-cover-email:hover p,
+button.seller-cover-phone:hover p {
+  font-size: 12.5px;
+  opacity: 1;
+}
+
+/* --- Products Container ---  */
+
+div.prods-cont {
+  height: fit-content;
+  min-width: calc(35vw + 75px - 25px);
+  display: grid;
+  grid-template-rows: 37.5vh;
+  grid-template-columns: calc(35vw + 75px) calc(35vw + 75px);
+  padding: 25px 0px;
+  grid-row-gap: 25px;
+  background-color: red;
+}
+
+
+
+div.prod-card{
+  margin-right: 25px;
+}

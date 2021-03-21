@@ -1,0 +1,166 @@
+nav.nav {
+  height: 10vh;
+  width: 100%;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  background: transparent;
+  position: relative;
+  z-index: 100;
+  box-shadow: 0 2.5px 2.5px -5px rgba(0, 0, 0, 0.2),
+    0 2px 2px -10px rgba(0, 0, 0, 0.2), 0 4px 4px -10px rgba(0, 0, 0, 0.2),
+    0 8px 8px -10px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Divs ---  */
+
+div.links-container {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.dropdown {
+  box-shadow: 0 2.5px 2.5px -5px rgba(0, 0, 0, 0.2),
+    0 2px 2px -10px rgba(0, 0, 0, 0.2), 0 4px 4px -10px rgba(0, 0, 0, 0.2),
+    0 8px 8px -10px rgba(0, 0, 0, 0.2), 0 16px 16px -10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  position: absolute;
+  border-radius: 0px 0px 15px 15px;
+  background-color: #fff;
+  opacity: 1;
+  top: 10vh;
+  left: 0px;
+  overflow: hidden;
+  align-self: end;
+  padding: 0px 25px 0px 25px;
+  display: grid;
+  grid-template-columns: calc(100% / 3) calc(100% / 3) calc(100% / 3);
+  max-height: 0vh;
+  transition: 0.25s ease all;
+}
+
+/* --- Nav Title ---  */
+
+a.nav-title {
+  margin-left: 50px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 25px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #2f2f2f;
+  text-decoration: none;
+}
+
+a.nav-title:hover {
+  text-decoration: none;
+}
+
+/* --- Nav Links --- */
+
+a.link {
+  font-size: 15px;
+  font-family: "Poppins";
+  cursor: pointer;
+  font-weight: 400;
+  text-decoration: none;
+  color: black;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  border-radius: 5px;
+  margin: 0px 50px;
+  padding: 6.25px 12.5px;
+  transition: 0.1s ease all;
+  position: relative;
+}
+
+a.link span {
+  font-size: 15px;
+}
+
+a.link:hover {
+  background-color: #2932412f;
+  color: black;
+  text-decoration: none;
+}
+
+a.link:hover span {
+  transform: rotateZ(90deg);
+}
+
+a.link:active {
+  transform: scale(0.925, 0.925);
+  filter: brightness(0.95);
+  transition: 0.1s ease-in-out all;
+}
+
+/* --- Dropdown Links ---  */
+
+a.dropdown-link {
+  font-size: 15px;
+  font-family: "Poppins";
+  cursor: pointer;
+  font-weight: 400;
+  text-decoration: none;
+  color: black;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  border-radius: 5px;
+  margin: 0px 50px;
+  padding: 6.25px 12.5px;
+  transition: 0.1s ease all;
+  position: relative;
+}
+
+a.dropdown-link:hover {
+  background-color: #2932412f;
+  color: black;
+  text-decoration: none;
+}
+
+a.dropdown-link:active {
+  transform: scale(0.925, 0.925);
+  filter: brightness(0.95);
+  transition: 0.1s ease-in-out all;
+}
+
+/* --- Sign In Button ---  */
+
+a.sign-in {
+  margin-right: 50px;
+  height: 40px;
+  width: 100px;
+  background-color: #293241;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 15px;
+  font-family: "Arial";
+  cursor: pointer;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+a.sign-in:hover {
+  text-decoration: none;
+  transform: scale(1.025, 1.025);
+  box-shadow: 0 2.5px 2.5px -5px #2932415f, 0 2px 2px -10px #2932415f,
+    0 4px 4px -10px #2932415f, 0 8px 8px -10px #2932415f,
+    0 16px 16px -10px #2932415f;
+}
+
+a.sign-in:active {
+  transform: scale(0.925, 0.925);
+  filter: brightness(0.95);
+  transition: 0.1s ease all;
+  box-shadow: none;
+}
+

@@ -1,0 +1,103 @@
+/* ---------- Main ---------   */
+
+div.main {
+ width: 100%;
+  height: fit-content;
+  display: flex;
+  padding: 0px 12.5px;
+}
+
+
+div.col1,
+div.col2 {
+  height: fit-content;
+  padding: 12.5px 0px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+div.col1 {
+  width: calc(100% - (70vw + 150px + 25px));
+  margin-left: 12.5px;
+  padding-top: 25px
+}
+div.col2 {
+  width: 82.5%;
+  align-items: flex-start;
+  width: calc(70vw + 150px);
+}
+
+/* ---------- Col 2  ----------  */
+
+/* --- Product Type Container ---  */
+
+div.prod-type-cont {
+  width: calc(100% - 25px);
+  margin-left: 25px;
+  border-radius: 15px;
+  height: fit-content;
+  display: flex;
+  overflow-y: visible;
+  overflow-x: auto;
+  padding: 12.5px 0px 25px 0px;
+  background: transparent;
+}
+
+div.prod-type-cont::-webkit-scrollbar {
+  display: none;
+}
+
+a.prod-type-card {
+  min-width: calc(14vw + 5px);
+  max-width: calc(14vw + 5px);
+  height: 77px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 25px;
+  background-color: #fafafa;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a.prod-type-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 2.5px 2.5px -5px rgba(0, 0, 0, 0.2),
+    0 2px 2px -10px rgba(0, 0, 0, 0.2), 0 4px 4px -10px rgba(0, 0, 0, 0.2),
+    0 8px 8px -10px rgba(0, 0, 0, 0.2), 0 16px 16px -10px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+}
+
+a.prod-type-card:active {
+  box-shadow: 0px;
+  transform: translateY(0px);
+  filter: brightness(0.25);
+}
+
+p.prod-type-card {
+  color: #2f2f2f;
+  font-family: "Poppins", sans-serif;
+  font-size: 12.5px;
+  margin-left: 12.5px;
+  margin-right: 12.5px;
+  align-self: center;
+  justify-self: center;
+  text-align: center;
+}
+
+/* --- Product Container ---  */
+
+div.prods-cont {
+  width: 100%;
+  height: 37.5vh;
+  display: grid;
+  grid-template-rows: 37.5vh;
+  grid-template-columns: calc(35vw + 75px) calc(35vw + 75px);
+  padding-left: 25px;
+  grid-row-gap: 25px;
+}
+
+div.prod-card{
+  margin-right: 25px;
+}

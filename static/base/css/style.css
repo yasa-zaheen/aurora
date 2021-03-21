@@ -1,0 +1,268 @@
+div.prod-card {
+  height: 37.5vh;
+  width: 75vh;
+  border-radius: 15px;
+  background-color: #fafafa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding-right: 25px;
+  box-shadow: 0px 14px 30px -17.5px rgba(0, 0, 0, 0.17);
+}
+
+div.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+}
+
+/* --- Image Container --- */
+
+div.img-cont {
+  height: 100%;
+  width: 35%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+img.vis {
+  height: 100%;
+  width: 100%;
+}
+
+button.account {
+  position: absolute;
+  top: 12.5px;
+  left: 12.5px;
+  height: 42px;
+  width: 42px;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2f2f2f2f;
+  transition: 0.25s ease all;
+  cursor: pointer;
+}
+
+button.account p {
+  position: absolute;
+  opacity: 0;
+  font-family: "Poppins";
+  font-size: 12.5px;
+  font-weight: 400;
+  width: 150px;
+  transform: scale(0.5, 0.5);
+}
+
+button.account span {
+  font-size: 20px;
+  color: #2f2f2f;
+}
+
+button.account:hover {
+  width: calc(100% - 25px);
+}
+
+button.account:hover span {
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.25s ease all;
+}
+
+button.account:hover p {
+  opacity: 1;
+  transition: 0.25s ease all;
+  transform: scale(1, 1);
+}
+
+button.account:active {
+  transform: scale(0.9, 0.9);
+}
+
+/* --- Text Container --- */
+
+div.text-cont {
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 25px 0px 0px 25px;
+}
+
+p.prod-name {
+  height: 7vh;
+  overflow: hidden;
+  font-family: "Poppins";
+  font-size: 15px;
+  font-weight: 400;
+}
+
+/* --- Ratings Container --- */
+
+div.ratings {
+  height: fit-content;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: calc(12.5px / 2) 0px;
+}
+
+span.ratings {
+  font-size: 15px;
+}
+
+/* --- Other Text --- */
+
+p.price {
+  font-family: "Poppins";
+  font-size: 20px;
+  font-weight: 500;
+  height: fit-content;
+  overflow: hidden;
+}
+
+p.shipping {
+  font-size: 12.5px;
+  font-family: "Poppins";
+  opacity: 0.5;
+  margin-left: calc(12.5px / 2);
+}
+
+/* --- Buttons Container --- */
+
+div.buttons-cont {
+  width: 100%;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  margin: calc(12.5px / 2) 25px 25px 25px;
+}
+
+/* ! Basic  */
+
+button.add-to-cart,
+button.add-to-wishlist,
+button.add-to-watchlist {
+  height: 42px;
+  width: 42px;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12.5px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: 0.25s ease all;
+}
+
+button.add-to-cart span.tick,
+button.add-to-wishlist span.tick,
+button.add-to-watchlist span.tick {
+  position: absolute;
+  opacity: 0;
+  transform: rotateZ(-90deg) scale(0.5, 0.5);
+  transition: 0.25s ease all;
+}
+
+button.add-to-cart p,
+button.add-to-wishlist p,
+button.add-to-watchlist p {
+  position: absolute;
+  opacity: 0;
+  font-family: "Poppins";
+  font-size: 12.5px;
+  font-weight: 400;
+  width: 150px;
+  transform: scale(0.5, 0.5);
+}
+
+button.add-to-cart {
+  background-color: #2932412f;
+}
+button.add-to-wishlist {
+  background-color: #ee6c4d2f;
+}
+button.add-to-watchlist {
+  background-color: #2f2f2f2f;
+}
+
+button.add-to-cart span {
+  font-size: 20px;
+  color: #293241;
+}
+button.add-to-wishlist span {
+  font-size: 20px;
+  color: #ee6c4d;
+}
+button.add-to-watchlist span {
+  font-size: 20px;
+  color: #2f2f2f;
+}
+
+/* ! Hover  */
+
+button.add-to-cart:hover,
+button.add-to-wishlist:hover,
+button.add-to-watchlist:hover {
+  width: 150px;
+  transition: 0.25s ease all;
+}
+
+button.add-to-cart:hover span,
+button.add-to-wishlist:hover span,
+button.add-to-watchlist:hover span {
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.25s ease all;
+}
+
+button.add-to-cart:hover p,
+button.add-to-wishlist:hover p,
+button.add-to-watchlist:hover p {
+  opacity: 1;
+  transition: 0.25s ease all;
+  transform: scale(1, 1);
+}
+
+/* ! Active  */
+
+button.add-to-cart:active,
+button.add-to-wishlist:active,
+button.add-to-watchlist:active {
+  transform: scale(0.9, 0.9);
+}
+
+/* ! Focus  */
+
+button.add-to-cart:focus span,
+button.add-to-wishlist:focus span,
+button.add-to-watchlist:focus span {
+  opacity: 0;
+}
+
+button.add-to-cart:focus p,
+button.add-to-wishlist:focus p,
+button.add-to-watchlist:focus p {
+  transform: scale(0, 0);
+  transition: 0.25s ease all;
+}
+
+button.add-to-cart:focus span.tick,
+button.add-to-wishlist:focus span.tick,
+button.add-to-watchlist:focus span.tick {
+  opacity: 1;
+  transform: rotateZ(0deg) scale(1, 1);
+  transition: 0.25s ease all;
+}
