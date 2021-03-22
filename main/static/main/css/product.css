@@ -53,7 +53,6 @@ button.prod-sel-img {
   min-height: calc((100% / 4) - 25px);
   max-height: calc((100% / 4) - 25px);
   cursor: pointer;
-  transition: 0.1s ease all;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -207,8 +206,39 @@ a.prod-returns {
   background-color: #fafafa;
   color: #2f2f2f;
   cursor: pointer;
+  transition: 200ms ease all;
   align-self: flex-end;
   box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
+}
+
+a.prod-bids {
+  background-color: #3d5a80;
+  color: #fafafa;
+}
+
+a.prod-condition {
+  background-color: #98c1d9;
+  color: #fafafa;
+}
+
+a.prod-shipping {
+  background-color: #293241;
+  color: #fafafa;
+}
+
+a.prod-delivery {
+  background-color: #2f2f2f;
+  color: #fafafa;
+}
+
+a.prod-payments {
+  background-color: #ee6c4d;
+  color: #fafafa;
+}
+
+a.prod-returns {
+  background-color: #ef233c;
+  color: #fafafa;
 }
 
 a.prod-condition,
@@ -228,7 +258,7 @@ a.prod-shipping:hover,
 a.prod-delivery:hover,
 a.prod-payments:hover,
 a.prod-returns:hover {
-  transform: scale(1.025, 1.025);
+  transform: scale(1.05, 1.05);
 }
 a.prod-bids:active,
 a.prod-condition:active,
@@ -236,10 +266,9 @@ a.prod-shipping:active,
 a.prod-delivery:active,
 a.prod-payments:active,
 a.prod-returns:active {
-  background-color: #f5f5f5;
-  transform: translateY(0px) scale(0.975, 0.975);
+  transform: translateY(2.5px);
+  filter: brightness(0.25);
   box-shadow: none;
-  transition: 0.1s ease all;
 }
 
 div.prod-bids-wrapper,
@@ -250,8 +279,7 @@ div.prod-payments-wrapper,
 div.prod-returns-wrapper {
   width: 100%;
   height: fit-content;
-  display: grid;
-  grid-template-columns: 20px calc(100% - 20px);
+  display: inline;
 }
 
 h1.prod-bids-title,
@@ -260,25 +288,12 @@ h1.prod-shipping-title,
 h1.prod-delivery-title,
 h1.prod-payments-title,
 h1.prod-returns-title {
+  font-family: "Poppins", sans-serif;
   font-size: 15px;
-  font-family: "Maven Pro", sans-serif;
   font-weight: 500;
-  margin-bottom: 12.5px;
-}
-
-p.prod-bids-desc,
-p.prod-condition-desc,
-p.prod-shipping-desc,
-p.prod-delivery-desc,
-p.prod-payments-desc,
-p.prod-returns-desc {
-  grid-column: 2;
-  grid-row: 1;
-  align-self: end;
-  font-family: "Maven Pro", sans-serif;
-  font-size: 12.5px;
-  font-weight: 500;
-  margin-left: 12.5px;
+  display: flex;
+  align-items: center;
+  color: #fafafa;
 }
 
 p.prod-bids-mess,
@@ -287,14 +302,9 @@ p.prod-shipping-mess,
 p.prod-delivery-mess,
 p.prod-payments-mess,
 p.prod-returns-mess {
-  font-size: 11.5px;
-  font-family: "Maven Pro", sans-serif;
-  opacity: 0.75;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  cursor: pointer;
-  margin-left: 12.5px;
+  font-size: 12.5px;
+  font-family: "Poppins", sans-serif;
+  margin-left: calc(12.5px + 12.5px + 12.5px);
 }
 
 span.prod-bids,
@@ -303,20 +313,108 @@ span.prod-shipping,
 span.prod-delivery,
 span.prod-payments,
 span.prod-returns {
-  grid-row: 1 / span 2;
-  grid-column: 1;
-  align-self: center;
-  justify-self: start;
-  font-size: 20px;
+  width: fit-content;
+  border-radius: 100%;
+  padding: 6.25px;
+  font-size: 12.5px;
+  margin-right: 12.5px;
+  color: #fafafa;
+  background-color: #fafafa2f;
+  cursor: pointer;
 }
+
+/* ----- Product Specifications -----  */
+
+/* -- */
+
+div.prod-specs {
+  grid-row: 2;
+  grid-column: 1 / span 2;
+  width: calc(100%);
+  height: fit-content;
+  display: grid;
+  grid-template-columns:
+    calc(100% / 6)
+    calc(100% / 6)
+    calc(100% / 6)
+    calc(100% / 6)
+    calc(100% / 6)
+    calc(100% / 6);
+  grid-template-rows: auto;
+  grid-row-gap: 25px;
+  align-self: center;
+  justify-self: center;
+  grid-auto-flow: row;
+  border-radius: 15px;
+  position: relative;
+  padding: 0px 12.5px;
+}
+
+div.prod-spec {
+  width: calc(100% - 25px);
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fafafa;
+  color: #2f2f2f;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: 15px;
+  cursor: pointer;
+  align-self: flex-start;
+  justify-self: flex-start;
+  margin: 0px 12.5px;
+  padding: 25px;
+  transition: 200ms ease all;
+  box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
+}
+
+div.prod-spec:hover {
+  transform: scale(1.05, 1.05);
+}
+
+div.prod-spec:active {
+  transform: translateY(2.5px);
+  filter: brightness(0.25);
+  box-shadow: none;
+}
+
+/* -- */
+
+p.prod-spec-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+p.prod-spec {
+  font-family: "Poppins", sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+}
+
+/* -- */
+
+h1.prod-specs {
+  font-size: 20px;
+  font-family: "Maven Pro", sans-serif;
+  font-weight: 100;
+  position: absolute;
+  top: 12.5px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 500;
+}
+
+/* -- */
 
 /* ----- Seller Container -----  */
 
 div.prod-seller {
   height: fit-content;
   width: 100%;
-  padding: 25px 12.5px 0px 12.5px;
-  grid-row: 2;
+  padding: 25px;
+  grid-row: 3;
   grid-column: 1 / span 2;
   align-self: center;
   justify-self: center;
@@ -327,17 +425,6 @@ div.prod-seller {
   position: relative;
 }
 
-h1.prod-seller {
-  font-size: 35px;
-  font-family: "Maven Pro", sans-serif;
-  font-weight: 100;
-  position: absolute;
-  letter-spacing: 1px;
-  top: 12.5px;
-  left: 12.5px;
-  font-weight: 100;
-}
-
 p.prod-seller-ratings-title {
   align-self: start;
   font-family: "Nunito Sans", sans-serif;
@@ -346,7 +433,7 @@ p.prod-seller-ratings-title {
   letter-spacing: 1px;
 }
 
-/* Seller Contact */
+/* ?Seller Contact */
 
 /* -- */
 
@@ -362,17 +449,13 @@ div.prod-seller-contact {
   align-items: center;
   position: relative;
   cursor: pointer;
+  box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
 }
-div.prod-seller-contact:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
-    0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035),
-    0 22.3px 17.9px rgba(0, 0, 0, 0.042);
-}
+
 div.prod-seller-contact:active {
+  transform: translateY(2.5px);
+  filter: brightness(0.25);
   box-shadow: none;
-  transform: translateY(5px);
-  filter: brightness(0.5);
 }
 
 div.prod-seller-cover-img {
@@ -382,11 +465,11 @@ div.prod-seller-cover-img {
   position: relative;
   z-index: 1;
   border-radius: 15px;
-  background-color: red;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 div.prod-seller-prof-img {
   width: 100px;
   height: 100px;
@@ -407,6 +490,8 @@ div.prod-seller-button {
   justify-content: space-evenly;
 }
 
+/* -- */
+
 div.prod-seller-cover-img img {
   height: 100%;
   width: auto;
@@ -414,144 +499,91 @@ div.prod-seller-cover-img img {
 
 /* -- */
 
-p.pop-prod-seller-account {
-  position: absolute;
-  background-color: #2f2f2f;
-  color: white;
-  border-radius: 5px;
-  padding: 5px 5px 5px 5px;
-  transform: scale(0, 0);
-  height: fit-content;
-  width: 100px;
-  top: 40px;
-  left: 0px;
-  pointer-events: none;
-  font-weight: 100;
-}
-
 p.prod-seller {
   position: relative;
   top: 60px;
-  font-family: "Maven Pro", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 15px;
   font-weight: 500;
 }
 
-p.prod-seller-contact {
+p.prod-seller-bio {
+  position: relative;
+  top: 72.5px;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 12.5px;
+  font-weight: 300;
+}
+
+button.prod-seller-account p {
   position: absolute;
   opacity: 0;
-  color: white;
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins";
+  font-size: 12.5px;
+  font-weight: 400;
+  width: 150px;
+  transform: scale(0.5, 0.5);
+  color: #fafafa;
 }
 
 /* -- */
 
 button.prod-seller-account {
-  width: 35px;
-  height: 35px;
+  width: 42px;
+  height: 42px;
   border-radius: 15px;
   position: absolute;
   top: 5px;
   left: 5px;
   z-index: 2;
-  background-color: #f5f5ff;
-  color: #2f2f2f;
+  background-color: #fafafa2f;
+  color: #fff;
 }
-button.prod-seller-account:hover p.pop-prod-seller-account {
+
+button.prod-seller-account:hover {
+  width: calc(100% - 25px);
+}
+
+button.prod-seller-account:hover span {
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.25s ease all;
+}
+
+button.prod-seller-account:hover p {
+  opacity: 1;
+  transition: 0.25s ease all;
   transform: scale(1, 1);
 }
 
-button.prod-seller-mail,
-button.prod-seller-website,
-button.prod-seller-phone {
-  height: 40px;
-  width: 40px;
-  color: #fff;
-  border-radius: 15px;
-}
-button.prod-seller-mail {
-  background-color: #3d5a80;
-}
-button.prod-seller-website {
-  background-color: #ee6c4d;
-}
-button.prod-seller-phone {
-  background-color: #293241;
-}
-
-button.prod-seller-mail:hover,
-button.prod-seller-website:hover,
-button.prod-seller-phone:hover {
-  width: 100px;
-  transition: 0.25s ease all;
-  border-radius: 10px;
-}
-button.prod-seller-mail:hover span,
-button.prod-seller-website:hover span,
-button.prod-seller-phone:hover span {
-  opacity: 0;
-}
-button.prod-seller-mail:hover p.prod-seller-contact,
-button.prod-seller-website:hover p.prod-seller-contact,
-button.prod-seller-phone:hover p.prod-seller-contact {
-  opacity: 1;
-}
-
-button.prod-seller-mail:active,
-button.prod-seller-website:active,
-button.prod-seller-phone:active {
-  transform: translateY(0px);
-  box-shadow: none;
-}
-
-/* -- */
-
-/* Seller Reviews  */
+/* ?Seller Reviews  */
 
 /* -- */
 
 div.prod-seller-reviews {
   height: 100%;
-  width: calc(100% - 12.5px - 22vw - 12.5px - 15vw - 12.5px - 25px);
+  max-width: calc(100% - 12.5px - 22vw - 12.5px - 15vw - 12.5px - 25px);
   grid-row: 1 / span 2;
   grid-column: 1;
   border-radius: 15px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   position: absolute;
   left: calc(15vw + 25px);
-  justify-content: center;
   z-index: 5;
-}
-
-div.prod-reviews {
-  display: flex;
-  height: 100%;
-  width: 100%;
   overflow-x: scroll;
-  border-radius: 15px;
 }
 
 div.prod-review {
-  height: calc(100% - 6.25px);
+  height: calc(100%);
   min-width: 15vw;
   max-width: 15vw;
   position: relative;
   background-color: #fafafa;
   border-radius: 15px;
-  margin: 6.25px 12.5px 0px 0px;
+  margin: 0px 25px 0px 0px;
   position: relative;
   cursor: pointer;
-}
-div.prod-review:hover {
-  transform: translateY(-5px);
-}
-div.prod-review:active {
-  transform: translateY(0px);
-}
-div.prod-reviews::-webkit-scrollbar {
-  display: none;
 }
 
 div.prod-buyer {
@@ -600,7 +632,7 @@ span.quote-sign {
   color: #ee6c4d;
 }
 
-/* Seller ratings  */
+/* ?Seller ratings  */
 
 div.prod-seller-communication,
 div.prod-seller-shipping,
@@ -615,26 +647,34 @@ div.prod-seller-customer-feedback {
   position: absolute;
   right: 12.5px;
   border-radius: 15px;
+  color: #fafafa;
+  box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
 }
+
 div.prod-seller-communication {
   grid-row: 1 / span 1;
+  background-color: #293241;
 }
 div.prod-seller-shipping {
   grid-row: 2 / span 1;
   margin-top: 6.25px;
+  background-color: #ee6c4d;
 }
 div.prod-seller-returns {
   grid-row: 3 / span 1;
   left: 0px;
+  background-color: #3d5a80;
 }
 div.prod-seller-delivery {
   grid-row: 3 / span 1;
   left: calc(22vw + 25px);
+  background-color: #ef233c;
 }
 div.prod-seller-customer-feedback {
   grid-row: 4 / span 1;
   left: 0px;
   width: calc(44vw + 25px);
+  background-color: #98c1d9;
 }
 
 div.prod-seller-communication-service-rate,
@@ -658,23 +698,24 @@ div.prod-seller-customer-feedback-neutral-rate-percentage,
 div.prod-seller-customer-feedback-negative-rate-percentage {
   height: 100%;
   border-radius: 15px;
+  filter: brightness(0.75);
 }
 
 div.prod-seller-communication-service-rate-percentage {
-  background-color: #ee6c4d;
+  background-color: #293241;
   width: 83%;
 }
 div.prod-seller-shipping-service-rate-percentage {
-  background-color: #3d5a80;
+  background-color: #ee6c4d;
   width: 95%;
 }
 div.prod-seller-returns-service-rate-percentage {
   width: 100%;
-  background-color: #98c1d9;
+  background-color: #3d5a80;
 }
 div.prod-seller-delivery-service-rate-percentage {
   width: 74%;
-  background-color: #293241;
+  background-color: #ef233c;
 }
 div.prod-seller-customer-feedback-positive-rate-percentage {
   width: 45%;
@@ -697,12 +738,12 @@ p.prod-seller-shipping,
 p.prod-seller-returns,
 p.prod-seller-delivery,
 p.prod-seller-customer-feedback {
-  font-family: "Nunito Sans", sans-serif;
-  font-size: 17.5px;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
   font-weight: 500;
-  letter-spacing: 1px;
   display: flex;
   align-items: center;
+  color: #fafafa;
 }
 
 p.prod-seller-communication-service-rate,
@@ -710,10 +751,10 @@ p.prod-seller-shipping-service-rate,
 p.prod-seller-returns-service-rate,
 p.prod-seller-delivery-service-rate,
 p.prod-seller-customer-feedback-rate {
-  font-family: "Open Sans", sans-serif;
-  font-size: 12.5px;
-  font-weight: 500;
   margin: 12.5px 0px;
+
+  font-size: 12.5px;
+  font-family: "Poppins", sans-serif;
 }
 
 span.prod-seller-communication,
@@ -724,29 +765,11 @@ span.prod-customer-feedback {
   width: fit-content;
   border-radius: 100%;
   padding: 6.25px;
-  font-size: 17.5px;
+  font-size: 12.5px;
   margin-right: 12.5px;
-}
-
-span.prod-seller-communication {
-  color: #ee6c4d;
-  background-color: #ee6c4d2f;
-}
-span.prod-seller-shipping {
-  color: #3d5a80;
-  background-color: #3d5a802f;
-}
-span.prod-seller-returns {
-  color: #98c1d9;
-  background-color: #98c1d92f;
-}
-span.prod-seller-delivery {
-  color: #293241;
-  background-color: #2932412f;
-}
-span.prod-customer-feedback {
-  color: #2a9d8f;
-  background-color: #2a9d8f2f;
+  color: #fafafa;
+  background-color: #fafafa2f;
+  cursor: pointer;
 }
 
 /* -- */
@@ -757,7 +780,7 @@ div.prod-seller-products {
   height: 100%;
   min-width: calc(100% - 44vw - 50px);
   max-width: calc(100% - 44vw - 50px);
-  grid-row: 3 / span 2;
+  grid-row: 4 / span 2;
   grid-column: 1;
   display: flex;
   flex-direction: row;
@@ -782,89 +805,6 @@ div.prod-seller-products a.prod-card:active {
   transform: none;
   background-color: #e5e5e5;
 }
-
-/* ----- Product Specifications -----  */
-
-/* -- */
-
-div.prod-specs {
-  grid-row: 4;
-  grid-column: 1 / span 2;
-  width: calc(100% - 12.5px);
-  height: fit-content;
-  display: grid;
-  grid-template-columns:
-    calc(100% / 6)
-    calc(100% / 6)
-    calc(100% / 6)
-    calc(100% / 6)
-    calc(100% / 6)
-    calc(100% / 6);
-  grid-template-rows: auto;
-  grid-row-gap: 25px;
-  align-self: center;
-  justify-self: center;
-  grid-auto-flow: row;
-  margin: 25px 0px 0px 0px;
-  border-radius: 15px;
-  position: relative;
-}
-
-div.prod-spec {
-  width: calc(100% - 25px);
-  height: 100px;
-  display: flex;
-  flex-direction: column;
-  background-color: #fafafa;
-  align-self: flex-start;
-  justify-self: flex-start;
-  align-items: flex-start;
-  justify-content: center;
-  margin: 0px calc(12.5px / 2);
-  border-radius: 15px;
-  cursor: pointer;
-  padding: 25px;
-}
-
-div.prod-spec:hover {
-  transform: scale(1.025, 1.025);
-}
-div.prod-spec:active {
-  background-color: #f5f5f5;
-  transform: translateY(0px) scale(0.975, 0.975);
-  box-shadow: none;
-  transition: 0.1s ease all;
-}
-
-/* -- */
-
-p.prod-spec-title {
-  font-size: 15px;
-  font-family: "Maven Pro", sans-serif;
-  font-weight: 500;
-}
-
-p.prod-spec {
-  font-size: 11.5px;
-  font-family: "Maven Pro", sans-serif;
-  opacity: 0.75;
-  cursor: pointer;
-}
-
-/* -- */
-
-h1.prod-specs {
-  font-size: 20px;
-  font-family: "Maven Pro", sans-serif;
-  font-weight: 100;
-  position: absolute;
-  top: 12.5px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-weight: 500;
-}
-
-/* -- */
 
 /* ----- Realted Products -----  */
 
