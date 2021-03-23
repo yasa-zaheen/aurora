@@ -94,6 +94,7 @@ img.blur {
 div.prod-card {
   height: 37.5vh;
   min-width: calc(35vw + 75px - 25px);
+  max-width: calc(35vw + 75px - 25px);
   border-radius: 15px;
   background-color: #fafafa;
   display: flex;
