@@ -1,3 +1,16 @@
+const imageResizer = () => {
+  const visImgs = document.querySelectorAll("img.vis");
+
+  visImgs.forEach((visImg) => {
+    if (visImg.clientWidth > visImg.clientHeight) {
+      visImg.style.width = "auto";
+      visImg.style.height = "100%";
+    }
+  });
+};
+
+imageResizer();
+
 const prodCardBtnAnimations = (buttons, color) => {
   buttons.forEach((button) => {
     button.addEventListener("click", function () {
