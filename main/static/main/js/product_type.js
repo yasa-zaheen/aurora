@@ -3,7 +3,7 @@ const filterSelect = () => {
 
   filterCards.forEach((filterCard) => {
     filterCard.addEventListener("click", function () {
-      filterCard.classList.toggle("filter-card-selected");
+      filterCard.classList.toggle("filter-card-toggled");
     });
   });
 };
@@ -134,36 +134,42 @@ filterGender();
 const filterContainerTransitition = () => {
   const filterBtn = document.querySelector("button.filter");
   const filterContainer = document.querySelector("div.filter-container");
-  const auroraFilterContainer = document.querySelector("div.filter-container-aurora");
+  const auroraFilterContainer = document.querySelector(
+    "div.filter-container-aurora"
+  );
 
-  filterBtn.addEventListener("click", function(){
+  filterBtn.addEventListener("click", function () {
     filterContainer.classList.toggle("filter-container-hide");
-    auroraFilterContainer.classList.toggle("filter-container-aurora-hide")
+    auroraFilterContainer.classList.toggle("filter-container-aurora-hide");
   });
-
 };
 
 filterContainerTransitition();
 
 const collapsibleFilterContainer = () => {
-
-  const collapsibleFilterContainers = document.querySelectorAll("div.collapsible-filter-container");
-  const showHideFiltersBtns = document.querySelectorAll("button.show-hide-filters");
+  const collapsibleFilterContainers = document.querySelectorAll(
+    "div.collapsible-filter-container"
+  );
+  const showHideFiltersBtns = document.querySelectorAll(
+    "button.show-hide-filters"
+  );
 
   showHideFiltersBtns.forEach((showHideFiltersBtn) => {
-    showHideFiltersBtn.addEventListener("click", function() {
-
-      showHideFiltersBtn.classList.toggle("show-hide-filters-active")
+    showHideFiltersBtn.addEventListener("click", function () {
+      showHideFiltersBtn.classList.toggle("show-hide-filters-active");
 
       collapsibleFilterContainers.forEach((collapsibleFilterContainer) => {
-        if(collapsibleFilterContainer.getAttribute("data-filter-category") === showHideFiltersBtn.getAttribute("data-filter-category")){
-          collapsibleFilterContainer.classList.toggle("collapsible-filter-container-hide")
+        if (
+          collapsibleFilterContainer.getAttribute("data-filter-category") ===
+          showHideFiltersBtn.getAttribute("data-filter-category")
+        ) {
+          collapsibleFilterContainer.classList.toggle(
+            "collapsible-filter-container-hide"
+          );
         }
-      });      
+      });
     });
-
   });
-
 };
 
 collapsibleFilterContainer();

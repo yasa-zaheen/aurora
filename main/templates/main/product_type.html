@@ -168,42 +168,44 @@
   <div class="col2">
     <div style="margin-top: 12.5px"></div>
 
-    {% if children_product_types_exists %}
+    <div class="filter-row-wrapper">
+      {% if children_product_types_exists %}
 
-    <div class="filter-row">
-      {% for child_product_type in children_product_types %}
+      <div class="filter-row">
+        {% for child_product_type in children_product_types %}
 
-      <a
-        class="filter-card"
-        href="{% url 'main:product_type' child_product_type.id %}"
-      >
-        <p class="filter-card">{{child_product_type.name}}</p>
-      </a>
+        <a
+          class="filter-card"
+          href="{% url 'main:product_type' child_product_type.id %}"
+        >
+          <p class="filter-card">{{child_product_type.name}}</p>
+        </a>
+
+        {% endfor %}
+      </div>
+
+      {% endif %} {% for filter_category in filter_categories %}
+
+      <div class="filter-row">
+        {% for filter in filters %}
+        <br style="display: none" />
+        {% if filter.filter_category == filter_category %}
+
+        <a
+          class="filter-card"
+          data-type="{{filter.filter_category}}"
+          data-name="{{filter.name}}"
+          data-bgColor="{{filter.background_color}}"
+          data-fgColor="{{filter.foreground_color}}"
+        >
+          <p class="filter-card">{{filter.name}}</p>
+        </a>
+
+        {% endif %} {% endfor %}
+      </div>
 
       {% endfor %}
     </div>
-
-    {% endif %} {% for filter_category in filter_categories %}
-
-    <div class="filter-row">
-      {% for filter in filters %}
-      <br style="display: none" />
-      {% if filter.filter_category == filter_category %}
-
-      <a
-        class="filter-card"
-        data-type="{{filter.filter_category}}"
-        data-name="{{filter.name}}"
-        data-bgColor="{{filter.background_color}}"
-        data-fgColor="{{filter.foreground_color}}"
-      >
-        <p class="filter-card">{{filter.name}}</p>
-      </a>
-
-      {% endif %} {% endfor %}
-    </div>
-
-    {% endfor %}
 
     <div class="search-cont">
       <button class="filter">
