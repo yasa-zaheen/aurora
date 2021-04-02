@@ -25,14 +25,18 @@ img.banner {
 /* ----- Search ----- */
 
 div.search-cont {
-  width: 100%;
-  left: 0;
-  padding: 25px;
-  margin: 0px;
+  width: calc(100% - 50px);
+  margin: 25px 0px;
+  height: fit-content;
+  border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  position: relative;
+  margin-bottom: 25px;
+  background-color: #fafafa;
+  box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
+  overflow: hidden;
 }
 
 /*Categories*/
