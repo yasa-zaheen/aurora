@@ -10,7 +10,7 @@ div.main {
 div.col1,
 div.col2 {
   height: fit-content;
-  padding: 12.5px 0px; 
+  padding: 12.5px 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,14 +18,13 @@ div.col2 {
 div.col1 {
   width: calc(100% - (70vw + 150px + 25px));
   margin-left: 12.5px;
-  padding-top: 25px
+  padding-top: 25px;
 }
 div.col2 {
   width: 82.5%;
   align-items: flex-start;
   width: calc(70vw + 150px);
 }
-
 
 /*  ---------- Col 1  ----------  */
 
@@ -105,15 +104,18 @@ a.brand-card:hover p.brand {
 /* --- Sub Category Container ---  */
 
 div.sub-cat-cont {
-  width: calc(100% - 25px);
-  margin-left: 25px;
-  border-radius: 15px;
+  width: calc(100% - 12.5px);
   height: fit-content;
+  margin-left: 12.5px;
+  border-radius: 15px;
   display: flex;
+  align-items: center;
+  background: none;
+  background: none;
+  background: none;
+  padding: 12.5px 0px 25px 12.5px;
   overflow-y: visible;
-  overflow-x: auto;
-  padding: 12.5px 0px 25px 0px;
-  background: transparent;
+  overflow-x: scroll;
 }
 
 div.sub-cat-cont::-webkit-scrollbar {
@@ -132,20 +134,17 @@ a.sub-cat-card {
   background-color: #fafafa;
   text-decoration: none;
   cursor: pointer;
+  box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
 }
 
 a.sub-cat-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 2.5px 2.5px -5px rgba(0, 0, 0, 0.2),
-    0 2px 2px -10px rgba(0, 0, 0, 0.2), 0 4px 4px -10px rgba(0, 0, 0, 0.2),
-    0 8px 8px -10px rgba(0, 0, 0, 0.2), 0 16px 16px -10px rgba(0, 0, 0, 0.2);
-  background-color: #ffffff;
+  transform: scale(1.05, 1.05);
 }
 
 a.sub-cat-card:active {
-  box-shadow: 0px;
-  transform: translateY(0px);
+  transform: scale(0.95, 0.95);
   filter: brightness(0.25);
+  box-shadow: none;
 }
 
 div.sub-cat-card-img {
@@ -183,6 +182,6 @@ div.prods-cont {
   grid-row-gap: 25px;
 }
 
-div.prod-card{
+div.prod-card {
   margin-right: 25px;
 }

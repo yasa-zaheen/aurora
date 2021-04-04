@@ -156,22 +156,26 @@ div.filter-container-categorized div.filter p.filter {
 /* --- Filter Row Container ---  */
 
 div.filter-row {
-  width: calc(100%);
-  border-radius: 15px;
+  width: calc(100% - 12.5px);
   height: fit-content;
+  margin-left: 12.5px;
+  border-radius: 15px;
   display: flex;
+  align-items: center;
+  background: none;
+  padding: 12.5px 0px 12.5px 12.5px;
+  overflow-y: visible;
   overflow-x: scroll;
-  padding: 0px 0px 25px 0px;
 }
 
-div.filter-row-wrapper {
+div.filter-rows-wrapper {
   overflow: hidden;
   width: calc(100%);
   height: fit-content;
   display: flex;
   flex-direction: column;
   border-radius: 15px;
-  padding: 0px 0px 0px 25px;
+  padding: 0px 0px 0px 0px;
 }
 /* 
 div.filter-row::-webkit-scrollbar {
