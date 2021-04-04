@@ -7,9 +7,8 @@
 <link rel="stylesheet" href="{% static 'main/css/dashboard.css' %}" />
 
 <div class="main-cont">
-  <div class="col1"></div>
-  <div class="col2">
-    <div class="user">
+  <div class="col1">
+    <div class="user-info">
       <div class="user-img">
         <img
           class="vis"
@@ -17,26 +16,26 @@
           alt=""
         />
       </div>
-      <div class="user-info">
-        <p class="user-name">Yasa Zaheen</p>
-        <p class="user-email">yasazaheen@gmail.com</p>
-      </div>
+      <p class="username">yasa.zaheen</p>
     </div>
-    <div class="buttons-cont">
-      <button>
-        <span class="material-icons-outlined"> shopping_cart </span>
-        <p>View Cart</p>
-      </button>
-      <button>
-        <span class="material-icons-outlined"> star_border </span>
-        <p>View Wishlist</p>
-      </button>
-      <button>
-        <span class="material-icons-outlined"> remove_red_eye </span>
-        <p>View Watchlist</p>
-      </button>
-    </div>
+    <button class="view-cart">
+      <span class="material-icons-outlined"> shopping_cart </span>
+      <p>View Cart</p>
+    </button>
+    <button class="view-wishlist">
+      <span class="material-icons-outlined"> star_border </span>
+      <p>View Wishlist</p>
+    </button>
+    <button class="view-watchlist">
+      <span class="material-icons-outlined"> remove_red_eye </span>
+      <p>View Watchlist</p>
+    </button>
+    <button class="settings">
+      <span class="material-icons-outlined"> settings </span>
+      <p>Settings</p>
+    </button>
   </div>
+  <div class="col2"></div>
 </div>
 
 <script src="{% static 'main/js/dashboard.js' %}"></script>
