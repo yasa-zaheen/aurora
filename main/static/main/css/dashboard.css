@@ -1,18 +1,15 @@
 /* ----- Remove items ----- */
 
-/* nav.nav {
-  display: none;
+body {
+  background-color: #fafafa;
 }
-
-::-webkit-scrollbar {
-  display: none;
-} */
 
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
 }
+
 /* ----- Main Container ----- */
 
 div.main-cont {
@@ -41,23 +38,13 @@ div.col2 {
   width: calc(70vw + 150px);
 }
 
-/* ----- Column 2 ----- */
+/* ----- Column 1 ----- */
 
-/* ----- */
-
-div.user {
-  height: fit-content;
-  width: calc(100% - 50px);
-  display: flex;
-  align-items: center;
-  margin: 25px;
-  border-radius: 15px;
-  box-shadow: 5px 5px 10px #232b37, -5px -5px 10px #2f3a4b;
-}
+/* --- User Info --- */
 
 div.user-info {
   width: 100%;
-  height: fit-content;
+  height: 197px;
   margin: 0px 0px 25px 0px;
   border-radius: 15px;
   padding: 25px;
@@ -85,7 +72,7 @@ p.username {
   margin-top: 25px;
 }
 
-/* ----- */
+/* --- User Info Buttons --- */
 
 button.view-cart,
 button.view-wishlist,
@@ -143,4 +130,122 @@ button.settings p {
   font-family: "Poppins", sans-serif;
   font-size: 12.5px;
   font-weight: 400;
+}
+
+/* ----- Column 2 ----- */
+
+/* --- Information Card --- */
+
+div.user-banner {
+  width: calc(100% - 25px);
+  height: 197px;
+  border-radius: 15px;
+  margin: 12.5px 0px 25px 25px;
+  box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.information {
+  width: calc(100% - 25px);
+  height: fit-content;
+  margin-left: 25px;
+  border-radius: 15px;
+  position: relative;
+}
+
+div.info-card {
+  width: fit-content;
+  height: fit-content;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
+}
+
+h1.info-card-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  margin-bottom: 12.5px;
+}
+
+/* ?Recently Viewed Items */
+
+div.recently-viewed-items {
+  min-width: calc(35vw + 75px + 25px);
+  max-width: calc(35vw + 75px + 25px);
+  color: #2f2f2f;
+}
+
+div.recently-viewed-items-prods-cont {
+  width: calc(100%);
+  height: calc(37.5vh);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-self: flex-start;
+  border-radius: 15px;
+  overflow-y: scroll;
+  box-shadow: inset -5px 5px 10px #d5d5d5, inset 5px -5px 10px #ffffff;
+}
+
+/* ?Cart Info */
+
+div.cart-info {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: #293241;
+  color: white;
+  padding: 25px 25px 0px 25px;
+  width: calc(100% - 25px - (35vw + 75px + 25px));
+}
+
+div.cart-info-number-of-items,
+div.cart-info-subtotal {
+  background-color: #293241;
+  width: 100%;
+  height: 44px;
+  border-radius: 15px;
+  box-shadow: -5px 5px 10px #1f2631, 5px -5px 10px #333f51;
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+div.cart-info-number-of-items span,
+div.cart-info-subtotal span {
+  width: 44px;
+  height: 44px;
+  border-radius: 15px;
+  font-size: 15px;
+  color: #fafafa;
+  background-color: #fafafa2f;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12.5px;
+}
+
+div.cart-info-number-of-items p,
+div.cart-info-subtotal p {
+  font-size: 12.5px;
+  font-family: "Poppins", sans-serif;
+}
+
+div.cart-info-number-of-items p.sub-title,
+div.cart-info-subtotal p.sub-title {
+  font-weight: 500;
+  margin-right: 12.5px;
+}
+
+div.cart-info-number-of-items p.body,
+div.cart-info-subtotal p.body {
+  font-weight: 300;
+  margin-right: 12.5px;
 }
