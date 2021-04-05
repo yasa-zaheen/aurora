@@ -497,7 +497,7 @@ input.search {
   border-radius: 15px;
   outline: none;
   border: none;
-  padding: 0px 0px 0px 25px;
+  padding: 0px 25px;
   right: 0px;
   font-family: "Poppins", sans-serif;
   background: none;
@@ -513,12 +513,14 @@ button.search {
   height: 50px;
   width: 50px;
   border-radius: 15px;
-  background-color: #293241;
+  background-color: #3d5a80;
+  border: 5px solid #3d5a80;
 }
 
 button.search:active {
-  transform: scale(0.9, 0.9);
-  box-shadow: none;
+  filter: brightness(0.95);
+  transition: 0.1s ease all;
+  box-shadow: inset -2.5px 2.5px 5px #344d6d, inset 2.5px -2.5px 5px #466893;
 }
 
 /* --  */
