@@ -156,7 +156,9 @@ const collapsibleFilterContainer = () => {
 
   showHideFiltersBtns.forEach((showHideFiltersBtn) => {
     showHideFiltersBtn.addEventListener("click", function () {
-      showHideFiltersBtn.classList.toggle("show-hide-filters-active");
+      showHideFiltersBtn.childNodes[1].classList.toggle(
+        "show-hide-filters-active"
+      );
 
       collapsibleFilterContainers.forEach((collapsibleFilterContainer) => {
         if (
