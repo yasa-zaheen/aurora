@@ -154,6 +154,7 @@ div.information {
   margin-left: 25px;
   border-radius: 15px;
   position: relative;
+  display: grid;
 }
 
 div.info-card {
@@ -173,12 +174,27 @@ h1.info-card-title {
   margin-bottom: 12.5px;
 }
 
-/* ?Recently Viewed Items */
+a.learn-more {
+  width: 100%;
+  background-color: #fafafa2f;
+  justify-content: end;
+  margin-top: 12.5px;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  font-size: 12.5px;
+  font-family: "Poppins", sans-serif;
+  border-radius: 15px;
+}
+
+/* --- Recently Viewed Items --- */
 
 div.recently-viewed-items {
   min-width: calc(35vw + 75px + 25px);
   max-width: calc(35vw + 75px + 25px);
   color: #2f2f2f;
+  grid-row: 1 / span 2;
+  grid-column: 1;
 }
 
 div.recently-viewed-items-prods-cont {
@@ -193,16 +209,16 @@ div.recently-viewed-items-prods-cont {
   box-shadow: inset -5px 5px 10px #d5d5d5, inset 5px -5px 10px #ffffff;
 }
 
-/* ?Cart Info */
+/* --- Cart Info --- */
 
 div.cart-info {
-  position: absolute;
-  top: 0px;
-  right: 0px;
   background-color: #293241;
   color: white;
   padding: 25px 25px 0px 25px;
   width: calc(100% - 25px - (35vw + 75px + 25px));
+  grid-row: 1;
+  grid-column: 1 / span 2;
+  justify-self: flex-end;
 }
 
 div.cart-info-number-of-items,
@@ -248,4 +264,66 @@ div.cart-info-number-of-items p.body,
 div.cart-info-subtotal p.body {
   font-weight: 300;
   margin-right: 12.5px;
+}
+
+/* --- Wishlist Info --- */
+
+div.wishlist-info {
+  margin-top: 25px;
+  color: white;
+  background-color: #ee6c4d;
+  padding: 25px 25px 0px 25px;
+  width: calc(((100% - 25px - (35vw + 75px + 25px)) / 2) - 12.5px);
+  grid-row: 2 / span 2;
+  grid-column: 1 / span 2;
+  justify-self: end;
+}
+
+div.wishlist-info-container {
+  flex: 1;
+  height: calc(100% - 25px - 25px - 15px);
+  background-color: #fafafa2f;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+}
+
+div.wishlist-info-container p.sub-title {
+  font-size: 15px;
+  text-align: center;
+}
+
+/* --- Watchlist Info --- */
+
+div.watchlist-info {
+  margin-top: 25px;
+  color: white;
+  background-color: #3d5a80;
+  padding: 25px 25px 0px 25px;
+  width: calc(((100% - 25px - (35vw + 75px + 25px)) / 2) - 12.5px);
+  grid-row: 2 / span 2;
+  grid-column: 1 / span 2;
+  justify-self: end;
+  transform: translateX(-100%);
+  margin-right: 25px;
+}
+
+div.watchlist-info-container {
+  flex: 1;
+  height: calc(100% - 25px - 25px - 15px);
+  background-color: #fafafa2f;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+}
+
+div.watchlist-info-container p.sub-title {
+  font-size: 15px;
+  text-align: center;
 }
