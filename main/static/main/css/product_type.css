@@ -1,4 +1,4 @@
-/* ---------- Main ---------   */
+/* ---------- Main Container ---------   */
 
 div.main {
   width: 100%;
@@ -31,31 +31,21 @@ br {
   display: none;
 }
 
-/* ---------- Col 2  ----------  */
+/* ---------- Col 1  ----------  */
 
-/* --- Filter Container ---  */
+/* ?Standard Filter Container */
 
-button.filter {
-  height: 50px;
-  width: 50px;
-  border-radius: 15px;
-  background-color: #ee6c4d;
-  border: 5px solid #ee6c4d;
+div.filter-container-aurora {
+  transition: 200ms ease all;
 }
 
-button.filter:active {
-  filter: brightness(0.95);
-  transition: 0.1s ease all;
-  box-shadow: inset -2.5px 2.5px 5px #ca5c41, inset 2.5px -2.5px 5px #ff7c59;
+div.filter-container-aurora-hide {
+  opacity: 0;
+  transform: translateX(-50%);
+  transition: 200ms ease all;
 }
 
-button.filter span {
-  font-size: 20px;
-  color: #fff;
-  opacity: 1;
-}
-
-/* --- */
+/* ?Filter Container */
 
 div.filter-container {
   height: calc(90vh - 50px);
@@ -64,33 +54,23 @@ div.filter-container {
   top: 25px;
   position: absolute;
   border-radius: 15px;
-  transition: 0.5s ease all;
+  transition: 200ms ease all;
   overflow-x: visible;
 }
 
 div.filter-container-hide {
   transform: translateX(-150%);
+  transition: 200ms ease all;
 }
 
-div.filter-container-aurora {
-  transition: 0.5s ease all;
-}
-
-div.filter-container-aurora-hide {
-  opacity: 0;
-  transform: translateX(-50%);
-  transition: 0.5s ease all;
-}
-
-/* --- */
+/* Filter Categories Container */
 
 div.filter-container-categorized {
   width: calc(14vw + 5px);
   min-height: 77px;
-  max-height: fit-content;
+  max-height: calc(90vh - 50px);
   border-radius: 15px;
-  cursor: pointer;
-  transition: 0.25s ease all;
+  transition: 200ms ease all;
   user-select: none;
   background-color: #fafafa;
   box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
@@ -98,9 +78,8 @@ div.filter-container-categorized {
   padding: 25px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   margin-bottom: 25px;
+  overflow-y: hidden;
 }
 
 div.filter-container-categorized:nth-child(4n + 1) {
@@ -119,34 +98,19 @@ div.filter-container-categorized:nth-child(4n + 4) {
   background-color: #2f2f2f;
 }
 
-/* --- */
+/* Filter Categories Container Header and Header Contents */
 
-div.filter-container-categorized div.header {
+div.header {
   display: flex;
   width: 100%;
   height: fit-content;
-  /* height: calc(77px - 50px); */
   align-items: flex-start;
   justify-content: space-between;
 }
 
-div.filter-container-categorized div.header p.title {
+div.header p.title {
   font-family: "Poppins", sans-serif;
   font-size: 15px;
-}
-
-div.filter-container-categorized div.header button.show-hide-filters {
-  width: fit-content;
-  border-radius: 100%;
-  font-size: 12.5px;
-  cursor: pointer;
-  background: none;
-}
-
-/* --- */
-
-div.filter-container-categorized div.header span.show-hide-filters-active {
-  transform: rotateZ(90deg);
 }
 
 div.filter-container-categorized:nth-child(4n + 1) button {
@@ -173,18 +137,28 @@ div.filter-container-categorized:nth-child(4n + 4) button {
   box-shadow: -5px 5px 10px #282828, 5px -5px 10px #363636;
 }
 
-/* --- */
-
-div.filter-container-categorized div.collapsible-filter-container {
-  max-height: fit-content;
-  transition: 0.5s ease all;
+div.header span.show-hide-filters-active {
+  transform: rotateZ(90deg);
 }
 
-div.filter-container-categorized div.collapsible-filter-container-hide {
+/* Filter Categories Container Collapsible Filter Container */
+
+div.collapsible-filter-container {
+  max-height: calc(90vh - 50px);
+  transition: 200ms ease all;
+  overflow-y: scroll;
+  margin-top: 12.5px;
+  border-radius: 15px;
+}
+
+div.collapsible-filter-container-hide {
   max-height: 0vh;
   overflow: hidden;
-  transition: 0.5s ease all;
+  transition: 200ms ease all;
+  margin-top: 0px;
 }
+
+/* Filter Categories Container Collapsible Filter Container and Filters */
 
 div.filter-container-categorized div.filter {
   display: flex;
@@ -198,7 +172,31 @@ div.filter-container-categorized div.filter input.filter {
 
 div.filter-container-categorized div.filter p.filter {
   font-family: "Poppins", sans-serif;
-  font-size: 10px;
+  font-size: 12.5px;
+}
+
+/* ---------- Col 2  ----------  */
+
+/* ?Search Bar Filter Button */
+
+button.filter {
+  height: 50px;
+  width: 50px;
+  border-radius: 15px;
+  background-color: #ee6c4d;
+  border: 5px solid #ee6c4d;
+}
+
+button.filter:active {
+  filter: brightness(0.95);
+  transition: 0.1s ease all;
+  box-shadow: inset -2.5px 2.5px 5px #ca5c41, inset 2.5px -2.5px 5px #ff7c59;
+}
+
+button.filter span {
+  font-size: 20px;
+  color: #fff;
+  opacity: 1;
 }
 
 /* --- Filter Row Container ---  */
