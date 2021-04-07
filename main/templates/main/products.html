@@ -120,16 +120,24 @@
   </div>
 
   <div class="col2">
-    <div class="cat-cont">
-      {% for category in all_categories %}
+    <div class="cat-cont-wrapper">
+      <button class="cat-cont-left">
+        <span class="material-icons"> keyboard_arrow_left </span>
+      </button>
+      <div class="cat-cont">
+        {% for category in all_categories %}
 
-      <a class="cat-card" href="{% url 'main:category' category.id %}">
-        <img src="{{ category.image.url }}" class="vis" />
+        <a class="cat-card" href="{% url 'main:category' category.id %}">
+          <img src="{{ category.image.url }}" class="vis" />
 
-        <p class="cat">{{category.name}}</p>
-      </a>
+          <p class="cat">{{category.name}}</p>
+        </a>
 
-      {% endfor %}
+        {% endfor %}
+      </div>
+      <button class="cat-cont-right">
+        <span class="material-icons"> keyboard_arrow_right </span>
+      </button>
     </div>
 
     <div class="search-cont">

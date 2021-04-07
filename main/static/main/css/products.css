@@ -32,9 +32,9 @@ div.col2 {
 
 /* ----- Category ----- */
 
-/* --  */
+/* -- */
 
-div.cat-cont {
+div.cat-cont-wrapper {
   width: calc(100% - 12.5px);
   height: fit-content;
   margin-left: 12.5px;
@@ -42,9 +42,57 @@ div.cat-cont {
   display: flex;
   align-items: center;
   background: none;
-  padding: 12.5px 0px 25px 12.5px;
   overflow-y: visible;
   overflow-x: scroll;
+  position: relative;
+  padding-left: 12.5px;
+}
+
+button.cat-cont-left,
+button.cat-cont-right {
+  height: 50px;
+  width: 50px;
+  border-radius: 15px;
+  position: fixed;
+  z-index: 100;
+  overflow: hidden;
+  background-color: #293241;
+  border: 5px solid #293241;
+  transition: 200ms ease all;
+  opacity: 0.25;
+}
+
+button.cat-cont-left:hover,
+button.cat-cont-right:hover {
+  opacity: 1;
+}
+
+button.cat-cont-left:active,
+button.cat-cont-right:active {
+  box-shadow: inset -5px 5px 10px #202732, inset 5px -5px 10px #323e50;
+}
+
+button.cat-cont-left {
+  left: calc(100% - 70vw - 150px - 25px + 50px);
+}
+
+button.cat-cont-right {
+  right: 50px;
+}
+
+/* -- */
+
+div.cat-cont {
+  width: fit-content;
+  height: fit-content;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  background: none;
+  padding: 12.5px 0px 25px 0px;
+  overflow-y: visible;
+  overflow-x: visible;
+  transition: 0.5s ease all;
 }
 
 a.cat-card {
