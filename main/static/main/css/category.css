@@ -103,7 +103,9 @@ a.brand-card:hover p.brand {
 
 /* --- Sub Category Container ---  */
 
-div.sub-cat-cont {
+/* -- */
+
+div.sub-cat-cont-wrapper {
   width: calc(100% - 12.5px);
   height: fit-content;
   margin-left: 12.5px;
@@ -111,15 +113,58 @@ div.sub-cat-cont {
   display: flex;
   align-items: center;
   background: none;
-  background: none;
-  background: none;
-  padding: 12.5px 0px 25px 12.5px;
   overflow-y: visible;
   overflow-x: scroll;
+  position: relative;
+  padding-left: 12.5px;
 }
 
-div.sub-cat-cont::-webkit-scrollbar {
-  display: none;
+button.sub-cat-cont-left,
+button.sub-cat-cont-right {
+  height: 25px;
+  width: 25px;
+  border-radius: 15px;
+  position: fixed;
+  z-index: 100;
+  overflow: hidden;
+  background-color: #293241;
+  border: 5px solid #293241;
+  transition: 200ms ease all;
+  opacity: 0.25;
+  top: calc(10vh + 25px + 77px - 12.5px - 38.5px);
+}
+
+button.sub-cat-cont-left:hover,
+button.sub-cat-cont-right:hover {
+  opacity: 1;
+}
+
+button.sub-cat-cont-left:active,
+button.sub-cat-cont-right:active {
+  box-shadow: inset -5px 5px 10px #202732, inset 5px -5px 10px #323e50;
+}
+
+button.sub-cat-cont-left {
+  left: calc(100% - 70vw - 150px - 25px + 50px);
+}
+
+button.sub-cat-cont-right {
+  right: 50px;
+}
+
+/* -- */
+
+div.sub-cat-cont {
+  width: fit-content;
+  height: fit-content;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  background: none;
+  padding: 12.5px 0px 25px 0px;
+  overflow-y: visible;
+  overflow-x: visible;
+  transition: 0.5s ease all;
 }
 
 a.sub-cat-card {

@@ -117,17 +117,25 @@
   </div>
 
   <div class="col2">
-    <div class="prod-type-cont">
-      {% for product_type in product_types %}
+    <div class="prod-type-cont-wrapper">
+      <button class="prod-type-cont-left">
+        <span class="material-icons"> keyboard_arrow_left </span>
+      </button>
+      <div class="prod-type-cont">
+        {% for product_type in product_types %}
 
-      <a
-        class="prod-type-card"
-        href="{% url 'main:product_type' product_type.id %}"
-      >
-        <p class="prod-type-card">{{product_type.name}}</p>
-      </a>
+        <a
+          class="prod-type-card"
+          href="{% url 'main:product_type' product_type.id %}"
+        >
+          <p class="prod-type-card">{{product_type.name}}</p>
+        </a>
 
-      {% endfor %}
+        {% endfor %}
+      </div>
+      <button class="prod-type-cont-right">
+        <span class="material-icons"> keyboard_arrow_right </span>
+      </button>
     </div>
 
     <div class="search-cont">
@@ -328,5 +336,7 @@
     </div>
   </div>
 </div>
+
+<script src="{% static 'main/js/sub_category.js' %}"></script>
 
 {% endblock content %}

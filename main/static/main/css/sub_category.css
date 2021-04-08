@@ -30,7 +30,9 @@ div.col2 {
 
 /* --- Product Type Container ---  */
 
-div.prod-type-cont {
+/* -- */
+
+div.prod-type-cont-wrapper {
   width: calc(100% - 12.5px);
   height: fit-content;
   margin-left: 12.5px;
@@ -38,11 +40,58 @@ div.prod-type-cont {
   display: flex;
   align-items: center;
   background: none;
-  background: none;
-  background: none;
-  padding: 12.5px 0px 25px 12.5px;
   overflow-y: visible;
   overflow-x: scroll;
+  position: relative;
+  padding-left: 12.5px;
+}
+
+button.prod-type-cont-left,
+button.prod-type-cont-right {
+  height: 25px;
+  width: 25px;
+  border-radius: 15px;
+  position: fixed;
+  z-index: 100;
+  overflow: hidden;
+  background-color: #293241;
+  border: 5px solid #293241;
+  transition: 200ms ease all;
+  opacity: 0.25;
+  top: calc(10vh + 25px + 77px - 12.5px - 38.5px);
+}
+
+button.prod-type-cont-left:hover,
+button.prod-type-cont-right:hover {
+  opacity: 1;
+}
+
+button.prod-type-cont-left:active,
+button.prod-type-cont-right:active {
+  box-shadow: inset -5px 5px 10px #202732, inset 5px -5px 10px #323e50;
+}
+
+button.prod-type-cont-left {
+  left: calc(100% - 70vw - 150px - 25px + 50px);
+}
+
+button.prod-type-cont-right {
+  right: 50px;
+}
+
+/* -- */
+
+div.prod-type-cont {
+  width: fit-content;
+  height: fit-content;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  background: none;
+  padding: 12.5px 0px 25px 0px;
+  overflow-y: visible;
+  overflow-x: visible;
+  transition: 0.5s ease all;
 }
 
 div.prod-type-cont::-webkit-scrollbar {

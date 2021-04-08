@@ -114,49 +114,31 @@
       </p>
     </div>
   </div>
+
   <div class="col2">
-    <!-- <div class="search-cont">
-      <h1 class="title" style="position: absolute; left:0px">Search By Brand Or Sub-categories</h1>
-      <input type="text" class="search" placeholder="Search">
-      <button class="search"><span class="material-icons search">search</span></button>
-    </div> -->
+    <div class="sub-cat-cont-wrapper">
+      <button class="sub-cat-cont-left">
+        <span class="material-icons"> keyboard_arrow_left </span>
+      </button>
+      <div class="sub-cat-cont">
+        {% for sub_category in sub_categories %}
 
-    <!-- {% if category.show_brand_in_sub_category %}
+        <a
+          class="sub-cat-card"
+          href="{% url 'main:sub_category' sub_category.id %}"
+        >
+          <div class="sub-cat-card-img">
+            <img src="{{sub_category.image.url}}" alt="" class="vis" />
+          </div>
+          <p class="sub-cat-card">{{sub_category.name}}</p>
+        </a>
 
-    <div class="sub-cat-cont" style="padding: calc(12.5px / 2) 0px 0px 0px; height: calc(77px + 25px + 6.25px)">
-
-      {% for sub_category in sub_categories %}
-
-      <a class="sub-cat-card" href="{% url 'main:sub_category' sub_category.id %}">
-        <div class="sub-cat-card-img">
-          <img src="{{sub_category.image.url}}" alt="" class="vis">
-        </div>
-        <p class="sub-cat-card">{{sub_category.name}}</p>
-      </a>
-
-      {% endfor %}
-
+        {% endfor %}
+      </div>
+      <button class="sub-cat-cont-right">
+        <span class="material-icons"> keyboard_arrow_right </span>
+      </button>
     </div>
-
-    {% else %} -->
-
-    <div class="sub-cat-cont">
-      {% for sub_category in sub_categories %}
-
-      <a
-        class="sub-cat-card"
-        href="{% url 'main:sub_category' sub_category.id %}"
-      >
-        <div class="sub-cat-card-img">
-          <img src="{{sub_category.image.url}}" alt="" class="vis" />
-        </div>
-        <p class="sub-cat-card">{{sub_category.name}}</p>
-      </a>
-
-      {% endfor %}
-    </div>
-
-    <!-- {% endif %} -->
 
     <div class="search-cont">
       <input type="text" class="search" placeholder="Search" />

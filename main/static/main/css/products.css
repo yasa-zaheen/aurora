@@ -60,6 +60,7 @@ button.cat-cont-right {
   border: 5px solid #293241;
   transition: 200ms ease all;
   opacity: 0.25;
+  top: calc(10vh + 25px + 144px - 25px - 72px);
 }
 
 button.cat-cont-left:hover,
