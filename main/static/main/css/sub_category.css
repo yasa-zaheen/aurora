@@ -1,17 +1,16 @@
 /* ---------- Main ---------   */
 
 div.main {
- width: 100%;
+  width: 100%;
   height: fit-content;
   display: flex;
   padding: 0px 12.5px;
 }
 
-
 div.col1,
 div.col2 {
   height: fit-content;
-  padding: 12.5px 0px; 
+  padding: 12.5px 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,7 +18,7 @@ div.col2 {
 div.col1 {
   width: calc(100% - (70vw + 150px + 25px));
   margin-left: 12.5px;
-  padding-top: 25px
+  padding-top: 25px;
 }
 div.col2 {
   width: 82.5%;
@@ -31,16 +30,68 @@ div.col2 {
 
 /* --- Product Type Container ---  */
 
-div.prod-type-cont {
-  width: calc(100% - 25px);
-  margin-left: 25px;
-  border-radius: 15px;
+/* -- */
+
+div.prod-type-cont-wrapper {
+  width: calc(100% - 12.5px);
   height: fit-content;
+  margin-left: 12.5px;
+  border-radius: 15px;
   display: flex;
+  align-items: center;
+  background: none;
   overflow-y: visible;
-  overflow-x: auto;
+  overflow-x: scroll;
+  position: relative;
+  padding-left: 12.5px;
+}
+
+button.prod-type-cont-left,
+button.prod-type-cont-right {
+  height: 25px;
+  width: 25px;
+  border-radius: 15px;
+  position: fixed;
+  z-index: 100;
+  overflow: hidden;
+  background-color: #293241;
+  border: 5px solid #293241;
+  transition: 200ms ease all;
+  opacity: 0.25;
+  top: calc(10vh + 25px + 77px - 12.5px - 38.5px);
+}
+
+button.prod-type-cont-left:hover,
+button.prod-type-cont-right:hover {
+  opacity: 1;
+}
+
+button.prod-type-cont-left:active,
+button.prod-type-cont-right:active {
+  box-shadow: inset -5px 5px 10px #202732, inset 5px -5px 10px #323e50;
+}
+
+button.prod-type-cont-left {
+  left: calc(100% - 70vw - 150px - 25px + 50px);
+}
+
+button.prod-type-cont-right {
+  right: 50px;
+}
+
+/* -- */
+
+div.prod-type-cont {
+  width: fit-content;
+  height: fit-content;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  background: none;
   padding: 12.5px 0px 25px 0px;
-  background: transparent;
+  overflow-y: visible;
+  overflow-x: visible;
+  transition: 0.5s ease all;
 }
 
 div.prod-type-cont::-webkit-scrollbar {
@@ -59,20 +110,17 @@ a.prod-type-card {
   background-color: #fafafa;
   text-decoration: none;
   cursor: pointer;
+  box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
 }
 
 a.prod-type-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 2.5px 2.5px -5px rgba(0, 0, 0, 0.2),
-    0 2px 2px -10px rgba(0, 0, 0, 0.2), 0 4px 4px -10px rgba(0, 0, 0, 0.2),
-    0 8px 8px -10px rgba(0, 0, 0, 0.2), 0 16px 16px -10px rgba(0, 0, 0, 0.2);
-  background-color: #ffffff;
+  transform: scale(1.05, 1.05);
 }
 
 a.prod-type-card:active {
-  box-shadow: 0px;
-  transform: translateY(0px);
+  transform: scale(0.95, 0.95);
   filter: brightness(0.25);
+  box-shadow: none;
 }
 
 p.prod-type-card {
@@ -98,6 +146,6 @@ div.prods-cont {
   grid-row-gap: 25px;
 }
 
-div.prod-card{
+div.prod-card {
   margin-right: 25px;
 }

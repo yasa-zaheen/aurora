@@ -19,10 +19,10 @@ const horizontalScroller = (wrapper, rightBtn, leftBtn) => {
   });
 };
 
-const subCategoryContainerWrapper = document.querySelector(
-  "div.sub-cat-cont-wrapper"
+const prodTypeContWrapper = document.querySelector(
+  "div.prod-type-cont-wrapper"
 );
-const subCatContBtnR = document.querySelector("button.sub-cat-cont-right");
-const subCatContBtnL = document.querySelector("button.sub-cat-cont-left");
+const prodTypeContBtnR = document.querySelector("button.prod-type-cont-right");
+const prodTypeContBtnL = document.querySelector("button.prod-type-cont-left");
 
-horizontalScroller(subCategoryContainerWrapper, subCatContBtnR, subCatContBtnL);
+horizontalScroller(prodTypeContWrapper, prodTypeContBtnR, prodTypeContBtnL);
