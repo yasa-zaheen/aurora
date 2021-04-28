@@ -25,14 +25,18 @@ img.banner {
 /* ----- Search ----- */
 
 div.search-cont {
-  width: 100%;
-  left: 0;
-  padding: 25px;
-  margin: 0px;
+  width: calc(100% - 50px);
+  margin: 25px 0px;
+  height: fit-content;
+  border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  position: relative;
+  margin-bottom: 25px;
+  background-color: #fafafa;
+  box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
+  overflow: hidden;
 }
 
 /*Categories*/
@@ -68,19 +72,18 @@ a.cat-card {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 200ms ease all;
+  box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
 }
 
 a.cat-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 2.5px 2.5px -5px rgba(0, 0, 0, 0.2),
-    0 2px 2px -10px rgba(0, 0, 0, 0.2), 0 4px 4px -10px rgba(0, 0, 0, 0.2),
-    0 8px 8px -10px rgba(0, 0, 0, 0.2), 0 16px 16px -10px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05, 1.05);
 }
 
 a.cat-card:active {
-  transform: translateY(0px);
-  box-shadow: none;
+  transform: scale(0.95, 0.95);
   filter: brightness(0.25);
+  box-shadow: none;
 }
 
 p.cat {

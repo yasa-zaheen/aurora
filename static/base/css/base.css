@@ -92,8 +92,10 @@ img.blur {
 /* ----- Product Card ----- */
 
 div.prod-card {
-  height: 37.5vh;
+  min-height: 37.5vh;
+  max-height: 37.5vh;
   min-width: calc(35vw + 75px - 25px);
+  max-width: calc(35vw + 75px - 25px);
   border-radius: 15px;
   background-color: #fafafa;
   display: flex;
@@ -173,6 +175,45 @@ button.prod-account:hover p {
 
 button.prod-account:active {
   transform: scale(0.9, 0.9);
+}
+
+a.prod-link {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+p.view-product {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  opacity: 0;
+  transition: 200ms ease all;
+  pointer-events: none;
+  z-index: 5;
+}
+
+a.prod-link:hover img.vis {
+  filter: brightness(0.75);
+}
+
+a.prod-link:hover p.view-product {
+  opacity: 1;
+}
+
+a.prod-link:active img.vis {
+  filter: brightness(0.25);
 }
 
 /* Text Container */
@@ -355,6 +396,26 @@ div.filter-seller-account {
   box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
 }
 
+div.filter-condition {
+  background-color: #293241;
+  color: #fafafa;
+}
+
+div.filter-delivery {
+  background-color: #ee6c4d;
+  color: #fafafa;
+}
+
+div.filter-returns {
+  background-color: #98c1d9;
+  color: #fafafa;
+}
+
+div.filter-seller-account {
+  background-color: #ef233c;
+  color: #fafafa;
+}
+
 /* -- */
 
 h1.filter {
@@ -396,14 +457,12 @@ p.filter-seller-account {
   align-items: center;
   justify-content: start;
   cursor: pointer;
-  color: #000;
 }
 
 p.filter-price,
 p.filter-seller-ratings {
   font-size: 12.5px;
   border-radius: 5px;
-  color: #000;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   align-self: flex-end;
@@ -425,9 +484,8 @@ div.search-cont {
   position: relative;
   margin-bottom: 25px;
   background-color: #fafafa;
-  /*box-shadow: 0 2.5px 2.5px -5px rgba(0, 0, 0, 0.2),
-    0 2px 2px -10px rgba(0, 0, 0, 0.2), 0 4px 4px -10px rgba(0, 0, 0, 0.2),
-    0 8px 8px -10px rgba(0, 0, 0, 0.2), 0 16px 16px -10px rgba(0, 0, 0, 0.2);*/
+  box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
+  overflow: hidden;
 }
 
 /* --  */
@@ -435,27 +493,19 @@ div.search-cont {
 input.search {
   width: 100%;
   height: 50px;
-  /* background-color: #fafafa; */
   margin: none;
   flex: 1;
   border-radius: 15px;
   outline: none;
   border: none;
-  padding: 0px 0px 0px 25px;
-  /*position: absolute;*/
+  padding: 0px 25px;
   right: 0px;
   font-family: "Poppins", sans-serif;
-  box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
   background: none;
-  border: 2.5px solid #fafafa;
 }
 
 input.search::placeholder {
   opacity: 0.5;
-}
-
-input.search:focus {
-  border: 2.5px solid #2932415f;
 }
 
 /* --  */
@@ -464,34 +514,24 @@ button.search {
   height: 50px;
   width: 50px;
   border-radius: 15px;
-  background-color: #fafafa;
-  margin-left: 25px;
-  box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
-}
-
-button.search:hover {
-  text-decoration: none;
+  background-color: #3d5a80;
+  border: 5px solid #3d5a80;
 }
 
 button.search:active {
-  transform: scale(0.95, 0.95);
+  filter: brightness(0.95);
   transition: 0.1s ease all;
-  box-shadow: -2.5px 2.5px 5px #d5d5d5, 2.5px -2.5px 5px #ffffff;
+  box-shadow: inset -2.5px 2.5px 5px #344d6d, inset 2.5px -2.5px 5px #466893;
 }
 
 /* --  */
 
 span.search {
   font-size: 20px;
-  color: #000;
-  opacity: 0.5;
+  color: #fff;
+  opacity: 1;
 }
 
 /* --  */
-
-button.search:hover span.search {
-  color: #293241;
-  opacity: 1;
-}
 
 /*----*/

@@ -78,7 +78,25 @@ const prodBuyNowBtn = document.querySelector("button.prod-buy-now");
 const prodSaveBtn = document.querySelector("button.prod-save");
 const prodWatchlistBtn = document.querySelector("button.prod-watchlist");
 
+const addToCartBtns = document.querySelectorAll("button.prod-add-to-cart");
+const addToWishlistBtns = document.querySelectorAll(
+  "button.prod-add-to-wishlist"
+);
+const addToWatchlistBtns = document.querySelectorAll(
+  "button.prod-add-to-watchlist"
+);
+
 prodCardBtnAnimations(prodCartBtn, "#2f2f2f");
 prodCardBtnAnimations(prodBuyNowBtn, "#293241");
 prodCardBtnAnimations(prodSaveBtn, "#ef233c");
 prodCardBtnAnimations(prodWatchlistBtn, "#3d5a80");
+
+addToCartBtns.forEach((addToCartBtn) => {
+  prodCardBtnAnimations(addToCartBtn, "#ef233c");
+});
+addToWishlistBtns.forEach((addToWishlistBtn) => {
+  prodCardBtnAnimations(addToWishlistBtn, "#ee6c4d");
+});
+addToWatchlistBtns.forEach((addToWatchlistBtn) => {
+  prodCardBtnAnimations(addToWatchlistBtn, "#3d5a80");
+});

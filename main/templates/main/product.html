@@ -4,28 +4,47 @@
 <link rel="stylesheet" href="{% static 'main/css/product.css' %}" />
 
 <div class="main">
-  
   <div class="prod-img">
     <div class="prod-sel-img-col">
       <button class="prod-sel-img">
-        <img src="{% static 'base/img/test_products/test12.png' %}" alt="sel-img" class="vis" />
+        <img
+          src="{% static 'base/img/test_products/test12.png' %}"
+          alt="sel-img"
+          class="vis"
+        />
       </button>
 
       <button class="prod-sel-img">
-        <img src="{% static 'base/img/test_products/test16.png' %}" alt="sel-img" class="vis" />
+        <img
+          src="{% static 'base/img/test_products/test16.png' %}"
+          alt="sel-img"
+          class="vis"
+        />
       </button>
 
       <button class="prod-sel-img">
-        <img src="{% static 'base/img/test_products/test17.jpg' %}" alt="sel-img" class="vis" />
+        <img
+          src="{% static 'base/img/test_products/test17.jpg' %}"
+          alt="sel-img"
+          class="vis"
+        />
       </button>
 
       <button class="prod-sel-img">
-        <img src="{% static 'base/img/test_products/test18.jpg' %}" alt="sel-img" class="vis" />
+        <img
+          src="{% static 'base/img/test_products/test18.jpg' %}"
+          alt="sel-img"
+          class="vis"
+        />
       </button>
     </div>
 
     <div class="prod-dis-img">
-      <img src="{% static 'base/img/test_products/test12.png' %}" alt="dis-img" class="vis" />
+      <img
+        src="{% static 'base/img/test_products/test12.png' %}"
+        alt="dis-img"
+        class="vis"
+      />
     </div>
   </div>
 
@@ -48,399 +67,85 @@
       </button>
 
       <button class="prod-buy-now">
-        <span class="material-icons-outlined prod-buy-now">
-          payments
-        </span>
+        <span class="material-icons-outlined prod-buy-now"> payments </span>
       </button>
 
       <button class="prod-save">
-        <span class="material-icons-outlined prod-save">
-          favorite_border
-        </span>
+        <span class="material-icons-outlined prod-save"> favorite_border </span>
       </button>
 
       <button class="prod-watchlist">
-        <span class="material-icons-outlined prod-watchlist">
-          visibility
-        </span>
+        <span class="material-icons-outlined prod-watchlist"> visibility </span>
       </button>
     </div>
 
     <div class="prod-desc">
-
       <a class="prod-condition">
-        <h1 class="prod-condition-title">Condition</h1>
+        <h1 class="prod-condition-title">
+          <span class="material-icons prod-condition"> schedule </span>Condition
+        </h1>
         <div class="prod-condition-wrapper">
-          <span class="material-icons prod-condition">
-            schedule
-          </span>
-          <p class="prod-condition-desc">Brand New</p>
-          <p class="prod-condition-mess">Product is compeletely sealed and hasn't been opened.</p>
+          <p class="prod-condition-mess">
+            Product is compeletely sealed and hasn't been opened.
+          </p>
         </div>
       </a>
 
       <a class="prod-shipping">
-        <h1 class="prod-shipping-title">Shipping</h1>
+        <h1 class="prod-shipping-title">
+          <span class="material-icons prod-shipping"> local_shipping </span
+          >Shipping
+        </h1>
         <div class="prod-shipping-wrapper">
-          <span class="material-icons prod-shipping">
-            local_shipping
-          </span>
-          <p class="prod-shipping-desc">Free international shipping</p>
-          <p class="prod-shipping-mess">Shipping via international priority mail.</p>
+          <p class="prod-shipping-mess">
+            Shipping via international priority mail.
+          </p>
         </div>
       </a>
 
       <a class="prod-delivery">
-        <h1 class="prod-delivery-title">Delivery</h1>
+        <h1 class="prod-delivery-title">
+          <span class="material-icons prod-delivery"> timelapse </span>Delivery
+        </h1>
         <div class="prod-delivery-wrapper">
-          <span class="material-icons prod-delivery">
-            timelapse
-          </span>
-          <p class="prod-delivery-desc">Delivery within 14 days</p>
-          <p class="prod-delivery-mess">Delivery time may vary due to unavoidable circumstances.</p>
+          <p class="prod-delivery-mess">
+            Delivery time may vary due to unavoidable circumstances.
+          </p>
         </div>
       </a>
 
       <a class="prod-payments">
-        <h1 class="prod-payments-title">Payments</h1>
+        <h1 class="prod-payments-title">
+          <span class="material-icons prod-payments"> payments </span>Payments
+        </h1>
         <div class="prod-payments-wrapper">
-          <span class="material-icons prod-payments">
-            payments
-          </span>
-          <p class="prod-payments-desc">Via Paypal, Visa, MasterCard</p>
-          <p class="prod-payments-mess"> Cash on delivery is acceptable for local shipping.</p>
+          <p class="prod-payments-mess">
+            Cash on delivery is acceptable for local shipping.
+          </p>
         </div>
       </a>
 
       <a class="prod-returns">
-        <h1 class="prod-returns-title">Returns</h1>
+        <h1 class="prod-returns-title">
+          <span class="material-icons prod-returns"> keyboard_return </span>
+          Returns
+        </h1>
         <div class="prod-returns-wrapper">
-          <span class="material-icons prod-returns">
-            keyboard_return
-          </span>
-          <p class="prod-returns-desc">7-day return policy</p>
-          <p class="prod-returns-mess"> Returns are accepted withing 7 days after shipping.</p>
+          <p class="prod-returns-mess">
+            Returns are accepted withing 7 days after shipping.
+          </p>
         </div>
       </a>
 
       <a class="prod-bids">
-        <h1 class="prod-bids-title">Bids</h1>
+        <h1 class="prod-bids-title">
+          <span class="material-icons prod-bids"> attach_money </span> Bids
+        </h1>
         <div class="prod-bids-wrapper">
-          <span class="material-icons prod-bids">
-            attach_money
-          </span>
-          <p class="prod-bids-desc">33 Bids placed so far</p>
           <p class="prod-bids-mess">Ends in 1day 5hours</p>
         </div>
       </a>
-
     </div>
-
-  </div>
-
-  <div class="prod-seller">
-
-    <div class="prod-seller-contact">
-      <button class="prod-seller-account">
-        <span class="material-icons" style="font-size: 20px;">
-          verified
-        </span>
-        <p class="pop-prod-seller-account">Verified Seller</p>
-      </button>
-
-      <div class="prod-seller-cover-img">
-        <img src="{% static 'base/img/sellers/john_doe2.jpg' %}" alt="" class="vis" />
-      </div>
-
-      <div class="prod-seller-prof-img">
-        <img src="{% static 'base/img/sellers/john_doe.jpg' %}" alt="" class="vis" />
-      </div>
-
-      <p class="prod-seller">John Doe</p>
-
-      <div class="prod-seller-button">
-        <button class="prod-seller-mail">
-          <span class="material-icons">
-            email
-            </span>
-          <p class="prod-seller-contact">Mail</p>
-        </button>
-
-        <button class="prod-seller-website">
-          <span class="material-icons">
-            http
-            </span>
-          <p class="prod-seller-contact">Website</p>
-        </button>
-
-        <button class="prod-seller-phone">
-          <span class="material-icons">
-            local_phone
-            </span>
-          <p class="prod-seller-contact">Phone</p>
-        </button>
-      </div>
-
-    </div>
-
-    <div class="prod-seller-reviews">
-      <p class="prod-seller-ratings-title">Customer Reviews</p>
-
-      <div class="prod-reviews">
-        <div class="prod-review">
-          <span class="material-icons quote-sign">
-            format_quote
-          </span>
-
-          <p class="prod-buyer-review">
-            Amazing shipping and customer service, would highly recommend buying
-            from him. Delivery is on time and item was just as advertised.
-          </p>
-
-          <div class="prod-buyer">
-            <div class="prod-buyer-img">
-              <img src="{% static 'base/img/buyers/mikkel_nielsen.jpg' %}" alt="" class="vis" />
-            </div>
-
-            <p class="prod-review-buyer">Mikkel Neilson</p>
-          </div>
-        </div>
-
-        <div class="prod-review">
-          <span class="material-icons quote-sign">
-            format_quote
-          </span>
-
-          <p class="prod-buyer-review">
-            Amazing shipping and customer service, would highly recommend buying
-            from him. Delivery is on time and item was just as advertised.
-          </p>
-
-          <div class="prod-buyer">
-            <div class="prod-buyer-img">
-              <img src="{% static 'base/img/buyers/mikkel_nielsen.jpg' %}" alt="" class="vis" />
-            </div>
-
-            <p class="prod-review-buyer">Mikkel Neilson</p>
-          </div>
-        </div>
-
-        <div class="prod-review">
-          <span class="material-icons quote-sign">
-            format_quote
-          </span>
-
-          <p class="prod-buyer-review">
-            Amazing shipping and customer service, would highly recommend buying
-            from him. Delivery is on time and item was just as advertised.
-          </p>
-
-          <div class="prod-buyer">
-            <div class="prod-buyer-img">
-              <img src="{% static 'base/img/buyers/mikkel_nielsen.jpg' %}" alt="" class="vis" />
-            </div>
-
-            <p class="prod-review-buyer">Mikkel Neilson</p>
-          </div>
-        </div>
-
-        <div class="prod-review">
-          <span class="material-icons quote-sign">
-            format_quote
-          </span>
-
-          <p class="prod-buyer-review">
-            Amazing shipping and customer service, would highly recommend buying
-            from him. Delivery is on time and item was just as advertised.
-          </p>
-
-          <div class="prod-buyer">
-            <div class="prod-buyer-img">
-              <img src="{% static 'base/img/buyers/mikkel_nielsen.jpg' %}" alt="" class="vis" />
-            </div>
-
-            <p class="prod-review-buyer">Mikkel Neilson</p>
-          </div>
-        </div>
-
-        <div class="prod-review">
-          <span class="material-icons quote-sign">
-            format_quote
-          </span>
-
-          <p class="prod-buyer-review">
-            Amazing shipping and customer service, would highly recommend buying
-            from him. Delivery is on time and item was just as advertised.
-          </p>
-
-          <div class="prod-buyer">
-            <div class="prod-buyer-img">
-              <img src="{% static 'base/img/buyers/mikkel_nielsen.jpg' %}" alt="" class="vis" />
-            </div>
-
-            <p class="prod-review-buyer">Mikkel Neilson</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="prod-seller-communication">
-      <p class="prod-seller-communication">
-        <span class="material-icons prod-seller-communication">mark_chat_unread</span>Communication
-      </p>
-      <p class="prod-seller-communication-service-rate">Service Rate</p>
-      <div class="prod-seller-communication-service-rate">
-        <div class="prod-seller-communication-service-rate-percentage"></div>
-      </div>
-    </div>
-    
-    <div class="prod-seller-shipping">
-      <p class="prod-seller-shipping">
-        <span class="material-icons prod-seller-shipping">local_shipping</span>Shipping
-      </p>
-      <p class="prod-seller-shipping-service-rate">Service Rate</p>
-      <div class="prod-seller-shipping-service-rate">
-        <div class="prod-seller-shipping-service-rate-percentage"></div>
-      </div>
-    </div>
-
-    <div class="prod-seller-returns">
-      <p class="prod-seller-returns">
-        <span class="material-icons prod-seller-returns">keyboard_return</span>Returns
-      </p>
-      <p class="prod-seller-returns-service-rate">Service Rate</p>
-      <div class="prod-seller-returns-service-rate">
-        <div class="prod-seller-returns-service-rate-percentage"></div>
-      </div>
-    </div>
-
-    <div class="prod-seller-delivery">
-      <p class="prod-seller-delivery">
-        <span class="material-icons prod-seller-delivery">timelapse</span>Delivery
-      </p>
-      <p class="prod-seller-delivery-service-rate">Service Rate</p>
-      <div class="prod-seller-delivery-service-rate">
-        <div class="prod-seller-delivery-service-rate-percentage"></div>
-      </div>
-    </div>
-
-    <div class="prod-seller-customer-feedback">
-      <p class="prod-seller-customer-feedback">
-        <span class="material-icons prod-customer-feedback">feedback</span>Customer Feedback
-      </p>
-      <p class="prod-seller-customer-feedback-rate">Feedback Rate</p>
-
-      <div class="prod-seller-customer-feedback-rate">
-        <div class="prod-seller-customer-feedback-positive-rate-percentage"></div>
-        <div class="prod-seller-customer-feedback-neutral-rate-percentage"></div>
-        <div class="prod-seller-customer-feedback-negative-rate-percentage"></div>
-      </div>
-    </div>
-
-    <div class="prod-seller-products">
-      <a href="{% url 'main:product' %}" class="prod-card">
-        <div class="prod-img-cont">
-          <img class="blur" src="{% static 'base/img/test_products/test12.png' %}"></img>
-          <img class="vis" src="{% static 'base/img/test_products/test12.png' %}"></img>
-    
-          <p class="pop-account">Verified Seller</p>
-          <button class="account"><span class="material-icons">
-            verified
-            </span></button>
-    
-        </div>
-
-        <div class="prod-text-cont">
-          <p class="prod-name">[Review Unit] Dell XPS 17 9700 i7-10750GH GTX 1650 Ti 4GB GDDR6</p>
-    
-          <p class="pop-price">Price</p>
-          <button class="price">USD 1450.00</button>
-    
-          <p class="pop-save">Save</p>
-          <button class="save"><span class="material-icons">
-            favorite_border
-            </span></button>
-            
-          <p class="pop-cart">Add to cart</p>
-          <button class="add-to-cart">
-            <img src="{% static 'base/img/cart.svg' %}">
-          </button>
-    
-          <p class="pop-shipping">Shipping</p>
-          <button class="shipping">USD 0</button>
-    
-        </div>
-      </a>
-
-      <a href="{% url 'main:product' %}" class="prod-card">
-        <div class="prod-img-cont">
-          <img class="blur" src="{% static 'base/img/test_products/test19.jpg' %}"></img>
-          <img class="vis" src="{% static 'base/img/test_products/test19.jpg' %}"></img>
-    
-          <p class="pop-account">Verified Seller</p>
-          <button class="account"><span class="material-icons">
-            verified
-            </span></button>
-    
-        </div>
-        <div class="prod-text-cont">
-          <p class="prod-name">Apple Watch Series 5 (GPS Only, 40mm, Space Gray Aluminum, Black Sport Band)</p>
-    
-          <p class="pop-price">Price</p>
-          <button class="price">USD 399.00</button>
-    
-          <p class="pop-save">Save</p>
-          <button class="save"><span class="material-icons">
-            favorite_border
-            </span></button>
-            
-          <p class="pop-cart">Add to cart</p>
-          <button class="add-to-cart">
-            <img src="{% static 'base/img/cart.svg' %}">
-          </button>
-    
-          <p class="pop-shipping">Shipping</p>
-          <button class="shipping">USD 42.83</button>
-    
-        </div>
-      </a>
-      
-      <a href="{% url 'main:product' %}" class="prod-card">
-        <div class="prod-img-cont">
-          <img class="blur" src="{% static 'base/img/test_products/test20.jpg' %}"></img>
-          <img class="vis" src="{% static 'base/img/test_products/test20.jpg' %}"></img>
-    
-          <p class="pop-account">Verified Seller</p>
-          <button class="account"><span class="material-icons">
-            verified
-            </span></button>
-    
-        </div>
-        <div class="prod-text-cont">
-          <p class="prod-name">Apple MacBook Pro 16-Inch i9-16GB 1TB SSD Space Gray MVVK2LL/A</p>
-    
-          <p class="pop-price">Price</p>
-          <button class="price">USD 2399.66</button>
-    
-          <p class="pop-save">Save</p>
-          <button class="save"><span class="material-icons">
-            favorite_border
-            </span></button>
-            
-          <p class="pop-cart">Add to cart</p>
-          <button class="add-to-cart">
-            <img src="{% static 'base/img/cart.svg' %}">
-          </button>
-    
-          <p class="pop-shipping">Shipping</p>
-          <button class="shipping">USD 81.39</button>
-    
-        </div>
-      </a>
-    </div>
-
-    
-
   </div>
 
   <div class="prod-specs">
@@ -481,7 +186,9 @@
 
     <div class="prod-spec">
       <p class="prod-spec-title">IO</p>
-      <p class="prod-spec">4x Thunderbolt 3 USB-C Ports, full sized SD card reader, headphone jack</p>
+      <p class="prod-spec">
+        4x Thunderbolt 3 USB-C Ports, full sized SD card reader, headphone jack
+      </p>
     </div>
 
     <div class="prod-spec">
@@ -501,191 +208,450 @@
 
     <div class="prod-spec">
       <p class="prod-spec-title">Camera</p>
-      <p class="prod-spec">720p at 30 fps HD RGB IR camera, dual-array microphones</p>
+      <p class="prod-spec">
+        720p at 30 fps HD RGB IR camera, dual-array microphones
+      </p>
     </div>
 
     <div class="prod-spec">
       <p class="prod-spec-title">Wireless</p>
       <p class="prod-spec">Killer™ Wi-Fi 6 AX1650 (2 x 2) and Bluetooth 5.1</p>
     </div>
-  
+  </div>
+
+  <div class="prod-seller">
+    <div class="prod-seller-contact">
+      <button class="prod-seller-account">
+        <span class="material-icons" style="font-size: 20px"> verified </span>
+        <p>Verified Seller</p>
+      </button>
+
+      <div class="prod-seller-cover-img">
+        <img
+          src="https://images.pexels.com/photos/3572/fashion-man-wristwatch-model.jpg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+          alt=""
+          class="vis"
+        />
+      </div>
+
+      <div class="prod-seller-prof-img">
+        <img
+          src="https://images.pexels.com/photos/1043473/pexels-photo-1043473.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+          alt=""
+          class="vis"
+        />
+      </div>
+
+      <p class="prod-seller">John Doe</p>
+
+      <p class="prod-seller-bio">Memento Mori.</p>
+    </div>
+
+    <div class="prod-seller-reviews">
+      <div class="prod-review">
+        <div class="prod-review-img">
+          <img
+            src="https://images.pexels.com/photos/3656518/pexels-photo-3656518.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+            alt=""
+            class="vis"
+          />
+        </div>
+        <p class="prod-review-customer-name">Sherlock Holmes</p>
+        <p class="prod-review">
+          The advert is fake. It is not new. Too many scrathes on the screen on
+          photo 1.
+        </p>
+      </div>
+      <div class="prod-review">
+        <div class="prod-review-img">
+          <img
+            src="https://images.pexels.com/photos/5119214/pexels-photo-5119214.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+            alt=""
+            class="vis"
+          />
+        </div>
+        <p class="prod-review-customer-name">Molly Hooper</p>
+        <p class="prod-review">
+          The laptop is perfect for my lab work. Shipping and condition were on
+          point.
+        </p>
+      </div>
+      <div class="prod-review">
+        <div class="prod-review-img">
+          <img
+            src="https://images.pexels.com/photos/1933873/pexels-photo-1933873.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+            alt=""
+            class="vis"
+          />
+        </div>
+        <p class="prod-review-customer-name">Tony Padilla</p>
+        <p class="prod-review">
+          I don't know much about computers but the packing and delivery was
+          very good.
+        </p>
+      </div>
+    </div>
+
+    <div class="prod-seller-communication">
+      <p class="prod-seller-communication">
+        <span class="material-icons prod-seller-communication"
+          >mark_chat_unread</span
+        >Communication
+      </p>
+      <p class="prod-seller-communication-service-rate">Service Rate</p>
+      <div class="prod-seller-communication-service-rate">
+        <div class="prod-seller-communication-service-rate-percentage"></div>
+      </div>
+    </div>
+
+    <div class="prod-seller-shipping">
+      <p class="prod-seller-shipping">
+        <span class="material-icons prod-seller-shipping">local_shipping</span
+        >Shipping
+      </p>
+      <p class="prod-seller-shipping-service-rate">Service Rate</p>
+      <div class="prod-seller-shipping-service-rate">
+        <div class="prod-seller-shipping-service-rate-percentage"></div>
+      </div>
+    </div>
+
+    <div class="prod-seller-returns">
+      <p class="prod-seller-returns">
+        <span class="material-icons prod-seller-returns">keyboard_return</span
+        >Returns
+      </p>
+      <p class="prod-seller-returns-service-rate">Service Rate</p>
+      <div class="prod-seller-returns-service-rate">
+        <div class="prod-seller-returns-service-rate-percentage"></div>
+      </div>
+    </div>
+
+    <div class="prod-seller-delivery">
+      <p class="prod-seller-delivery">
+        <span class="material-icons prod-seller-delivery">timelapse</span
+        >Delivery
+      </p>
+      <p class="prod-seller-delivery-service-rate">Service Rate</p>
+      <div class="prod-seller-delivery-service-rate">
+        <div class="prod-seller-delivery-service-rate-percentage"></div>
+      </div>
+    </div>
+
+    <div class="prod-seller-customer-feedback">
+      <p class="prod-seller-customer-feedback">
+        <span class="material-icons prod-customer-feedback">feedback</span
+        >Customer Feedback
+      </p>
+      <p class="prod-seller-customer-feedback-rate">Feedback Rate</p>
+
+      <div class="prod-seller-customer-feedback-rate">
+        <div
+          class="prod-seller-customer-feedback-positive-rate-percentage"
+        ></div>
+        <div
+          class="prod-seller-customer-feedback-negative-rate-percentage"
+        ></div>
+      </div>
+    </div>
   </div>
 
   <div class="prod-related-products">
-    <a href="{% url 'main:product' %}" class="prod-card">
+    <div class="prod-card">
       <div class="prod-img-cont">
-        <img class="blur" src="{% static 'base/img/test_products/test12.png' %}"></img>
-        <img class="vis" src="{% static 'base/img/test_products/test12.png' %}"></img>
+        <a href="{% url 'main:product' %}" class="prod-link">
+          <img
+            src="https://images.pexels.com/photos/1279107/pexels-photo-1279107.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+            alt=""
+            class="vis"
+          />
+          <p class="view-product">
+            <span class="material-icons-outlined" style="margin-right: 6.75px">
+              launch </span
+            >View Product
+          </p>
+        </a>
 
-        <p class="pop-account">Verified Seller</p>
-        <button class="account"><span class="material-icons">
-          verified
-          </span></button>
-   
-      </div>
-      <div class="prod-text-cont">
-        <p class="prod-name">[Review Unit] Dell XPS 17 9700 i7-10750GH GTX 1650 Ti 4GB GDDR6</p>
-
-        <p class="pop-price">Price</p>
-        <button class="price">USD 1450.00</button>
-
-        <p class="pop-save">Save</p>
-        <button class="save"><span class="material-icons">
-          favorite_border
-          </span></button>
-          
-        <p class="pop-cart">Add to cart</p>
-        <button class="add-to-cart">
-          <img src="{% static 'base/img/cart.svg' %}">
+        <button class="prod-account">
+          <span class="material-icons"> stars </span>
+          <p>Top Rated Seller</p>
         </button>
-
-        <p class="pop-shipping">Shipping</p>
-        <button class="shipping">USD 0</button>
-
       </div>
-    </a>
-    <a href="{% url 'main:product' %}" class="prod-card">
+
+      <div class="prod-wrapper">
+        <div class="prod-text-cont">
+          <p class="prod-name">
+            Google Home Mini with Google Assistant Voice Enabled Chalk Grey New
+            In Retail
+          </p>
+          <div class="prod-ratings">
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star_border </span>
+          </div>
+          <p class="prod-price">USD 23.95</p>
+          <p class="prod-shipping">+$27.05 shipping estimate</p>
+        </div>
+
+        <div class="prod-buttons-cont">
+          <button class="prod-add-to-cart">
+            <span class="material-icons"> add_shopping_cart </span>
+            <p>Add to cart</p>
+          </button>
+          <button class="prod-add-to-wishlist">
+            <span class="material-icons"> star_border </span>
+            <p>Add to wishlist</p>
+          </button>
+          <button class="prod-add-to-watchlist">
+            <span class="material-icons-outlined"> remove_red_eye </span>
+            <p>Add to watchlist</p>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card">
       <div class="prod-img-cont">
-        <img class="blur" src="{% static 'base/img/test_products/test19.jpg' %}"></img>
-        <img class="vis" src="{% static 'base/img/test_products/test19.jpg' %}"></img>
+        <a href="{% url 'main:product' %}" class="prod-link">
+          <img
+            src="https://images.pexels.com/photos/393047/pexels-photo-393047.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+            alt=""
+            class="vis"
+          />
+          <p class="view-product">
+            <span class="material-icons-outlined" style="margin-right: 6.75px">
+              launch </span
+            >View Product
+          </p>
+        </a>
 
-        <p class="pop-account">Verified Seller</p>
-        <button class="account"><span class="material-icons">
-          verified
-          </span></button>
-   
-      </div>
-      <div class="prod-text-cont">
-        <p class="prod-name">Apple Watch Series 5 (GPS Only, 40mm, Space Gray Aluminum, Black Sport Band)</p>
-
-        <p class="pop-price">Price</p>
-        <button class="price">USD 399.00</button>
-
-        <p class="pop-save">Save</p>
-        <button class="save"><span class="material-icons">
-          favorite_border
-          </span></button>
-          
-        <p class="pop-cart">Add to cart</p>
-        <button class="add-to-cart">
-          <img src="{% static 'base/img/cart.svg' %}">
+        <button class="prod-account">
+          <span class="material-icons"> stars </span>
+          <p>Top Rated Seller</p>
         </button>
-
-        <p class="pop-shipping">Shipping</p>
-        <button class="shipping">USD 42.83</button>
-
       </div>
-    </a>
-    <a href="{% url 'main:product' %}" class="prod-card">
+
+      <div class="prod-wrapper">
+        <div class="prod-text-cont">
+          <p class="prod-name">
+            Apple Watch Series 5 - GPS - GPS + Cellular - 40MM 44MM - Gray -
+            Silver - Gold
+          </p>
+          <div class="prod-ratings">
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star_border </span>
+            <span class="material-icons prod-ratings"> star_border </span>
+          </div>
+          <p class="prod-price">USD 279.00</p>
+          <p class="prod-shipping">+$25.43 shipping estimate</p>
+        </div>
+
+        <div class="prod-buttons-cont">
+          <button class="prod-add-to-cart">
+            <span class="material-icons"> add_shopping_cart </span>
+            <p>Add to cart</p>
+          </button>
+          <button class="prod-add-to-wishlist">
+            <span class="material-icons"> star_border </span>
+            <p>Add to wishlist</p>
+          </button>
+          <button class="prod-add-to-watchlist">
+            <span class="material-icons-outlined"> remove_red_eye </span>
+            <p>Add to watchlist</p>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card">
       <div class="prod-img-cont">
-        <img class="blur" src="{% static 'base/img/test_products/test20.jpg' %}"></img>
-        <img class="vis" src="{% static 'base/img/test_products/test20.jpg' %}"></img>
-
-        <p class="pop-account">Verified Seller</p>
-        <button class="account"><span class="material-icons">
-          verified
-          </span></button>
-   
-      </div>
-      <div class="prod-text-cont">
-        <p class="prod-name">Apple MacBook Pro 16-Inch i9-16GB 1TB SSD Space Gray MVVK2LL/A</p>
-
-        <p class="pop-price">Price</p>
-        <button class="price">USD 2399.66</button>
-
-        <p class="pop-save">Save</p>
-        <button class="save"><span class="material-icons">
-          favorite_border
-          </span></button>
-          
-        <p class="pop-cart">Add to cart</p>
-        <button class="add-to-cart">
-          <img src="{% static 'base/img/cart.svg' %}">
+        <a href="{% url 'main:product' %}" class="prod-link">
+          <img
+            src="https://images.pexels.com/photos/5052880/pexels-photo-5052880.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+            alt=""
+            class="vis"
+          />
+          <p class="view-product">
+            <span class="material-icons-outlined" style="margin-right: 6.75px">
+              launch </span
+            >View Product
+          </p>
+        </a>
+        <button class="prod-account">
+          <span class="material-icons"> stars </span>
+          <p>Top Rated Seller</p>
         </button>
-
-        <p class="pop-shipping">Shipping</p>
-        <button class="shipping">USD 81.39</button>
-
       </div>
-    </a>
+
+      <div class="prod-wrapper">
+        <div class="prod-text-cont">
+          <p class="prod-name">
+            Apple iPhone 12 Pro - 256gb - Unlocked - Factory Sealed - Factory
+            Warranty
+          </p>
+          <div class="prod-ratings">
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star_border </span>
+          </div>
+          <p class="prod-price">USD 23.95</p>
+          <p class="prod-shipping">+$27.05 shipping estimate</p>
+        </div>
+
+        <div class="prod-buttons-cont">
+          <button class="prod-add-to-cart">
+            <span class="material-icons"> add_shopping_cart </span>
+            <p>Add to cart</p>
+          </button>
+          <button class="prod-add-to-wishlist">
+            <span class="material-icons"> star_border </span>
+            <p>Add to wishlist</p>
+          </button>
+          <button class="prod-add-to-watchlist">
+            <span class="material-icons-outlined"> remove_red_eye </span>
+            <p>Add to watchlist</p>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-cont">
+        <a href="{% url 'main:product' %}" class="prod-link">
+          <img
+            src="https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+            alt=""
+            class="vis"
+          />
+
+          <p class="view-product">
+            <span class="material-icons-outlined" style="margin-right: 6.75px">
+              launch </span
+            >View Product
+          </p>
+        </a>
+        <button class="prod-account">
+          <span class="material-icons"> stars </span>
+          <p>Top Rated Seller</p>
+        </button>
+      </div>
+
+      <div class="prod-wrapper">
+        <div class="prod-text-cont">
+          <p class="prod-name">
+            Apple MacBook Air 13" - M1 Chip 8GB 256GB - Gold - MGND3LL/A -
+            Flawless 2 Cycles
+          </p>
+          <div class="prod-ratings">
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star_border </span>
+          </div>
+          <p class="prod-price">USD 979.00</p>
+          <p class="prod-shipping">+$100.00 shipping estimate</p>
+        </div>
+
+        <div class="prod-buttons-cont">
+          <button class="prod-add-to-cart">
+            <span class="material-icons"> add_shopping_cart </span>
+            <p>Add to cart</p>
+          </button>
+          <button class="prod-add-to-wishlist">
+            <span class="material-icons"> star_border </span>
+            <p>Add to wishlist</p>
+          </button>
+          <button class="prod-add-to-watchlist">
+            <span class="material-icons-outlined"> remove_red_eye </span>
+            <p>Add to watchlist</p>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="prod-shipping-payments">
     <div class="prod-location">
-      <p class="shipping-payments-title"><span class="material-icons shipping-payment-location">
-        location_on
-        </span>Item Location</p>
+      <p class="shipping-payments-title">
+        <span class="material-icons shipping-payment-location">
+          location_on </span
+        >Item Location
+      </p>
       <p class="shipping-payment">Toronto, Canada</p>
     </div>
 
     <div class="prod-shipping-location">
-      <p class="shipping-payments-title"><span class="material-icons shipping-payment-shipping-location">
-      local_shipping
-      </span>Shipping Location</p>
+      <p class="shipping-payments-title">
+        <span class="material-icons shipping-payment-shipping-location">
+          local_shipping </span
+        >Shipping Location
+      </p>
       <p class="shipping-payment">Worldwide</p>
     </div>
 
     <div class="prod-does-not-ship-to">
-      <p class="shipping-payments-title"><span class="material-icons shipping-payment-does-not-ship-to">
-        error_outline
-        </span>Does not ship to</p>
-        <p class="shipping-payment">
-          Africa, Bahrain, Iraq, Jordan, Kuwait, Lebanon, Oman, Qatar, Saudi Arabia, Turkey, United Arab Emirates, Yemen, Cambodia, Cayman Islands, Djibouti, French Polynesia, Honduras, Libya, Mongolia, Morocco, Ecuador, El Salvador, Suriname, Guyana, Panama, Mauritania, Mauritius, Somalia, Brunei Darussalam, Chad, Madagascar, New Caledonia, South Africa, Western Samoa, Côte d'Ivoire (Ivory Coast), Zimbabwe, Bahamas, Bermuda, Iran, Jamaica, Saint Kitts-Nevis, Saint Lucia, Trinidad and Tobago, Western Sahara, Wallis and Futuna, Nepal, Bolivia, Mali, Fiji, Angola, Cameroon, Cook Islands, Costa Rica, Gambia, Guatemala, Kyrgyzstan, Laos, Malawi, Papua New Guinea, Congo, Republic of the, Seychelles, Solomon Islands, Sudan, Tajikistan, Tanzania, Tonga, Uganda, Vanuatu, Venezuela, Botswana, Rwanda, Burma, Antigua and Barbuda, Burundi, Equatorial Guinea, Cuba, Republic of, Congo, Democratic Republic of the, Kiribati, Reunion, Dominican Republic, Aruba, Azerbaijan Republic, Barbados, Belize, Burkina Faso, Ghana, Grenada, Haiti, Liberia, Nicaragua, Sierra Leone, Central African Republic, Comoros, Martinique, Niger, Togo, Tuvalu, Uzbekistan, Dominica
-        </p>
+      <p class="shipping-payments-title">
+        <span class="material-icons shipping-payment-does-not-ship-to">
+          error_outline </span
+        >Does not ship to
+      </p>
+      <p class="shipping-payment">
+        Africa, Bahrain, Iraq, Jordan, Kuwait, Lebanon, Oman, Qatar, Saudi
+        Arabia, Turkey, United Arab Emirates, Yemen, Cambodia, Cayman Islands,
+        Djibouti, French Polynesia, Honduras, Libya, Mongolia, Morocco, Ecuador,
+        El Salvador, Suriname, Guyana, Panama, Mauritania, Mauritius, Somalia,
+        Brunei Darussalam, Chad, Madagascar, New Caledonia, South Africa,
+        Western Samoa, Côte d'Ivoire (Ivory Coast), Zimbabwe, Bahamas, Bermuda,
+        Iran, Jamaica, Saint Kitts-Nevis, Saint Lucia, Trinidad and Tobago,
+        Western Sahara, Wallis and Futuna, Nepal, Bolivia, Mali, Fiji, Angola,
+        Cameroon, Cook Islands, Costa Rica, Gambia, Guatemala, Kyrgyzstan, Laos,
+        Malawi, Papua New Guinea, Congo, Republic of the, Seychelles, Solomon
+        Islands, Sudan, Tajikistan, Tanzania, Tonga, Uganda, Vanuatu, Venezuela,
+        Botswana, Rwanda, Burma, Antigua and Barbuda, Burundi, Equatorial
+        Guinea, Cuba, Republic of, Congo, Democratic Republic of the, Kiribati,
+        Reunion, Dominican Republic, Aruba, Azerbaijan Republic, Barbados,
+        Belize, Burkina Faso, Ghana, Grenada, Haiti, Liberia, Nicaragua, Sierra
+        Leone, Central African Republic, Comoros, Martinique, Niger, Togo,
+        Tuvalu, Uzbekistan, Dominica
+      </p>
     </div>
 
     <div class="prod-return-policy">
-      <p class="shipping-payments-title"><span class="material-icons shipping-payment-return-policy">
-        keyboard_return
-        </span>Return Policy</p>
+      <p class="shipping-payments-title">
+        <span class="material-icons shipping-payment-return-policy">
+          keyboard_return </span
+        >Return Policy
+      </p>
       <p class="shipping-payment">
-          Returns are accepted withing 7 days after shipping
+        Returns are accepted withing 7 days after shipping
       </p>
     </div>
 
     <div class="prod-payment-options">
-      <p class="shipping-payments-title"><span class="material-icons shipping-payment-payments">
-        payments
-        </span>Payments</p>
-      <p class="shipping-payment">
-          Payments via Paypal, MasterCard and Visa
+      <p class="shipping-payments-title">
+        <span class="material-icons shipping-payment-payments"> payments </span
+        >Payments
       </p>
+      <p class="shipping-payment">Payments via Paypal, MasterCard and Visa</p>
     </div>
 
     <div class="prod-ships-to-your-location">
-      <p class="shipping-payments-title"><span class="material-icons shipping-payment-ships-to-your-location">
-        check
-        </span>This item ships to your location</p>
-      <p class="shipping-payment">
-          Bangladesh
+      <p class="shipping-payments-title">
+        <span class="material-icons shipping-payment-ships-to-your-location">
+          check </span
+        >This item ships to your location
       </p>
+      <p class="shipping-payment">Bangladesh</p>
     </div>
   </div>
-
-  <div class="prod-more">
-    <a class="cat-card" href="{% url 'main:category' 10 %}">
-      <img src="{% static 'base/img/categories/computers_tablets.jpg' %}" class="vis">
-      <img src="{% static 'base/img/categories/computers_tablets.jpg' %}" class="blur">
-     <p class="cat">Computers and Tablets</p>
-    </a>
-    <a class="cat-card" href="{% url 'main:category' 10 %}">
-      <img src="{% static 'base/img/prod_type/computers_tablets/laptops.jpg' %}" class="vis">
-      <img src="{% static 'base/img/prod_type/computers_tablets/laptops.jpg' %}" class="blur">
-     <p class="cat">Laptops</p>
-    </a>
-    <a class="cat-card" href="{% url 'main:category' 10 %}">
-      <img src="{% static 'base/img/brands/dell.jpg' %}" class="vis">
-      <img src="{% static 'base/img/brands/dell.jpg' %}" class="blur">
-     <p class="cat">Dell</p>
-    </a>
-  </div>
-
 </div>
-
 
 <script src="{% static 'main/js/product.js' %}"></script>
 
-
 {% endblock content %}
-
-

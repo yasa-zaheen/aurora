@@ -1,18 +1,12 @@
 {% extends "templates/base.html" %} {% load static %}
 <hr />
 
-{% block title %}
-{{product_type.name}}
-{% endblock title %}
-
-{% block content %}
+{% block title %} {{product_type.name}} {% endblock title %} {% block content %}
 <link rel="stylesheet" href="{% static 'main/css/product_type.css' %}" />
 
 <div class="main">
   <div class="col1">
-
     <div class="filter-container-aurora">
-      
       <div class="filter-price">
         <h1 class="filter">Filter by price</h1>
         <input type="range" class="filter-price" min="5" max="10000" step="1" />
@@ -62,15 +56,27 @@
       <div class="filter-delivery">
         <h1 class="filter">Filter by Delivery</h1>
         <p class="filter-delivery">
-          <input class="filter-delivery" type="checkbox" name="filter-delivery" />
+          <input
+            class="filter-delivery"
+            type="checkbox"
+            name="filter-delivery"
+          />
           Free International Shipping
         </p>
         <p class="filter-delivery">
-          <input class="filter-delivery" type="checkbox" name="filter-delivery" />
+          <input
+            class="filter-delivery"
+            type="checkbox"
+            name="filter-delivery"
+          />
           International Shipping
         </p>
         <p class="filter-delivery">
-          <input class="filter-delivery" type="checkbox" name="filter-delivery" />
+          <input
+            class="filter-delivery"
+            type="checkbox"
+            name="filter-delivery"
+          />
           Free Shipping
         </p>
       </div>
@@ -92,8 +98,11 @@
           />Paid returns
         </p>
         <p class="filter-returns">
-          <input class="filter-returns" type="checkbox" name="filter-returns" />No
-          returns
+          <input
+            class="filter-returns"
+            type="checkbox"
+            name="filter-returns"
+          />No returns
         </p>
       </div>
 
@@ -121,84 +130,84 @@
           />Top rated seller
         </p>
       </div>
-
     </div>
-
 
     <div class="filter-container filter-container-hide">
       {% for filter_category in filter_categories %}
-        <div class="filter-container-categorized">
-          <div class="header">   
-            <p class="title">{{filter_category}}</p>
-            <button class="show-hide-filters" data-filter-category="{{filter_category}}">
-              <span class="material-icons" style="font-size: 20px">
-                keyboard_arrow_right
-              </span>
-            </button>
-          </div>
-          <div class="collapsible-filter-container collapsible-filter-container-hide" data-filter-category="{{filter_category}}"> 
-          {% for filter in filters %}
-            {% if filter.filter_category == filter_category %}
-            <div class="filter">
-              <input type="checkbox" class="filter" />
-              <p class="filter">{{filter.name}}</p>
-            </div>
-            {% endif %}
-          {% endfor %}
-          </div>
+      <div class="filter-container-categorized">
+        <div class="header">
+          <p class="title">{{filter_category}}</p>
+          <button
+            class="show-hide-filters"
+            data-filter-category="{{filter_category}}"
+          >
+            <span class="material-icons-outlined" style="font-size: 20px">
+              keyboard_arrow_right
+            </span>
+          </button>
         </div>
+
+        <div
+          class="collapsible-filter-container collapsible-filter-container-hide"
+          data-filter-category="{{filter_category}}"
+        >
+          {% for filter in filters %}
+          <br />
+          {% if filter.filter_category == filter_category %}
+          <div class="filter">
+            <input type="checkbox" class="filter" />
+            <p class="filter">{{filter.name}}</p>
+          </div>
+          {% endif %}{% endfor %}
+        </div>
+      </div>
       {% endfor %}
     </div>
-
   </div>
 
   <div class="col2">
+    <div class="filter-rows-wrapper">
+      {% if children_product_types_exists %}
 
-    <div style="margin-top: 12.5px"></div>
+      <div class="filter-row">
+        {% for child_product_type in children_product_types %}
 
-    {% if children_product_types_exists %}
+        <a
+          class="filter-card"
+          href="{% url 'main:product_type' child_product_type.id %}"
+        >
+          <p class="filter-card">{{child_product_type.name}}</p>
+        </a>
 
-    <div class="filter-row" >
+        {% endfor %}
+      </div>
 
-      {% for child_product_type in children_product_types %}
+      {% endif %} {% for filter_category in filter_categories %}
 
-      <a class="filter-card" href="{% url 'main:product_type' child_product_type.id %}">
-        <p class="filter-card">{{child_product_type.name}}</p>
-      </a>
-      
+      <div class="filter-row">
+        {% for filter in filters %}
+        <br style="display: none" />
+        {% if filter.filter_category == filter_category %}
+
+        <a
+          class="filter-card"
+          data-type="{{filter.filter_category}}"
+          data-name="{{filter.name}}"
+          data-bgColor="{{filter.background_color}}"
+          data-fgColor="{{filter.foreground_color}}"
+        >
+          <p class="filter-card">{{filter.name}}</p>
+        </a>
+
+        {% endif %} {% endfor %}
+      </div>
+
       {% endfor %}
-
     </div>
 
-    {% endif %}
-
-
-    {% for filter_category in filter_categories %}
-
-    <div class="filter-row">
-
-      {% for filter in filters %}
-
-      {% if filter.filter_category == filter_category %}
-
-      <a class="filter-card" data-type="{{filter.filter_category}}" data-name="{{filter.name}}" data-bgColor="{{filter.background_color}}" data-fgColor="{{filter.foreground_color}}">
-        <p class="filter-card">{{filter.name}}</p>
-      </a>
- 
-      {% endif %}
-      
-      {% endfor %}
-
-    </div>
-
-    {% endfor %}
-
-
-    <div class="search-cont">
+    <div class="search-cont" style="margin-top: 12.5px">
       <button class="filter">
-        <span class="material-icons">
-        filter_list
-        </span>
+        <span class="material-icons"> filter_list </span>
       </button>
       <input type="text" class="search" placeholder="Search" />
       <button class="search">
@@ -206,40 +215,237 @@
       </button>
     </div>
 
-
     <div class="prods-cont">
-      <a href="{% url 'main:product' %}" class="prod-card">
+      <div class="prod-card">
         <div class="prod-img-cont">
-          <img class="blur" src="{% static 'base/img/test_products/test12.png' %}"></img>
-          <img class="vis" src="{% static 'base/img/test_products/test12.png' %}"></img>
+          <a href="{% url 'main:product' %}" class="prod-link">
+            <img
+              src="https://images.pexels.com/photos/1279107/pexels-photo-1279107.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+              alt=""
+              class="vis"
+            />
+            <p class="view-product">
+              <span
+                class="material-icons-outlined"
+                style="margin-right: 6.75px"
+              >
+                launch </span
+              >View Product
+            </p>
+          </a>
 
-          <p class="pop-account">Verified Seller</p>
-          <button class="account"><span class="material-icons">
-            verified
-            </span></button>
-     
-        </div>
-        <div class="prod-text-cont">
-          <p class="prod-name">[Review Unit] Dell XPS 17 9700 i7-10750GH GTX 1650 Ti 4GB GDDR6</p>
-
-          <p class="pop-price">Price</p>
-          <button class="price">USD 1450.00</button>
-
-          <p class="pop-save">Save</p>
-          <button class="save"><span class="material-icons">
-            favorite_border
-            </span></button>
-            
-          <p class="pop-cart">Add to cart</p>
-          <button class="add-to-cart">
-            <img src="{% static 'base/img/cart.svg' %}">
+          <button class="prod-account">
+            <span class="material-icons"> stars </span>
+            <p>Top Rated Seller</p>
           </button>
-
-          <p class="pop-shipping">Shipping</p>
-          <button class="shipping">USD 0</button>
-
         </div>
-      </a>
+
+        <div class="prod-wrapper">
+          <div class="prod-text-cont">
+            <p class="prod-name">
+              Google Home Mini with Google Assistant Voice Enabled Chalk Grey
+              New In Retail
+            </p>
+            <div class="prod-ratings">
+              <span class="material-icons prod-ratings"> star </span>
+              <span class="material-icons prod-ratings"> star </span>
+              <span class="material-icons prod-ratings"> star </span>
+              <span class="material-icons prod-ratings"> star </span>
+              <span class="material-icons prod-ratings"> star_border </span>
+            </div>
+            <p class="prod-price">USD 23.95</p>
+            <p class="prod-shipping">+$27.05 shipping estimate</p>
+          </div>
+
+          <div class="prod-buttons-cont">
+            <button class="prod-add-to-cart">
+              <span class="material-icons"> add_shopping_cart </span>
+              <p>Add to cart</p>
+            </button>
+            <button class="prod-add-to-wishlist">
+              <span class="material-icons"> star_border </span>
+              <p>Add to wishlist</p>
+            </button>
+            <button class="prod-add-to-watchlist">
+              <span class="material-icons-outlined"> remove_red_eye </span>
+              <p>Add to watchlist</p>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card">
+        <div class="prod-img-cont">
+          <a href="{% url 'main:product' %}" class="prod-link">
+            <img
+              src="https://images.pexels.com/photos/393047/pexels-photo-393047.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+              alt=""
+              class="vis"
+            />
+            <p class="view-product">
+              <span
+                class="material-icons-outlined"
+                style="margin-right: 6.75px"
+              >
+                launch </span
+              >View Product
+            </p>
+          </a>
+
+          <button class="prod-account">
+            <span class="material-icons"> stars </span>
+            <p>Top Rated Seller</p>
+          </button>
+        </div>
+
+        <div class="prod-wrapper">
+          <div class="prod-text-cont">
+            <p class="prod-name">
+              Apple Watch Series 5 - GPS - GPS + Cellular - 40MM 44MM - Gray -
+              Silver - Gold
+            </p>
+            <div class="prod-ratings">
+              <span class="material-icons prod-ratings"> star </span>
+              <span class="material-icons prod-ratings"> star </span>
+              <span class="material-icons prod-ratings"> star </span>
+              <span class="material-icons prod-ratings"> star_border </span>
+              <span class="material-icons prod-ratings"> star_border </span>
+            </div>
+            <p class="prod-price">USD 279.00</p>
+            <p class="prod-shipping">+$25.43 shipping estimate</p>
+          </div>
+
+          <div class="prod-buttons-cont">
+            <button class="prod-add-to-cart">
+              <span class="material-icons"> add_shopping_cart </span>
+              <p>Add to cart</p>
+            </button>
+            <button class="prod-add-to-wishlist">
+              <span class="material-icons"> star_border </span>
+              <p>Add to wishlist</p>
+            </button>
+            <button class="prod-add-to-watchlist">
+              <span class="material-icons-outlined"> remove_red_eye </span>
+              <p>Add to watchlist</p>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card">
+        <div class="prod-img-cont">
+          <a href="{% url 'main:product' %}" class="prod-link">
+            <img
+              src="https://images.pexels.com/photos/5052880/pexels-photo-5052880.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+              alt=""
+              class="vis"
+            />
+            <p class="view-product">
+              <span
+                class="material-icons-outlined"
+                style="margin-right: 6.75px"
+              >
+                launch </span
+              >View Product
+            </p>
+          </a>
+          <button class="prod-account">
+            <span class="material-icons"> stars </span>
+            <p>Top Rated Seller</p>
+          </button>
+        </div>
+
+        <div class="prod-wrapper">
+          <div class="prod-text-cont">
+            <p class="prod-name">
+              Apple iPhone 12 Pro - 256gb - Unlocked - Factory Sealed - Factory
+              Warranty
+            </p>
+            <div class="prod-ratings">
+              <span class="material-icons prod-ratings"> star </span>
+              <span class="material-icons prod-ratings"> star </span>
+              <span class="material-icons prod-ratings"> star </span>
+              <span class="material-icons prod-ratings"> star </span>
+              <span class="material-icons prod-ratings"> star_border </span>
+            </div>
+            <p class="prod-price">USD 23.95</p>
+            <p class="prod-shipping">+$27.05 shipping estimate</p>
+          </div>
+
+          <div class="prod-buttons-cont">
+            <button class="prod-add-to-cart">
+              <span class="material-icons"> add_shopping_cart </span>
+              <p>Add to cart</p>
+            </button>
+            <button class="prod-add-to-wishlist">
+              <span class="material-icons"> star_border </span>
+              <p>Add to wishlist</p>
+            </button>
+            <button class="prod-add-to-watchlist">
+              <span class="material-icons-outlined"> remove_red_eye </span>
+              <p>Add to watchlist</p>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card">
+        <div class="prod-img-cont">
+          <a href="{% url 'main:product' %}" class="prod-link">
+            <img
+              src="https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+              alt=""
+              class="vis"
+            />
+
+            <p class="view-product">
+              <span
+                class="material-icons-outlined"
+                style="margin-right: 6.75px"
+              >
+                launch </span
+              >View Product
+            </p>
+          </a>
+          <button class="prod-account">
+            <span class="material-icons"> stars </span>
+            <p>Top Rated Seller</p>
+          </button>
+        </div>
+
+        <div class="prod-wrapper">
+          <div class="prod-text-cont">
+            <p class="prod-name">
+              Apple MacBook Air 13" - M1 Chip 8GB 256GB - Gold - MGND3LL/A -
+              Flawless 2 Cycles
+            </p>
+            <div class="prod-ratings">
+              <span class="material-icons prod-ratings"> star </span>
+              <span class="material-icons prod-ratings"> star </span>
+              <span class="material-icons prod-ratings"> star </span>
+              <span class="material-icons prod-ratings"> star </span>
+              <span class="material-icons prod-ratings"> star_border </span>
+            </div>
+            <p class="prod-price">USD 979.00</p>
+            <p class="prod-shipping">+$100.00 shipping estimate</p>
+          </div>
+
+          <div class="prod-buttons-cont">
+            <button class="prod-add-to-cart">
+              <span class="material-icons"> add_shopping_cart </span>
+              <p>Add to cart</p>
+            </button>
+            <button class="prod-add-to-wishlist">
+              <span class="material-icons"> star_border </span>
+              <p>Add to wishlist</p>
+            </button>
+            <button class="prod-add-to-watchlist">
+              <span class="material-icons-outlined"> remove_red_eye </span>
+              <p>Add to watchlist</p>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
