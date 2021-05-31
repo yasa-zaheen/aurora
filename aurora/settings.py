@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
     'main.apps.MainConfig',
     'information.apps.InformationConfig',
-    'authentication.apps.AuthenticationConfig'
+    'authentication.apps.AuthenticationConfig',
 
 ]
 

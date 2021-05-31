@@ -15,6 +15,4 @@ urlpatterns = [
     path("sub_category/<int:id>", views.sub_category, name="sub_category"),
     path("product_type/<int:id>", views.product_type, name="product_type"),
     path("seller/", views.seller, name="seller"),
-    path("cart/", views.cart, name="cart"),
-    path("dashboard/", views.dashboard, name="dashboard"),
 ]

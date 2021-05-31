@@ -127,16 +127,6 @@ def seller(response):
     return render(response, "main/product_seller.html", context)
 
 
-def cart(response):
-    context = {}
-    return render(response, "main/cart.html", context)
-
-
-def dashboard(response):
-    context = {}
-    return render(response, "main/dashboard.html", context)
-
-
 # permission()
 
 # add_product_types()
