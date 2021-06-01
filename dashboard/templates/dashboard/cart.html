@@ -1,0 +1,61 @@
+{% extends "dashboard/dashboard.html" %} {% load static %}
+
+<hr />
+{% block viewName %} Cart {% endblock viewName %}
+<hr />
+{% block viewContent %}
+
+<link rel="stylesheet" href="{% static 'dashboard/css/cart.css' %}" />
+
+<div class="cart"></div>
+
+<div class="checkout-info">
+  <div class="user-info">
+    <div class="profile-img"></div>
+    <p class="user-fullname">Yasa Zaheen</p>
+    <p class="user-email">yasazaheen@gmail.com</p>
+  </div>
+
+  <p class="input-title">Shipping Details</p>
+
+  <div class="input-container">
+    <p class="input-header">Address</p>
+    <input type="text" class="input" />
+  </div>
+  <div class="input-container">
+    <p class="input-header">Location</p>
+    <input type="text" class="input" />
+  </div>
+  <div class="input-container">
+    <p class="input-header">Zip Code</p>
+    <input type="text" class="input" />
+  </div>
+
+  <p class="input-title">Contact Details</p>
+
+  <div class="input-container">
+    <p class="input-header">Email</p>
+    <input type="text" class="input" />
+  </div>
+  <div class="input-container">
+    <p class="input-header">Phone Number</p>
+    <input type="text" class="input" />
+  </div>
+
+  <p class="input-title">Price Details</p>
+
+  <div class="input-container">
+    <p class="input-header">Total Price</p>
+    <input type="text" class="input" value="USD 2177.61" />
+  </div>
+  <div class="input-container">
+    <p class="input-header">Total Shipping</p>
+    <input type="text" class="input" />
+  </div>
+  <div class="input-container">
+    <p class="input-header">Total Cost</p>
+    <input type="text" class="input" />
+  </div>
+</div>
+
+{% endblock viewContent %}

@@ -1,0 +1,15 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'base/css/base.css' %}" />
+<link rel="stylesheet" href="{% static 'dashboard/css/dashboard.css' %}" />
+
+<div class="main-cont">
+  <div class="nav-cont">{% include "dashboard/navbar.html" %}</div>
+  <div class="view-cont">
+    <p class="dashboard-date">Friday, May 1st</p>
+    <p class="view-name">{% block viewName %} {% endblock viewName %}</p>
+    <div class="view-content">
+      {% block viewContent %} {% endblock viewContent %}
+    </div>
+  </div>
+</div>

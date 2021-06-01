@@ -8,3 +8,13 @@ from django.shortcuts import render
 def home(response):
     context = {}
     return render(response, 'dashboard/home.html', context)
+
+
+def cart(response):
+    context = {}
+    return render(response, "dashboard/cart.html", context)
+
+
+def dashboard(response):
+    context = {}
+    return render(response, 'dashboard/dashboard.html', context)

@@ -1,0 +1,84 @@
+.view-content {
+  display: flex;
+  position: relative;
+}
+
+/* Cart */
+
+div.cart {
+  width: 80%;
+  height: 20vh;
+}
+
+/* Checkout Information */
+
+div.checkout-info {
+  height: calc(100vh - 50px);
+  width: 20vw;
+  position: fixed;
+  right: 25px;
+  top: 25px;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
+  overflow-y: scroll;
+}
+
+div.user-info {
+  height: 10vh;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 5vh 5vh;
+}
+
+div.profile-img {
+  height: 10vh;
+  width: 10vh;
+  border-radius: 15px;
+  border: 2.5px solid #2f2f2f2f;
+  border-style: dashed;
+  grid-row: 1 / span 2;
+}
+
+p.user-fullname {
+  font-family: "Poppins";
+  font-size: 15px;
+  font-weight: 500;
+  grid-row: 1;
+  align-self: flex-end;
+  margin-left: 12.5px;
+}
+
+p.user-email {
+  font-family: "Poppins";
+  font-size: 10px;
+  font-weight: 300;
+  grid-row: 2;
+  align-self: flex-start;
+  margin-left: 12.5px;
+}
+
+p.input-title {
+  font-family: "Poppins";
+  font-size: 17.5px;
+  font-weight: 500;
+  margin: 12.5px 0px;
+}
+
+div.input-container {
+  margin-top: 12.5px;
+}
+
+p.input-header {
+  font-family: "Poppins";
+  font-size: 15px;
+  font-weight: 500;
+}
+
+input.input {
+  border-radius: 5px;
+  margin-top: 7.5px;
+  border: 1px solid #2f2f2f2f;
+  height: 5vh;
+  width: 100%;
+}
