@@ -6,19 +6,22 @@ div.main-cont {
 }
 
 div.nav-cont {
-  height: 100%;
-  width: 20%;
-  margin-right: 25px;
+  height: fit-content;
+  width: 20vw;
 }
 
 div.view-cont {
-  width: 80%;
+  width: calc(80vw - 50px);
+  padding: 0px 25px;
   height: 100%;
 }
 
 div.view-content {
   height: fit-content;
   width: 100%;
+  box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
+  border-radius: 15px;
+  margin-top: 12.5px;
 }
 
 p.dashboard-date {

@@ -1,6 +1,9 @@
-{% extends "dashboard/dashboard.html" %}
+{% extends "dashboard/dashboard.html" %} {% load static %}
 
 <br />
 {% block viewName %} Home {% endblock viewName %}
 <hr />
-{% block viewContent %} {% endblock viewContent %}
+{% block viewContent %}
+<link rel="stylesheet" href="{% static 'dashboard/css/home.css' %}" />
+
+{% endblock viewContent %}

@@ -17,23 +17,25 @@
   </div>
 
   <ul>
-    <li id="nav-home">
+    <a id="nav-home" href="{% url 'dashboard:home' %}">
       <span class="material-icons-outlined"> home </span> Home
-    </li>
+    </a>
 
-    <li><span class="material-icons-outlined"> shopping_cart </span>Cart</li>
+    <a id="nav-cart" href="{% url 'dashboard:cart' %}">
+      <span class="material-icons-outlined"> shopping_cart </span>Cart
+    </a>
 
-    <li>
+    <a>
       <span class="material-icons-outlined"> remove_red_eye </span>Watchlist
-    </li>
+    </a>
 
-    <li><span class="material-icons-outlined"> star_rate </span>Wishlist</li>
+    <a><span class="material-icons-outlined"> star_rate </span>Wishlist</a>
 
-    <li>
+    <a>
       <span class="material-icons-outlined"> dashboard </span>Seller Dashboard
-    </li>
+    </a>
 
-    <li><span class="material-icons-outlined"> settings </span>Settings</li>
+    <a><span class="material-icons-outlined"> settings </span>Settings</a>
   </ul>
 
   <button class="sign-out">

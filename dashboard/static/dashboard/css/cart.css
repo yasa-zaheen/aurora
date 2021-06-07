@@ -1,46 +1,165 @@
+/* CSS from other files */
+
+#nav-cart {
+  background-color: #293241;
+  color: white;
+}
+
+.view-cont {
+  width: calc(60vw - 50px) !important;
+}
+
 .view-content {
-  display: flex;
-  position: relative;
+  box-shadow: none !important;
 }
 
 /* Cart */
 
-div.cart {
-  width: 80%;
-  height: 20vh;
+.cart {
+  height: fit-content;
+  overflow-y: visible;
+  padding: 0px 0px 25px 0px;
+}
+
+.cart__shopMore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  border: 2.5px dotted #2f2f2f2f;
+  border-radius: 15px;
+}
+
+.cart__shopMore__text {
+  font-family: "Poppins";
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.cart__product {
+  height: fit-content;
+  overflow: hidden;
+  border-radius: 15px;
+  display: flex;
+  margin-bottom: 25px;
+  box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
+}
+
+.cart__product__delete {
+  background-color: #ef233c;
+  border-radius: 100%;
+  position: absolute;
+  transform: translate(-25%, -25%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(12.5px / 2);
+}
+
+.cart__product__image {
+  width: 205px;
+  height: 205px;
+  overflow: hidden;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart__product__information {
+  padding: 25px;
+  width: calc(100% - 205px);
+  position: relative;
+}
+
+.cart__product__name {
+  font-family: "Poppins";
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.cart__product__seller {
+  font-family: "Poppins";
+  font-size: 12.5px;
+  font-weight: 500;
+  opacity: 0.5;
+}
+
+.cart__product__price {
+  font-family: "Poppins";
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 12.5px;
+}
+
+.cart__product__shippingEstimate {
+  font-family: "Poppins";
+  font-size: 12.5px;
+  font-weight: 500;
+  opacity: 0.5;
+}
+
+.cart__product__totalPrice {
+  font-family: "Poppins";
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 12.5px;
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+}
+
+.cart__product__quantity {
+  margin-top: 12.5px;
+  display: flex;
+  align-items: center;
+}
+
+.cart__product__quantity__button {
+  width: 25px;
+  height: 25px;
+  background-color: #293241;
+}
+
+.cart__product__quantity__display {
+  font-family: "Poppins";
+  font-size: 12.5px;
+  font-weight: 500;
+  margin: 0px 12.5px;
 }
 
 /* Checkout Information */
 
-div.checkout-info {
+.checkoutInfo {
   height: calc(100vh - 50px);
-  width: 20vw;
-  position: fixed;
-  right: 25px;
-  top: 25px;
+  width: 20vw !important;
   border-radius: 15px;
   padding: 25px;
   box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
   overflow-y: scroll;
+  position: absolute;
+  top: 25px;
+  right: 25px;
 }
 
-div.user-info {
+.checkoutInfo__userInfo {
   height: 10vh;
   width: 100%;
   display: grid;
   grid-template-rows: 5vh 5vh;
 }
 
-div.profile-img {
+.checkoutInfo__userInfo__profileImg {
   height: 10vh;
   width: 10vh;
   border-radius: 15px;
-  border: 2.5px solid #2f2f2f2f;
-  border-style: dashed;
+  /* border: 2.5px solid #2f2f2f2f; */
+  /* border-style: dashed; */
   grid-row: 1 / span 2;
+  overflow: hidden;
 }
 
-p.user-fullname {
+.checkoutInfo__userInfo__fullname {
   font-family: "Poppins";
   font-size: 15px;
   font-weight: 500;
@@ -49,7 +168,7 @@ p.user-fullname {
   margin-left: 12.5px;
 }
 
-p.user-email {
+.checkoutInfo__userInfo__email {
   font-family: "Poppins";
   font-size: 10px;
   font-weight: 300;
@@ -58,27 +177,53 @@ p.user-email {
   margin-left: 12.5px;
 }
 
-p.input-title {
+.checkoutInfo__title {
   font-family: "Poppins";
-  font-size: 17.5px;
   font-weight: 500;
   margin: 12.5px 0px;
 }
 
-div.input-container {
-  margin-top: 12.5px;
-}
-
-p.input-header {
+.checkoutInfo__inputName {
   font-family: "Poppins";
   font-size: 15px;
   font-weight: 500;
 }
 
-input.input {
+.checkoutInfo__input {
   border-radius: 5px;
   margin-top: 7.5px;
   border: 1px solid #2f2f2f2f;
-  height: 5vh;
   width: 100%;
+  outline: none;
+  padding: calc(12.5px / 2) 12.5px;
+  font-family: "Poppins";
+  font-size: 12.5px;
+  font-weight: 500;
+  margin-bottom: 12.5px;
+}
+
+.checkoutInfo__infoContainer {
+  border-radius: 5px;
+  margin-top: 7.5px;
+  width: 100%;
+  outline: none;
+  padding: calc(12.5px / 2) 12.5px;
+  font-family: "Poppins";
+  font-size: 12.5px;
+  font-weight: 500;
+  margin-bottom: 12.5px;
+  background-color: #2f2f2f2f;
+}
+
+.proceedToCheckout {
+  padding: calc(12.5px / 2) 12.5px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #ef233c;
+  font-family: "Poppins";
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 25px;
 }

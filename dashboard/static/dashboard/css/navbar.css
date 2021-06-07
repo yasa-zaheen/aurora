@@ -1,13 +1,14 @@
 nav {
-  height: 100%;
+  height: calc(100vh - 50px);
   width: 100%;
   border-radius: 15px;
   box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
   padding: 25px;
   position: relative;
+  background-color: white;
 }
 
-.material-icons-outlined {
+nav ul a span.material-icons-outlined {
   margin-right: calc(12.5px / 2);
   transform: scale(0.8, 0.8);
 }
@@ -30,7 +31,7 @@ ul {
   list-style: none;
 }
 
-li {
+a {
   margin-bottom: 12.5px;
   padding: calc(12.5px / 2) 12.5px;
   border-radius: 5px;
@@ -40,6 +41,16 @@ li {
   display: flex;
   align-self: center;
   cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  background-color: #2932412f;
+}
+
+a:active {
+  background-color: #2932415f;
 }
 
 /* Sign Out Button */
@@ -60,4 +71,8 @@ button.sign-out p {
   font-family: "Poppins";
   font-size: 15px;
   font-weight: 500;
+}
+
+button.sign-out span {
+  margin-right: calc(12.5px / 2);
 }
