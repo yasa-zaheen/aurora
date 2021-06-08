@@ -9,5 +9,6 @@ app_name = "dashboard"
 urlpatterns = [
     path('home/', views.home, name='home'),
     path('cart/', views.cart, name='cart'),
-    path('dashboard', views.dashboard, name='dashboard')
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('watchlist/', views.watchlist, name="watchlist")
 ]

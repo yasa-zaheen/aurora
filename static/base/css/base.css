@@ -45,17 +45,6 @@ button {
   font-size: 20px;
 }
 
-p {
-  font-family: "Maven Pro", sans-serif;
-  font-size: 12.5px;
-}
-
-h1.title {
-  font-family: "Maven Pro", sans-serif;
-  font-weight: 100;
-  font-size: 25px;
-}
-
 .hide {
   opacity: 0;
   transform: scale(0.5, 0.5);
@@ -63,6 +52,35 @@ h1.title {
   transition: 0.1s ease all;
 }
 
+/* Text */
+
+p {
+  font-family: "Poppins", sans-serif;
+}
+
+.s-s {
+  font-size: 10px;
+}
+
+.s-m {
+  font-size: 12.5px;
+}
+
+.s-l {
+  font-size: 15px;
+}
+
+.w-l {
+  font-family: 300;
+}
+
+.w-m {
+  font-weight: 400;
+}
+
+.w-h {
+  font-weight: 500;
+}
 /* --  */
 
 /* Images  */

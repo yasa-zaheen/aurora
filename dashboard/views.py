@@ -15,6 +15,11 @@ def cart(response):
     return render(response, "dashboard/cart.html", context)
 
 
+def watchlist(response):
+    context = {}
+    return render(response, "dashboard/watchlist.html", context)
+
+
 def dashboard(response):
     context = {}
     return render(response, 'dashboard/dashboard.html', context)
