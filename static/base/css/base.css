@@ -10,16 +10,19 @@ body {
 }
 
 button {
+  padding: 6.25px 12.5px;
+  border-radius: 5px;
   color: white;
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
   font-weight: 500;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  border-radius: 5px;
   border: none;
   outline: none;
   cursor: pointer;
+  background-color: #293241;
 }
 
 /* -- */
@@ -70,6 +73,10 @@ p {
   font-size: 15px;
 }
 
+.s-xl {
+  font-size: 17.5px;
+}
+
 .w-l {
   font-family: 300;
 }
@@ -81,30 +88,90 @@ p {
 .w-h {
   font-weight: 500;
 }
-/* --  */
 
 /* Images  */
 
-img.vis {
+img {
   width: 100%;
-  align-self: center;
   pointer-events: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
-img.blur {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: -1;
-  filter: blur(10px) contrast(1.5);
-  pointer-events: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+
+/* Background colors */
+
+.bg-black {
+  background-color: #2f2f2f;
+}
+
+.bg-white {
+  background-color: #fafafa;
+}
+
+.bg-dark-blue {
+  background-color: #293241;
+}
+
+.bg-medium-blue {
+  background-color: #3d5a80;
+}
+
+.bg-light-blue {
+  background-color: #98c1d9;
+}
+
+.bg-pale-blue {
+  background-color: #e0fbfc;
+}
+
+.bg-orange {
+  background-color: #ee6c4d;
+}
+
+.bg-red {
+  background-color: #ef233c;
+}
+
+/* Colors */
+
+.c-black {
+  color: #2f2f2f;
+}
+
+.c-white {
+  color: #fafafa;
+}
+
+.c-dark-blue {
+  color: #293241;
+}
+
+.c-medium-blue {
+  color: #3d5a80;
+}
+
+.c-light-blue {
+  color: #98c1d9;
+}
+
+.c-pale-blue {
+  color: #e0fbfc;
+}
+
+.c-orange {
+  color: #ee6c4d;
+}
+
+.c-red {
+  color: #ef233c;
+}
+
+/* Shadow */
+
+.shadow {
+  box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
 }
 
 /* ----- Product Card ----- */
