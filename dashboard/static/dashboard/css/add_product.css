@@ -1,0 +1,54 @@
+/* CSS from other files */
+
+#nav-sellerDashboard {
+  background-color: #293241;
+  color: white;
+}
+
+/* Add Product */
+
+.add_product {
+  width: calc(100% - 25px);
+  height: calc(100vh - 50px);
+  border-radius: 15px;
+  margin-left: 25px;
+  padding: 25px;
+  overflow: scroll;
+}
+
+.add_product__inputContainer {
+  width: 100%;
+  height: fit-content;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.add_product__inputContainer__input {
+  padding: 6.25px 12.5px;
+  font: 12.5px "Poppins";
+  font-weight: 400;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #2f2f2f2f;
+  margin: 6.25px 0px;
+  width: 100%;
+}
+
+.add_product__inputContainer__paymentBtn {
+  width: calc((100% - 50px) / 3);
+  justify-content: start;
+}
+
+.add_product__inputContainer__dropdownToggle {
+  background: none !important;
+  padding: 0 !important;
+  color: #2f2f2f;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+.add_product__inputContainer__dropdownToggle--condition,
+.add_product__inputContainer__dropdownToggle--shipping {
+  right: 12.5px;
+}

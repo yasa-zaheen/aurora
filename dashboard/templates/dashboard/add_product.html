@@ -1,0 +1,202 @@
+{% extends "dashboard/dashboard.html" %} {% load static %}
+
+<hr />
+{% block viewContent %}
+<link rel="stylesheet" href="{% static 'dashboard/css/add_product.css' %}" />
+
+<div class="add_product shadow">
+  <!-- General Product Information -->
+  <p class="s-xl w-h" style="margin-bottom: 12.5px">
+    General Product Information
+  </p>
+
+  <!-- Name -->
+  <div class="add_product__inputContainer">
+    <p class="s-l w-h">Name</p>
+    <input type="text" class="add_product__inputContainer__input" />
+    <p class="s-s w-l">Name should be accurate and descriptive.</p>
+  </div>
+
+  <div style="display: flex">
+    <!-- Condition -->
+    <div class="add_product__inputContainer" style="padding-right: 12.5px">
+      <p class="s-l w-h">Condition</p>
+      <input
+        type="text"
+        class="add_product__inputContainer__input"
+        placeholder="Product is factory sealed and hasn't been opened..."
+      />
+      <p class="s-s w-l">
+        Write a short description about the condition of the product.
+      </p>
+
+      <!-- Dropdown -->
+      <button
+        class="
+          add_product__inputContainer__dropdownToggle
+          add_product__inputContainer__dropdownToggle--condition
+        "
+      >
+        Brand New
+        <span
+          class="material-icons-outlined s-l w-h"
+          style="margin-left: 6.25px"
+        >
+          keyboard_arrow_down
+        </span>
+      </button>
+    </div>
+
+    <!-- Returns -->
+    <div class="add_product__inputContainer" style="padding-left: 12.5px">
+      <p class="s-l w-h">Returns</p>
+      <input
+        type="text"
+        class="add_product__inputContainer__input"
+        placeholder="Returns are accepted withing 7 days after shipping..."
+      />
+      <p class="s-s w-l">
+        Write a short description about the return policy of the product.
+      </p>
+      <!-- Dropdown -->
+      <button
+        class="
+          add_product__inputContainer__dropdownToggle
+          add_product__inputContainer__dropdownToggle--returns
+        "
+      >
+        Free Returns
+        <span
+          class="material-icons-outlined s-l w-h"
+          style="margin-left: 6.25px"
+        >
+          keyboard_arrow_down
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Product Images -->
+  <div class="add_product__inputContainer">
+    <p class="s-l w-h">Product Images</p>
+    <input type="file" title="File" class="dashed" />
+    <input type="file" title="File" class="dashed" />
+    <input type="file" title="File" class="dashed" />
+    <input type="file" title="File" class="dashed" />
+    <p class="s-s w-l">
+      You can upload a maximum of 4 images. Make sure that the images are
+      detailed and appealing to get more views.
+    </p>
+  </div>
+
+  <!-- Price and Payments -->
+  <p class="s-xl w-h" style="margin-bottom: 12.5px">
+    Price and Payments Information
+  </p>
+
+  <!-- Price -->
+  <div class="add_product__inputContainer">
+    <p class="s-l w-h">Price</p>
+    <input type="text" class="add_product__inputContainer__input" />
+    <p class="s-s w-l">
+      Set a reasonable price for increasing the chances of selling the product.
+    </p>
+
+    <!-- Dropdown -->
+    <button
+      class="
+        add_product__inputContainer__dropdownToggle
+        add_product__inputContainer__dropdownToggle--price
+      "
+    >
+      Sale
+      <span class="material-icons-outlined s-l w-h" style="margin-left: 6.25px">
+        keyboard_arrow_down
+      </span>
+    </button>
+  </div>
+
+  <!-- Payments Via -->
+  <div class="add_product__inputContainer">
+    <p class="s-l w-h">Payments Via</p>
+    <div
+      style="display: flex; margin: 12.5px 0px; justify-content: space-between"
+    >
+      <button class="add_product__inputContainer__paymentBtn dashed">
+        <img
+          src="https://img.icons8.com/plasticine/100/000000/paypal.png"
+          style="width: 25px; height: 25px; margin-right: 12.5px"
+        />
+        Paypal
+      </button>
+      <button class="add_product__inputContainer__paymentBtn dashed">
+        <img
+          src="https://img.icons8.com/plasticine/100/000000/visa.png"
+          style="width: 25px; height: 25px; margin-right: 12.5px"
+        />
+        Visa
+      </button>
+      <button class="add_product__inputContainer__paymentBtn dashed">
+        <img
+          src="https://img.icons8.com/plasticine/100/000000/mastercard.png"
+          style="width: 25px; height: 25px; margin-right: 12.5px"
+        />
+        Mastercard
+      </button>
+    </div>
+  </div>
+
+  <!-- Shipping Information -->
+
+  <p class="s-xl w-h" style="margin-bottom: 12.5px">Shipping Information</p>
+
+  <div style="display: flex">
+    <!-- Shipping -->
+    <div class="add_product__inputContainer" style="padding-right: 12.5px">
+      <p class="s-l w-h">Shipping</p>
+      <input
+        class="add_product__inputContainer__input"
+        placeholder="International shipping via priority mail..."
+      />
+      <p class="s-s w-l">
+        Write a short description about the shipping of the product.
+      </p>
+
+      <!-- Dropdown -->
+      <button
+        class="
+          add_product__inputContainer__dropdownToggle
+          add_product__inputContainer__dropdownToggle--shipping
+        "
+      >
+        International Shipping
+        <span
+          class="material-icons-outlined s-l w-h"
+          style="margin-left: 6.25px"
+        >
+          keyboard_arrow_down
+        </span>
+      </button>
+    </div>
+
+    <!-- Estimated Shipping Price -->
+
+    <div class="add_product__inputContainer" style="padding-left: 12.5px">
+      <p class="s-l w-h">Estimated Shipping Price</p>
+      <input class="add_product__inputContainer__input" />
+      <p class="s-s w-l">
+        The cheaper the shipping price, the higher are your chances of selling
+        the product.
+      </p>
+    </div>
+  </div>
+
+  <!-- Product does not ship to -->
+  <div class="add_product__inputContainer">
+    <p class="s-l w-h">Product does not ship to</p>
+    <input class="add_product__inputContainer__input" />
+    <p class="s-s w-l">Where won't the products be shipped?</p>
+  </div>
+</div>
+
+{% endblock viewContent %}

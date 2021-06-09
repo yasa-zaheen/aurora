@@ -40,6 +40,11 @@ def my_products(response):
     return render(response, "dashboard/my_products.html", context)
 
 
+def add_product(response):
+    context = {}
+    return render(response, "dashboard/add_product.html", context)
+
+
 def dashboard(response):
     context = {}
     return render(response, 'dashboard/dashboard.html', context)
