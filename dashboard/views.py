@@ -35,6 +35,11 @@ def crm(response):
     return render(response, 'dashboard/crm.html', context)
 
 
+def my_products(response):
+    context = {}
+    return render(response, "dashboard/my_products.html", context)
+
+
 def dashboard(response):
     context = {}
     return render(response, 'dashboard/dashboard.html', context)
