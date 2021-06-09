@@ -11,5 +11,7 @@ urlpatterns = [
     path('cart/', views.cart, name='cart'),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('watchlist/', views.watchlist, name="watchlist"),
-    path("wishlist/", views.wishlist, name="wishlist")
+    path("wishlist/", views.wishlist, name="wishlist"),
+    path('seller_dashboard', views.seller_dashboard, name="seller_dashboard"),
+    path('crm/', views.crm, name="crm")
 ]

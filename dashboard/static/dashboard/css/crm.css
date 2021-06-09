@@ -1,0 +1,30 @@
+/* CSS from other files */
+
+#nav-sellerDashboard {
+  background-color: #293241;
+  color: white;
+}
+
+/* CRM */
+
+.crm {
+  height: calc(100vh - 50px);
+  margin-left: 25px;
+  border-radius: 15px;
+  padding: 25px;
+}
+
+.crm__crm {
+  width: 100%;
+}
+
+.crm__crm__header,
+.crm__crm__text {
+  border-bottom: 1px solid #2f2f2f2f;
+  padding: 12.5px 0px;
+}
+
+.crm__crm__details {
+  background-color: #2f2f2f2f;
+  color: black;
+}
