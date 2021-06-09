@@ -20,6 +20,11 @@ def watchlist(response):
     return render(response, "dashboard/watchlist.html", context)
 
 
+def wishlist(response):
+    context = {}
+    return render(response, "dashboard/wishlist.html", context)
+
+
 def dashboard(response):
     context = {}
     return render(response, 'dashboard/dashboard.html', context)

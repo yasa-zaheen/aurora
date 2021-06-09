@@ -10,5 +10,6 @@ urlpatterns = [
     path('home/', views.home, name='home'),
     path('cart/', views.cart, name='cart'),
     path('dashboard/', views.dashboard, name='dashboard'),
-    path('watchlist/', views.watchlist, name="watchlist")
+    path('watchlist/', views.watchlist, name="watchlist"),
+    path("wishlist/", views.wishlist, name="wishlist")
 ]
