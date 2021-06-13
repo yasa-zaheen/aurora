@@ -12,9 +12,11 @@
 /* Watchlist */
 
 .watchlist {
-  width: 100%;
+  width: calc(100% - 25px);
+  margin-left: 25px;
   height: 100%;
   padding: 25px;
+  border-radius: 15px;
 }
 
 .watchlist__shopMore {
