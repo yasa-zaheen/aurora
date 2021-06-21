@@ -59,6 +59,7 @@
 .bestsellers {
   margin-top: 12.5px;
   padding-bottom: 25px;
+  border-bottom: 1px solid #2f2f2f2f;
 }
 
 .bestsellers__table {
@@ -66,11 +67,35 @@
 }
 
 .table__header {
-  border-bottom: 1px solid #2f2f2f2f;
+  border-bottom: 1px solid #2f2f2f0f;
   padding: 12.5px 0px;
 }
 
 .table__text {
-  border-bottom: 1px solid #2f2f2f2f;
+  border-bottom: 1px solid #2f2f2f0f;
   padding: 12.5px 0px;
+}
+
+/* Traffic */
+
+.traffic {
+  margin-top: 12.5px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #2f2f2f2f;
+}
+
+.traffic__btn {
+  margin-right: 12.5px;
+  font-size: 12.5px;
+}
+
+.traffic__info {
+  width: 30%;
+}
+
+.traffic__graph {
+  width: 70%;
+  padding: 0px 25px;
+  border-left: 1px solid #2f2f2f2f;
+  padding: 0px 25px;
 }

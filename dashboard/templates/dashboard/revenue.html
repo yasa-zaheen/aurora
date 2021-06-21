@@ -70,7 +70,7 @@
       </div>
       <!-- Graph -->
       <div>
-        <canvas id="myChart"></canvas>
+        <canvas id="revenueSales__graph"></canvas>
       </div>
     </div>
   </div>
@@ -150,6 +150,46 @@
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <!-- Traffic -->
+  <p class="s-xl w-h" style="margin-top: 25px">Traffic</p>
+  <div class="traffic">
+    <!-- Buttons -->
+    <div style="display: flex; margin-bottom: 25px">
+      <button class="traffic__btn bg-orange c-white">Views</button>
+      <button class="traffic__btn bg-white c-black">Add to Carts</button>
+      <button class="traffic__btn bg-white c-black">Reached Checkout</button>
+    </div>
+    <div style="display: flex; align-items: center">
+      <!-- Info -->
+      <div class="traffic__info">
+        <p class="s-l w-h">Product Views</p>
+        <p class="s-m w-m">23566</p>
+        <p class="s-l w-h" style="margin-top: 25px">Unique Viewers</p>
+        <p class="s-m w-m">1567</p>
+      </div>
+      <!-- Graph -->
+      <div class="traffic__graph">
+        <div style="display: flex; align-items: center">
+          <p class="s-m w-h" style="margin-right: 6.25px">Product Views</p>
+          <div
+            class="bg-orange"
+            style="width: 10px; height: 10px; border-radius: 2.5px"
+          ></div>
+          <p class="s-m w-h" style="margin: 0px 6.25px 0px 12.5px">
+            Unique Viewers
+          </p>
+          <div
+            class="bg-darkBlue"
+            style="width: 10px; height: 10px; border-radius: 2.5px"
+          ></div>
+        </div>
+        <div>
+          <canvas id="traffic__graph"></canvas>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
