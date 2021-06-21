@@ -1,0 +1,73 @@
+/* CSS from other files */
+
+#nav-sellerDashboard {
+  background-color: #293241;
+  color: white;
+}
+
+/* Revenue */
+
+.revenue {
+  width: calc(100% - 25px);
+  height: calc(100vh - 50px);
+  border-radius: 15px;
+  margin-left: 25px;
+  padding: 25px 0px 25px 25px;
+  overflow: scroll;
+}
+
+/* Revenue Info */
+
+.revenue__revenue {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12.5px;
+  border-bottom: 1px solid #2f2f2f2f;
+  padding-bottom: 25px;
+}
+
+.revenue__timePeriod {
+  padding: 25px;
+  margin-right: 25px;
+  border-radius: 15px;
+  width: calc((100% - 75px) / 3);
+}
+
+/* Revenue and Sales */
+
+.revenue__revenueSales {
+  display: flex;
+  align-items: center;
+  margin-top: 12.5px;
+  border-bottom: 1px solid #2f2f2f2f;
+  padding-bottom: 25px;
+}
+
+.revenueSales__info {
+  width: 30%;
+}
+
+.revenueSales__graph {
+  width: 70%;
+  padding: 0px 25px;
+  border-left: 1px solid #2f2f2f2f;
+  padding: 0px 25px;
+}
+
+/* Bestsellers */
+
+.bestsellers {
+  margin-top: 12.5px;
+  border-bottom: 1px solid #2f2f2f2f;
+  padding-bottom: 25px;
+}
+
+.bestsellers__table {
+  width: 50%;
+}
+
+.table__header {
+  border-bottom: 1px solid #2f2f2f2f;
+  padding: 12.5px 0px;
+}

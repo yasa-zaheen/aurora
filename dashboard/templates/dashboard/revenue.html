@@ -1,0 +1,106 @@
+{% extends "dashboard/dashboard.html" %} {% load static %}
+
+<hr />
+{% block viewContent %}
+<link rel="stylesheet" href="{% static 'dashboard/css/revenue.css' %}" />
+
+<div class="revenue shadow">
+  <!-- Revenue -->
+  <p class="s-xl w-h">Revenue</p>
+  <div class="revenue__revenue">
+    <div class="revenue__timePeriod bg-darkBlue c-white">
+      <!-- Today -->
+      <p class="s-l w-h">Today</p>
+      <div style="margin-top: 12.5px">
+        <p class="s-m w-h">USD 3655.00</p>
+        <p class="s-s w-l" style="opacity: 0.5">/ 10 products sold</p>
+      </div>
+    </div>
+    <!-- Yesterday -->
+    <div class="revenue__timePeriod bg-white">
+      <p class="s-l w-h">Yesterday</p>
+      <div style="margin-top: 12.5px">
+        <p class="s-m w-h">USD 1950.00</p>
+        <p class="s-s w-l" style="opacity: 0.5">/ 8 products sold</p>
+      </div>
+    </div>
+    <!-- Last Week -->
+    <div class="revenue__timePeriod bg-white">
+      <p class="s-l w-h">Last Week</p>
+      <div style="margin-top: 12.5px">
+        <p class="s-m w-h">USD 35674.00</p>
+        <p class="s-s w-l" style="opacity: 0.5">/ 10 products sold</p>
+      </div>
+    </div>
+    <!-- Last 28 Days -->
+    <div class="revenue__timePeriod bg-white">
+      <p class="s-l w-h">Last 28 Days</p>
+      <div style="margin-top: 12.5px">
+        <p class="s-m w-h">USD 443.28K.00</p>
+        <p class="s-s w-l" style="opacity: 0.5">/ 10 products sold</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Revenue and Sales -->
+  <p class="s-xl w-h" style="margin-top: 25px">Sales</p>
+  <div class="revenue__revenueSales">
+    <!-- Revenue and Sales Info -->
+    <div class="revenueSales__info">
+      <p class="s-l w-h">Total Earned</p>
+      <p class="s-m w-m">USD 3655.00</p>
+      <p class="s-l w-h" style="margin-top: 25px">Total Products Sold</p>
+      <p class="s-m w-m">10</p>
+    </div>
+
+    <!-- Revenue and Sales Graph -->
+    <div class="revenueSales__graph">
+      <!-- Keys -->
+      <div style="display: flex; align-items: center">
+        <p class="s-m w-h" style="margin-right: 6.25px">Revenue</p>
+        <div
+          class="bg-orange"
+          style="width: 10px; height: 10px; border-radius: 2.5px"
+        ></div>
+        <p class="s-m w-h" style="margin: 0px 6.25px 0px 12.5px">Sales</p>
+        <div
+          class="bg-darkBlue"
+          style="width: 10px; height: 10px; border-radius: 2.5px"
+        ></div>
+      </div>
+      <!-- Graph -->
+      <div>
+        <canvas id="myChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bestsellers -->
+  <p class="s-xl w-h" style="margin-top: 25px">Bestsellers</p>
+  <div class="bestsellers">
+    <!-- Bestsellers Table -->
+    <table class="bestsellers__table">
+      <thead>
+        <tr>
+          <th class="table__header" style="width: 40%" align="start">
+            <p class="s-l w-h">Product</p>
+          </th>
+          <th class="table__header" style="width: 15%">
+            <p class="s-l w-h">Price</p>
+          </th>
+          <th class="table__header" style="width: 15%">
+            <p class="s-l w-h">Sold</p>
+          </th>
+          <th class="table__header" style="width: 15%">
+            <p class="s-l w-h">Revenue</p>
+          </th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
+<script src="{% static 'dashboard/js/revenue.js' %}"></script>
+
+{% endblock viewContent %}
