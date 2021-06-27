@@ -1,4 +1,54 @@
+/* CSS from other files */
+
 #nav-home {
   background-color: #293241;
   color: white;
+}
+
+.prod-card {
+  margin-right: 25px !important;
+}
+
+/* Home */
+
+.home {
+  height: calc(100vh - 25px);
+  width: 100%;
+  overflow: hidden;
+  padding: 0px 0px 25px 25px;
+}
+
+.home__cart,
+.home__watchlist,
+.home__wishlist {
+  padding: 25px;
+  box-shadow: var(--shadow);
+  border-radius: 15px;
+  width: calc((100% - 50px) / 3);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.home__cart:active,
+.home__watchlist:active,
+.home__wishlist:active {
+  transform: scale(0.95, 0.95);
+  filter: brightness(0.25);
+  box-shadow: none;
+}
+
+.home__recentlyViewedItems {
+  padding: 25px 0px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  overflow-x: scroll;
+}
+
+.home__becomeASeller {
+  box-shadow: var(--shadow);
+  border-radius: 15px;
+  flex: 0.5;
+  background-color: red;
+  flex-grow: 1;
 }

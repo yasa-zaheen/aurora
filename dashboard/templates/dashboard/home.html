@@ -6,4 +6,186 @@
 {% block viewContent %}
 <link rel="stylesheet" href="{% static 'dashboard/css/home.css' %}" />
 
+<div class="home">
+  <div style="display: flex; justify-content: space-between">
+    <div class="home__cart bg-darkBlue">
+      <p class="s-xl w-h">Cart</p>
+      <p class="s-m w-m">You have 3 items in your cart.</p>
+    </div>
+    <div class="home__watchlist bg-orange">
+      <p class="s-xl w-h">Watchlist</p>
+      <p class="s-m w-m">2 new updates in your watchlist.</p>
+    </div>
+    <div class="home__wishlist bg-lightBlue">
+      <p class="s-xl w-h">Wishlist</p>
+      <p class="s-m w-m">You have 3 items in your wishlist</p>
+    </div>
+  </div>
+  <div class="home__recentlyViewedItems">
+    <div class="prod-card">
+      <div class="prod-img-cont">
+        <a href="{% url 'main:product' %}" class="prod-link">
+          <img
+            src="https://images.pexels.com/photos/1279107/pexels-photo-1279107.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+            alt=""
+            class="vis"
+          />
+          <p class="view-product">
+            <span class="material-icons-outlined" style="margin-right: 6.75px">
+              launch </span
+            >View Product
+          </p>
+        </a>
+
+        <button class="prod-account">
+          <span class="material-icons"> stars </span>
+          <p>Top Rated Seller</p>
+        </button>
+      </div>
+
+      <div class="prod-wrapper">
+        <div class="prod-text-cont">
+          <p class="prod-name">
+            Google Home Mini with Google Assistant Voice Enabled Chalk Grey New
+            In Retail
+          </p>
+          <div class="prod-ratings">
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star_border </span>
+          </div>
+          <p class="prod-price">USD 23.95</p>
+          <p class="prod-shipping">+$27.05 shipping estimate</p>
+        </div>
+
+        <div class="prod-buttons-cont">
+          <button class="prod-add-to-cart">
+            <span class="material-icons"> add_shopping_cart </span>
+            <p>Add to cart</p>
+          </button>
+          <button class="prod-add-to-wishlist">
+            <span class="material-icons"> star_border </span>
+            <p>Add to wishlist</p>
+          </button>
+          <button class="prod-add-to-watchlist">
+            <span class="material-icons-outlined"> remove_red_eye </span>
+            <p>Add to watchlist</p>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img-cont">
+        <a href="{% url 'main:product' %}" class="prod-link">
+          <img
+            src="https://images.pexels.com/photos/1279107/pexels-photo-1279107.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+            alt=""
+            class="vis"
+          />
+          <p class="view-product">
+            <span class="material-icons-outlined" style="margin-right: 6.75px">
+              launch </span
+            >View Product
+          </p>
+        </a>
+
+        <button class="prod-account">
+          <span class="material-icons"> stars </span>
+          <p>Top Rated Seller</p>
+        </button>
+      </div>
+
+      <div class="prod-wrapper">
+        <div class="prod-text-cont">
+          <p class="prod-name">
+            Google Home Mini with Google Assistant Voice Enabled Chalk Grey New
+            In Retail
+          </p>
+          <div class="prod-ratings">
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star_border </span>
+          </div>
+          <p class="prod-price">USD 23.95</p>
+          <p class="prod-shipping">+$27.05 shipping estimate</p>
+        </div>
+
+        <div class="prod-buttons-cont">
+          <button class="prod-add-to-cart">
+            <span class="material-icons"> add_shopping_cart </span>
+            <p>Add to cart</p>
+          </button>
+          <button class="prod-add-to-wishlist">
+            <span class="material-icons"> star_border </span>
+            <p>Add to wishlist</p>
+          </button>
+          <button class="prod-add-to-watchlist">
+            <span class="material-icons-outlined"> remove_red_eye </span>
+            <p>Add to watchlist</p>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img-cont">
+        <a href="{% url 'main:product' %}" class="prod-link">
+          <img
+            src="https://images.pexels.com/photos/1279107/pexels-photo-1279107.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+            alt=""
+            class="vis"
+          />
+          <p class="view-product">
+            <span class="material-icons-outlined" style="margin-right: 6.75px">
+              launch </span
+            >View Product
+          </p>
+        </a>
+
+        <button class="prod-account">
+          <span class="material-icons"> stars </span>
+          <p>Top Rated Seller</p>
+        </button>
+      </div>
+
+      <div class="prod-wrapper">
+        <div class="prod-text-cont">
+          <p class="prod-name">
+            Google Home Mini with Google Assistant Voice Enabled Chalk Grey New
+            In Retail
+          </p>
+          <div class="prod-ratings">
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star_border </span>
+          </div>
+          <p class="prod-price">USD 23.95</p>
+          <p class="prod-shipping">+$27.05 shipping estimate</p>
+        </div>
+
+        <div class="prod-buttons-cont">
+          <button class="prod-add-to-cart">
+            <span class="material-icons"> add_shopping_cart </span>
+            <p>Add to cart</p>
+          </button>
+          <button class="prod-add-to-wishlist">
+            <span class="material-icons"> star_border </span>
+            <p>Add to wishlist</p>
+          </button>
+          <button class="prod-add-to-watchlist">
+            <span class="material-icons-outlined"> remove_red_eye </span>
+            <p>Add to watchlist</p>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="home__becomeASeller">hell</div>
+</div>
+
 {% endblock viewContent %}

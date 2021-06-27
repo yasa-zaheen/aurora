@@ -1,3 +1,20 @@
+/* Variables */
+
+:root {
+  --black: #2f2f2f;
+  --white: #fafafa;
+  --darkBlue: #293241;
+  --mediumBlue: #3d5a80;
+  --lightBlue: #98c1d9;
+  --paleBlue: #e0fbfc;
+  --orange: #ee6c4d;
+  --red: #ef233c;
+
+  --shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
+}
+
+/* --- */
+
 * {
   margin: 0px;
   padding: 0px;
