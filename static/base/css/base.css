@@ -76,6 +76,8 @@ button {
 
 p {
   font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
 }
 
 .s-s {
@@ -92,6 +94,10 @@ p {
 
 .s-xl {
   font-size: 17.5px;
+}
+
+.s-xxL {
+  font-size: 25px;
 }
 
 .w-l {

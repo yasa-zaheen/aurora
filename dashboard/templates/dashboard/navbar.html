@@ -8,13 +8,14 @@
 <link rel="stylesheet" href="{% static 'dashboard/css/navbar.css' %}" />
 
 <nav>
-  <div class="img-cont">
-    <img
-      src="https://images.unsplash.com/photo-1621525205234-474337268a26?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=60"
-      alt=""
-      class="vis"
-    />
-  </div>
+  <div
+    class="img-cont"
+    style="
+      background-image: url('https://images.unsplash.com/photo-1621525205234-474337268a26?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=60');
+      background-size: cover;
+      background-position: center;
+    "
+  ></div>
 
   <ul>
     <a id="nav-home" href="{% url 'dashboard:home' %}">
