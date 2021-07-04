@@ -29,26 +29,36 @@
     </div>
   </div>
 
-  <div style="display: flex; justify-content: space-between">
-    <div class="home__module shadow bg-darkBlue">
+  <div
+    style="display: flex; justify-content: space-between; margin-bottom: 25px"
+  >
+    <div class="home__smallModule shadow bg-darkBlue">
       <p class="s-xxl w-h c-white">Cart</p>
       <p class="s-m w-m c-white">
         You have 3 items worth USD 2280.62 in your cart.
       </p>
     </div>
 
-    <div class="home__module shadow bg-orange">
+    <div class="home__smallModule shadow bg-orange">
       <p class="s-xxl w-h c-white">Watchlist</p>
       <p class="s-m w-m c-white">
         Price decreased for 1 product. Stock increased for 2 products.
       </p>
     </div>
 
-    <div class="home__module shadow bg-mediumBlue">
+    <div class="home__smallModule shadow bg-mediumBlue">
       <p class="s-xxl w-h c-white">Wishlist</p>
       <p class="s-m w-m c-white">You have 3 items in your wishlist.</p>
     </div>
   </div>
+
+  <div class="home__mediumModule shadow bg-white">
+    <p class="s-xxl w-h c-black">Revenue</p>
+    <canvas id="revenueSales__graph"></canvas>
+  </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
+<script src="{% static 'dashboard/js/home.js' %}"></script>
 
 {% endblock viewContent %}
