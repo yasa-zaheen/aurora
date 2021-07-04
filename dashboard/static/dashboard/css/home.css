@@ -60,7 +60,7 @@
 
 .home__mediumModule {
   height: calc(50vh - 100px);
-  width: calc((100% - 50px) / 2);
+  width: calc((100% - 25px) / 2);
   border-radius: 15px;
   padding: 25px;
   display: flex;
@@ -72,4 +72,14 @@
   width: 100%;
   height: 100%;
   padding: 0px 0px 25px 0px;
+}
+
+.home__crm {
+  width: 100%;
+}
+
+.home__crm__header,
+.home__crm__text {
+  border-bottom: 1px solid #ffffff2f;
+  padding: 12.5px 0px;
 }

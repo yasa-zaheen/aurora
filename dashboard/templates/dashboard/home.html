@@ -52,9 +52,46 @@
     </div>
   </div>
 
-  <div class="home__mediumModule shadow bg-white">
-    <p class="s-xxl w-h c-black">Revenue</p>
-    <canvas id="revenueSales__graph"></canvas>
+  <div style="display: flex; justify-content: space-between">
+    <div class="home__mediumModule shadow bg-white">
+      <p class="s-xxl w-h c-black">Revenue</p>
+      <canvas id="revenueSales__graph"></canvas>
+    </div>
+
+    <div class="home__mediumModule shadow bg-black">
+      <p class="s-xxl w-h c-white">CRM</p>
+      <table class="home__crm">
+        <thead>
+          <th align="center" class="home__crm__header" style="width: 50%">
+            <p class="s-l w-h c-white">Order ID</p>
+          </th>
+          <th align="center" class="home__crm__header" style="width: 25%">
+            <p class="s-l w-h c-white">Price</p>
+          </th>
+          <th align="center" class="home__crm__header" style="width: 25%">
+            <p class="s-l w-h c-white">Detail</p>
+          </th>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="home__crm__text">
+              <p class="s-s w-m c-white">
+                Apple iPhone 12 Pro Max - 256gb - Unlocked - Factory Sealed -
+                Factory Warranty
+              </p>
+            </td>
+            <td class="home__crm__text">
+              <p class="s-s w-m c-white">USD 1350.75</p>
+            </td>
+            <td class="home__crm__text">
+              <button class="c-black bg-white">
+                <p class="s-s w-m">Details</p>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 
