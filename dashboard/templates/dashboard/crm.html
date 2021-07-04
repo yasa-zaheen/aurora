@@ -5,7 +5,16 @@
 <link rel="stylesheet" href="{% static 'dashboard/css/crm.css' %}" />
 
 <div class="crm shadow">
-  <p class="s-xl w-h">Customer Relationship Manager</p>
+  <div class="crm__search">
+    <input
+      type="text"
+      class="crm__search__search"
+      placeholder="Search in Customer Relationship Manager"
+    />
+    <button class="bg-orange c-white searchBtn">
+      <span class="material-icons-outlined s-l w-l"> search </span>
+    </button>
+  </div>
 
   <table class="crm__crm">
     <thead>

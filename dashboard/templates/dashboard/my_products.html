@@ -5,7 +5,16 @@
 <link rel="stylesheet" href="{% static 'dashboard/css/my_products.css' %}" />
 
 <div class="my_products shadow">
-  <p class="s-xl w-h">My Products</p>
+  <div class="my_products__search">
+    <input
+      type="text"
+      class="my_products__search__search"
+      placeholder="Search in My Products"
+    />
+    <button class="bg-orange c-white searchBtn">
+      <span class="material-icons-outlined s-l w-l"> search </span>
+    </button>
+  </div>
 
   <table class="my_products__my_products">
     <thead>
