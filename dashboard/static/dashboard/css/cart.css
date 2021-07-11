@@ -1,12 +1,12 @@
 /* CSS from other files */
 
 #nav-cart {
-  background-color: #293241;
-  color: white;
+  background-color: #ffffffaf;
+  color: var(--black);
 }
 
 .view-cont {
-  width: calc(60vw - 50px - 12.5px) !important;
+  width: calc(60vw - 25px - 12.5px) !important;
   padding: 0px !important;
 }
 
@@ -17,9 +17,9 @@
 /* Cart */
 
 .cart {
-  height: calc(100vh - 25px);
+  height: calc(100vh);
   overflow: scroll;
-  padding: 0px 12.5px 25px 25px;
+  padding: 25px 12.5px 25px 25px;
 }
 
 .cart__product {
@@ -65,14 +65,13 @@
 /* Checkout Information */
 
 .checkoutInfo {
-  height: calc(100vh - 25px);
+  height: calc(100vh);
   width: calc(20vw + 12.5px);
   overflow-y: scroll;
   position: absolute;
-  top: 25px;
+  top: 0px;
   right: 25px;
-  padding-left: 12.5px;
-  padding-bottom: 25px;
+  padding: 25px 0px 25px 12.5px;
 }
 
 .checkoutInfo__userInfo {

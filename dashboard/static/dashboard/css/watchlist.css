@@ -1,19 +1,18 @@
 /* CSS from other files */
 
 #nav-watchlist {
-  background-color: #293241;
-  color: white;
+  background-color: #ffffffaf;
+  color: var(--black);
 }
 
 .view-cont {
-  padding-right: 0px !important;
+  padding: 0px !important;
 }
 
 /* Watchlist */
 
 .watchlist {
-  width: calc(100% - 25px);
-  margin-left: 25px;
+  width: calc(100%);
   height: 100%;
   padding: 25px;
   border-radius: 15px;

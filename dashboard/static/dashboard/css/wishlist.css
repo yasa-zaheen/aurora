@@ -1,21 +1,21 @@
 /* CSS from other files */
 
 #nav-wishlist {
-  background-color: #293241;
-  color: white;
+  background-color: #ffffffaf;
+  color: var(--black);
 }
 
 .view-cont {
   width: calc(80vw - 25px);
-  padding: 0 !important;
+  padding: 0px !important;
 }
 
 /* Wishlist */
 
 .wishlist {
-  height: calc(100vh - 25px);
+  height: calc(100vh);
   overflow: scroll;
-  padding: 0px 0px 25px 25px;
+  padding: 25px;
 }
 
 .wishlist__product {

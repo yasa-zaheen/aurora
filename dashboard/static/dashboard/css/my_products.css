@@ -1,15 +1,14 @@
 /* CSS from other files */
 
-#nav-sellerDashboard {
-  background-color: #293241;
-  color: white;
+#nav-my-products {
+  background-color: #ffffffaf;
+  color: var(--black);
 }
 
 /* My Products */
 
 .my_products {
-  height: calc(100vh - 50px);
-  margin-left: 25px;
+  height: calc(100vh);
   border-radius: 15px;
   padding: 25px;
 }
