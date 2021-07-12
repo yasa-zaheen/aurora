@@ -2,56 +2,27 @@
 <hr />
 {% block content %}
 <link rel="stylesheet" href="{% static 'authentication/css/sign_in.css' %}" />
-<div class="main">
-  <div class="col1">
-    <img src="{% static 'authentication/img/sign_in.svg' %}" class="sign_in" />
+<div class="sign-in">
+  <div class="sign-in__img">
+    <img src="{% static 'authentication/img/sign_in.svg' %}" alt="" />
   </div>
+  <div class="sign-in__form">
+    <p class="s-2l w-h">Welcome back!</p>
+    <pre
+      class="s-l w-m"
+    >Don't have an account? <a href="{% url 'authentication:sign_up' %}" class="c-orange">Sign up!</a></pre>
 
-  <div class="col2">
-    <h1 class="title">Sign In To Aurora</h1>
-
-    <input type="text" class="username" placeholder="Username" />
-    <input type="password" class="password" placeholder="Password" />
-    <button class="sign-in">Sign In</button>
-
-    <h2 class="message">
-      Don't have an account?<a
-        href="{% url 'authentication:sign_up' %}"
-        class="message"
-        >Sign up here!</a
-      >
-    </h2>
-    <h2 class="message">
-      Forgot password?<a
-        href="{% url 'authentication:forgot_password' %}"
-        class="message"
-        >Click here!</a
-      >
-    </h2>
-
-    <div class="continue">
-      <hr />
-      <p class="continue">or continue with</p>
-      <hr />
+    <div style="margin: 25px 0px">
+      <p class="s-m w-m">Email Address</p>
+      <input type="text" class="s-l w-m" />
+      <p class="s-m w-m">Password</p>
+      <input type="text" class="s-l w-m" />
+      <pre
+        class="s-l w-m"
+      >Forgot password? <a href="{% url 'authentication:forgot_password' %}" class="c-orange">Click here!</a></pre>
     </div>
 
-    <div class="sign-ins">
-      <button class="sign-ins google">
-        <img
-          src="{% static 'authentication/img/google.png' %}"
-          class="google"
-        />
-      </button>
-      <button class="sign-ins apple">
-        <img src="{% static 'authentication/img/apple.png' %}" class="apple" />
-      </button>
-      <button class="sign-ins facebook">
-        <img
-          src="{% static 'authentication/img/facebook.png' %}"
-          class="facebook"
-        />
-      </button>
-    </div>
+    <button class="bg-orange c-white stretch padding">Sign in</button>
   </div>
 </div>
 {% endblock content %}

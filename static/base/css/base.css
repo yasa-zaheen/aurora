@@ -42,6 +42,21 @@ button {
   background-color: #293241;
 }
 
+a {
+  outline: none;
+  text-decoration: none;
+  color: black;
+}
+
+input {
+  padding: 6.25px 12.5px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #2f2f2f2f;
+  margin: 6.25px 0px;
+  width: 100%;
+}
+
 /* -- */
 
 ::-webkit-scrollbar {
@@ -80,6 +95,12 @@ p {
   align-items: center;
 }
 
+pre {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+}
+
 .s-s {
   font-size: 10px;
 }
@@ -98,6 +119,10 @@ p {
 
 .s-xxL {
   font-size: 25px;
+}
+
+.s-2l {
+  font-size: 30px;
 }
 
 .w-l {
@@ -201,6 +226,22 @@ img {
   background-color: white;
   color: #2f2f2f;
   border: 1px dashed #2f2f2f;
+}
+
+.frost {
+  position: absolute;
+  border-radius: 100%;
+  filter: blur(50px);
+  z-index: -1;
+  opacity: 0.25;
+}
+
+.stretch {
+  width: 100%;
+}
+
+.padding {
+  padding: 12.5px;
 }
 
 /* ----- Product Card ----- */

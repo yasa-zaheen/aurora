@@ -3,50 +3,26 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'authentication/css/sign_up.css' %}" />
 
-<div class="main">
-  <div class="col1">
-    <img src="{% static 'authentication/img/sign_up.svg' %}" class="sign_up" />
+<div class="sign-up">
+  <div class="sign-up__img">
+    <img src="{% static 'authentication/img/sign_up.svg' %}" alt="" />
   </div>
+  <div class="sign-up__form">
+    <p class="s-2l w-h">Welcome to Aurora!</p>
+    <pre
+      class="s-l w-m"
+    >Already have an account? <a href="{% url 'authentication:sign_in' %}" class="c-darkBlue">Sign in!</a></pre>
 
-  <div class="col2">
-    <h1 class="title">Sign Up For Aurora</h1>
-
-    <input type="text" class="username" placeholder="Username" />
-    <input type="email" class="email" placeholder="Email" />
-    <input type="password" class="password" placeholder="Password" />
-    <button class="sign-up">Sign Up</button>
-
-    <h2 class="message">
-      Already have an account?<a
-        href="{% url 'authentication:sign_in' %}"
-        class="message"
-        >Sign in here!</a
-      >
-    </h2>
-
-    <div class="continue">
-      <hr />
-      <p class="continue">or continue with</p>
-      <hr />
+    <div style="margin: 25px 0px">
+      <p class="s-m w-m">Email Address</p>
+      <input type="text" class="s-l w-m" />
+      <p class="s-m w-m">Password</p>
+      <input type="text" class="s-l w-m" />
+      <p class="s-m w-m">Confirm Password</p>
+      <input type="text" class="s-l w-m" />
     </div>
 
-    <div class="sign-ins">
-      <button class="sign-ins google">
-        <img
-          src="{% static 'authentication/img/google.png' %}"
-          class="google"
-        />
-      </button>
-      <button class="sign-ins apple">
-        <img src="{% static 'authentication/img/apple.png' %}" class="apple" />
-      </button>
-      <button class="sign-ins facebook">
-        <img
-          src="{% static 'authentication/img/facebook.png' %}"
-          class="facebook"
-        />
-      </button>
-    </div>
+    <button class="bg-darkBlue c-white stretch padding">Sign up</button>
   </div>
 </div>
 
