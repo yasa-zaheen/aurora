@@ -44,6 +44,7 @@ a {
   text-decoration: none;
   color: black;
   transition: 0s !important;
+  outline: none;
 }
 
 a:hover {
