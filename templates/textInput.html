@@ -1,0 +1,15 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'base/css/textInput.css' %}" />
+
+<div class="textInput">
+  <p class="s-m w-m">{{ title }}</p>
+  <div class="textInput__inputContainer">
+    <span class="material-icons-outlined inputContainer__icon s-xl w-m">
+      {{ icon }}
+    </span>
+    <input class="inputContainer__input s-l w-m" type="text" />
+  </div>
+</div>
+
+<script src="{% static 'base/js/anime.min.js' %}"></script>
+<script src="{% static 'base/js/textInput.js' %}"></script>
