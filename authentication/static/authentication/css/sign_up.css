@@ -12,6 +12,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 25px;
 }
 
 .sign-up__img,
@@ -20,11 +21,13 @@ nav {
   width: 50%;
   display: flex;
   justify-content: center;
+  border-radius: 15px;
 }
 
 .sign-up__img {
   margin-right: 12.5px;
   padding: 25px;
+  align-items: center;
   background-color: #2932410f;
 }
 

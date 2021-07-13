@@ -5,6 +5,7 @@
 <div class="sign-in">
   <div class="sign-in__img">
     <img src="{% static 'authentication/img/sign_in.svg' %}" alt="" />
+    <div class="frost bg-orange" style="height: 50vh; width: 50vh"></div>
   </div>
   <div class="sign-in__form">
     <p class="s-2l w-h">Welcome back!</p>
@@ -14,9 +15,9 @@
 
     <div style="margin: 25px 0px">
       <p class="s-m w-m">Email Address</p>
-      <input type="text" class="s-l w-m" />
+      <input type="text" class="text s-l w-m" />
       <p class="s-m w-m">Password</p>
-      <input type="text" class="s-l w-m" />
+      <input type="text" class="text s-l w-m" />
       <pre
         class="s-l w-m"
       >Forgot password? <a href="{% url 'authentication:forgot_password' %}" class="c-orange">Click here!</a></pre>
