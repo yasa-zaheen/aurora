@@ -13,17 +13,32 @@
       class="s-l w-m"
     >Don't have an account? <a href="{% url 'authentication:sign_up' %}" class="c-orange">Sign up!</a></pre>
 
-    <div style="margin: 25px 0px">
-      <p class="s-m w-m">Email Address</p>
-      <input type="text" class="text s-l w-m" />
-      <p class="s-m w-m">Password</p>
-      <input type="text" class="text s-l w-m" />
-      <pre
-        class="s-l w-m"
-      >Forgot password? <a href="{% url 'authentication:forgot_password' %}" class="c-orange">Click here!</a></pre>
-    </div>
+    <form method="POST">
+      <div style="margin: 25px 0px">
+        {% with title="Enter your email here" %}
+        <span></span>
+        {% include "templates/textInput.html" with icon="email" type="email" %}
+        <span></span>
+        {% endwith %}
+        <!-- ---------- -->
+        {% with title="Enter your password here" %}
+        <span></span>
+        {% with type="password" %}
+        <span></span>
+        {% include "templates/textInput.html" with icon="lock" %}
+        <span></span>
+        {% endwith %}
+        <span></span>
+        {% endwith %}
+        <pre
+          class="s-l w-m"
+        >Forgot password? <a href="{% url 'authentication:forgot_password' %}" class="c-orange">Click here!</a></pre>
+      </div>
 
-    <button class="bg-orange c-white stretch padding">Sign in</button>
+      <button class="bg-orange c-white stretch padding" type="submit">
+        Sign in
+      </button>
+    </form>
   </div>
 </div>
 {% endblock content %}

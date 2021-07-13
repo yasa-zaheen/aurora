@@ -12,18 +12,45 @@
     <p class="s-2l w-h">Welcome to Aurora!</p>
     <pre
       class="s-l w-m"
-    >Already have an account? <a href="{% url 'authentication:sign_in' %}" class="c-darkBlue">Sign in!</a></pre>
+    >Already have an account? <a href="{% url 'authentication:sign_in' %}" class="c-medium-blue">Sign in!</a></pre>
 
-    <div style="margin: 25px 0px">
-      <p class="s-m w-m">Email Address</p>
-      <input type="text" class="text s-l w-m" />
-      <p class="s-m w-m">Password</p>
-      <input type="text" class="text s-l w-m" />
-      <p class="s-m w-m">Confirm Password</p>
-      <input type="text" class="text s-l w-m" />
-    </div>
+    <form method="POST">
+      <div style="margin: 25px 0px">
+        {% with title="Enter your email here" %}
+        <span></span>
+        {% with type="email" %}
+        <span></span>
+        {% include "templates/textInput.html" with icon="email" %}
+        <span></span>
+        {% endwith %}
+        <span></span>
+        {% endwith %}
+        <!-- ------ -->
+        {% with title="Enter your password here" %}
+        <span></span>
+        {% with type="password" %}
+        <span></span>
+        {% include "templates/textInput.html" with icon="lock" %}
+        <span></span>
+        {% endwith %}
+        <span></span>
+        {% endwith %}
+        <!-- ------ -->
+        {% with title="Confirm your password here" %}
+        <span></span>
+        {% with type="password" %}
+        <span></span>
+        {% include "templates/textInput.html" with icon="check" %}
+        <span></span>
+        {% endwith %}
+        <span></span>
+        {% endwith %}
+      </div>
 
-    <button class="bg-darkBlue c-white stretch padding">Sign up</button>
+      <button class="bg-darkBlue c-white stretch padding" type="submit">
+        Sign up
+      </button>
+    </form>
   </div>
 </div>
 

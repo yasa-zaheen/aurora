@@ -4,6 +4,10 @@ nav {
   display: none !important;
 }
 
+.textInput:focus-within {
+  border: 1px solid var(--darkBlue);
+}
+
 /* End */
 
 .sign-up {
