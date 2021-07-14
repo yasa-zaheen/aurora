@@ -244,6 +244,32 @@ img {
   padding: 12.5px;
 }
 
+/* Messages */
+
+.error {
+  padding: 12.5px 25px;
+  background-color: #ef233c2f;
+  border: 1px solid #ef233c;
+  border-radius: 5px;
+  margin: 12.5px 0px;
+}
+
+.warning {
+  padding: 12.5px 25px;
+  background-color: #ee6c4d2f;
+  border: 1px solid #ee6c4d;
+  border-radius: 5px;
+  margin: 12.5px 0px;
+}
+
+.success {
+  padding: 12.5px 25px;
+  background-color: #2932412f;
+  border: 1px solid #293241;
+  border-radius: 5px;
+  margin: 12.5px 0px;
+}
+
 /* ----- Product Card ----- */
 
 div.prod-card {

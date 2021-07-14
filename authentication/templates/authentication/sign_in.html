@@ -8,24 +8,51 @@
     <div class="frost bg-orange" style="height: 50vh; width: 50vh"></div>
   </div>
   <div class="sign-in__form">
+    {% if messages %} {% for message in messages %}
+    <p class="s-l w-h {{ message.tags }}">{{ message }}</p>
+    {% endfor %} {% endif %}
+
     <p class="s-2l w-h">Welcome back!</p>
     <pre
       class="s-l w-m"
     >Don't have an account? <a href="{% url 'authentication:sign_up' %}" class="c-orange">Sign up!</a></pre>
 
     <form method="POST">
+      {% csrf_token %}
       <div style="margin: 25px 0px">
-        {% with title="Enter your email here" %}
+        <!-- Email -->
+        {% with type="text" %}
         <span></span>
-        {% include "templates/textInput.html" with icon="email" type="email" %}
+        {% with title="Username" %}
+        <span></span>
+        {% with icon="person" %}
+        <span></span>
+        {% with name="username" %}
+        <span></span>
+        {% include "templates/textInput.html" %}
         <span></span>
         {% endwith %}
-        <!-- ---------- -->
-        {% with title="Enter your password here" %}
         <span></span>
+        {% endwith %}
+        <span></span>
+        {% endwith %}
+        <span></span>
+        {% endwith %}
+
+        <!-- Password -->
         {% with type="password" %}
         <span></span>
-        {% include "templates/textInput.html" with icon="lock" %}
+        {% with title="Password" %}
+        <span></span>
+        {% with icon="password" %}
+        <span></span>
+        {% with name="password" %}
+        <span></span>
+        {% include "templates/textInput.html" %}
+        <span></span>
+        {% endwith %}
+        <span></span>
+        {% endwith %}
         <span></span>
         {% endwith %}
         <span></span>
@@ -34,6 +61,16 @@
           class="s-l w-m"
         >Forgot password? <a href="{% url 'authentication:forgot_password' %}" class="c-orange">Click here!</a></pre>
       </div>
+      <!-- 
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+          {{ message.tags }}
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %} -->
 
       <button class="bg-orange c-white stretch padding" type="submit">
         Sign in
