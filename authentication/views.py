@@ -1,13 +1,13 @@
 # Imports
 
-from django.shortcuts import redirect, render
-from django.contrib.auth import authenticate, login
+from django.shortcuts import redirect, render, reverse
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-
 from django.contrib import messages
 
+
 from django.core.mail import send_mail
-from django.utils.http import urlsafe_base64_encode
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 
 
@@ -46,12 +46,17 @@ def sign_up(request):
     return render(request, "authentication/sign_up.html", context)
 
 
+def sign_out(response):
+    logout(response)
+    return redirect(reverse("main:index"))
+
+
 def password_reset(request):
 
     if request.method == "POST":
         email = request.POST["email"]
         user = User.objects.get(email=email)
-        uidb64 = urlsafe_base64_encode((user.id).to_bytes(8, "big"))
+        uidb64 = urlsafe_base64_encode((user.id).to_bytes(2, "big"))
 
         token = PasswordResetTokenGenerator().make_token(user)
 
@@ -61,7 +66,7 @@ def password_reset(request):
             from_email="yasazaheen728@gmail.com",
             recipient_list=[email],
             fail_silently=False,
-            html_message=f"<a href='http://127.0.0.1:8000/auth/' >Click here</a>"
+            html_message=f"<a href='http://127.0.0.1:8000/auth/password_change/{uidb64}/{token}/' >Click here</a>"
         )
 
         messages.add_message(
@@ -71,7 +76,24 @@ def password_reset(request):
     return render(request, "authentication/password_reset.html", context)
 
 
-def password_change(request):
+def password_change(request, uidb64, token):
+
+    user = User.objects.get(id=int.from_bytes(
+        urlsafe_base64_decode(uidb64), "big"))
+
+    if PasswordResetTokenGenerator().check_token(user, token) == True:
+        if request.method == "POST":
+            if request.POST["password"] != request.POST["confirm_password"]:
+                messages.add_message(
+                    request, messages.ERROR, 'Passwords do not match')
+            else:
+                user.set_password(request.POST["password"])
+                user.save()
+                messages.add_message(
+                    request, messages.SUCCESS, 'Passwords reset successfully!')
+                return redirect(reverse("authentication:sign_in"))
+    else:
+        return redirect(reverse("main:index"))
 
     context = {}
     return render(request, "authentication/password_change.html", context)

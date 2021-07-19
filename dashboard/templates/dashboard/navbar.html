@@ -58,6 +58,9 @@
 
   <button class="nav__sign-out">
     <span class="material-icons-outlined"> logout </span>
-    <p>Sign Out</p>
+
+    <a href="{% url 'authentication:sign_out' %}" style="padding: 0; margin: 0">
+      <p class="s-m w-h c-white">Sign Out</p>
+    </a>
   </button>
 </nav>
