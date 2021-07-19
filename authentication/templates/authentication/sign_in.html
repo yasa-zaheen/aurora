@@ -59,18 +59,8 @@
         {% endwith %}
         <pre
           class="s-l w-m"
-        >Forgot password? <a href="{% url 'authentication:forgot_password' %}" class="c-orange">Click here!</a></pre>
+        >Forgot password? <a href="{% url 'authentication:password_reset' %}" class="c-orange">Click here!</a></pre>
       </div>
-      <!-- 
-      {% if messages %}
-      <ul class="messages">
-        {% for message in messages %}
-        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
-          {{ message.tags }}
-        </li>
-        {% endfor %}
-      </ul>
-      {% endif %} -->
 
       <button class="bg-orange c-white stretch padding" type="submit">
         Sign in

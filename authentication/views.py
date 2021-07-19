@@ -6,7 +6,9 @@ from django.contrib.auth.models import User
 
 from django.contrib import messages
 
-import time
+from django.core.mail import send_mail
+from django.utils.http import urlsafe_base64_encode
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
 
 
 # Views
@@ -19,7 +21,6 @@ def sign_in(request):
             password = request.POST["password"]
             user = authenticate(username=username, password=password)
             if user is not None:
-                time.sleep(5)
                 login(request, user)
                 return redirect("/dashboard/home")
             else:
@@ -45,11 +46,32 @@ def sign_up(request):
     return render(request, "authentication/sign_up.html", context)
 
 
-def forgot_password(request):
+def password_reset(request):
+
+    if request.method == "POST":
+        email = request.POST["email"]
+        user = User.objects.get(email=email)
+        uidb64 = urlsafe_base64_encode((user.id).to_bytes(8, "big"))
+
+        token = PasswordResetTokenGenerator().make_token(user)
+
+        send_mail(
+            subject="Password Reset Confirmation",
+            message=f"{uidb64}/{token}",
+            from_email="yasazaheen728@gmail.com",
+            recipient_list=[email],
+            fail_silently=False,
+            html_message=f"<a href='http://127.0.0.1:8000/auth/' >Click here</a>"
+        )
+
+        messages.add_message(
+            request, messages.SUCCESS, 'Email has been sent. Please check your inbox.')
+
     context = {}
-    return render(request, "authentication/forgot_password.html", context)
+    return render(request, "authentication/password_reset.html", context)
 
 
-def update_password(request):
+def password_change(request):
+
     context = {}
-    return render(request, "authentication/update_password.html", context)
+    return render(request, "authentication/password_change.html", context)
