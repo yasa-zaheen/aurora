@@ -42,6 +42,36 @@ def sign_in(request):
 
 
 def sign_up(request):
+
+    if request.method == "POST":
+
+        username = request.POST["username"]
+        email = request.POST["email"]
+        password = request.POST["password"]
+        confirm_password = request.POST["confirm_password"]
+
+        if username == "" or email == "" or password == "" or confirm_password == "":
+            messages.add_message(
+                request, messages.ERROR, 'Fields cannot be empty.')
+        else:
+            try:
+                User.objects.get(username=username)
+
+                messages.add_message(
+                    request, messages.ERROR, 'Username taken.')
+
+            except:
+
+                if password != confirm_password:
+                    messages.add_message(
+                        request, messages.ERROR, 'Passwords do not match')
+                else:
+                    user = User.objects.create(
+                        username=username, email=email, password=password)
+                    user.save()
+
+                    redirect(reverse("dashboard:home"))
+
     context = {}
     return render(request, "authentication/sign_up.html", context)
 

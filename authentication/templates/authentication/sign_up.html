@@ -9,38 +9,86 @@
     <div class="frost bg-darkBlue" style="height: 50vh; width: 50vh"></div>
   </div>
   <div class="sign-up__form">
+    {% if messages %} {% for message in messages %}
+    <p class="s-l w-h {{ message.tags }}">{{ message }}</p>
+    {% endfor %} {% endif %}
+
     <p class="s-2l w-h">Welcome to Aurora!</p>
     <pre
       class="s-l w-m"
     >Already have an account? <a href="{% url 'authentication:sign_in' %}" class="c-medium-blue">Sign in!</a></pre>
 
     <form method="POST">
+      {% csrf_token %}
       <div style="margin: 25px 0px">
+        <!-- Username -->
+        {% with title="Enter your username here" %}
+        <span></span>
+        {% with type="text" %}
+        <span></span>
+        {% with icon="person" %}
+        <span></span>
+        {% with name="username" %}
+        <span></span>
+        {% include "templates/textInput.html" %}
+        <span></span>
+        {% endwith %}
+        <span></span>
+        {% endwith %}
+        <span></span>
+        {% endwith %}
+        <span></span>
+        {% endwith %}
+        <!-- Email -->
         {% with title="Enter your email here" %}
         <span></span>
         {% with type="email" %}
         <span></span>
-        {% include "templates/textInput.html" with icon="email" %}
+        {% with icon="email" %}
+        <span></span>
+        {% with name="email" %}
+        <span></span>
+        {% include "templates/textInput.html" %}
         <span></span>
         {% endwith %}
         <span></span>
         {% endwith %}
-        <!-- ------ -->
+        <span></span>
+        {% endwith %}
+        <span></span>
+        {% endwith %}
+        <!-- Password -->
         {% with title="Enter your password here" %}
         <span></span>
         {% with type="password" %}
         <span></span>
-        {% include "templates/textInput.html" with icon="lock" %}
+        {% with icon="password" %}
+        <span></span>
+        {% with name="confirm_password" %}
+        <span></span>
+        {% include "templates/textInput.html" %}
         <span></span>
         {% endwith %}
         <span></span>
         {% endwith %}
-        <!-- ------ -->
+        <span></span>
+        {% endwith %}
+        <span></span>
+        {% endwith %}
+        <!-- Confirm Password -->
         {% with title="Confirm your password here" %}
         <span></span>
         {% with type="password" %}
         <span></span>
-        {% include "templates/textInput.html" with icon="check" %}
+        {% with icon="check" %}
+        <span></span>
+        {% with name="password" %}
+        <span></span>
+        {% include "templates/textInput.html" %}
+        <span></span>
+        {% endwith %}
+        <span></span>
+        {% endwith %}
         <span></span>
         {% endwith %}
         <span></span>
