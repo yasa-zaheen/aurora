@@ -1,5 +1,6 @@
 # Imports
 
+from authentication.models import VerifiedUser
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -9,7 +10,9 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.shortcuts import redirect, render, reverse
 from django.core.mail import send_mail
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.http.response import HttpResponsePermanentRedirect
+from django.http.response import HttpResponse, HttpResponsePermanentRedirect
+
+import hashlib
 
 
 # Views
@@ -49,7 +52,7 @@ def sign_up(request):
 
     if request.method == "POST":
         username = request.POST["username"]
-        email = request.POST["username"]
+        email = request.POST["email"]
         password = request.POST["password"]
 
         if User.objects.filter(username=username).count() != 0:
@@ -68,6 +71,20 @@ def sign_up(request):
             user = User.objects.create_user(
                 username=username, email=email, password=password)
             user.save()
+
+            huid = hashlib.md5(str(user.id).encode()).hexdigest()
+
+            VerifiedUser.objects.create(
+                user=user, huid=huid, is_verified=False)
+
+            send_mail(
+                subject="Verify Account",
+                message=f"{huid}",
+                from_email="yasazaheen728@gmail.com",
+                recipient_list=[email],
+                fail_silently=False,
+                html_message=f"<a href='http://127.0.0.1:8000/auth/verify_user/{huid}/' >Click here</a>"
+            )
 
     return render(request, "authentication/sign_up.html", status=status)
 
@@ -141,6 +158,13 @@ def password_change(request, uidb64, token):
     return render(request, "authentication/password_change.html", context, status=status)
 
 
-def verify_user(request):
+def verify_user(request, huid):
+
+    huid = huid
+
+    verified_user = VerifiedUser.objects.get(huid=huid)
+    verified_user.is_verified = True
+    verified_user.save()
+
     context = {}
-    return
+    return HttpResponse("User Verified")

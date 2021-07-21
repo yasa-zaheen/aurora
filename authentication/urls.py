@@ -15,5 +15,5 @@ urlpatterns = [
     path("password_change/<uidb64>/<token>/",
          views.password_change, name="password_change"),
 
-    path("verify_user/<uidb64>", views.verify_user, name="verify_user")
+    path("verify_user/<huid>/", views.verify_user, name="verify_user")
 ]
