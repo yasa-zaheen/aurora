@@ -113,3 +113,14 @@ class SignUpTests(TestCase):
         })
 
         self.assertEqual(response.status_code, 406)
+
+
+class SignOutTests(TestCase):
+
+    def test_user_is_anonymous(self):
+
+        client = Client()
+
+        response = client.get(reverse("authentication:sign_out"))
+
+        self.assertEqual(response.status_code, 301)

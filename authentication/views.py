@@ -72,9 +72,12 @@ def sign_up(request):
     return render(request, "authentication/sign_up.html", status=status)
 
 
-def sign_out(response):
-    logout(response)
-    return redirect(reverse("authentication:sign_in"))
+def sign_out(request):
+
+    if request.user.is_anonymous:
+        return HttpResponsePermanentRedirect(reverse("authentication:sign_in"))
+    else:
+        logout(request)
 
 
 def password_reset(request):
