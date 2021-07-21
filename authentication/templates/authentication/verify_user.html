@@ -1,0 +1,18 @@
+{% extends "templates/base.html" %} {% load static %}
+<hr />
+{% block content %}
+<link
+  rel="stylesheet"
+  href="{% static 'authentication/css/verify_user.css' %}"
+/>
+
+<div class="verify-user">
+  <div class="verify-user__img">
+    <img src="{% static 'authentication/img/verify_user.svg' %}" alt="" />
+    <div class="frost bg-black" style="height: 50vh; width: 50vh"></div>
+  </div>
+  <div class="verify-user__form">
+    <p class="s-2l w-h">Congrats! You have been verified!</p>
+  </div>
+</div>
+{% endblock content %}
