@@ -86,6 +86,8 @@ def sign_up(request):
                 html_message=f"<a href='http://127.0.0.1:8000/auth/verify_user/{huid}/' >Click here</a>"
             )
 
+            return redirect(reverse("dashboard:home"))
+
     return render(request, "authentication/sign_up.html", status=status)
 
 
