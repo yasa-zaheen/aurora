@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.test import TestCase, Client
 from django.shortcuts import reverse
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
 
 
 # Create your tests here.
@@ -114,7 +115,7 @@ class SignOutTests(TestCase):
 
 class PasswordResetTests(TestCase):
 
-    def setUp(self):
+    def test_account_with_email_does_not_exists(self):
 
         client = Client()
 
@@ -124,9 +125,27 @@ class PasswordResetTests(TestCase):
             password="testuser"
         )
 
-    def test_account_with_email_does_not_exists(self):
-
-        response = self.client.post(reverse("authentication:password_reset"), {
-                                    "email": "testuser2@gmail.com"})
+        response = client.post(reverse("authentication:password_reset"), {
+            "email": "testuser2@gmail.com"})
 
         self.assertEqual(response.status_code, 404)
+
+
+class PasswordChangeTests(TestCase):
+
+    def test_password_less_than_eight_characters(self):
+
+        user = User.objects.create_user(
+            username="testuser",
+            email="testuser@gmail.com",
+            password="testuser"
+        )
+
+        uidb64 = urlsafe_base64_encode((user.id).to_bytes(2, "big"))
+        token = PasswordResetTokenGenerator().make_token(user)
+
+        response = self.client.post(f"/auth/password_change/{uidb64}/{token}/", {
+            "password": "testus",
+        })
+
+        self.assertEqual(response.status_code, 406)
