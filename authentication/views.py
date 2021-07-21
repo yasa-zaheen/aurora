@@ -1,44 +1,40 @@
 # Imports
 
-from django.shortcuts import redirect, render, reverse
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from django.contrib import messages
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.http.response import HttpResponse, HttpResponsePermanentRedirect
 
 
+from django.shortcuts import redirect, render, reverse
 from django.core.mail import send_mail
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.contrib.auth.tokens import PasswordResetTokenGenerator
 
 
 # Views
-
 def sign_in(request):
 
     if request.user.is_anonymous:
+        status = 200
         if request.method == "POST":
-            username = request.POST["username"]
-            password = request.POST["password"]
+            username = request.POST['username']
+            password = request.POST['password']
+
             user = authenticate(username=username, password=password)
+
             if user is not None:
                 login(request, user)
-                return redirect("/dashboard/home")
+                return redirect(reverse("dashboard:home"))
             else:
-                try:
-                    user = User.objects.get(username=username)
-                    if user is not None:
-                        messages.add_message(
-                            request, messages.WARNING, 'Password is incorrect.')
-
-                except:
-                    if user is None:
-                        messages.add_message(
-                            request, messages.ERROR, 'There is no account under this username.')
+                messages.add_message(request, messages.ERROR,
+                                     "Incorrect username or password.")
+                status = 403
 
         context = {}
-        return render(request, "authentication/sign_in.html", context)
+        return render(request, "authentication/sign_in.html", context, status=status)
     else:
-        return redirect("/dashboard/home")
+        return HttpResponsePermanentRedirect(reverse("dashboard:home"))
 
 
 def sign_up(request):
@@ -127,3 +123,8 @@ def password_change(request, uidb64, token):
 
     context = {}
     return render(request, "authentication/password_change.html", context)
+
+
+def verify_user(request):
+    context = {}
+    return
