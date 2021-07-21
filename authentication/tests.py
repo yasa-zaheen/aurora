@@ -1,13 +1,17 @@
 from django.contrib.auth.models import User
 from django.test import TestCase, Client
 from django.shortcuts import reverse
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+
 
 # Create your tests here.
 
 
 class SignInTests(TestCase):
 
-    def test_incorrect_username(self):
+    def setUp(self):
+
+        client = Client()
 
         User.objects.create_user(
             username="testuser",
@@ -15,9 +19,9 @@ class SignInTests(TestCase):
             password="testuser"
         )
 
-        client = Client()
+    def test_incorrect_username(self):
 
-        response = client.post(reverse("authentication:sign_in"), {
+        response = self.client.post(reverse("authentication:sign_in"), {
             "username": "testuser2",
             "password": "testuser",
         })
@@ -26,15 +30,7 @@ class SignInTests(TestCase):
 
     def test_incorrect_password(self):
 
-        User.objects.create_user(
-            username="testuser",
-            email="testuser@gmail.com",
-            password="testuser"
-        )
-
-        client = Client()
-
-        response = client.post(reverse("authentication:sign_in"), {
+        response = self.client.post(reverse("authentication:sign_in"), {
             "username": "testuser",
             "password": "testuser2",
         })
@@ -43,22 +39,18 @@ class SignInTests(TestCase):
 
     def test_user_in_anonymous(self):
 
-        User.objects.create_user(
-            username="testuser",
-            email="testuser@gmail.com",
-            password="testuser"
-        )
+        self.client.login(username="testuser", password="testuser")
 
-        client = Client()
-
-        client.login(username="testuser", password="testuser")
-
-        response = client.get(reverse("authentication:sign_in"))
+        response = self.client.get(reverse("authentication:sign_in"))
 
         self.assertEqual(response.status_code, 301)
 
 
 class SignUpTests(TestCase):
+
+    def setUp(self):
+
+        client = Client()
 
     def test_account_with_username_exists(self):
 
@@ -68,9 +60,7 @@ class SignUpTests(TestCase):
             password="testuser"
         )
 
-        client = Client()
-
-        response = client.post(reverse("authentication:sign_up"), {
+        response = self.client.post(reverse("authentication:sign_up"), {
             "username": "testuser",
             "email": "testuser2@gmail.com",
             "password": "testuser",
@@ -86,9 +76,7 @@ class SignUpTests(TestCase):
             password="testuser"
         )
 
-        client = Client()
-
-        response = client.post(reverse("authentication:sign_up"), {
+        response = self.client.post(reverse("authentication:sign_up"), {
             "username": "testuser2",
             "email": "testuser@gmail.com",
             "password": "testuser",
@@ -104,9 +92,7 @@ class SignUpTests(TestCase):
             password="testuser"
         )
 
-        client = Client()
-
-        response = client.post(reverse("authentication:sign_up"), {
+        response = self.client.post(reverse("authentication:sign_up"), {
             "username": "testuser2",
             "email": "testuser2@gmail.com",
             "password": "testus",
@@ -124,3 +110,23 @@ class SignOutTests(TestCase):
         response = client.get(reverse("authentication:sign_out"))
 
         self.assertEqual(response.status_code, 301)
+
+
+class PasswordResetTests(TestCase):
+
+    def setUp(self):
+
+        client = Client()
+
+        User.objects.create_user(
+            username="testuser",
+            email="testuser@gmail.com",
+            password="testuser"
+        )
+
+    def test_account_with_email_does_not_exists(self):
+
+        response = self.client.post(reverse("authentication:password_reset"), {
+                                    "email": "testuser2@gmail.com"})
+
+        self.assertEqual(response.status_code, 404)

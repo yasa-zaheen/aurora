@@ -78,45 +78,58 @@ def sign_out(request):
         return HttpResponsePermanentRedirect(reverse("authentication:sign_in"))
     else:
         logout(request)
+        return HttpResponsePermanentRedirect(reverse("authentication:sign_in"))
 
 
 def password_reset(request):
 
+    status = 200
+
     if request.method == "POST":
         email = request.POST["email"]
-        user = User.objects.get(email=email)
-        uidb64 = urlsafe_base64_encode((user.id).to_bytes(2, "big"))
 
-        token = PasswordResetTokenGenerator().make_token(user)
+        if User.objects.filter(email=email).count() == 0:
+            messages.add_message(
+                request, messages.ERROR, "Email does not belong to any account.")
+            status = 404
+        else:
+            user = User.objects.get(email=email)
+            uidb64 = urlsafe_base64_encode((user.id).to_bytes(2, "big"))
+            token = PasswordResetTokenGenerator().make_token(user)
 
-        send_mail(
-            subject="Password Reset Confirmation",
-            message=f"{uidb64}/{token}",
-            from_email="yasazaheen728@gmail.com",
-            recipient_list=[email],
-            fail_silently=False,
-            html_message=f"<a href='http://127.0.0.1:8000/auth/password_change/{uidb64}/{token}/' >Click here</a>"
-        )
+            send_mail(
+                subject="Password Reset Confirmation",
+                message=f"{uidb64}/{token}",
+                from_email="yasazaheen728@gmail.com",
+                recipient_list=[email],
+                fail_silently=False,
+                html_message=f"<a href='http://127.0.0.1:8000/auth/password_change/{uidb64}/{token}/' >Click here</a>"
+            )
 
-        messages.add_message(
-            request, messages.SUCCESS, 'Email has been sent. Please check your inbox.')
+            messages.add_message(
+                request, messages.SUCCESS, 'Email has been sent. Please check your inbox.')
 
     context = {}
-    return render(request, "authentication/password_reset.html", context)
+    return render(request, "authentication/password_reset.html", context, status=status)
 
 
 def password_change(request, uidb64, token):
+
+    status = 200
 
     user = User.objects.get(id=int.from_bytes(
         urlsafe_base64_decode(uidb64), "big"))
 
     if PasswordResetTokenGenerator().check_token(user, token) == True:
         if request.method == "POST":
-            if request.POST["password"] != request.POST["confirm_password"]:
+            password = request.POST["password"]
+
+            if len(password) < 8:
                 messages.add_message(
-                    request, messages.ERROR, 'Passwords do not match')
+                    request, messages.ERROR, "Password must be atleast 8 characters in length.")
+                status = 406
             else:
-                user.set_password(request.POST["password"])
+                user.set_password(password)
                 user.save()
                 messages.add_message(
                     request, messages.SUCCESS, 'Passwords reset successfully!')
@@ -125,7 +138,7 @@ def password_change(request, uidb64, token):
         return redirect(reverse("main:index"))
 
     context = {}
-    return render(request, "authentication/password_change.html", context)
+    return render(request, "authentication/password_change.html", context, status=status)
 
 
 def verify_user(request):
