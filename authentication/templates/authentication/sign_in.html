@@ -29,7 +29,11 @@
         <span></span>
         {% with name="username" %}
         <span></span>
+        {% with required="True" %}
+        <span></span>
         {% include "templates/textInput.html" %}
+        <span></span>
+        {% endwith %}
         <span></span>
         {% endwith %}
         <span></span>
@@ -48,7 +52,11 @@
         <span></span>
         {% with name="password" %}
         <span></span>
+        {% with required="True" %}
+        <span></span>
         {% include "templates/textInput.html" %}
+        <span></span>
+        {% endwith %}
         <span></span>
         {% endwith %}
         <span></span>

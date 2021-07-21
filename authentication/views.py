@@ -166,5 +166,4 @@ def verify_user(request, huid):
     verified_user.is_verified = True
     verified_user.save()
 
-    context = {}
     return HttpResponse("User Verified")
