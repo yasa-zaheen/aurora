@@ -4,22 +4,22 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
-from django.http.response import HttpResponse, HttpResponsePermanentRedirect
 
 
 from django.shortcuts import redirect, render, reverse
 from django.core.mail import send_mail
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.http.response import HttpResponsePermanentRedirect
 
 
 # Views
 def sign_in(request):
 
+    status = 200
     if request.user.is_anonymous:
-        status = 200
         if request.method == "POST":
-            username = request.POST['username']
-            password = request.POST['password']
+            username = request.POST["username"]
+            password = request.POST["password"]
 
             user = authenticate(username=username, password=password)
 
@@ -27,54 +27,54 @@ def sign_in(request):
                 login(request, user)
                 return redirect(reverse("dashboard:home"))
             else:
-                messages.add_message(request, messages.ERROR,
-                                     "Incorrect username or password.")
-                status = 403
+                if User.objects.filter(username=username).count() == 0:
+                    messages.add_message(
+                        request, messages.ERROR, "Username does not belong to any account.")
+                    status = 401
+                else:
+                    messages.add_message(
+                        request, messages.ERROR, "Password is incorrect.")
+                    status = 401
 
         context = {}
         return render(request, "authentication/sign_in.html", context, status=status)
+
     else:
         return HttpResponsePermanentRedirect(reverse("dashboard:home"))
 
 
 def sign_up(request):
 
+    status = 200
+
     if request.method == "POST":
-
         username = request.POST["username"]
-        email = request.POST["email"]
+        email = request.POST["username"]
         password = request.POST["password"]
-        confirm_password = request.POST["confirm_password"]
 
-        if username == "" or email == "" or password == "" or confirm_password == "":
+        if User.objects.filter(username=username).count() != 0:
             messages.add_message(
-                request, messages.ERROR, 'Fields cannot be empty.')
+                request, messages.ERROR, "This username has been taken by another account.")
+            status = 409
+        elif User.objects.filter(email=email).count() != 0:
+            messages.add_message(
+                request, messages.ERROR, "An account has already been opened using this email.")
+            status = 409
+        elif len(password) < 8:
+            messages.add_message(
+                request, messages.ERROR, "Password must be atleast 8 characters in length.")
+            status = 406
         else:
-            try:
-                User.objects.get(username=username)
+            user = User.objects.create_user(
+                username=username, email=email, password=password)
+            user.save()
 
-                messages.add_message(
-                    request, messages.ERROR, 'Username taken.')
-
-            except:
-
-                if password != confirm_password:
-                    messages.add_message(
-                        request, messages.ERROR, 'Passwords do not match')
-                else:
-                    user = User.objects.create(
-                        username=username, email=email, password=password)
-                    user.save()
-
-                    redirect(reverse("dashboard:home"))
-
-    context = {}
-    return render(request, "authentication/sign_up.html", context)
+    return render(request, "authentication/sign_up.html", status=status)
 
 
 def sign_out(response):
     logout(response)
-    return redirect(reverse("main:index"))
+    return redirect(reverse("authentication:sign_in"))
 
 
 def password_reset(request):
