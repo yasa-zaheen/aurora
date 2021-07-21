@@ -10,7 +10,7 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.shortcuts import redirect, render, reverse
 from django.core.mail import send_mail
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.http.response import HttpResponse, HttpResponsePermanentRedirect
+from django.http.response import HttpResponsePermanentRedirect
 
 import hashlib
 
@@ -163,9 +163,19 @@ def password_change(request, uidb64, token):
 def verify_user(request, huid):
 
     huid = huid
-
     verified_user = VerifiedUser.objects.get(huid=huid)
-    verified_user.is_verified = True
-    verified_user.save()
+    status = 200
+    context = {
+        "message": "Congrats! Your account has been verified!"
+    }
 
-    return render(request, "authentication/verify_user.html")
+    if verified_user.is_verified:
+        status = 400
+        context = {
+            "message": "Your account is already verified!"
+        }
+    else:
+        verified_user.is_verified = True
+        verified_user.save()
+
+    return render(request, "authentication/verify_user.html", context, status=status)

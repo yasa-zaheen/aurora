@@ -1,9 +1,11 @@
 from django.contrib.auth.models import User
-from django.test import TestCase, Client
+from django.test import TestCase, Client, client
 from django.shortcuts import reverse
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from .models import VerifiedUser
 
+import hashlib
 
 # Create your tests here.
 
@@ -149,3 +151,26 @@ class PasswordChangeTests(TestCase):
         })
 
         self.assertEqual(response.status_code, 406)
+
+
+class VerifyUserTest(TestCase):
+
+    def test_user_is_not_verified(self):
+
+        user = User.objects.create_user(
+            username="testuser",
+            email="testuser@gmail.com",
+            password="testuser"
+        )
+
+        huid = hashlib.md5(str(user.id).encode()).hexdigest()
+
+        verified_user = VerifiedUser.objects.create(
+            user=user, huid=huid, is_verified=True)
+        verified_user.save()
+
+        client = Client()
+
+        response = client.get(f"/auth/verify_user/{huid}/")
+
+        self.assertEqual(response.status_code, 400)
