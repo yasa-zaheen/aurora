@@ -3,357 +3,394 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'main/css/product_seller.css' %}" />
 
-<div class="main-cont">
-  <div class="col1">
-    <!-- <div class="seller-profile">
-      <p class="business-card">Your business card here</p>
-    </div> -->
+<div class="seller">
+  <div
+    class="seller__info"
+    style="
+      background-image: url(https://images.unsplash.com/photo-1435820394963-a15297f976fd?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGFic3RyYWN0fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=60);
+    "
+  >
+    <div
+      class="info__dp"
+      style="
+        background-image: url(https://lh3.googleusercontent.com/N5q1B95KZoHPTvmgbF2VdgImmXeGPy96cXlMAOpHuz9IiHkNvj97ue0cgnlqCEQIBVMQNPkMxxKi4Yx3QNwHy72LB2BGMZ64a_bYwVQ7jrIhzrPjBZH-Db-kDuGqCYu-8E2Qmkj7ys5zqfp5sDQye64tpwS3XempLk1eAfBKW8-jte5GkQlqTbvFTmwMKpimMscCVP3ltwVvY-909hgNmybzA_0F9VTjzvB1cwvbd1JozmnhfSSh-opByQgZN0wLt06C7WbIXY9K-WzG9EwwBuCbu0RKnz1EzB_ZwxlweP-ifNJS_wSOS7Sq-Brx0I9hyWRUE3qGe0taqcyCeXnv-5cnlqpjb7m8NbuiI54FWHaq88qTfulLJdzRgVU1LD9U1H19pT2ybp2vApilVb9zzd5vyh_9AlQc2sKUekXXMsGSjtwvAYWkQg1PBWcu0exqysE543RO_RZUQCqxrQGwUFSHaL3jZY71jY-QTlrY-c1vgbirdc4HXLLcoEH2Uw70zY9ja7DhXU4x3kKZbW0roM3kx9AaMYdwqqr8kmDThfpTsm4Su0z-lrVOcYvifrCp8OxYUGRcCVaw_HT5zvqj94a5g2Yb5B_9kPUF1oHsU3QedRR0CzHYSZt_62K2oAu0k3gGaXlOznM1HALt1FdhurKIa6NOgGIbfWHAQm9cW0BDSeSMewc22cmg3AFpnn0q-4jo-l_qx043VByCDQHqbqE=w1060-h1588-no?authuser=0);
+      "
+    ></div>
+    <pre class="s-l w-h c-white">
+      Yasa Zaheen <span class="material-icons" style="font-size: 12.5px;">verified</span>
+    </pre>
+    <p class="s-m w-m c-white">yasazaheen@gmail.com</p>
+    <p class="s-s w-m c-white" style="width: 25%">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam autem
+      accusantium culpa, odit dicta eum tempora quod adipisci alias commodi
+      perspiciatis inventore voluptates ab aspernatur recusandae, corrupti sequi
+      laudantium! Minus?
+    </p>
+  </div>
 
-    <div class="seller-returns">
-      <p class="seller-returns">
-        <span class="material-icons seller-returns">keyboard_return</span
-        >Returns
-      </p>
-      <p class="seller-returns-service-rate">Service Rate</p>
-      <div class="seller-returns-service-rate">
-        <div class="seller-returns-service-rate-percentage"></div>
+  <div class="seller__ratings">
+    <div class="ratings__rating bg-darkBlue">
+      <p class="s-l w-h c-white">Communication</p>
+      <p class="s-m w-m c-white">Service rate</p>
+      <div class="progress-bar">
+        <div class="progress bg-darkBlue" style="width: 32%"></div>
       </div>
     </div>
-
-    <div class="seller-delivery">
-      <p class="seller-delivery">
-        <span class="material-icons seller-delivery">timelapse</span>Delivery
-      </p>
-      <p class="seller-delivery-service-rate">Service Rate</p>
-      <div class="seller-delivery-service-rate">
-        <div class="seller-delivery-service-rate-percentage"></div>
+    <div class="ratings__rating bg-orange">
+      <p class="s-l w-h c-white">Shipping</p>
+      <p class="s-m w-m c-white">Service rate</p>
+      <div class="progress-bar">
+        <div class="progress bg-orange" style="width: 50%"></div>
       </div>
     </div>
-
-    <div class="seller-recommendation">
-      <p class="seller-recommendation">
-        <span class="material-icons seller-recommendation">feedback</span
-        >Recommendation
-      </p>
-      <p class="seller-recommendation-rate">Recommendation Rate</p>
-
-      <div class="seller-recommendation-rate">
-        <div class="seller-recommendation-positive-rate-percentage"></div>
-        <div class="seller-recommendation-negative-rate-percentage"></div>
+    <div class="ratings__rating bg-mediumBlue">
+      <p class="s-l w-h c-white">Return</p>
+      <p class="s-m w-m c-white">Service rate</p>
+      <div class="progress-bar">
+        <div class="progress bg-mediumBlue" style="width: 90%"></div>
       </div>
     </div>
-
-    <div class="seller-prods-sold">
-      <p class="seller-prods-sold">
-        <span class="material-icons seller-prods-sold"> storefront </span
-        >Products Sold
-      </p>
-
-      <p class="seller-prods-sold-no">453</p>
-    </div>
-
-    <div class="seller-joined">
-      <p class="seller-joined">
-        <span class="material-icons seller-joined"> insert_invitation </span
-        >Joined
-      </p>
-
-      <p class="seller-joined-date">1 May, 1998</p>
-    </div>
-
-    <div class="seller-reviews-cont">
-      <div class="prod-review">
-        <span class="material-icons quote-sign"> format_quote </span>
-
-        <p class="prod-buyer-review">
-          Amazing shipping and customer service, would highly recommend buying
-          from him. Delivery is on time and item was just as advertised.
-        </p>
-
-        <div class="prod-buyer">
-          <div class="prod-buyer-img">
-            <img
-              src="{% static 'base/img/buyers/mikkel_nielsen.jpg' %}"
-              alt=""
-              class="vis"
-            />
-          </div>
-
-          <p class="prod-review-buyer">Mikkel Neilson</p>
-        </div>
-      </div>
-      <div class="prod-review">
-        <span class="material-icons quote-sign"> format_quote </span>
-
-        <p class="prod-buyer-review">
-          Amazing shipping and customer service, would highly recommend buying
-          from him. Delivery is on time and item was just as advertised.
-        </p>
-
-        <div class="prod-buyer">
-          <div class="prod-buyer-img">
-            <img
-              src="{% static 'base/img/buyers/mikkel_nielsen.jpg' %}"
-              alt=""
-              class="vis"
-            />
-          </div>
-
-          <p class="prod-review-buyer">Mikkel Neilson</p>
-        </div>
-      </div>
-      <div class="prod-review">
-        <span class="material-icons quote-sign"> format_quote </span>
-
-        <p class="prod-buyer-review">
-          Amazing shipping and customer service, would highly recommend buying
-          from him. Delivery is on time and item was just as advertised.
-        </p>
-
-        <div class="prod-buyer">
-          <div class="prod-buyer-img">
-            <img
-              src="{% static 'base/img/buyers/mikkel_nielsen.jpg' %}"
-              alt=""
-              class="vis"
-            />
-          </div>
-
-          <p class="prod-review-buyer">Mikkel Neilson</p>
-        </div>
+    <div class="ratings__rating bg-red">
+      <p class="s-l w-h c-white">Delivery</p>
+      <p class="s-m w-m c-white">Service rate</p>
+      <div class="progress-bar">
+        <div class="progress bg-red" style="width: 12%"></div>
       </div>
     </div>
   </div>
 
-  <!-- <div class="col2">
-    <div class="seller-cover">
-      <div class="seller-cover-img">
-        <img
-          src="{% static 'base/img/sellers/john_doe2.jpg' %}"
-          alt=""
-          class="vis"
-        />
-      </div>
-      <div class="seller-social-media">
-        <button class="seller-cover-instagram">
-          <i class="fab fa-instagram"></i>
-          <p class="seller-social-media">Follow Me!</p>
-        </button>
-        <button class="seller-cover-twitter">
-          <i class="fab fa-twitter"></i>
-          <p class="seller-social-media">Follow Me!</p>
-        </button>
-        <button class="seller-cover-facebook">
-          <i class="fab fa-facebook"></i>
-          <p class="seller-social-media">Follow Me!</p>
-        </button>
-      </div>
-      <div class="seller-contact">
-        <button class="seller-cover-website">
-          <i class="fas fa-wifi"></i>
-          <p class="seller-contact">www.johndoe.com</p>
-        </button>
-        <button class="seller-cover-email">
-          <i class="fas fa-envelope"></i>
-          <p class="seller-contact">johndoe@gmail.com</p>
-        </button>
-        <button class="seller-cover-phone">
-          <i class="fas fa-phone"></i>
-          <p class="seller-contact">+971 414-1244-1241</p>
-        </button>
-      </div>
-    </div>
+  {% with type="text" %}
+  <span></span>
+  {% with title="Search products" %}
+  <span></span>
+  {% with icon="search" %}
+  <span></span>
+  {% with name="search" %}
+  <span></span>
+  {% include "templates/textInput.html" %}
+  <span></span>
+  {% endwith %}
+  <span></span>
+  {% endwith %}
+  <span></span>
+  {% endwith %}
+  <span></span>
+  {% endwith %}
 
-    <div class="prods-cont">
-      <div class="prod-card">
-        <div class="prod-img-cont">
+  <div class="seller__prods">
+    <div class="prod-card">
+      <div class="prod-img-cont">
+        <a href="{% url 'main:product' %}" class="prod-link">
           <img
             src="https://images.pexels.com/photos/1279107/pexels-photo-1279107.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
             alt=""
             class="vis"
           />
-          <button class="prod-account">
-            <span class="material-icons"> stars </span>
-            <p>Top Rated Seller</p>
-          </button>
-        </div>
+          <p class="view-product">
+            <span class="material-icons-outlined" style="margin-right: 6.75px">
+              launch </span
+            >View Product
+          </p>
+        </a>
 
-        <div class="prod-wrapper">
-          <div class="prod-text-cont">
-            <p class="prod-name">
-              Google Home Mini with Google Assistant Voice Enabled Chalk Grey
-              New In Retail
-            </p>
-            <div class="prod-ratings">
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star_border </span>
-            </div>
-            <p class="prod-price">USD 23.95</p>
-            <p class="prod-shipping">+$27.05 shipping estimate</p>
-          </div>
-
-          <div class="prod-buttons-cont">
-            <button class="prod-add-to-cart">
-              <span class="material-icons"> add_shopping_cart </span>
-              <p>Add to cart</p>
-            </button>
-            <button class="prod-add-to-wishlist">
-              <span class="material-icons"> star_border </span>
-              <p>Add to wishlist</p>
-            </button>
-            <button class="prod-add-to-watchlist">
-              <span class="material-icons-outlined"> remove_red_eye </span>
-              <p>Add to watchlist</p>
-            </button>
-          </div>
-        </div>
+        <button class="prod-account">
+          <span class="material-icons"> stars </span>
+          <p>Top Rated Seller</p>
+        </button>
       </div>
 
-      <div class="prod-card">
-        <div class="prod-img-cont">
+      <div class="prod-wrapper">
+        <div class="prod-text-cont">
+          <p class="prod-name">
+            Google Home Mini with Google Assistant Voice Enabled Chalk Grey New
+            In Retail
+          </p>
+          <div class="prod-ratings">
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star_border </span>
+          </div>
+          <p class="prod-price">USD 23.95</p>
+          <p class="prod-shipping">+$27.05 shipping estimate</p>
+        </div>
+
+        <div class="prod-buttons-cont">
+          <button class="prod-add-to-cart">
+            <span class="material-icons"> add_shopping_cart </span>
+            <p>Add to cart</p>
+          </button>
+          <button class="prod-add-to-wishlist">
+            <span class="material-icons"> star_border </span>
+            <p>Add to wishlist</p>
+          </button>
+          <button class="prod-add-to-watchlist">
+            <span class="material-icons-outlined"> remove_red_eye </span>
+            <p>Add to watchlist</p>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-cont">
+        <a href="{% url 'main:product' %}" class="prod-link">
           <img
             src="https://images.pexels.com/photos/393047/pexels-photo-393047.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
             alt=""
             class="vis"
           />
-          <button class="prod-account">
-            <span class="material-icons"> stars </span>
-            <p>Top Rated Seller</p>
-          </button>
-        </div>
+          <p class="view-product">
+            <span class="material-icons-outlined" style="margin-right: 6.75px">
+              launch </span
+            >View Product
+          </p>
+        </a>
 
-        <div class="prod-wrapper">
-          <div class="prod-text-cont">
-            <p class="prod-name">
-              Apple Watch Series 5 - GPS - GPS + Cellular - 40MM 44MM - Gray -
-              Silver - Gold
-            </p>
-            <div class="prod-ratings">
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star_border </span>
-              <span class="material-icons prod-ratings"> star_border </span>
-            </div>
-            <p class="prod-price">USD 279.00</p>
-            <p class="prod-shipping">+$25.43 shipping estimate</p>
-          </div>
-
-          <div class="prod-buttons-cont">
-            <button class="prod-add-to-cart">
-              <span class="material-icons"> add_shopping_cart </span>
-              <p>Add to cart</p>
-            </button>
-            <button class="prod-add-to-wishlist">
-              <span class="material-icons"> star_border </span>
-              <p>Add to wishlist</p>
-            </button>
-            <button class="prod-add-to-watchlist">
-              <span class="material-icons-outlined"> remove_red_eye </span>
-              <p>Add to watchlist</p>
-            </button>
-          </div>
-        </div>
+        <button class="prod-account">
+          <span class="material-icons"> stars </span>
+          <p>Top Rated Seller</p>
+        </button>
       </div>
 
-      <div class="prod-card">
-        <div class="prod-img-cont">
+      <div class="prod-wrapper">
+        <div class="prod-text-cont">
+          <p class="prod-name">
+            Apple Watch Series 5 - GPS - GPS + Cellular - 40MM 44MM - Gray -
+            Silver - Gold
+          </p>
+          <div class="prod-ratings">
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star_border </span>
+            <span class="material-icons prod-ratings"> star_border </span>
+          </div>
+          <p class="prod-price">USD 279.00</p>
+          <p class="prod-shipping">+$25.43 shipping estimate</p>
+        </div>
+
+        <div class="prod-buttons-cont">
+          <button class="prod-add-to-cart">
+            <span class="material-icons"> add_shopping_cart </span>
+            <p>Add to cart</p>
+          </button>
+          <button class="prod-add-to-wishlist">
+            <span class="material-icons"> star_border </span>
+            <p>Add to wishlist</p>
+          </button>
+          <button class="prod-add-to-watchlist">
+            <span class="material-icons-outlined"> remove_red_eye </span>
+            <p>Add to watchlist</p>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-cont">
+        <a href="{% url 'main:product' %}" class="prod-link">
           <img
             src="https://images.pexels.com/photos/5052880/pexels-photo-5052880.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
             alt=""
             class="vis"
           />
-          <button class="prod-account">
-            <span class="material-icons"> stars </span>
-            <p>Top Rated Seller</p>
-          </button>
-        </div>
-
-        <div class="prod-wrapper">
-          <div class="prod-text-cont">
-            <p class="prod-name">
-              Apple iPhone 12 Pro - 256gb - Unlocked - Factory Sealed - Factory
-              Warranty
-            </p>
-            <div class="prod-ratings">
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star_border </span>
-            </div>
-            <p class="prod-price">USD 23.95</p>
-            <p class="prod-shipping">+$27.05 shipping estimate</p>
-          </div>
-
-          <div class="prod-buttons-cont">
-            <button class="prod-add-to-cart">
-              <span class="material-icons"> add_shopping_cart </span>
-              <p>Add to cart</p>
-            </button>
-            <button class="prod-add-to-wishlist">
-              <span class="material-icons"> star_border </span>
-              <p>Add to wishlist</p>
-            </button>
-            <button class="prod-add-to-watchlist">
-              <span class="material-icons-outlined"> remove_red_eye </span>
-              <p>Add to watchlist</p>
-            </button>
-          </div>
-        </div>
+          <p class="view-product">
+            <span class="material-icons-outlined" style="margin-right: 6.75px">
+              launch </span
+            >View Product
+          </p>
+        </a>
+        <button class="prod-account">
+          <span class="material-icons"> stars </span>
+          <p>Top Rated Seller</p>
+        </button>
       </div>
 
-      <div class="prod-card">
-        <div class="prod-img-cont">
+      <div class="prod-wrapper">
+        <div class="prod-text-cont">
+          <p class="prod-name">
+            Apple iPhone 12 Pro - 256gb - Unlocked - Factory Sealed - Factory
+            Warranty
+          </p>
+          <div class="prod-ratings">
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star_border </span>
+          </div>
+          <p class="prod-price">USD 23.95</p>
+          <p class="prod-shipping">+$27.05 shipping estimate</p>
+        </div>
+
+        <div class="prod-buttons-cont">
+          <button class="prod-add-to-cart">
+            <span class="material-icons"> add_shopping_cart </span>
+            <p>Add to cart</p>
+          </button>
+          <button class="prod-add-to-wishlist">
+            <span class="material-icons"> star_border </span>
+            <p>Add to wishlist</p>
+          </button>
+          <button class="prod-add-to-watchlist">
+            <span class="material-icons-outlined"> remove_red_eye </span>
+            <p>Add to watchlist</p>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-cont">
+        <a href="{% url 'main:product' %}" class="prod-link">
           <img
             src="https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
             alt=""
             class="vis"
           />
-          <button class="prod-account">
-            <span class="material-icons"> stars </span>
-            <p>Top Rated Seller</p>
-          </button>
+
+          <p class="view-product">
+            <span class="material-icons-outlined" style="margin-right: 6.75px">
+              launch </span
+            >View Product
+          </p>
+        </a>
+        <button class="prod-account">
+          <span class="material-icons"> stars </span>
+          <p>Top Rated Seller</p>
+        </button>
+      </div>
+
+      <div class="prod-wrapper">
+        <div class="prod-text-cont">
+          <p class="prod-name">
+            Apple MacBook Air 13" - M1 Chip 8GB 256GB - Gold - MGND3LL/A -
+            Flawless 2 Cycles
+          </p>
+          <div class="prod-ratings">
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star </span>
+            <span class="material-icons prod-ratings"> star_border </span>
+          </div>
+          <p class="prod-price">USD 979.00</p>
+          <p class="prod-shipping">+$100.00 shipping estimate</p>
         </div>
 
-        <div class="prod-wrapper">
-          <div class="prod-text-cont">
-            <p class="prod-name">
-              Apple MacBook Air 13" - M1 Chip 8GB 256GB - Gold - MGND3LL/A -
-              Flawless 2 Cycles
-            </p>
-            <div class="prod-ratings">
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star_border </span>
-            </div>
-            <p class="prod-price">USD 979.00</p>
-            <p class="prod-shipping">+$100.00 shipping estimate</p>
-          </div>
-
-          <div class="prod-buttons-cont">
-            <button class="prod-add-to-cart">
-              <span class="material-icons"> add_shopping_cart </span>
-              <p>Add to cart</p>
-            </button>
-            <button class="prod-add-to-wishlist">
-              <span class="material-icons"> star_border </span>
-              <p>Add to wishlist</p>
-            </button>
-            <button class="prod-add-to-watchlist">
-              <span class="material-icons-outlined"> remove_red_eye </span>
-              <p>Add to watchlist</p>
-            </button>
-          </div>
+        <div class="prod-buttons-cont">
+          <button class="prod-add-to-cart">
+            <span class="material-icons"> add_shopping_cart </span>
+            <p>Add to cart</p>
+          </button>
+          <button class="prod-add-to-wishlist">
+            <span class="material-icons"> star_border </span>
+            <p>Add to wishlist</p>
+          </button>
+          <button class="prod-add-to-watchlist">
+            <span class="material-icons-outlined"> remove_red_eye </span>
+            <p>Add to watchlist</p>
+          </button>
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
+
+  <div class="seller__reviews">
+    <div class="reviews__review">
+      <div
+        class="review__dp"
+        style="
+          background-image: url(https://images.pexels.com/photos/3656518/pexels-photo-3656518.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500);
+        "
+      ></div>
+      <p class="s-l w-h">Sherlock Holmes</p>
+      <p class="s-m w-m">
+        The advert is fake. It is not new. Too many scrathes on the screen on
+        photo 1.
+      </p>
+    </div>
+    <div class="reviews__review">
+      <div
+        class="review__dp"
+        style="
+          background-image: url(https://images.pexels.com/photos/3656518/pexels-photo-3656518.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500);
+        "
+      ></div>
+      <p class="s-l w-h">Sherlock Holmes</p>
+      <p class="s-m w-m">
+        The advert is fake. It is not new. Too many scrathes on the screen on
+        photo 1.
+      </p>
+    </div>
+    <div class="reviews__review">
+      <div
+        class="review__dp"
+        style="
+          background-image: url(https://images.pexels.com/photos/3656518/pexels-photo-3656518.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500);
+        "
+      ></div>
+      <p class="s-l w-h">Sherlock Holmes</p>
+      <p class="s-m w-m">
+        The advert is fake. It is not new. Too many scrathes on the screen on
+        photo 1.
+      </p>
+    </div>
+    <div class="reviews__review">
+      <div
+        class="review__dp"
+        style="
+          background-image: url(https://images.pexels.com/photos/3656518/pexels-photo-3656518.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500);
+        "
+      ></div>
+      <p class="s-l w-h">Sherlock Holmes</p>
+      <p class="s-m w-m">
+        The advert is fake. It is not new. Too many scrathes on the screen on
+        photo 1.
+      </p>
+    </div>
+    <div class="reviews__review">
+      <div
+        class="review__dp"
+        style="
+          background-image: url(https://images.pexels.com/photos/3656518/pexels-photo-3656518.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500);
+        "
+      ></div>
+      <p class="s-l w-h">Sherlock Holmes</p>
+      <p class="s-m w-m">
+        The advert is fake. It is not new. Too many scrathes on the screen on
+        photo 1.
+      </p>
+    </div>
+    <div class="reviews__review">
+      <div
+        class="review__dp"
+        style="
+          background-image: url(https://images.pexels.com/photos/3656518/pexels-photo-3656518.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500);
+        "
+      ></div>
+      <p class="s-l w-h">Sherlock Holmes</p>
+      <p class="s-m w-m">
+        The advert is fake. It is not new. Too many scrathes on the screen on
+        photo 1.
+      </p>
+    </div>
+    <div class="reviews__review">
+      <div
+        class="review__dp"
+        style="
+          background-image: url(https://images.pexels.com/photos/3656518/pexels-photo-3656518.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500);
+        "
+      ></div>
+      <p class="s-l w-h">Sherlock Holmes</p>
+      <p class="s-m w-m">
+        The advert is fake. It is not new. Too many scrathes on the screen on
+        photo 1.
+      </p>
+    </div>
+  </div>
 </div>
 
 {% endblock content %}
