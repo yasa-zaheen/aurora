@@ -6,36 +6,47 @@
 <link rel="stylesheet" href="{% static 'main/css/index.css' %}" />
 
 <div class="main">
-  <div class="banner-container">
-    <img
-      src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8YXVyb3JhfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=60"
-      class="banner"
-    />
+  <div
+    class="main__banner"
+    style="
+      background-image: url('https://cdni.iconscout.com/illustration/premium/thumb/family-shopping-2681394-2239883.png');
+    "
+  ></div>
+
+  <div class="main__search">
+    {% with type="text" %}
+    <span></span>
+    {% with title="Search" %}
+    <span></span>
+    {% with icon="search" %}
+    <span></span>
+    {% with name="search" %}
+    <span></span>
+    {% include "templates/textInput.html" %}
+    <span></span>
+    {% endwith %}
+    <span></span>
+    {% endwith %}
+    <span></span>
+    {% endwith %}
+    <span></span>
+    {% endwith %}
   </div>
 
-  <div class="search-cont">
-    <input type="text" class="search" placeholder="Search" />
-    <button class="search">
-      <span class="material-icons search">search</span>
-    </button>
-  </div>
-
-  <h1 class="title-categories">Explore Popular Categories</h1>
-
-  <div class="categories">
+  <div class="main__categories">
     {% for category in all_categories %}
-
-    <a class="cat-card" href="{% url 'main:category' category.id %}">
-      <img src="{{ category.image.url }}" class="vis" />
-      <p class="cat">{{category.name}}</p>
+    <a
+      class="categories__category"
+      href="{% url 'main:category' category.id %}"
+      style="background-image: url('{{ category.image.url }}');"
+    >
+      <p class="category__text">{{category.name}}</p>
     </a>
 
     {% endfor %}
   </div>
 
-  <h1 class="title-categories">Check Out Our Trending Products</h1>
-
-  <div class="products">
+  <div class="main__products">
     <div class="prod-card">
       <div class="prod-img-cont">
         <a href="{% url 'main:product' %}" class="prod-link">

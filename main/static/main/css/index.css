@@ -1,92 +1,65 @@
-div.main {
+.main {
   width: 100%;
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* ----- Banner ----- */
-
-div.banner-container {
-  width: 100%;
-  height: 50vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-img.banner {
-  width: 100%;
-  height: auto;
-}
-
-/* ----- Search ----- */
-
-div.search-cont {
-  width: calc(100% - 50px);
-  margin: 25px 0px;
-  height: fit-content;
-  border-radius: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 25px;
   position: relative;
-  margin-bottom: 25px;
-  background-color: #fafafa;
-  box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
-  overflow: hidden;
 }
 
-/*Categories*/
-
-h1.title-categories {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-size: 25px;
+.main__banner {
+  height: 40vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
 }
 
-div.categories {
+.main__search {
+  width: 100%;
+  margin-top: 25px;
+}
+
+.textInput {
+  border-radius: 15px !important;
+  box-shadow: var(--shadow);
+  border: 1px solid transparent !important;
+  margin: 0 !important;
+}
+
+.textInput:focus-within {
+  border-color: var(--orange) !important;
+}
+
+.main__categories {
   height: fit-content;
-  width: calc(100% - 50px);
+  position: absolute;
+  left: 0px;
+  padding: 25px;
+  width: 100%;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 25px 0px;
   overflow-x: scroll;
-  overflow-y: visible;
 }
 
-a.cat-card {
-  background: none;
+.categories__category {
   border-radius: 15px;
-  height: 144px;
-  min-width: 144px;
-  max-width: 144px;
-  cursor: pointer;
-  overflow: hidden;
-  position: relative;
-  z-index: 99;
+  height: calc((100vw - 200px) / 7);
+  background-size: cover;
+  background-position: center;
+  min-width: calc((100vw - 200px) / 7);
+  max-width: calc((100vw - 200px) / 7);
   margin-right: 25px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+  overflow: hidden;
   transition: 200ms ease all;
-  box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
+  box-shadow: var(--shadow);
 }
 
-a.cat-card:hover {
-  transform: scale(1.05, 1.05);
-}
-
-a.cat-card:active {
+.categories__category:active {
   transform: scale(0.95, 0.95);
   filter: brightness(0.25);
   box-shadow: none;
 }
 
-p.cat {
+.category__text {
   position: absolute;
   font-family: "Poppins", sans-serif;
   font-size: 12.5px;
@@ -101,24 +74,26 @@ p.cat {
   text-align: center;
 }
 
-a.cat-card:hover p.cat {
+.categories__category:hover .category__text {
   bottom: 5px;
   right: 5px;
   border-radius: 15px;
 }
 
-/* ----- Products ----- */
-
-div.products {
-  width: calc(100% - 25px);
-  height: calc(37.5vh + 50px);
+.main__products {
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  height: fit-content;
   display: flex;
   justify-content: flex-start;
   align-self: flex-start;
-  padding: 25px 0px 25px 25px;
+  padding: 25px 25px 25px 25px;
   overflow-x: scroll;
+  margin-top: calc((100vw - 200px) / 7 + 25px);
 }
 
-div.prod-card {
+.prod-card {
+  min-width: calc((100% - 25px) / 2) !important;
   margin-right: 25px;
 }
