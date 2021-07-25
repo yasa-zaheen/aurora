@@ -1,26 +1,32 @@
 <nav class="nav">
-  <a class="nav-title" href="{% url 'main:index' %}">Aurora</a>
+  <a href="{% url 'main:index' %}" class="nav__index"
+    ><p class="s-m w-m">Aurora</p></a
+  >
 
-  <div class="links-container">
-    <a href="{% url 'main:products' %}" class="link">Products </a>
-    <a href="#" class="link categories"
-      >Categories<span class="material-icons"> keyboard_arrow_right </span></a
+  <div class="nav__links">
+    <a href="{% url 'main:products' %}" class="link links__link"
+      ><p class="s-m w-m">Products</p></a
     >
-    <a href="" class="link"
-      >Legal<span class="material-icons"> keyboard_arrow_right </span></a
+    <a href="#" class="link links__link" id="categories"
+      ><p class="s-m w-m">Categories</p></a
     >
-    <a href="" class="link">About</a>
+    <a href="#" class="link links__link"><p class="s-m w-m">About</p></a>
+    <a href="#" class="link links__link"><p class="s-m w-m">Legal</p></a>
   </div>
 
-  <a class="sign-in" href="{% url 'authentication:sign_in' %}">Sign In</a>
+  <a href="{% url 'authentication:sign_in' %}" class="link links__link"
+    ><p class="s-m w-m">Sign in</p></a
+  >
 
   <div class="dropdown">
     {% for category in all_categories %}
-    <a href="{% url 'main:category' category.id%}" class="dropdown-link"
-      >{{category.name}}
-      </a
-    >
+    <a href="{% url 'main:category' category.id %}" class="dropdown__link">
+      <div
+        class="dropdown__link__img"
+        style="background-image: url('{{ category.image.url }}')"
+      ></div>
+      <p class="s-m w-m">{{ category.name }}</p>
+    </a>
     {% endfor %}
   </div>
-
 </nav>

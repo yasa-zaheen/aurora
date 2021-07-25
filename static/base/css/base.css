@@ -48,6 +48,15 @@ a {
   color: black;
 }
 
+a.link {
+  padding: 6.25px 12.5px;
+  border-bottom: 2.5px solid transparent;
+}
+
+a.link:hover {
+  border-color: #293241;
+}
+
 input.text {
   padding: 6.25px 12.5px;
   border-radius: 5px;
