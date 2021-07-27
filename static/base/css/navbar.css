@@ -15,6 +15,11 @@
   border-bottom: 2.5px solid transparent;
 }
 
+.nav__index:hover {
+  color: black;
+  text-decoration: none;
+}
+
 .nav__links {
   height: 100%;
   flex: 1;

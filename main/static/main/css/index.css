@@ -93,7 +93,11 @@
   margin-top: calc((100vw - 200px) / 7 + 25px);
 }
 
-.prod-card {
+.product {
   min-width: calc((100% - 25px) / 2) !important;
-  margin-right: 25px;
+  max-width: calc((100% - 25px) / 2) !important;
+}
+
+.product:last-child {
+  margin-right: 0px !important;
 }
