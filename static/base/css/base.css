@@ -48,11 +48,6 @@ a {
   color: black;
 }
 
-a:hover {
-  text-decoration: underline;
-  color: #3d5a80;
-}
-
 a.link {
   padding: 6.25px 12.5px;
   border-bottom: 2.5px solid transparent;
@@ -60,9 +55,6 @@ a.link {
 
 a.link:hover {
   text-decoration: none;
-
-  color: initial;
-  border-color: #293241;
 }
 
 input.text {
