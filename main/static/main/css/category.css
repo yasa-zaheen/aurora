@@ -50,7 +50,7 @@ input[type="checkbox"] {
   width: calc(100% - 25px - ((100% - 200px) / 7));
 }
 
-/* Categories */
+/* Sub-categories */
 
 .content__sub-categories {
   height: fit-content;

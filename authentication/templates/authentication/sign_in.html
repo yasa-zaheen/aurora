@@ -13,9 +13,7 @@
     {% endfor %} {% endif %}
 
     <p class="s-2l w-h">Welcome back!</p>
-    <pre
-      class="s-l w-m"
-    >Don't have an account? <a href="{% url 'authentication:sign_up' %}" class="c-orange">Sign up!</a></pre>
+    <pre class="s-l w-m">Don't have an account? <a href="{% url 'authentication:sign_up' %}" class="c-orange">Sign up!</a></pre>
 
     <form method="POST">
       {% csrf_token %}
