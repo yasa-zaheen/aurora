@@ -14,9 +14,8 @@
     {% endfor %} {% endif %}
 
     <p class="s-2l w-h">Welcome to Aurora!</p>
-    <pre
-      class="s-l w-m"
-    >Already have an account? <a href="{% url 'authentication:sign_in' %}" class="c-medium-blue">Sign in!</a></pre>
+
+    <pre><p class="s-l w-h">Already have an account? <a href="{% url 'authentication:sign_in' %}" class="c-medium-blue">Sign in!</a></p></pre>
 
     <form method="POST">
       {% csrf_token %}
