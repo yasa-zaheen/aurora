@@ -2,6 +2,8 @@
 
 from django.db import models
 from django.db.models.deletion import SET_NULL
+from django.db.models.fields import TextField
+from django.db.models.fields.related import ForeignKey
 from django.utils.translation import gettext_lazy as _
 
 
@@ -79,3 +81,32 @@ class Filter(models.Model):
 
     class Meta:
         ordering = ["product_type", "filter_category", "name"]
+
+
+class Product(models.Model):
+    name = models.CharField(max_length=30)
+    price = models.FloatField()
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+    image_1 = models.ImageField(blank=True, null=True,
+                                upload_to="products")
+    image_2 = models.ImageField(blank=True, null=True,
+                                upload_to="products")
+    image_3 = models.ImageField(blank=True, null=True,
+                                upload_to="products")
+    image_4 = models.ImageField(blank=True, null=True,
+                                upload_to="products")
+
+    condition = models.CharField(max_length=255)
+    shipping = models.CharField(max_length=255)
+    returns = models.CharField(max_length=255)
+    payments = models.CharField(max_length=255)
+
+    product_does_not_ship_to = models.TextField()
+
+    payments_paypal = models.BooleanField(default=False)
+    payments_master_card = models.BooleanField(default=False)
+    payments_visa = models.BooleanField(default=False)
+    payments_cod = models.BooleanField(default=False)
+
+    features = models.TextField()

@@ -3,7 +3,7 @@ from django.test import TestCase, Client, client
 from django.shortcuts import reverse
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
-from .models import VerifiedUser
+from .models import CustomUser
 
 import hashlib
 
@@ -162,15 +162,14 @@ class VerifyUserTest(TestCase):
             email="testuser@gmail.com",
             password="testuser"
         )
+        user.save()
 
-        huid = hashlib.md5(str(user.id).encode()).hexdigest()
-
-        verified_user = VerifiedUser.objects.create(
-            user=user, huid=huid, is_verified=True)
-        verified_user.save()
+        custom_user = CustomUser.objects.create(user=user, huid=hashlib.md5(
+            str(user.id).encode()).hexdigest, is_verified=False)
+        custom_user.save()
 
         client = Client()
 
-        response = client.get(f"/auth/verify_user/{huid}/")
+        response = client.get(f"/auth/verify_user/{custom_user.huid}/")
 
         self.assertEqual(response.status_code, 400)

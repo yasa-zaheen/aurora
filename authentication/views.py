@@ -1,6 +1,6 @@
 # Imports
 
-from authentication.models import VerifiedUser
+from authentication.models import CustomUser
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -9,6 +9,7 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 
 from django.shortcuts import redirect, render, reverse
 from django.core.mail import send_mail
+from django.views.defaults import page_not_found
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.http.response import HttpResponsePermanentRedirect
 
@@ -72,18 +73,17 @@ def sign_up(request):
                 username=username, email=email, password=password)
             user.save()
 
-            huid = hashlib.md5(str(user.id).encode()).hexdigest()
-
-            VerifiedUser.objects.create(
-                user=user, huid=huid, is_verified=False)
+            custom_user = CustomUser.objects.create(
+                user=user, huid=hashlib.md5(str(user.id).encode()).hexdigest(), is_verified=False)
+            custom_user.save()
 
             send_mail(
                 subject="Verify Account",
-                message=f"{huid}",
+                message=f"{custom_user.huid}",
                 from_email="yasazaheen728@gmail.com",
-                recipient_list=[email],
+                recipient_list=[user.email],
                 fail_silently=False,
-                html_message=f"<a href='http://127.0.0.1:8000/auth/verify_user/{huid}/' >Click here</a>"
+                html_message=f"<a href='http://127.0.0.1:8000/auth/verify_user/{custom_user.huid}/' >Click here</a>"
             )
 
             return redirect(reverse("dashboard:home"))
@@ -162,20 +162,17 @@ def password_change(request, uidb64, token):
 
 def verify_user(request, huid):
 
-    huid = huid
-    verified_user = VerifiedUser.objects.get(huid=huid)
-    status = 200
-    context = {
-        "message": "Congrats! Your account has been verified!"
-    }
+    custom_user = CustomUser.objects.get(huid=huid)
 
-    if verified_user.is_verified:
-        status = 400
+    if custom_user.is_verified:
         context = {
-            "message": "Your account is already verified!"
+            "message": "Your account has already been verified!"
         }
+        return render(request, "authentication/verify_user.html", context, status=200)
     else:
-        verified_user.is_verified = True
-        verified_user.save()
-
-    return render(request, "authentication/verify_user.html", context, status=status)
+        custom_user.is_verified = True
+        custom_user.save()
+        context = {
+            "message": "Your account has been verified!"
+        }
+        return render(request, "authentication/verify_user.html", context, status=400)
