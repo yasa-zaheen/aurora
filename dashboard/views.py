@@ -14,6 +14,7 @@ def home(request):
         context = {
             "seller": seller
         }
+
         return render(request, 'dashboard/home.html', context)
     else:
         return redirect(reverse("main:index"))

@@ -8,6 +8,8 @@ class CustomUser(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     profile_image = models.ImageField(
         upload_to="profile_images", default="profile_images/user.png")
+    cover_image = models.ImageField(
+        upload_to="cover_images", default="cover_images/cover.jpg")
     huid = models.CharField(default="",  max_length=32)
     is_verified = models.BooleanField(default=False)
 

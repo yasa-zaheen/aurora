@@ -10,7 +10,7 @@
   <div
     class="home__banner shadow"
     style="
-      background-image: url(https://images.unsplash.com/photo-1531366936337-7c912a4589a7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXVyb3JhfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=60);
+      background-image: url('{{ seller.cover_image.url }}');
     "
   >
     <div class="banner__userInfo">
@@ -23,8 +23,8 @@
       <div
         style="display: flex, flex-direction-column; justify-content: center"
       >
-        <p class="s-l w-h c-white">Yasa Zaheen</p>
-        <p class="s-m w-m c-white">yasazaheen@gmail.com</p>
+        <p class="s-l w-h c-white">{{ seller.user }}</p>
+        <p class="s-m w-m c-white">{{ seller.user.email }}</p>
       </div>
     </div>
   </div>
