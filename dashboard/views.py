@@ -1,50 +1,59 @@
 # Imports
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
+from authentication.models import *
 
 # Views
 
 
-def home(response):
+def home(request):
+
+    if request.user.is_authenticated:
+        seller = CustomUser.objects.get(user=request.user)
+
+        context = {
+            "seller": seller
+        }
+        return render(request, 'dashboard/home.html', context)
+    else:
+        return redirect(reverse("main:index"))
+
+
+def cart(request):
     context = {}
-    return render(response, 'dashboard/home.html', context)
+    return render(request, "dashboard/cart.html", context)
 
 
-def cart(response):
+def watchlist(request):
     context = {}
-    return render(response, "dashboard/cart.html", context)
+    return render(request, "dashboard/watchlist.html", context)
 
 
-def watchlist(response):
+def wishlist(request):
     context = {}
-    return render(response, "dashboard/watchlist.html", context)
+    return render(request, "dashboard/wishlist.html", context)
 
 
-def wishlist(response):
+def crm(request):
     context = {}
-    return render(response, "dashboard/wishlist.html", context)
+    return render(request, 'dashboard/crm.html', context)
 
 
-def crm(response):
+def my_products(request):
     context = {}
-    return render(response, 'dashboard/crm.html', context)
+    return render(request, "dashboard/my_products.html", context)
 
 
-def my_products(response):
+def add_product(request):
     context = {}
-    return render(response, "dashboard/my_products.html", context)
+    return render(request, "dashboard/add_product.html", context)
 
 
-def add_product(response):
+def revenue(request):
     context = {}
-    return render(response, "dashboard/add_product.html", context)
+    return render(request, "dashboard/revenue.html", context)
 
 
-def revenue(response):
+def dashboard(request):
     context = {}
-    return render(response, "dashboard/revenue.html", context)
-
-
-def dashboard(response):
-    context = {}
-    return render(response, 'dashboard/dashboard.html', context)
+    return render(request, 'dashboard/dashboard.html', context)

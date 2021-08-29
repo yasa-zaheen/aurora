@@ -10,7 +10,7 @@
       <div
         class="img-container__big-img"
         style="
-          background-image: url('https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500 ');
+          background-image: url('{{product.image_1.url}}');
         "
       ></div>
 
@@ -18,25 +18,25 @@
         <div
           class="img-container__small-img"
           style="
-            background-image: url('https://images.unsplash.com/photo-1522252234503-e356532cafd5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1250&q=80');
+            background-image: url('{{product.image_1.url}}');
           "
         ></div>
         <div
           class="img-container__small-img"
           style="
-            background-image: url('https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1252&q=80');
+            background-image: url('{{product.image_2.url}}');
           "
         ></div>
         <div
           class="img-container__small-img"
           style="
-            background-image: url('https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1307&q=80');
+            background-image: url('{{product.image_3.url}}');
           "
         ></div>
         <div
           class="img-container__small-img"
           style="
-            background-image: url('https://images.unsplash.com/photo-1543514980-14becba33d86?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1782&q=80');
+            background-image: url('{{product.image_4.url}}');
           "
         ></div>
       </div>
@@ -45,11 +45,13 @@
     <!-- ** Info Container ** -->
     <div class="main__info-container">
       <!-- ** Text ** -->
-      <p class="s-xl w-h">
-        Apple MacBook Pro 13in (512GB SSD, M1, 8GB) - Space Grey - BRAND NEW
-        SEALED
-      </p>
-      <p class="s-2l w-h">USD 914.36</p>
+      <p class="s-xl w-h">{{ product.name }}</p>
+      <div style="display: flex; align-items: center">
+        <p class="s-2l w-h">USD {{ product.price }}</p>
+        <p class="s-m w-l" style="margin-left: 12.5px; opacity: 0.5">
+          +USD {{ product.shipping_price }} shipping estimate
+        </p>
+      </div>
 
       <!-- ** Toggle Buttons ** -->
       <div style="display: flex; margin-top: 6.25px">
@@ -66,130 +68,46 @@
 
       <!-- ** Product Information ** -->
       <div class="info-container__product-info">
-        <div class="module shadow bg-darkBlue c-white">
-          <p class="s-l w-h">Condition</p>
-          <p class="s-m w-m">
-            Brand New. Product is factory sealed and hasn't been opened.
-          </p>
+        <div style="display: flex; flex-direction: column; padding-right: 25px">
+          <div class="module shadow bg-darkBlue c-white">
+            <p class="s-l w-h">Condition</p>
+            <p class="s-m w-m">{{ product.condition }}</p>
+          </div>
+
+          <div class="module shadow bg-orange c-white">
+            <p class="s-l w-h">Shipping</p>
+            <p class="s-m w-m">{{ product.shipping }}</p>
+          </div>
         </div>
 
-        <div class="module shadow bg-orange c-white">
-          <p class="s-l w-h">Shipping</p>
-          <p class="s-m w-m">
-            International shipping. International shipping via priority mail.
-          </p>
-        </div>
+        <div style="display: flex; flex-direction: column">
+          <div class="module shadow bg-paleBlue c-black">
+            <p class="s-l w-h">Returns</p>
+            <p class="s-m w-m">{{ product.returns }}</p>
+          </div>
 
-        <div class="module shadow bg-paleBlue c-black">
-          <p class="s-l w-h">Returns</p>
-          <p class="s-m w-m">
-            Free returns. Free returns are accepted within 7 days after
-            shipping.
-          </p>
-        </div>
-
-        <div class="module shadow bg-black c-white">
-          <p class="s-l w-h">Payments</p>
-          <p class="s-m w-m">
-            Payments are accepted via Paypal, Master Card and Visa.
-          </p>
+          <div class="module shadow bg-black c-white">
+            <p class="s-l w-h">Payments</p>
+            <p class="s-m w-m">{{ product.payments }}</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- ** Features Container ** -->
-  <div class="main__features">
-    <div class="module shadow bg-white features__feature">
-      <p class="s-m w-h">GPU</p>
-      <p class="s-s w-m">Integrated</p>
-    </div>
-
-    <div class="module shadow bg-white features__feature">
-      <p class="s-m w-h">Release Year</p>
-      <p class="s-s w-m">2020</p>
-    </div>
-
-    <div class="module shadow bg-white features__feature">
-      <p class="s-m w-h">Features</p>
-      <p class="s-s w-m">Backlit Keyboard, Touch ID</p>
-    </div>
-
-    <div class="module shadow bg-white features__feature">
-      <p class="s-m w-h">Screen Size</p>
-      <p class="s-s w-m">13 in</p>
-    </div>
-
-    <div class="module shadow bg-white features__feature">
-      <p class="s-m w-h">RAM Size</p>
-      <p class="s-s w-m">8 GB</p>
-    </div>
-
-    <div class="module shadow bg-white features__feature">
-      <p class="s-m w-h">Series</p>
-      <p class="s-s w-m">MacBook Pro</p>
-    </div>
-
-    <div class="module shadow bg-white features__feature">
-      <p class="s-m w-h">Maximum Resolution</p>
-      <p class="s-s w-m">2560 x 1600</p>
-    </div>
-
-    <div class="module shadow bg-white features__feature">
-      <p class="s-m w-h">Model</p>
-      <p class="s-s w-m">MacBook Pro</p>
-    </div>
-
-    <div class="module shadow bg-white features__feature">
-      <p class="s-m w-h">MPN</p>
-      <p class="s-s w-m">MYD82LLA, MYD82LL/A</p>
-    </div>
-
-    <div class="module shadow bg-white features__feature">
-      <p class="s-m w-h">Most Suitable For</p>
-      <p class="s-s w-m">Graphic Design</p>
-    </div>
-
-    <div class="module shadow bg-white features__feature">
-      <p class="s-m w-h">SSD Capacity</p>
-      <p class="s-s w-m">256 GB</p>
-    </div>
-
-    <div class="module shadow bg-white features__feature">
-      <p class="s-m w-h">Operating System</p>
-      <p class="s-s w-m">Mac OS 11.0, Big Sur</p>
-    </div>
-
-    <div class="module shadow bg-white features__feature">
-      <p class="s-m w-h">Manufacturer Color</p>
-      <p class="s-s w-m">Space Gray</p>
-    </div>
-
-    <div class="module shadow bg-white features__feature">
-      <p class="s-m w-h">Color</p>
-      <p class="s-s w-m">Gray</p>
-    </div>
-
-    <div class="module shadow bg-white features__feature">
-      <p class="s-m w-h">Brand</p>
-      <p class="s-s w-m">Apple</p>
-    </div>
-
-    <div class="module shadow bg-white features__feature">
-      <p class="s-m w-h">Connectivity</p>
-      <p class="s-s w-m">DisplayPort, USB-C, USB 3.1</p>
-    </div>
-
-    <div class="module shadow bg-white features__feature">
-      <p class="s-m w-h">Storage Type</p>
-      <p class="s-s w-m">SSD (Solid State Drive)</p>
-    </div>
-
-    <div class="module shadow bg-white features__feature">
-      <p class="s-m w-h">Hard Drive Capacity</p>
-      <p class="s-s w-m">256 GB</p>
-    </div>
-  </div>
+  <table class="main__features shadow">
+    {% for feature_cat, feature_specs in features %}
+    <tr>
+      <td class="features__cell">
+        <p class="s-l w-h">{{ feature_cat }}</p>
+      </td>
+      <td>
+        <p class="s-l w-l">{{ feature_specs }}</p>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
 
   <!-- ** Seller Information **  -->
   <div class="main__seller-info">
@@ -224,7 +142,7 @@
         <p class="s-l w-h c-white">Communication</p>
         <p class="s-m w-m c-white">Service rate</p>
         <div class="progress-bar">
-          <div class="progress bg-darkBlue" style="width: 32%"></div>
+          <div class="progress bg-darkBlue"></div>
         </div>
       </div>
 
@@ -232,7 +150,7 @@
         <p class="s-l w-h c-white">Shipping</p>
         <p class="s-m w-m c-white">Service rate</p>
         <div class="progress-bar">
-          <div class="progress bg-orange" style="width: 50%"></div>
+          <div class="progress bg-orange"></div>
         </div>
       </div>
 
@@ -240,71 +158,80 @@
         <p class="s-l w-h c-white">Return</p>
         <p class="s-m w-m c-white">Service rate</p>
         <div class="progress-bar">
-          <div class="progress bg-mediumBlue" style="width: 90%"></div>
-        </div>
-      </div>
-
-      <div class="module shadow bg-red ratings__rating">
-        <p class="s-l w-h c-white">Delivery</p>
-        <p class="s-m w-m c-white">Service rate</p>
-        <div class="progress-bar">
-          <div class="progress bg-red" style="width: 12%"></div>
+          <div class="progress bg-mediumBlue"></div>
         </div>
       </div>
     </div>
 
     <!-- ** Seller Reviews ** -->
     <div class="seller-info__reviews">
+      {% for review in reviews %}
+
       <div class="reviews__review">
         <div
           class="review__dp"
           style="
-            background-image: url(https://images.pexels.com/photos/3656518/pexels-photo-3656518.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500);
+            background-image: url('{{ review.user.profile_image.url }}');
           "
         ></div>
-        <p class="s-l w-h">Sherlock Holmes</p>
-        <p class="s-m w-m">
-          The advert is fake. It is not new. Too many scrathes on the screen on
-          photo 1.
-        </p>
+        <div style="display: flex">
+          {% with ratings=review.ratings %}
+          <span></span>
+          {% include "templates/ratings.html" %}
+          <span></span>
+          {% endwith %}
+        </div>
+        <p class="s-l w-h">{{ review.user }}</p>
+        <p class="s-m w-m">{{ review.comment }}</p>
       </div>
+
+      {% empty %}
+
+      <div style="padding: 0px 25px">
+        <p class="s-l w-h">No reviews yet.</p>
+      </div>
+
+      {% endfor %}
     </div>
 
     <!-- ** Seller Products ** -->
     <div class="seller-info__products">
+      {% for product in seller_products %}
+
       <div class="product">
         <!-- * TODO: Picture Link -->
         <div
           class="product__img"
           style="
-            background-image: url('https://images.pexels.com/photos/1279107/pexels-photo-1279107.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500');
+            background-image: url('{{product.image_1.url}}');
           "
         ></div>
         <!-- * TODO: Blurred Background -->
 
         <div class="product__content">
           <!-- * TODO: Product Name -->
-          <a href="{% url 'main:product' %}">
+          <a href="{% url 'main:product' product.id %}">
             <p
               class="s-l w-h"
               style="height: 7.05vh; align-items: start; overflow: hidden"
             >
-              Google Home Mini with Google Assistant Voice Enabled Chalk Grey
-              New In Retail
+              {{product.name}}
             </p>
           </a>
           <!-- * TODO: Product Ratings -->
           <div style="display: flex; margin: 6.25px 0px">
-            <span class="material-icons s-l"> star </span>
-            <span class="material-icons s-l"> star </span>
-            <span class="material-icons s-l"> star </span>
-            <span class="material-icons s-l"> star </span>
-            <span class="material-icons s-l"> star_border </span>
+            {% with ratings=product.ratings %}
+            <span></span>
+            {% include "templates/ratings.html" %}
+            <span></span>
+            {% endwith %}
           </div>
           <!-- * TODO: Product Price -->
-          <p class="s-l w-h">USD 23.95</p>
+          <p class="s-l w-h">USD {{ product.price }}</p>
           <!-- * TODO: Product Shipping Estimate -->
-          <p class="s-m w-l">+$27.05 shipping estimate</p>
+          <p class="s-m w-l">
+            +USD {{ product.shipping_price }} shipping estimate
+          </p>
           <!-- * TODO: Add to cart, watchlist and wishlist buttons -->
           <div style="display: flex; margin-top: 6.25px">
             <button class="toggle" data-color="#ef233c">
@@ -319,66 +246,39 @@
           </div>
 
           <!-- * TODO: Account Type -->
+
+          {% if product.seller.account_type == "New Seller" %}
+
+          <div class="product__account-type bg-red c-white">
+            <span class="material-icons-outlined s-l">new_releases</span>
+            <p class="s-s w-h" style="margin-left: 5px">
+              {{ product.seller.account_type }}
+            </p>
+          </div>
+
+          {% elif product.seller.account_type == "Top Rated Seller" %}
+
+          <div class="product__account-type bg-orange c-white">
+            <span class="material-icons-outlined s-l">auto_graph</span>
+            <p class="s-s w-h" style="margin-left: 5px">
+              {{ product.seller.account_type }}
+            </p>
+          </div>
+
+          {% elif product.seller.account_type == "Verified Seller" %}
+
           <div class="product__account-type bg-darkBlue c-white">
             <span class="material-icons-outlined s-l">verified</span>
-            <p class="s-s w-h" style="margin-left: 5px">Verified Seller</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="product">
-        <!-- * TODO: Picture Link -->
-        <div
-          class="product__img"
-          style="
-            background-image: url('https://images.pexels.com/photos/393047/pexels-photo-393047.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500');
-          "
-        ></div>
-        <!-- * TODO: Blurred Background -->
-
-        <div class="product__content">
-          <!-- * TODO: Product Name -->
-          <a href="{% url 'main:product' %}">
-            <p
-              class="s-l w-h"
-              style="height: 7.05vh; align-items: start; overflow: hidden"
-            >
-              Apple Watch Series 5 - GPS - GPS + Cellular - 40MM 44MM - Gray -
-              Silver - Gold
+            <p class="s-s w-h" style="margin-left: 5px">
+              {{ product.seller.account_type }}
             </p>
-          </a>
-          <!-- * TODO: Product Ratings -->
-          <div style="display: flex; margin: 6.25px 0px">
-            <span class="material-icons s-l"> star </span>
-            <span class="material-icons s-l"> star </span>
-            <span class="material-icons s-l"> star </span>
-            <span class="material-icons s-l"> star_border </span>
-            <span class="material-icons s-l"> star_border </span>
-          </div>
-          <!-- * TODO: Product Price -->
-          <p class="s-l w-h">USD 279.00</p>
-          <!-- * TODO: Product Shipping Estimate -->
-          <p class="s-m w-l">+$25.43 shipping estimate</p>
-          <!-- * TODO: Add to cart, watchlist and wishlist buttons -->
-          <div style="display: flex; margin-top: 6.25px">
-            <button class="toggle" data-color="#ef233c">
-              <span class="material-icons-outlined s-l">add_shopping_cart</span>
-            </button>
-            <button class="toggle" data-color="#3d5a80">
-              <span class="material-icons-outlined s-l">star_border</span>
-            </button>
-            <button class="toggle" data-color="#ee6c4d">
-              <span class="material-icons-outlined s-l">remove_red_eye</span>
-            </button>
           </div>
 
-          <!-- * TODO: Account Type -->
-          <div class="product__account-type bg-red c-white">
-            <span class="material-icons-outlined s-l"> new_releases </span>
-            <p class="s-s w-h" style="margin-left: 5px">New Seller</p>
-          </div>
+          {% endif %}
         </div>
       </div>
+
+      {% endfor %}
     </div>
   </div>
 
@@ -391,9 +291,7 @@
       </div>
       <div class="module shadow bg-mediumBlue">
         <p class="s-l w-h c-white">Shipping Type</p>
-        <p class="s-m w-l c-white">
-          International free shipping via priority mail.
-        </p>
+        <p class="s-m w-l c-white">{{ product.shipping }}</p>
       </div>
     </div>
 
@@ -402,32 +300,38 @@
       style="width: calc(100% - 50px); margin: 0px 25px"
     >
       <p class="s-l w-h c-white">Product does not ship to</p>
-      <p class="s-m w-l c-white">
-        Angola, Cameroon, French Polynesia, Libya, Mongolia, Suriname, Guyana,
-        Mauritius, Chad, Madagascar, New Caledonia, Iran, Western Sahara, Laos,
-        Congo, Republic of the, Seychelles, Sudan, Venezuela, Somalia, Burma,
-        Cuba, Republic of, Yemen, Liberia, Sierra Leone, Central African
-        Republic, Niger, Saint Pierre and Miquelon, Tajikistan, Anguilla,
-        British Virgin Islands, Cape Verde Islands, Saint Vincent and the
-        Grenadines, Botswana, Eritrea, Swaziland, Lesotho
-      </p>
+      <p class="s-m w-l c-white">{{ product.product_does_not_ship_to }}</p>
     </div>
 
     <div>
       <div class="module shadow bg-black">
         <p class="s-l w-h c-white">Payments</p>
-        <p class="s-m w-l c-white">
-          Payments accepted via Paypal, Mastercard and Visa.
-        </p>
+        <p class="s-m w-l c-white">{{ product.payments }}</p>
       </div>
       <div class="module shadow bg-darkBlue">
         <p class="s-l w-h c-white">Item location</p>
-        <p class="s-m w-l c-white">Item is located in New York, USA.</p>
+        <p class="s-m w-l c-white">
+          Item is located in {{ product.product_location }}
+        </p>
       </div>
     </div>
   </div>
 </div>
 
 <script src="{% static 'main/js/product.js' %}"></script>
+<script>
+  const ratings = document.querySelectorAll("div.progress");
+
+  const ratingCondition = ratings[0];
+  ratingCondition.style.width = "{{ product.seller.communication }}%";
+
+  const ratingShipping = ratings[1];
+  ratingShipping.style.width = "{{ product.seller.shipping }}%";
+
+  const ratingReturn = ratings[2];
+  ratingShipping.style.width = "{{ product.seller.return }}%";
+
+  console.log("{{ product.price }}");
+</script>
 
 {% endblock content %}

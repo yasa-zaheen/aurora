@@ -63,7 +63,8 @@ input[type="checkbox"] {
 .categories__category {
   min-width: calc((100vw - 200px) / 7);
   max-width: calc((100vw - 200px) / 7);
-  height: calc((100vw - 200px) / 7);
+  min-height: calc((100vw - 200px) / 7);
+  max-height: calc((100vw - 200px) / 7);
   padding: 25px;
   background-color: white;
   height: fit-content;

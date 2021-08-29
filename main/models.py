@@ -2,9 +2,8 @@
 
 from django.db import models
 from django.db.models.deletion import SET_NULL
-from django.db.models.fields import TextField
-from django.db.models.fields.related import ForeignKey
-from django.utils.translation import gettext_lazy as _
+
+from authentication.models import CustomUser
 
 
 # Models
@@ -84,9 +83,15 @@ class Filter(models.Model):
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=255)
     price = models.FloatField()
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    seller = models.ForeignKey(
+        CustomUser, null=True, on_delete=models.SET_NULL)
+
+    category = models.ForeignKey(
+        Category, null=True, on_delete=models.SET_NULL)
+    sub_category = models.ForeignKey(
+        SubCategory, null=True, on_delete=models.SET_NULL)
 
     image_1 = models.ImageField(blank=True, null=True,
                                 upload_to="products")
@@ -103,10 +108,43 @@ class Product(models.Model):
     payments = models.CharField(max_length=255)
 
     product_does_not_ship_to = models.TextField()
+    shipping_price = models.FloatField()
+    product_location = models.TextField()
 
     payments_paypal = models.BooleanField(default=False)
     payments_master_card = models.BooleanField(default=False)
     payments_visa = models.BooleanField(default=False)
     payments_cod = models.BooleanField(default=False)
-
     features = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+    def ratings(self):
+        import math
+
+        total = 0
+        for i in Review.objects.filter(product=self):
+            total += i.ratings
+
+        try:
+            return math.ceil(total / Review.objects.filter(product=self).count())
+        except ZeroDivisionError:
+            return 0
+
+    # product_type = models.ForeignKey(
+    #     ProductType, null=True, on_delete=models.SET_NULL)
+    # filters = models.ManyToManyField(
+    #     Filter)
+    # sub_category = models.ForeignKey(
+    #     SubCategory, null=True, on_delete=models.SET_NULL)
+
+
+class Review(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    comment = models.CharField(max_length=255, blank=True, null=True)
+    ratings = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.user} - {self.product}"

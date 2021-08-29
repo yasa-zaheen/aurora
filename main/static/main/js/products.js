@@ -1,19 +1,3 @@
-const toggleAnimations = () => {
-  const toggleBtns = document.querySelectorAll("button.toggle");
-
-  toggleBtns.forEach((toggleBtn) => {
-    toggleBtn.addEventListener("click", function () {
-      toggleBtn.classList.toggle("toggled");
-
-      if (toggleBtn.classList.contains("toggled")) {
-        toggleBtn.style.color = toggleBtn.getAttribute("data-color");
-      } else {
-        toggleBtn.style.color = "black";
-      }
-    });
-  });
-};
-
 // const prodCardBtnAnimations = (buttons, color) => {
 //   buttons.forEach((button) => {
 //     button.addEventListener("click", function () {

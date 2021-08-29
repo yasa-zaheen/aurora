@@ -1,19 +1,20 @@
 # Imports
 
+
 from authentication.models import CustomUser
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 
-
 from django.shortcuts import redirect, render, reverse
 from django.core.mail import send_mail
-from django.views.defaults import page_not_found
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.http.response import HttpResponsePermanentRedirect
+from django.conf import settings
 
 import hashlib
+import os
 
 
 # Views
@@ -86,6 +87,7 @@ def sign_up(request):
                 html_message=f"<a href='http://127.0.0.1:8000/auth/verify_user/{custom_user.huid}/' >Click here</a>"
             )
 
+            login(request, user)
             return redirect(reverse("dashboard:home"))
 
     return render(request, "authentication/sign_up.html", status=status)

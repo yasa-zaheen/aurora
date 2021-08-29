@@ -1,13 +1,12 @@
 # Imports
 
-from main.views import sub_category
 from django.contrib import admin
 from main.models import *
 
 # Admin
 
 
-class CategoryAdmin (admin.ModelAdmin):
+class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'image_photographer')
 
 
@@ -27,8 +26,18 @@ class FilterAdmin(admin.ModelAdmin):
     list_filter = ["product_type", ]
 
 
+class ProductAdmin(admin.ModelAdmin):
+    pass
+
+
+class ReviewAdmin(admin.ModelAdmin):
+    pass
+
+
 # Registration
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(SubCategory, SubCategoryAdmin)
 admin.site.register(ProductType, ProductTypeAdmin)
 admin.site.register(Filter, FilterAdmin)
+admin.site.register(Product, ProductAdmin)
+admin.site.register(Review, ReviewAdmin)

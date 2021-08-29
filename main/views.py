@@ -1,5 +1,6 @@
 # Imports
 
+
 from django.shortcuts import render
 from main.models import *
 
@@ -13,8 +14,12 @@ from main.filters import *
 def index(response):
     all_categories = Category.objects.order_by('name')
 
+    products = Product.objects.all()
+
     context = {
-        'all_categories': all_categories
+        'all_categories': all_categories,
+        "products": products
+
     }
 
     return render(response, "main/index.html", context)
@@ -24,19 +29,37 @@ def products(response):
 
     all_categories = Category.objects.order_by('name')
 
+    products = Product.objects.all()
+
     context = {
-        'all_categories': all_categories
+        'all_categories': all_categories,
+        "products": products
     }
 
     return render(response, "main/products.html", context)
 
 
-def product(response):
+def product(response, id):
 
     all_categories = Category.objects.order_by('name')
 
+    product = Product.objects.get(id=id)
+    seller_products = Product.objects.filter(seller=product.seller)
+
+    features_split_n = product.features.split("\n")
+    features = []
+
+    reviews = Review.objects.filter(product=product)
+
+    for i in features_split_n:
+        features.append(i.split(":"))
+
     context = {
-        'all_categories': all_categories
+        'all_categories': all_categories,
+        "product": product,
+        "features": features,
+        "seller_products": seller_products,
+        "reviews": reviews
 
     }
 
@@ -51,11 +74,13 @@ def category(response, id):
 
     all_categories = Category.objects.order_by('name')
 
+    products = Product.objects.all()
+
     context = {
         "category": category,
         "sub_categories": sub_categories,
-        'all_categories': all_categories
-
+        'all_categories': all_categories,
+        "products": products
     }
 
     return render(response, "main/category.html", context)
