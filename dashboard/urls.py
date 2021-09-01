@@ -15,5 +15,6 @@ urlpatterns = [
     path('crm/', views.crm, name="crm"),
     path("my_products/", views.my_products, name="my_products"),
     path("add_product/", views.add_product, name="add_product"),
-    path('revenue/', views.revenue, name="revenue")
+    path('revenue/', views.revenue, name="revenue"),
+    path('settings/', views.settings, name="settings")
 ]

@@ -1,0 +1,29 @@
+{% extends "dashboard/dashboard.html" %} {% load static %}
+
+<hr />
+{% block viewName %} Settings {% endblock viewName %}
+<hr />
+{% block viewContent %}
+
+<link rel="stylesheet" href="{% static 'dashboard/css/settings.css' %}" />
+
+<div class="settings">
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div
+      class="settings__cover-image shadow"
+      style="background-image: url('{{ seller.cover_image.url }}');"
+    >
+      <div class="cover-image__upload-btn">
+        <span class="material-icons-outlined c-white s-l">edit</span>
+        <input type="file" name="cover-image" />
+      </div>
+    </div>
+
+    <button type="submit" class="shadow">Save changes</button>
+  </form>
+</div>
+
+<script src="{% static 'dashboard/js/settings.js' %}"></script>
+
+{% endblock viewContent %}

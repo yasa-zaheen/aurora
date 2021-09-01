@@ -55,6 +55,26 @@ def revenue(request):
     return render(request, "dashboard/revenue.html", context)
 
 
+def settings(request):
+
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            cover_image = request.FILES["cover-image"]
+            user = CustomUser.objects.get(user=request.user)
+            user.cover_image = cover_image
+            user.save()
+
+        seller = CustomUser.objects.get(user=request.user)
+
+        context = {
+            "seller": seller
+        }
+
+        return render(request, 'dashboard/settings.html', context)
+    else:
+        return redirect(reverse("main:index"))
+
+
 def dashboard(request):
     context = {}
     return render(request, 'dashboard/dashboard.html', context)
