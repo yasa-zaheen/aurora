@@ -59,9 +59,17 @@ def settings(request):
 
     if request.user.is_authenticated:
         if request.method == "POST":
-            cover_image = request.FILES["cover-image"]
             user = CustomUser.objects.get(user=request.user)
-            user.cover_image = cover_image
+
+            for i in request.FILES:
+                if i == "cover-image":
+                    cover_image = request.FILES["cover-image"]
+                    user.cover_image = cover_image
+
+                elif i == "profile-image":
+                    profile_image = request.FILES["profile-image"]
+                    user.profile_image = profile_image
+
             user.save()
 
         seller = CustomUser.objects.get(user=request.user)

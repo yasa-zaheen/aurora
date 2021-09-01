@@ -10,13 +10,29 @@
 <div class="settings">
   <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <div
-      class="settings__cover-image shadow"
-      style="background-image: url('{{ seller.cover_image.url }}');"
-    >
-      <div class="cover-image__upload-btn">
-        <span class="material-icons-outlined c-white s-l">edit</span>
-        <input type="file" name="cover-image" />
+
+    <!-- Profile Image and Cover Image -->
+    <div style="position: relative">
+      <!-- Cover Image -->
+      <div
+        class="settings__cover-image shadow"
+        style="background-image: url('{{ seller.cover_image.url }}');"
+      >
+        <div class="cover-image__upload-btn">
+          <span class="material-icons-outlined c-white s-l">edit</span>
+          <input type="file" name="cover-image" />
+        </div>
+      </div>
+
+      <!-- Profile Image -->
+      <div
+        class="settings__profile-image"
+        style="background-image: url('{{ seller.profile_image.url }}');"
+      >
+        <div class="profile-image__upload-btn">
+          <span class="material-icons-outlined c-white s-l">edit</span>
+          <input type="file" name="profile-image" />
+        </div>
       </div>
     </div>
 

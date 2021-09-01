@@ -5,6 +5,16 @@
   color: var(--black);
 }
 
+input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 50px;
+  height: 50px !important;
+  cursor: pointer;
+}
+
 /* Settings */
 
 .settings {
@@ -14,6 +24,8 @@
   padding: 25px;
 }
 
+/** Cover Image **/
+
 .settings__cover-image {
   background-size: cover;
   background-position: center;
@@ -22,6 +34,7 @@
   border-radius: 15px;
   margin-bottom: 25px;
   padding: 25px;
+  position: relative;
 }
 
 .cover-image__upload-btn {
@@ -29,19 +42,45 @@
   width: 50px;
   position: relative;
   padding: 12.5px 25px;
-  background-color: var(--orange);
+  background-color: #ee6c4d2f;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 15px;
 }
 
-.settings__cover-image input[type="file"] {
+.cover-image__upload-btn:hover {
+  background-color: #ee6c4d;
+}
+
+/** Profile Image **/
+
+.settings__profile-image {
+  height: calc(30vh - 50px);
+  width: calc(30vh - 50px);
+  background-size: cover;
+  background-position: center;
   position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
+  right: 25px;
+  top: 25px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-image__upload-btn {
+  height: 50px;
   width: 50px;
-  height: 50px !important;
-  cursor: pointer;
+  position: relative;
+  padding: 12.5px 25px;
+  background-color: #2932412f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+}
+
+.profile-image__upload-btn:hover {
+  background-color: #293241;
 }

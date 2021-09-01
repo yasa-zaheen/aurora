@@ -1,18 +1,24 @@
-const uploadedImgThumbnailHandler = () => {
-  const coverImg = document.querySelector("div.settings__cover-image");
-  const coverImgUploadBtn = document.querySelector(
-    "div.cover-image__upload-btn input"
-  );
+const coverImg = document.querySelector("div.settings__cover-image");
+const coverImgUploadBtn = document.querySelector(
+  "div.cover-image__upload-btn input"
+);
 
-  coverImgUploadBtn.addEventListener("change", function () {
-    const file = coverImgUploadBtn.files[0];
+const profileImg = document.querySelector("div.settings__profile-image");
+const profileImgUploadBtn = document.querySelector(
+  "div.profile-image__upload-btn input"
+);
+
+const uploadedImgThumbnailHandler = (btn, img) => {
+  btn.addEventListener("change", function () {
+    const file = btn.files[0];
     const reader = new FileReader();
 
     reader.readAsDataURL(file);
     reader.addEventListener("load", function () {
-      coverImg.style.backgroundImage = `url('${reader.result}')`;
+      img.style.backgroundImage = `url('${reader.result}')`;
     });
   });
 };
 
-uploadedImgThumbnailHandler();
+uploadedImgThumbnailHandler(coverImgUploadBtn, coverImg);
+uploadedImgThumbnailHandler(profileImgUploadBtn, profileImg);
