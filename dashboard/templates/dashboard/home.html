@@ -10,21 +10,21 @@
   <div
     class="home__banner shadow"
     style="
-      background-image: url('{{ seller.cover_image.url }}');
+      background-image: url('{{ user.cover_image.url }}');
     "
   >
     <div class="banner__userInfo">
       <div
         class="userInfo__profileImg"
         style="
-          background-image: url('{{ seller.profile_image.url }}');
+          background-image: url('{{ user.profile_image.url }}');
         "
       ></div>
       <div
         style="display: flex, flex-direction-column; justify-content: center"
       >
-        <p class="s-l w-h c-white">{{ seller.user }}</p>
-        <p class="s-m w-m c-white">{{ seller.user.email }}</p>
+        <p class="s-l w-h c-white">{{ user.user }}</p>
+        <p class="s-m w-m c-white">{{ user.user.email }}</p>
       </div>
     </div>
   </div>
@@ -35,7 +35,8 @@
     <div class="home__smallModule shadow bg-darkBlue">
       <p class="s-xxl w-h c-white">Cart</p>
       <p class="s-m w-m c-white">
-        You have 3 items worth USD 2280.62 in your cart.
+        You have {{ cart.get_total_items }} item(s) worth USD
+        {{cart.get_total_cost|floatformat:2}} in your cart.
       </p>
     </div>
 

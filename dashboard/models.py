@@ -16,21 +16,26 @@ class Cart(models.Model):
         return f"{self.user}'s cart"
 
     def get_total_items(self):
-        return self.products.count()
+        return self.products.all().count()
 
     def get_total_shipping(self):
         total = 0
-        for product in self.products:
+        for product in self.products.all():
             total += product.shipping_price
 
         return total
 
     def get_total_price(self):
         total = 0
-        for product in self.products:
+        for product in self.products.all():
             total += product.price
 
         return total
 
     def get_total_cost(self):
-        return self.get_total_shipping + self.get_total_price
+        total = 0
+        for product in self.products.all():
+            total += product.shipping_price
+            total += product.price
+
+        return total

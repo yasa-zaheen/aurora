@@ -2,6 +2,7 @@
 
 from django.shortcuts import render, redirect, reverse
 from authentication.models import *
+from dashboard.models import *
 
 # Views
 
@@ -9,10 +10,12 @@ from authentication.models import *
 def home(request):
 
     if request.user.is_authenticated:
-        seller = CustomUser.objects.get(user=request.user)
+        user = CustomUser.objects.get(user=request.user)
+        cart = Cart.objects.get(user=user)
 
         context = {
-            "seller": seller
+            "user": user,
+            "cart": cart,
         }
 
         return render(request, 'dashboard/home.html', context)
