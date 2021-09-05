@@ -4,6 +4,10 @@ from django.shortcuts import render, redirect, reverse
 from authentication.models import *
 from dashboard.models import *
 
+from django.contrib import messages
+from django.contrib.auth import authenticate
+
+
 # Views
 
 
@@ -75,14 +79,22 @@ def settings(request):
         if request.method == "POST":
             user = CustomUser.objects.get(user=request.user)
 
+            # **Profile Image & Cover Image**
+
             for i in request.FILES:
                 if i == "cover-image":
                     cover_image = request.FILES["cover-image"]
                     user.cover_image = cover_image
+                    messages.add_message(
+                        request, messages.SUCCESS, 'Cover image changed successfully!')
 
                 elif i == "profile-image":
                     profile_image = request.FILES["profile-image"]
                     user.profile_image = profile_image
+                    messages.add_message(
+                        request, messages.SUCCESS, 'Profile image changed successfully!')
+
+            # **Personal Information**
 
             full_name = request.POST["full-name"]
             contact = request.POST["contact"]
@@ -99,6 +111,21 @@ def settings(request):
             user.country = country
             user.state_province = state_province
             user.city = city
+
+            # **Password & Login**
+
+            if request.POST['new-password'] != "":
+                correct_credentials = authenticate(
+                    username=user.user.username, password=request.POST['current-password'])
+
+                if correct_credentials:
+                    messages.add_message(
+                        request, messages.SUCCESS, 'Passwords reset successfully!')
+                    user.user.set_password(request.POST["new-password"])
+                    user.user.save()
+                else:
+                    messages.add_message(
+                        request, messages.ERROR, 'Current password is incorrect.')
 
             user.save()
 

@@ -11,10 +11,8 @@ from django.shortcuts import redirect, render, reverse
 from django.core.mail import send_mail
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.http.response import HttpResponsePermanentRedirect
-from django.conf import settings
 
 import hashlib
-import os
 
 
 # Views
