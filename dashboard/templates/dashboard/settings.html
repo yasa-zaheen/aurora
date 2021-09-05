@@ -16,7 +16,7 @@
       <!-- Cover Image -->
       <div
         class="settings__cover-image shadow"
-        style="background-image: url('{{ seller.cover_image.url }}');"
+        style="background-image: url('{{ user.cover_image.url }}');"
       >
         <div class="cover-image__upload-btn">
           <span class="material-icons-outlined c-white s-l">edit</span>
@@ -27,7 +27,7 @@
       <!-- Profile Image -->
       <div
         class="settings__profile-image"
-        style="background-image: url('{{ seller.profile_image.url }}');"
+        style="background-image: url('{{ user.profile_image.url }}');"
       >
         <div class="profile-image__upload-btn">
           <span class="material-icons-outlined c-white s-l">edit</span>
@@ -36,7 +36,112 @@
       </div>
     </div>
 
-    <button type="submit" class="shadow">Save changes</button>
+    <!-- Perseonal Information -->
+    <div>
+      <p class="s-2l w-h" style="margin-bottom: 12.5px">Personal Information</p>
+
+      <div style="display: flex">
+        <!-- Full name -->
+        <div class="settings__input-container">
+          <p class="s-l w-h">Full name</p>
+          <input
+            type="text"
+            placeholder="John Doe"
+            value="{{user.full_name}}"
+            name="full-name"
+          />
+        </div>
+
+        <!-- Contact -->
+        <div
+          class="settings__input-container"
+          style="width: 30%; margin-left: 25px"
+        >
+          <p class="s-l w-h">Contact</p>
+          <input
+            type="text"
+            placeholder="(555) 555-1234..."
+            value="{{user.contact}}"
+            name="contact"
+          />
+        </div>
+      </div>
+
+      <div style="display: flex">
+        <!-- Address -->
+        <div class="settings__input-container">
+          <p class="s-l w-h">Address</p>
+          <input
+            type="text"
+            placeholder="Capsule 510, SOL 218, Mars."
+            value="{{user.address}}"
+            name="address"
+          />
+        </div>
+
+        <!-- ZIP Code -->
+        <div
+          class="settings__input-container"
+          style="width: 25%; margin-left: 25px"
+        >
+          <p class="s-l w-h">ZIP Code</p>
+          <input
+            type="text"
+            placeholder="XYZ-123456"
+            value="{{user.zip_code}}"
+            name="zip-code"
+          />
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between">
+        <!-- Country -->
+        <div
+          class="settings__input-container"
+          style="width: calc((100% - 50px) / 3)"
+        >
+          <p class="s-l w-h">Country</p>
+          <input
+            type="text"
+            placeholder="Bangladesh"
+            value="{{user.country}}"
+            name="country"
+          />
+        </div>
+
+        <!-- State/Province -->
+        <div
+          class="settings__input-container"
+          style="width: calc((100% - 50px) / 3)"
+        >
+          <p class="s-l w-h">State/Province</p>
+          <input
+            type="text"
+            placeholder="Texas"
+            value="{{user.state_province}}"
+            name="state-province"
+          />
+        </div>
+
+        <!-- City -->
+        <div
+          class="settings__input-container"
+          style="width: calc((100% - 50px) / 3)"
+        >
+          <p class="s-l w-h">City</p>
+          <input
+            type="text"
+            placeholder="New York"
+            value="{{user.city}}"
+            name="city"
+          />
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="shadow bg-red" style="margin-top: 12.5px">
+      Save changes
+    </button>
   </form>
 </div>
 

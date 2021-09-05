@@ -84,12 +84,28 @@ def settings(request):
                     profile_image = request.FILES["profile-image"]
                     user.profile_image = profile_image
 
+            full_name = request.POST["full-name"]
+            contact = request.POST["contact"]
+            address = request.POST["address"]
+            zip_code = request.POST["zip-code"]
+            country = request.POST["country"]
+            state_province = request.POST["state-province"]
+            city = request.POST["city"]
+
+            user.full_name = full_name
+            user.contact = contact
+            user.address = address
+            user.zip_code = zip_code
+            user.country = country
+            user.state_province = state_province
+            user.city = city
+
             user.save()
 
-        seller = CustomUser.objects.get(user=request.user)
+        user = CustomUser.objects.get(user=request.user)
 
         context = {
-            "seller": seller
+            "user": user
         }
 
         return render(request, 'dashboard/settings.html', context)
