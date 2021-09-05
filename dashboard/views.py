@@ -24,8 +24,19 @@ def home(request):
 
 
 def cart(request):
-    context = {}
-    return render(request, "dashboard/cart.html", context)
+
+    if request.user.is_authenticated:
+        user = CustomUser.objects.get(user=request.user)
+        cart = Cart.objects.get(user=user)
+
+        context = {
+            "user": user,
+            "cart": cart,
+        }
+
+        return render(request, "dashboard/cart.html", context)
+    else:
+        return redirect(reverse("main:index"))
 
 
 def watchlist(request):
