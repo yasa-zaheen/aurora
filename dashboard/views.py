@@ -38,6 +38,22 @@ def cart(request):
             "cart": cart,
         }
 
+        if request.method == "POST":
+            if request.POST["cart"]:
+                product = Product.objects.get(id=request.POST["cart"])
+
+                if product in cart.products.all():
+                    cart.products.remove(product)
+                    messages.add_message(
+                        request, messages.ERROR, f"{product.name} has been removed from your cart.")
+                else:
+                    cart.products.add(product)
+                    messages.add_message(
+                        request, messages.SUCCESS, f"{product.name} has been added to your cart.")
+
+                cart.save()
+                return render(request, "main/cart.html", context)
+
         return render(request, "dashboard/cart.html", context)
     else:
         return redirect(reverse("main:index"))

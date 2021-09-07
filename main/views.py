@@ -1,45 +1,91 @@
 # Imports
 
 
-from django.shortcuts import render
 from main.models import *
+from dashboard.models import *
 
 from main.webscraper import permission
 from main.product_types import *
 from main.filters import *
 
+from django.shortcuts import render
+from django.contrib import messages
+
+from asgiref.sync import sync_to_async
+
+
 # Views
 
 
-def index(response):
+def index(request):
     all_categories = Category.objects.order_by('name')
 
     products = Product.objects.all()
 
+    user = request.user
+    custom_user = CustomUser.objects.get(user=user)
+    cart = Cart.objects.get(user=custom_user)
+
     context = {
         'all_categories': all_categories,
-        "products": products
-
+        "products": products,
+        "cart": cart
     }
 
-    return render(response, "main/index.html", context)
+    if request.method == "POST":
+        if request.POST["cart"]:
+            product = Product.objects.get(id=request.POST["cart"])
+
+            if product in cart.products.all():
+                cart.products.remove(product)
+                messages.add_message(
+                    request, messages.ERROR, f"{product.name} has been removed from your cart.")
+            else:
+                cart.products.add(product)
+                messages.add_message(
+                    request, messages.SUCCESS, f"{product.name} has been added to your cart.")
+
+            cart.save()
+            return render(request, "main/index.html", context)
+
+    return render(request, "main/index.html", context)
 
 
-def products(response):
+def products(request):
 
     all_categories = Category.objects.order_by('name')
 
     products = Product.objects.all()
+    user = request.user
+    custom_user = CustomUser.objects.get(user=user)
+    cart = Cart.objects.get(user=custom_user)
 
     context = {
-        'all_categories': all_categories,
-        "products": products
+        "all_categories": all_categories,
+        "products": products,
+        "cart": cart
     }
 
-    return render(response, "main/products.html", context)
+    if request.method == "POST":
+        if request.POST["cart"]:
+            product = Product.objects.get(id=request.POST["cart"])
+
+            if product in cart.products.all():
+                cart.products.remove(product)
+                messages.add_message(
+                    request, messages.ERROR, f"{product.name} has been removed from your cart.")
+            else:
+                cart.products.add(product)
+                messages.add_message(
+                    request, messages.SUCCESS, f"{product.name} has been added to your cart.")
+
+            cart.save()
+            return render(request, "main/products.html", context)
+
+    return render(request, "main/products.html", context)
 
 
-def product(response, id):
+def product(request, id):
 
     all_categories = Category.objects.order_by('name')
 
@@ -54,19 +100,39 @@ def product(response, id):
     for i in features_split_n:
         features.append(i.split(":"))
 
+    user = request.user
+    custom_user = CustomUser.objects.get(user=user)
+    cart = Cart.objects.get(user=custom_user)
+
     context = {
         'all_categories': all_categories,
         "product": product,
         "features": features,
         "seller_products": seller_products,
-        "reviews": reviews
-
+        "reviews": reviews,
+        "cart": cart
     }
 
-    return render(response, "main/product.html", context)
+    if request.method == "POST":
+        if request.POST["cart"]:
+            product = Product.objects.get(id=request.POST["cart"])
+
+            if product in cart.products.all():
+                cart.products.remove(product)
+                messages.add_message(
+                    request, messages.ERROR, f"{product.name} has been removed from your cart.")
+            else:
+                cart.products.add(product)
+                messages.add_message(
+                    request, messages.SUCCESS, f"{product.name} has been added to your cart.")
+
+            cart.save()
+            return render(request, "main/product.html", context)
+
+    return render(request, "main/product.html", context)
 
 
-def category(response, id):
+def category(request, id):
 
     category = Category.objects.get(id=id)
     sub_categories = SubCategory.objects.filter(
@@ -76,23 +142,44 @@ def category(response, id):
 
     products = Product.objects.all()
 
+    user = request.user
+    custom_user = CustomUser.objects.get(user=user)
+    cart = Cart.objects.get(user=custom_user)
+
     context = {
         "category": category,
         "sub_categories": sub_categories,
         'all_categories': all_categories,
-        "products": products
+        "products": products,
+        "cart": cart
     }
 
-    return render(response, "main/category.html", context)
+    if request.method == "POST":
+        if request.POST["cart"]:
+            product = Product.objects.get(id=request.POST["cart"])
+
+            if product in cart.products.all():
+                cart.products.remove(product)
+                messages.add_message(
+                    request, messages.ERROR, f"{product.name} has been removed from your cart.")
+            else:
+                cart.products.add(product)
+                messages.add_message(
+                    request, messages.SUCCESS, f"{product.name} has been added to your cart.")
+
+            cart.save()
+            return render(request, "main/category.html", context)
+
+    return render(request, "main/category.html", context)
 
 
-def brand(response):
+def brand(request):
 
     context = {}
-    return render(response, "main/brand.html", context)
+    return render(request, "main/brand.html", context)
 
 
-def sub_category(response, id):
+def sub_category(request, id):
 
     all_categories = Category.objects.order_by('name')
 
@@ -106,10 +193,10 @@ def sub_category(response, id):
         'all_categories': all_categories
 
     }
-    return render(response, "main/sub_category.html", context)
+    return render(request, "main/sub_category.html", context)
 
 
-def product_type(response, id):
+def product_type(request, id):
 
     all_categories = Category.objects.order_by('name')
 
@@ -144,12 +231,12 @@ def product_type(response, id):
         'all_categories': all_categories
 
     }
-    return render(response, "main/product_type.html", context)
+    return render(request, "main/product_type.html", context)
 
 
-def seller(response):
+def seller(request):
     context = {}
-    return render(response, "main/product_seller.html", context)
+    return render(request, "main/product_seller.html", context)
 
 
 # permission()

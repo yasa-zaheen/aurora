@@ -10,7 +10,7 @@ from main.models import Product
 
 class Cart(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    products = models.ManyToManyField(Product)
+    products = models.ManyToManyField(Product, blank=True)
 
     def __str__(self):
         return f"{self.user}'s cart"

@@ -110,6 +110,15 @@
       {% endwith %}
     </div>
 
+    {% if messages %} {% for message in messages %}
+    <p
+      class="s-l w-h {{ message.tags }}"
+      style="width: calc(100% - 50px); margin: 25px 0px 0px 0px"
+    >
+      {{ message }}
+    </p>
+    {% endfor %} {% endif %}
+
     <div class="main__products">
       {% for product in products %}
 
@@ -135,11 +144,11 @@
           </a>
           <!-- * TODO: Product Ratings -->
           <div style="display: flex; margin: 6.25px 0px">
-            <span class="material-icons s-l"> star </span>
-            <span class="material-icons s-l"> star </span>
-            <span class="material-icons s-l"> star </span>
-            <span class="material-icons s-l"> star </span>
-            <span class="material-icons s-l"> star_border </span>
+            {% with ratings=product.ratings %}
+            <span></span>
+            {% include "templates/ratings.html" %}
+            <span></span>
+            {% endwith %}
           </div>
           <!-- * TODO: Product Price -->
           <p class="s-l w-h">USD {{ product.price }}</p>
@@ -148,17 +157,28 @@
             +USD {{ product.shipping_price }} shipping estimate
           </p>
           <!-- * TODO: Add to cart, watchlist and wishlist buttons -->
-          <div style="display: flex; margin-top: 6.25px">
-            <button class="toggle" data-color="#ef233c">
+          <form method="POST" style="display: flex; margin-top: 6.25px">
+            {% csrf_token %} {% if product in cart.products.all %}
+            <button class="toggled c-red" type="submit" data-color="#ef233c">
+              <input type="submit" name="cart" value="{{ product.id }}" />
               <span class="material-icons-outlined s-l">add_shopping_cart</span>
             </button>
+            {% else %}
+            <button class="toggle" type="submit" data-color="#ef233c">
+              <input type="submit" name="cart" value="{{ product.id }}" />
+              <span class="material-icons-outlined s-l">add_shopping_cart</span>
+            </button>
+            {% endif %}
+
             <button class="toggle" data-color="#3d5a80">
+              <input type="submit" name="wishlist" value="{{ product.id }}" />
               <span class="material-icons-outlined s-l">star_border</span>
             </button>
             <button class="toggle" data-color="#ee6c4d">
+              <input type="submit" name="watchlist" value="{{ product.id }}" />
               <span class="material-icons-outlined s-l">remove_red_eye</span>
             </button>
-          </div>
+          </form>
 
           <!-- * TODO: Account Type -->
 

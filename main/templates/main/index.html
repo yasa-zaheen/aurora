@@ -33,6 +33,12 @@
     {% endwith %}
   </div>
 
+  {% if messages %} {% for message in messages %}
+  <p class="s-l w-h {{ message.tags }}" style="margin: 25px 0px 0px 0px">
+    {{ message }}
+  </p>
+  {% endfor %} {% endif %}
+
   <div class="main__categories">
     {% for category in all_categories %}
     <a
@@ -54,8 +60,8 @@
       <div
         class="product__img"
         style="
-            background-image: url('{{product.image_1.url}}');
-          "
+          background-image: url('{{product.image_1.url}}');
+        "
       ></div>
       <!-- * TODO: Blurred Background -->
 
@@ -84,17 +90,28 @@
           +USD {{ product.shipping_price }} shipping estimate
         </p>
         <!-- * TODO: Add to cart, watchlist and wishlist buttons -->
-        <div style="display: flex; margin-top: 6.25px">
-          <button class="toggle" data-color="#ef233c">
+        <form method="POST" style="display: flex; margin-top: 6.25px">
+          {% csrf_token %} {% if product in cart.products.all %}
+          <button class="toggled c-red" type="submit" data-color="#ef233c">
+            <input type="submit" name="cart" value="{{ product.id }}" />
             <span class="material-icons-outlined s-l">add_shopping_cart</span>
           </button>
+          {% else %}
+          <button class="toggle" type="submit" data-color="#ef233c">
+            <input type="submit" name="cart" value="{{ product.id }}" />
+            <span class="material-icons-outlined s-l">add_shopping_cart</span>
+          </button>
+          {% endif %}
+
           <button class="toggle" data-color="#3d5a80">
+            <input type="submit" name="wishlist" value="{{ product.id }}" />
             <span class="material-icons-outlined s-l">star_border</span>
           </button>
           <button class="toggle" data-color="#ee6c4d">
+            <input type="submit" name="watchlist" value="{{ product.id }}" />
             <span class="material-icons-outlined s-l">remove_red_eye</span>
           </button>
-        </div>
+        </form>
 
         <!-- * TODO: Account Type -->
 
