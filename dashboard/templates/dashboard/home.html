@@ -1,0 +1,102 @@
+{% extends "dashboard/dashboard.html" %} {% load static %}
+
+<br />
+{% block viewName %} Home {% endblock viewName %}
+<hr />
+{% block viewContent %}
+<link rel="stylesheet" href="{% static 'dashboard/css/home.css' %}" />
+
+<div class="home">
+  <div
+    class="home__banner shadow"
+    style="
+      background-image: url('{{ user.cover_image.url }}');
+    "
+  >
+    <div class="banner__userInfo">
+      <div
+        class="userInfo__profileImg"
+        style="
+          background-image: url('{{ user.profile_image.url }}');
+        "
+      ></div>
+      <div
+        style="display: flex, flex-direction-column; justify-content: center"
+      >
+        <p class="s-l w-h c-white">{{ user.user }}</p>
+        <p class="s-m w-m c-white">{{ user.user.email }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div
+    style="display: flex; justify-content: space-between; margin-bottom: 25px"
+  >
+    <div class="home__smallModule shadow bg-darkBlue">
+      <p class="s-xxl w-h c-white">Cart</p>
+      <p class="s-m w-m c-white">
+        You have {{ cart.get_total_items }} item(s) worth USD
+        {{cart.get_total_cost|floatformat:2}} in your cart.
+      </p>
+    </div>
+
+    <div class="home__smallModule shadow bg-orange">
+      <p class="s-xxl w-h c-white">Watchlist</p>
+      <p class="s-m w-m c-white">
+        Price decreased for 1 product. Stock increased for 2 products.
+      </p>
+    </div>
+
+    <div class="home__smallModule shadow bg-mediumBlue">
+      <p class="s-xxl w-h c-white">Wishlist</p>
+      <p class="s-m w-m c-white">You have 3 items in your wishlist.</p>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between">
+    <div class="home__mediumModule shadow bg-white">
+      <p class="s-xxl w-h c-black">Revenue</p>
+      <canvas id="revenueSales__graph"></canvas>
+    </div>
+
+    <div class="home__mediumModule shadow bg-black">
+      <p class="s-xxl w-h c-white">CRM</p>
+      <table class="home__crm">
+        <thead>
+          <th align="center" class="home__crm__header" style="width: 50%">
+            <p class="s-l w-h c-white">Order ID</p>
+          </th>
+          <th align="center" class="home__crm__header" style="width: 25%">
+            <p class="s-l w-h c-white">Price</p>
+          </th>
+          <th align="center" class="home__crm__header" style="width: 25%">
+            <p class="s-l w-h c-white">Detail</p>
+          </th>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="home__crm__text">
+              <p class="s-s w-m c-white">
+                Apple iPhone 12 Pro Max - 256gb - Unlocked - Factory Sealed -
+                Factory Warranty
+              </p>
+            </td>
+            <td class="home__crm__text">
+              <p class="s-s w-m c-white">USD 1350.75</p>
+            </td>
+            <td class="home__crm__text">
+              <button class="c-black bg-white">
+                <p class="s-s w-m">Details</p>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
+<script src="{% static 'dashboard/js/home.js' %}"></script>
+
+{% endblock viewContent %}

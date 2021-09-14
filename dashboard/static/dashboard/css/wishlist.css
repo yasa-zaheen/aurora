@@ -1,0 +1,59 @@
+/* CSS from other files */
+
+#nav-wishlist {
+  background-color: #ffffffaf;
+  color: var(--black);
+}
+
+.view-cont {
+  width: calc(80vw - 25px);
+  padding: 0px !important;
+}
+
+/* Wishlist */
+
+.wishlist {
+  height: calc(100vh);
+  overflow: scroll;
+  padding: 25px;
+}
+
+.wishlist__product {
+  height: calc((100% - 50px) / 3);
+  overflow: hidden;
+  border-radius: 15px;
+  display: flex;
+  margin-bottom: 25px;
+  box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
+  position: relative;
+}
+
+.wishlist__product__delete {
+  width: 42px;
+  height: 42px;
+  border-radius: 15px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: #2f2f2f2f;
+  color: #fff;
+}
+
+.wishlist__product__delete:hover {
+  background-color: #2f2f2faf;
+}
+
+.wishlist__product__image {
+  height: 100%;
+  overflow: hidden;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wishlist__product__information {
+  padding: 25px;
+  flex: 1;
+  position: relative;
+}

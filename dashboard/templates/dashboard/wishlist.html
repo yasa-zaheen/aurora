@@ -1,0 +1,104 @@
+{% extends "dashboard/dashboard.html" %} {% load static %}
+<hr />
+
+{% block viewContent %}
+<link rel="stylesheet" href="{% static 'dashboard/css/wishlist.css' %}" />
+
+<div class="wishlist">
+  <div class="wishlist__product">
+    <button class="wishlist__product__delete">
+      <span class="material-icons-outlined s-l w-h"> delete </span>
+    </button>
+
+    <div class="wishlist__product__image">
+      <img
+        src="https://images.pexels.com/photos/3707744/pexels-photo-3707744.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+        alt=""
+        class="vis"
+      />
+    </div>
+
+    <div class="wishlist__product__information">
+      <p class="s-l w-h">
+        Apple iPhone 12 Pro Max - 256gb - Unlocked - Factory Sealed - Factory
+        Warranty
+      </p>
+      <p class="s-m w-h" style="opacity: 0.5; position: relative; bottom: 5px">
+        John Doe
+      </p>
+      <p class="s-l w-h" style="position: relative; bottom: 5px">USD 1299.99</p>
+      <p class="s-m w-h" style="opacity: 0.5; position: relative; bottom: 10px">
+        +USD 50.76 shipping estimate
+      </p>
+      <p class="s-l w-h" style="position: absolute; bottom: 25px; right: 25px">
+        Total Price: USD 1350.75
+      </p>
+    </div>
+  </div>
+
+  <div class="wishlist__product">
+    <button class="wishlist__product__delete">
+      <span class="material-icons-outlined s-l w-h"> delete </span>
+    </button>
+
+    <div class="wishlist__product__image">
+      <img
+        src="https://images.pexels.com/photos/2582928/pexels-photo-2582928.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+        alt=""
+        class="vis"
+      />
+    </div>
+
+    <div class="wishlist__product__information">
+      <p class="s-l w-h">
+        ASUS ROG ZEPHYRUS GU502LV GX502LXS CORE I7-10750H MOTHERBOARD
+        90NR04F0-R00051
+      </p>
+      <p class="s-m w-h" style="opacity: 0.5; position: relative; bottom: 5px">
+        John Doe
+      </p>
+      <p class="s-l w-h" style="position: relative; bottom: 5px">USD 846.39</p>
+      <p class="s-m w-h" style="opacity: 0.5; position: relative; bottom: 10px">
+        +USD 52.73 shipping estimate
+      </p>
+      <p class="s-l w-h" style="position: absolute; bottom: 25px; right: 25px">
+        Total Price: USD 914.41
+      </p>
+    </div>
+  </div>
+
+  <div class="wishlist__product">
+    <button class="wishlist__product__delete">
+      <span class="material-icons-outlined s-l w-h"> delete </span>
+    </button>
+
+    <div class="wishlist__product__image">
+      <img
+        src="https://images.pexels.com/photos/7742585/pexels-photo-7742585.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+        alt=""
+        class="vis"
+      />
+    </div>
+
+    <div class="wishlist__product__information">
+      <p class="s-l w-h">
+        iPhone 12 Pro Max 12 Mini 12 Fast Charging 20W Wireless Magnetic Magsafe
+        Charger
+      </p>
+      <p class="s-m w-h" style="opacity: 0.5; position: relative; bottom: 5px">
+        John Doe
+      </p>
+      <p class="s-l w-h" style="position: relative; bottom: 5px">USD 14.99</p>
+      <p class="s-m w-h" style="opacity: 0.5; position: relative; bottom: 10px">
+        +USD 24.74 shipping estimate
+      </p>
+      <p class="s-l w-h" style="position: absolute; bottom: 25px; right: 25px">
+        Total Price: USD 16.45
+      </p>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'dashboard/js/wishlist.js' %}"></script>
+
+{% endblock viewContent %}

@@ -1,335 +1,325 @@
 {% extends "templates/base.html" %} {% load static %}
 <hr />
-
-{% block title %} {{sub_category.name}} {% endblock title %} {% block content %}
+{% block title %} {{category.name}} {% endblock title %} {% block content %}
 <link rel="stylesheet" href="{% static 'main/css/sub_category.css' %}" />
 
-<div class="main">
-  <div class="col1">
-    <div class="filter-price">
-      <h1 class="filter">Filter by price</h1>
-      <input type="range" class="filter-price" min="5" max="10000" step="1" />
-      <p class="filter-price"></p>
+<div class="sub-categories">
+  <div class="sub-categories__filters">
+    <div class="filters__filter module shadow bg-white">
+      <p class="s-m w-h">Price</p>
+      <input type="range" min="5" max="10000" step="1" />
     </div>
 
-    <div class="filter-seller-ratings">
-      <h1 class="filter">Filter by seller ratings</h1>
-      <input
-        type="range"
-        class="filter-seller-ratings"
-        min="1"
-        max="5"
-        step="0.5"
-      />
-      <p class="filter-seller-ratings"></p>
+    <div class="filters__filter module shadow bg-white">
+      <p class="s-m w-h">Seller Ratings</p>
+      <input type="range" min="0" max="5" step="1" />
     </div>
 
-    <div class="filter-condition">
-      <h1 class="filter">Filter by Condition</h1>
-      <p class="filter-condition">
-        <input
-          class="filter-condition"
-          type="checkbox"
-          name="filter-condition"
-        />
+    <div class="filters__filter module shadow c-white bg-darkBlue">
+      <p class="s-m w-h">Condition</p>
+      <p class="s-s w-l">
+        <input type="checkbox" />
         Brand New
       </p>
-      <p class="filter-condition">
-        <input
-          class="filter-condition"
-          type="checkbox"
-          name="filter-condition"
-        />
+      <p class="s-s w-l">
+        <input type="checkbox" />
         Used
       </p>
-      <p class="filter-condition">
-        <input
-          class="filter-condition"
-          type="checkbox"
-          name="filter-condition"
-        />
-        Not Specified
+    </div>
+
+    <div class="filters__filter module shadow c-white bg-orange">
+      <p class="s-m w-h">Shipping</p>
+      <p class="s-s w-l">
+        <input type="checkbox" />
+        Free
+      </p>
+      <p class="s-s w-l">
+        <input type="checkbox" />
+        International
       </p>
     </div>
 
-    <div class="filter-delivery">
-      <h1 class="filter">Filter by Delivery</h1>
-      <p class="filter-delivery">
-        <input class="filter-delivery" type="checkbox" name="filter-delivery" />
-        Free International Shipping
+    <div class="filters__filter module shadow bg-paleBlue">
+      <p class="s-m w-h">Returns</p>
+      <p class="s-s w-l">
+        <input type="checkbox" />
+        Paid returns
       </p>
-      <p class="filter-delivery">
-        <input class="filter-delivery" type="checkbox" name="filter-delivery" />
-        International Shipping
+      <p class="s-s w-l">
+        <input type="checkbox" />
+        Free returns
       </p>
-      <p class="filter-delivery">
-        <input class="filter-delivery" type="checkbox" name="filter-delivery" />
-        Free Shipping
-      </p>
-    </div>
-
-    <div class="filter-returns">
-      <h1 class="filter">Filter by returns</h1>
-      <p class="filter-returns">
-        <input
-          class="filter-returns"
-          type="checkbox"
-          name="filter-returns"
-        />Free returns
-      </p>
-      <p class="filter-returns">
-        <input
-          class="filter-returns"
-          type="checkbox"
-          name="filter-returns"
-        />Paid returns
-      </p>
-      <p class="filter-returns">
-        <input class="filter-returns" type="checkbox" name="filter-returns" />No
-        returns
+      <p class="s-s w-l">
+        <input type="checkbox" />
+        No returns
       </p>
     </div>
 
-    <div class="filter-seller-account">
-      <h1 class="filter">Filter by Seller Account</h1>
-      <p class="filter-seller-account">
-        <input
-          class="filter-seller-account"
-          type="checkbox"
-          name="filter-seller-account"
-        />New seller
+    <div class="filters__filter module shadow c-white bg-red">
+      <p class="s-m w-h">Seller Account</p>
+      <p class="s-s w-l">
+        <input type="checkbox" />
+        New
       </p>
-      <p class="filter-seller-account">
-        <input
-          class="filter-seller-account"
-          type="checkbox"
-          name="filter-seller-account"
-        />Verired seller
+      <p class="s-s w-l">
+        <input type="checkbox" />
+        Top rated
       </p>
-      <p class="filter-seller-account">
-        <input
-          class="filter-seller-account"
-          type="checkbox"
-          name="filter-seller-account"
-        />Top rated seller
+      <p class="s-s w-l">
+        <input type="checkbox" />
+        Verified
       </p>
     </div>
   </div>
 
-  <div class="col2">
-    <div class="prod-type-cont-wrapper">
-      <button class="prod-type-cont-left">
-        <span class="material-icons"> keyboard_arrow_left </span>
-      </button>
-      <div class="prod-type-cont">
-        {% for product_type in product_types %}
+  <div class="sub-categories__content">
+    <div class="content__product-types">
+      {% for product_type in product_types %}
+      <a
+        class="sub-categoryies__product-type"
+        href="{% url 'main:product_type' product_type.id %}"
+      >
+        <p class="s-m w-m" style="position: relative; z-index: 1">
+          {{product_type.name}}
+        </p>
+      </a>
 
-        <a
-          class="prod-type-card"
-          href="{% url 'main:product_type' product_type.id %}"
-        >
-          <p class="prod-type-card">{{product_type.name}}</p>
-        </a>
-
-        {% endfor %}
-      </div>
-      <button class="prod-type-cont-right">
-        <span class="material-icons"> keyboard_arrow_right </span>
-      </button>
+      {% endfor %}
     </div>
 
-    <div class="search-cont">
-      <input type="text" class="search" placeholder="Search" />
-      <button class="search">
-        <span class="material-icons search">search</span>
-      </button>
+    <div class="sub-categories__search">
+      {% with type="text" %}
+      <span></span>
+      {% with title="Search" %}
+      <span></span>
+      {% with icon="search" %}
+      <span></span>
+      {% with name="search" %}
+      <span></span>
+      {% include "templates/textInput.html" %}
+      <span></span>
+      {% endwith %}
+      <span></span>
+      {% endwith %}
+      <span></span>
+      {% endwith %}
+      <span></span>
+      {% endwith %}
     </div>
 
-    <div class="prods-cont">
-      <div class="prod-card">
-        <div class="prod-img-cont">
-          <img
-            src="https://images.pexels.com/photos/1279107/pexels-photo-1279107.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-            alt=""
-            class="vis"
-          />
-          <button class="prod-account">
-            <span class="material-icons"> stars </span>
-            <p>Top Rated Seller</p>
-          </button>
-        </div>
+    <div class="sub-categories__products">
+      <div class="product">
+        <!-- * TODO: Picture Link -->
+        <div
+          class="product__img"
+          style="
+            background-image: url('https://images.pexels.com/photos/1279107/pexels-photo-1279107.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500');
+          "
+        ></div>
+        <!-- * TODO: Blurred Background -->
 
-        <div class="prod-wrapper">
-          <div class="prod-text-cont">
-            <p class="prod-name">
+        <div class="product__content">
+          <!-- * TODO: Product Name -->
+          <a href="{% url 'main:product' %}">
+            <p
+              class="s-l w-h"
+              style="height: 7.05vh; align-items: start; overflow: hidden"
+            >
               Google Home Mini with Google Assistant Voice Enabled Chalk Grey
               New In Retail
             </p>
-            <div class="prod-ratings">
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star_border </span>
-            </div>
-            <p class="prod-price">USD 23.95</p>
-            <p class="prod-shipping">+$27.05 shipping estimate</p>
+          </a>
+          <!-- * TODO: Product Ratings -->
+          <div style="display: flex; margin: 6.25px 0px">
+            <span class="material-icons s-l"> star </span>
+            <span class="material-icons s-l"> star </span>
+            <span class="material-icons s-l"> star </span>
+            <span class="material-icons s-l"> star </span>
+            <span class="material-icons s-l"> star_border </span>
+          </div>
+          <!-- * TODO: Product Price -->
+          <p class="s-l w-h">USD 23.95</p>
+          <!-- * TODO: Product Shipping Estimate -->
+          <p class="s-m w-l">+$27.05 shipping estimate</p>
+          <!-- * TODO: Add to cart, watchlist and wishlist buttons -->
+          <div style="display: flex; margin-top: 6.25px">
+            <button class="toggle" data-color="#ef233c">
+              <span class="material-icons-outlined s-l">add_shopping_cart</span>
+            </button>
+            <button class="toggle" data-color="#3d5a80">
+              <span class="material-icons-outlined s-l">star_border</span>
+            </button>
+            <button class="toggle" data-color="#ee6c4d">
+              <span class="material-icons-outlined s-l">remove_red_eye</span>
+            </button>
           </div>
 
-          <div class="prod-buttons-cont">
-            <button class="prod-add-to-cart">
-              <span class="material-icons"> add_shopping_cart </span>
-              <p>Add to cart</p>
-            </button>
-            <button class="prod-add-to-wishlist">
-              <span class="material-icons"> star_border </span>
-              <p>Add to wishlist</p>
-            </button>
-            <button class="prod-add-to-watchlist">
-              <span class="material-icons-outlined"> remove_red_eye </span>
-              <p>Add to watchlist</p>
-            </button>
+          <!-- * TODO: Account Type -->
+          <div class="product__account-type bg-darkBlue c-white">
+            <span class="material-icons-outlined s-l">verified</span>
+            <p class="s-s w-h" style="margin-left: 5px">Verified Seller</p>
           </div>
         </div>
       </div>
 
-      <div class="prod-card">
-        <div class="prod-img-cont">
-          <img
-            src="https://images.pexels.com/photos/393047/pexels-photo-393047.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-            alt=""
-            class="vis"
-          />
-          <button class="prod-account">
-            <span class="material-icons"> stars </span>
-            <p>Top Rated Seller</p>
-          </button>
-        </div>
+      <div class="product">
+        <!-- * TODO: Picture Link -->
+        <div
+          class="product__img"
+          style="
+            background-image: url('https://images.pexels.com/photos/393047/pexels-photo-393047.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500');
+          "
+        ></div>
+        <!-- * TODO: Blurred Background -->
 
-        <div class="prod-wrapper">
-          <div class="prod-text-cont">
-            <p class="prod-name">
+        <div class="product__content">
+          <!-- * TODO: Product Name -->
+          <a href="{% url 'main:product' %}">
+            <p
+              class="s-l w-h"
+              style="height: 7.05vh; align-items: start; overflow: hidden"
+            >
               Apple Watch Series 5 - GPS - GPS + Cellular - 40MM 44MM - Gray -
               Silver - Gold
             </p>
-            <div class="prod-ratings">
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star_border </span>
-              <span class="material-icons prod-ratings"> star_border </span>
-            </div>
-            <p class="prod-price">USD 279.00</p>
-            <p class="prod-shipping">+$25.43 shipping estimate</p>
+          </a>
+          <!-- * TODO: Product Ratings -->
+          <div style="display: flex; margin: 6.25px 0px">
+            <span class="material-icons s-l"> star </span>
+            <span class="material-icons s-l"> star </span>
+            <span class="material-icons s-l"> star </span>
+            <span class="material-icons s-l"> star_border </span>
+            <span class="material-icons s-l"> star_border </span>
+          </div>
+          <!-- * TODO: Product Price -->
+          <p class="s-l w-h">USD 279.00</p>
+          <!-- * TODO: Product Shipping Estimate -->
+          <p class="s-m w-l">+$25.43 shipping estimate</p>
+          <!-- * TODO: Add to cart, watchlist and wishlist buttons -->
+          <div style="display: flex; margin-top: 6.25px">
+            <button class="toggle" data-color="#ef233c">
+              <span class="material-icons-outlined s-l">add_shopping_cart</span>
+            </button>
+            <button class="toggle" data-color="#3d5a80">
+              <span class="material-icons-outlined s-l">star_border</span>
+            </button>
+            <button class="toggle" data-color="#ee6c4d">
+              <span class="material-icons-outlined s-l">remove_red_eye</span>
+            </button>
           </div>
 
-          <div class="prod-buttons-cont">
-            <button class="prod-add-to-cart">
-              <span class="material-icons"> add_shopping_cart </span>
-              <p>Add to cart</p>
-            </button>
-            <button class="prod-add-to-wishlist">
-              <span class="material-icons"> star_border </span>
-              <p>Add to wishlist</p>
-            </button>
-            <button class="prod-add-to-watchlist">
-              <span class="material-icons-outlined"> remove_red_eye </span>
-              <p>Add to watchlist</p>
-            </button>
+          <!-- * TODO: Account Type -->
+          <div class="product__account-type bg-red c-white">
+            <span class="material-icons-outlined s-l"> new_releases </span>
+            <p class="s-s w-h" style="margin-left: 5px">New Seller</p>
           </div>
         </div>
       </div>
 
-      <div class="prod-card">
-        <div class="prod-img-cont">
-          <img
-            src="https://images.pexels.com/photos/5052880/pexels-photo-5052880.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-            alt=""
-            class="vis"
-          />
-          <button class="prod-account">
-            <span class="material-icons"> stars </span>
-            <p>Top Rated Seller</p>
-          </button>
-        </div>
+      <div class="product">
+        <!-- * TODO: Picture Link -->
+        <div
+          class="product__img"
+          style="
+            background-image: url('https://images.pexels.com/photos/5052880/pexels-photo-5052880.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500');
+          "
+        ></div>
+        <!-- * TODO: Blurred Background -->
 
-        <div class="prod-wrapper">
-          <div class="prod-text-cont">
-            <p class="prod-name">
+        <div class="product__content">
+          <!-- * TODO: Product Name -->
+          <a href="{% url 'main:product' %}">
+            <p
+              class="s-l w-h"
+              style="height: 7.05vh; align-items: start; overflow: hidden"
+            >
               Apple iPhone 12 Pro - 256gb - Unlocked - Factory Sealed - Factory
               Warranty
             </p>
-            <div class="prod-ratings">
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star_border </span>
-            </div>
-            <p class="prod-price">USD 23.95</p>
-            <p class="prod-shipping">+$27.05 shipping estimate</p>
+          </a>
+          <!-- * TODO: Product Ratings -->
+          <div style="display: flex; margin: 6.25px 0px">
+            <span class="material-icons s-l"> star </span>
+            <span class="material-icons s-l"> star </span>
+            <span class="material-icons s-l"> star </span>
+            <span class="material-icons s-l"> star </span>
+            <span class="material-icons s-l"> star </span>
+          </div>
+          <!-- * TODO: Product Price -->
+          <p class="s-l w-h">USD 967.87</p>
+          <!-- * TODO: Product Shipping Estimate -->
+          <p class="s-m w-l">+$50.69 shipping estimate</p>
+          <!-- * TODO: Add to cart, watchlist and wishlist buttons -->
+          <div style="display: flex; margin-top: 6.25px">
+            <button class="toggle" data-color="#ef233c">
+              <span class="material-icons-outlined s-l">add_shopping_cart</span>
+            </button>
+            <button class="toggle" data-color="#3d5a80">
+              <span class="material-icons-outlined s-l">star_border</span>
+            </button>
+            <button class="toggle" data-color="#ee6c4d">
+              <span class="material-icons-outlined s-l">remove_red_eye</span>
+            </button>
           </div>
 
-          <div class="prod-buttons-cont">
-            <button class="prod-add-to-cart">
-              <span class="material-icons"> add_shopping_cart </span>
-              <p>Add to cart</p>
-            </button>
-            <button class="prod-add-to-wishlist">
-              <span class="material-icons"> star_border </span>
-              <p>Add to wishlist</p>
-            </button>
-            <button class="prod-add-to-watchlist">
-              <span class="material-icons-outlined"> remove_red_eye </span>
-              <p>Add to watchlist</p>
-            </button>
+          <!-- * TODO: Account Type -->
+          <div class="product__account-type bg-orange c-white">
+            <span class="material-icons-outlined s-l">auto_graph</span>
+            <p class="s-s w-h" style="margin-left: 5px">Top Rated Seller</p>
           </div>
         </div>
       </div>
 
-      <div class="prod-card">
-        <div class="prod-img-cont">
-          <img
-            src="https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-            alt=""
-            class="vis"
-          />
-          <button class="prod-account">
-            <span class="material-icons"> stars </span>
-            <p>Top Rated Seller</p>
-          </button>
-        </div>
+      <div class="product">
+        <!-- * TODO: Picture Link -->
+        <div
+          class="product__img"
+          style="
+            background-image: url('https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500 ');
+          "
+        ></div>
+        <!-- * TODO: Blurred Background -->
 
-        <div class="prod-wrapper">
-          <div class="prod-text-cont">
-            <p class="prod-name">
+        <div class="product__content">
+          <!-- * TODO: Product Name -->
+          <a href="{% url 'main:product' %}">
+            <p
+              class="s-l w-h"
+              style="height: 7.05vh; align-items: start; overflow: hidden"
+            >
               Apple MacBook Air 13" - M1 Chip 8GB 256GB - Gold - MGND3LL/A -
               Flawless 2 Cycles
             </p>
-            <div class="prod-ratings">
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star </span>
-              <span class="material-icons prod-ratings"> star_border </span>
-            </div>
-            <p class="prod-price">USD 979.00</p>
-            <p class="prod-shipping">+$100.00 shipping estimate</p>
+          </a>
+          <!-- * TODO: Product Ratings -->
+          <div style="display: flex; margin: 6.25px 0px">
+            <span class="material-icons s-l"> star </span>
+            <span class="material-icons s-l"> star </span>
+            <span class="material-icons s-l"> star </span>
+            <span class="material-icons s-l"> star </span>
+            <span class="material-icons s-l"> star_border </span>
+          </div>
+          <!-- * TODO: Product Price -->
+          <p class="s-l w-h">USD 979.00</p>
+          <!-- * TODO: Product Shipping Estimate -->
+          <p class="s-m w-l">+$100.00 shipping estimate</p>
+          <!-- * TODO: Add to cart, watchlist and wishlist buttons -->
+          <div style="display: flex; margin-top: 6.25px">
+            <button class="toggle" data-color="#ef233c">
+              <span class="material-icons-outlined s-l">add_shopping_cart</span>
+            </button>
+            <button class="toggle" data-color="#3d5a80">
+              <span class="material-icons-outlined s-l">star_border</span>
+            </button>
+            <button class="toggle" data-color="#ee6c4d">
+              <span class="material-icons-outlined s-l">remove_red_eye</span>
+            </button>
           </div>
 
-          <div class="prod-buttons-cont">
-            <button class="prod-add-to-cart">
-              <span class="material-icons"> add_shopping_cart </span>
-              <p>Add to cart</p>
-            </button>
-            <button class="prod-add-to-wishlist">
-              <span class="material-icons"> star_border </span>
-              <p>Add to wishlist</p>
-            </button>
-            <button class="prod-add-to-watchlist">
-              <span class="material-icons-outlined"> remove_red_eye </span>
-              <p>Add to watchlist</p>
-            </button>
+          <!-- * TODO: Account Type -->
+          <div class="product__account-type bg-orange c-white">
+            <span class="material-icons-outlined s-l">auto_graph</span>
+            <p class="s-s w-h" style="margin-left: 5px">Top Rated Seller</p>
           </div>
         </div>
       </div>
@@ -337,6 +327,21 @@
   </div>
 </div>
 
-<script src="{% static 'main/js/sub_category.js' %}"></script>
+<script>
+  const toggleBtns = document.querySelectorAll("button.toggle");
+
+  toggleBtns.forEach((toggleBtn) => {
+    toggleBtn.addEventListener("click", function () {
+      toggleBtn.classList.toggle("toggled");
+
+      if (toggleBtn.classList.contains("toggled")) {
+        toggleBtn.style.color = toggleBtn.getAttribute("data-color");
+      } else {
+        toggleBtn.style.color = "black";
+      }
+    });
+  });
+</script>
+<script src="{% static 'main/js/category.js' %}"></script>
 
 {% endblock content %}

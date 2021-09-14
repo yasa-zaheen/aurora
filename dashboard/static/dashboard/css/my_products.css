@@ -1,0 +1,64 @@
+/* CSS from other files */
+
+#nav-my-products {
+  background-color: #ffffffaf;
+  color: var(--black);
+}
+
+/* My Products */
+
+.my_products {
+  height: calc(100vh);
+  border-radius: 15px;
+  padding: 25px;
+}
+
+.my_products__search {
+  height: 50px;
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 12.5px;
+  display: flex;
+  align-items: center;
+}
+
+.my_products__search__search {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  border: 1px solid #2f2f2f2f;
+  border-radius: 15px 0px 0px 15px;
+  padding: 6.25px 12.5px;
+}
+
+.searchBtn {
+  height: 100% !important;
+  width: 50px;
+  border-radius: 0px 15px 15px 0px;
+}
+
+.my_products__my_products {
+  width: 100%;
+}
+
+.my_products__my_products__image {
+  height: 50px;
+  width: 50px;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.my_products__my_products__header,
+.my_products__my_products__text {
+  border-bottom: 1px solid #2f2f2f2f;
+  padding: 12.5px 0px;
+}
+
+.my_products__my_products__details {
+  background-color: #2f2f2f2f;
+  color: black;
+}

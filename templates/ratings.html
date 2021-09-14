@@ -1,0 +1,42 @@
+<!-- Rating 1 -->
+{% if ratings == 0 %}
+<span class="material-icons s-l"> star_border </span>
+<span class="material-icons s-l"> star_border </span>
+<span class="material-icons s-l"> star_border </span>
+<span class="material-icons s-l"> star_border </span>
+<span class="material-icons s-l"> star_border </span>
+{% elif ratings == 1 %}
+<span class="material-icons s-l"> star </span>
+<span class="material-icons s-l"> star_border </span>
+<span class="material-icons s-l"> star_border </span>
+<span class="material-icons s-l"> star_border </span>
+<span class="material-icons s-l"> star_border </span>
+
+{% elif ratings == 2 %}
+<span class="material-icons s-l"> star </span>
+<span class="material-icons s-l"> star </span>
+<span class="material-icons s-l"> star_border </span>
+<span class="material-icons s-l"> star_border </span>
+<span class="material-icons s-l"> star_border </span>
+
+{% elif ratings == 3 %}
+<span class="material-icons s-l"> star </span>
+<span class="material-icons s-l"> star </span>
+<span class="material-icons s-l"> star </span>
+<span class="material-icons s-l"> star_border </span>
+<span class="material-icons s-l"> star_border </span>
+
+{% elif ratings == 4 %}
+<span class="material-icons s-l"> star </span>
+<span class="material-icons s-l"> star </span>
+<span class="material-icons s-l"> star </span>
+<span class="material-icons s-l"> star </span>
+<span class="material-icons s-l"> star_border </span>
+
+{% elif ratings == 5 %}
+<span class="material-icons s-l"> star </span>
+<span class="material-icons s-l"> star </span>
+<span class="material-icons s-l"> star </span>
+<span class="material-icons s-l"> star </span>
+<span class="material-icons s-l"> star </span>
+{% endif %}

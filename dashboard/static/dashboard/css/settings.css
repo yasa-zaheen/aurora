@@ -1,0 +1,104 @@
+/* CSS from other files */
+
+#nav-settings {
+  background-color: #ffffffaf;
+  color: var(--black);
+}
+
+input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 50px;
+  height: 50px !important;
+  cursor: pointer;
+}
+
+/* Settings */
+
+.settings {
+  height: calc(100vh);
+  width: 100%;
+  overflow: scroll;
+  padding: 25px;
+}
+
+/** Cover Image **/
+
+.settings__cover-image {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 30vh;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  padding: 25px;
+  position: relative;
+}
+
+.cover-image__upload-btn {
+  height: 50px;
+  width: 50px;
+  position: relative;
+  padding: 12.5px 25px;
+  background-color: #ee6c4d2f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+}
+
+.cover-image__upload-btn:hover {
+  background-color: #ee6c4d;
+}
+
+/** Profile Image **/
+
+.settings__profile-image {
+  height: calc(30vh - 50px);
+  width: calc(30vh - 50px);
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-image__upload-btn {
+  height: 50px;
+  width: 50px;
+  position: relative;
+  padding: 12.5px 25px;
+  background-color: #2932412f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+}
+
+.profile-image__upload-btn:hover {
+  background-color: #293241;
+}
+
+/** Personal Information **/
+
+.settings__input-container {
+  width: 100%;
+  margin-bottom: 12.5px;
+}
+
+.settings__input-container input {
+  padding: 6.25px 12.5px;
+  font: 12.5px "Poppins";
+  font-weight: 400;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #2f2f2f2f;
+  margin: 6.25px 0px;
+  width: 100%;
+}

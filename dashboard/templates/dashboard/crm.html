@@ -1,0 +1,121 @@
+{% extends "dashboard/dashboard.html" %} {% load static %}
+
+<hr />
+{% block viewContent %}
+<link rel="stylesheet" href="{% static 'dashboard/css/crm.css' %}" />
+
+<div class="crm">
+  <div class="crm__search">
+    <input
+      type="text"
+      class="crm__search__search"
+      placeholder="Search in Customer Relationship Manager"
+    />
+    <button class="bg-orange c-white searchBtn">
+      <span class="material-icons-outlined s-l w-l"> search </span>
+    </button>
+  </div>
+
+  <table class="crm__crm">
+    <thead>
+      <tr>
+        <th style="width: 40%" align="start" class="crm__crm__header">
+          <p class="s-l w-h">Product</p>
+        </th>
+        <th style="width: 12%" align="center" class="crm__crm__header">
+          <p class="s-l w-h">Order ID</p>
+        </th>
+        <th style="width: 12%" align="center" class="crm__crm__header">
+          <p class="s-l w-h">Date</p>
+        </th>
+        <th style="width: 12%" align="center" class="crm__crm__header">
+          <p class="s-l w-h">Price</p>
+        </th>
+        <th style="width: 12%" align="center" class="crm__crm__header">
+          <p class="s-l w-h">Status</p>
+        </th>
+        <th style="width: 12%" align="center" class="crm__crm__header">
+          <p class="s-l w-h"></p>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td class="crm__crm__text">
+          <p class="s-m w-m">
+            Apple iPhone 12 Pro Max - 256gb - Unlocked - Factory Sealed -
+            Factory Warranty
+          </p>
+        </td>
+        <td class="crm__crm__text" align="center">
+          <p class="s-m w-m">6969</p>
+        </td>
+        <td class="crm__crm__text" align="center">
+          <p class="s-m w-m">20-04-2021</p>
+        </td>
+        <td class="crm__crm__text" align="center">
+          <p class="s-m w-m">USD 1350.75</p>
+        </td>
+        <td class="crm__crm__text" align="center">
+          <button class="crm__crm__status" data-status="delivering"></button>
+        </td>
+        <td class="crm__crm__text" align="center">
+          <button class="crm__crm__details">Details</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="crm__crm__text">
+          <p class="s-m w-m">
+            ASUS ROG ZEPHYRUS GU502LV GX502LXS CORE I7-10750H MOTHERBOARD
+            90NR04F0-R00051
+          </p>
+        </td>
+        <td class="crm__crm__text" align="center">
+          <p class="s-m w-m">6970</p>
+        </td>
+        <td class="crm__crm__text" align="center">
+          <p class="s-m w-m">22-04-2021</p>
+        </td>
+        <td class="crm__crm__text" align="center">
+          <p class="s-m w-m">USD 914.41</p>
+        </td>
+        <td class="crm__crm__text" align="center">
+          <button class="crm__crm__status" data-status="pending"></button>
+        </td>
+        <td class="crm__crm__text" align="center">
+          <button class="crm__crm__details">Details</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="crm__crm__text">
+          <p class="s-m w-m">
+            iPhone 12 Pro Max 12 Mini 12 Fast Charging 20W Wireless Magnetic
+            Magsafe Charger
+          </p>
+        </td>
+        <td class="crm__crm__text" align="center">
+          <p class="s-m w-m">6968</p>
+        </td>
+        <td class="crm__crm__text" align="center">
+          <p class="s-m w-m">15-04-2021</p>
+        </td>
+        <td class="crm__crm__text" align="center">
+          <p class="s-m w-m">USD 16.45</p>
+        </td>
+        <td class="crm__crm__text" align="center">
+          <button class="crm__crm__status" data-status="delivered"></button>
+        </td>
+        <td class="crm__crm__text" align="center">
+          <button class="crm__crm__details">Details</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<script src="{% static 'dashboard/js/crm.js' %}"></script>
+
+{% endblock viewContent %}

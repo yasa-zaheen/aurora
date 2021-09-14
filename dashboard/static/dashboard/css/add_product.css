@@ -1,0 +1,76 @@
+/* CSS from other files */
+
+#nav-add-product {
+  background-color: #ffffffaf;
+  color: var(--black);
+}
+
+/* Add Product */
+
+.addProduct {
+  width: calc(100%);
+  height: calc(100vh);
+  border-radius: 15px;
+  padding: 25px;
+  overflow: scroll;
+}
+
+.addProduct__inputContainer {
+  width: 100%;
+  height: fit-content;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.addProduct__input {
+  padding: 6.25px 12.5px;
+  font: 12.5px "Poppins";
+  font-weight: 400;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #2f2f2f2f;
+  margin: 6.25px 0px;
+  width: 100%;
+}
+
+.addProduct__paymentBtn {
+  width: calc((100% - 50px) / 3);
+  justify-content: start;
+}
+
+.addProduct__dropdownToggle {
+  background: none !important;
+  padding: 0 !important;
+  color: #2f2f2f;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+.addProduct__dropdownToggle--condition,
+.addProduct__dropdownToggle--shipping {
+  right: 12.5px;
+}
+
+.addProduct__imgUploadContainer {
+  position: relative;
+  margin: 6.25px 12.5px 6.25px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 88px;
+  width: 88px;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.addProduct__uploadBtn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 88px;
+  height: 88px !important;
+  cursor: pointer;
+}

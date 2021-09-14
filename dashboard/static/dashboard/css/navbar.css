@@ -1,0 +1,80 @@
+nav {
+  height: calc(100vh);
+  width: 100%;
+  border-radius: 0px;
+  box-shadow: -5px 5px 10px #d5d5d5, 5px -5px 10px #ffffff;
+  padding: 25px;
+  position: relative;
+  background-color: transparent;
+}
+
+.nav-bg {
+  position: absolute;
+  height: 100vh;
+  background-color: red;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(180deg, var(--darkBlue), var(--orange));
+  z-index: -1;
+  opacity: 0.5;
+}
+
+nav ul a span.material-icons-outlined {
+  margin-right: calc(12.5px / 2);
+  transform: scale(0.8, 0.8);
+}
+
+/* Nav links Container */
+
+ul {
+  list-style: none;
+}
+
+a {
+  margin-bottom: 12.5px;
+  padding: calc(12.5px / 2) 12.5px;
+  border-radius: 5px;
+  font-family: "Poppins";
+  font-size: 15px;
+  font-weight: 500;
+  display: flex;
+  align-self: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  transition: 0s !important;
+  outline: none;
+}
+
+a:hover {
+  background-color: #ffffff2f;
+}
+
+a:active {
+  background-color: #ffffff5f;
+}
+
+/* Sign Out Button */
+
+.nav__sign-out {
+  padding: calc(12.5px / 2) 12.5px;
+  border-radius: 5px;
+  display: flex;
+  align-self: center;
+  justify-content: start;
+  width: calc(100% - 50px);
+  background-color: #ef233c;
+  position: absolute;
+  bottom: 25px;
+}
+
+.nav__sign-out p {
+  font-family: "Poppins";
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.nav__sign-out span {
+  margin-right: calc(12.5px / 2);
+}

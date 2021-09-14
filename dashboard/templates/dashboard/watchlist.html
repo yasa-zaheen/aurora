@@ -1,0 +1,140 @@
+{% extends "dashboard/dashboard.html" %} {% load static %}
+
+<hr />
+{% block viewName %} Watchlist {% endblock viewName %}
+<hr />
+{% block viewContent %}
+
+<link rel="stylesheet" href="{% static 'dashboard/css/watchlist.css' %}" />
+
+<div class="watchlist">
+  <p class="s-l w-h">3 Items</p>
+  <p class="s-l w-h">Last Updated on 7th June, 2021 at 1:43 PM</p>
+
+  <table class="watchlist__watchlist">
+    <thead>
+      <tr>
+        <th
+          class="watchlist__watchlist__header"
+          style="width: 50%"
+          align="start"
+        >
+          <p class="s-l w-h">Name</p>
+        </th>
+        <th
+          class="watchlist__watchlist__header"
+          style="width: 25%"
+          align="start"
+        >
+          <p class="s-l w-h">Price</p>
+        </th>
+        <th
+          class="watchlist__watchlist__header"
+          style="width: 25%"
+          align="start"
+        >
+          <p class="s-l w-h">Stock</p>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td class="watchlist__watchlist__text">
+          <p class="s-m w-m">
+            Apple iPhone 12 Pro Max - 256gb - Unlocked - Factory Sealed -
+            Factory Warranty
+          </p>
+        </td>
+
+        <td class="watchlist__watchlist__text">
+          <p
+            class="s-m w-m watchlist__watchlist__text__change"
+            data-type="price"
+            data-change="decrease"
+          >
+            USD 1350.75
+          </p>
+        </td>
+
+        <td class="watchlist__watchlist__text">
+          <p
+            class="s-m w-m watchlist__watchlist__text__change"
+            data-type="stock"
+            data-change="none"
+          >
+            5
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="watchlist__watchlist__text">
+          <p class="s-m w-m">
+            ASUS ROG ZEPHYRUS GU502LV GX502LXS CORE I7-10750H MOTHERBOARD
+            90NR04F0-R00051
+          </p>
+        </td>
+
+        <td class="watchlist__watchlist__text">
+          <p
+            class="s-m w-m watchlist__watchlist__text__change"
+            data-type="price"
+            data-change="none"
+          >
+            USD 914.41
+          </p>
+        </td>
+
+        <td class="watchlist__watchlist__text">
+          <p
+            class="s-m w-m watchlist__watchlist__text__change"
+            data-type="stock"
+            data-change="decrease"
+          >
+            2
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="watchlist__watchlist__text">
+          <p class="s-m w-m">
+            iPhone 12 Pro Max 12 Mini 12 Fast Charging 20W Wireless Magnetic
+            Magsafe Charger
+          </p>
+        </td>
+
+        <td class="watchlist__watchlist__text">
+          <p
+            class="s-m w-m watchlist__watchlist__text__change"
+            data-type="price"
+            data-change="increase"
+          >
+            USD 16.45
+          </p>
+        </td>
+
+        <td class="watchlist__watchlist__text">
+          <p
+            class="s-m w-m watchlist__watchlist__text__change"
+            data-type="stock"
+            data-change="increase"
+          >
+            53
+          </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="watchlist__shopMore">
+    <p class="watchlist__shopMore__text">
+      Shop more and add more items to your watchlist!
+    </p>
+  </div>
+</div>
+
+<script src="{% static 'dashboard/js/watchlist.js' %}"></script>
+
+{% endblock viewContent %}

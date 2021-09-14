@@ -1,0 +1,19 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'base/css/textInput.css' %}" />
+
+<div class="textInput">
+  <span class="material-icons-outlined textInput__icon s-xl w-m">
+    {{ icon }}
+  </span>
+  <input
+    class="textInput__input s-l w-m"
+    type="{{ type }}"
+    placeholder="{{ title }}"
+    name="{{ name }}"
+    value="{{ value }}"
+    required="{{ required }}"
+  />
+</div>
+
+<script src="{% static 'base/js/anime.min.js' %}"></script>
+<script src="{% static 'base/js/textInput.js' %}"></script>

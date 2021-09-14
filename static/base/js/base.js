@@ -1,3 +1,21 @@
+const toggleAnimations = () => {
+  const toggleBtns = document.querySelectorAll("button.toggle");
+
+  toggleBtns.forEach((toggleBtn) => {
+    toggleBtn.addEventListener("click", function () {
+      toggleBtn.classList.toggle("toggled");
+
+      if (toggleBtn.classList.contains("toggled")) {
+        toggleBtn.style.color = toggleBtn.getAttribute("data-color");
+      } else {
+        toggleBtn.style.color = "black";
+      }
+    });
+  });
+};
+
+toggleAnimations();
+
 const sellerProdsProdCardBtnPop = () => {
   const addToCartButtons = document.querySelectorAll("button.add-to-cart");
   const shippingButtons = document.querySelectorAll("button.shipping");
@@ -52,19 +70,6 @@ const filterSellerRatings = () => {
 };
 
 filterSellerRatings();
-
-const imageResizer = () => {
-  const visImgs = document.querySelectorAll("img.vis");
-
-  visImgs.forEach((visImg) => {
-    if (visImg.clientWidth > visImg.clientHeight) {
-      visImg.style.width = "auto";
-      visImg.style.height = "100%";
-    }
-  });
-};
-
-imageResizer();
 
 const prodCardBtnAnimations = (buttons, color) => {
   buttons.forEach((button) => {

@@ -1,0 +1,145 @@
+{% extends "dashboard/dashboard.html" %} {% load static %}
+
+<hr />
+{% block viewContent %}
+<link rel="stylesheet" href="{% static 'dashboard/css/my_products.css' %}" />
+
+<div class="my_products">
+  <div class="my_products__search">
+    <input
+      type="text"
+      class="my_products__search__search"
+      placeholder="Search in My Products"
+    />
+    <button class="bg-orange c-white searchBtn">
+      <span class="material-icons-outlined s-l w-l"> search </span>
+    </button>
+  </div>
+
+  <table class="my_products__my_products">
+    <thead>
+      <tr>
+        <th
+          style="width: 10%"
+          class="my_products__my_products__header"
+          align="center"
+        >
+          <p class="s-l w-h"></p>
+        </th>
+        <th
+          style="width: 60%"
+          class="my_products__my_products__header"
+          align="start"
+        >
+          <p class="s-l w-h">Product</p>
+        </th>
+        <th
+          style="width: 10%"
+          class="my_products__my_products__header"
+          align="center"
+        >
+          <p class="s-l w-h">Subtotal</p>
+        </th>
+        <th
+          style="width: 10%"
+          class="my_products__my_products__header"
+          align="center"
+        >
+          <p class="s-l w-h">Stock</p>
+        </th>
+        <th
+          style="width: 10%"
+          class="my_products__my_products__header"
+          align="center"
+        >
+          <p class="s-l w-h"></p>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td align="center" class="my_products__my_products__text">
+          <div class="my_products__my_products__image">
+            <img
+              src="https://images.pexels.com/photos/3707744/pexels-photo-3707744.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+              alt=""
+              class="vis"
+            />
+          </div>
+        </td>
+        <td align="start" class="my_products__my_products__text">
+          <p class="s-m w-m">
+            Apple iPhone 12 Pro Max - 256gb - Unlocked - Factory Sealed -
+            Factory Warranty
+          </p>
+        </td>
+        <td align="center" class="my_products__my_products__text">
+          <p class="s-m w-m">USD 1350.75</p>
+        </td>
+        <td align="center" class="my_products__my_products__text">
+          <p class="s-m w-m">5</p>
+        </td>
+        <td align="center" class="my_products__my_products__text">
+          <button class="my_products__my_products__details">Details</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td align="center" class="my_products__my_products__text">
+          <div class="my_products__my_products__image">
+            <img
+              src="https://images.pexels.com/photos/2582928/pexels-photo-2582928.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+              alt=""
+              class="vis"
+            />
+          </div>
+        </td>
+        <td align="start" class="my_products__my_products__text">
+          <p class="s-m w-m">
+            ASUS ROG ZEPHYRUS GU502LV GX502LXS CORE I7-10750H MOTHERBOARD
+            90NR04F0-R00051
+          </p>
+        </td>
+        <td align="center" class="my_products__my_products__text">
+          <p class="s-m w-m">USD 914.41</p>
+        </td>
+        <td align="center" class="my_products__my_products__text">
+          <p class="s-m w-m">2</p>
+        </td>
+        <td align="center" class="my_products__my_products__text">
+          <button class="my_products__my_products__details">Details</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td align="center" class="my_products__my_products__text">
+          <div class="my_products__my_products__image">
+            <img
+              src="https://images.pexels.com/photos/7742585/pexels-photo-7742585.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+              alt=""
+              class="vis"
+            />
+          </div>
+        </td>
+        <td align="start" class="my_products__my_products__text">
+          <p class="s-m w-m">
+            iPhone 12 Pro Max 12 Mini 12 Fast Charging 20W Wireless Magnetic
+            Magsafe Charger
+          </p>
+        </td>
+        <td align="center" class="my_products__my_products__text">
+          <p class="s-m w-m">USD 16.45</p>
+        </td>
+        <td align="center" class="my_products__my_products__text">
+          <p class="s-m w-m">53</p>
+        </td>
+        <td align="center" class="my_products__my_products__text">
+          <button class="my_products__my_products__details">Details</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<script src="{% static 'dashboard/js/my_products.js' %}"></script>
+{% endblock viewContent %}

@@ -1,0 +1,66 @@
+{% load static %}
+
+<link
+  href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="{% static 'base/css/base.css' %}" />
+<link rel="stylesheet" href="{% static 'dashboard/css/navbar.css' %}" />
+
+<nav class="shadow">
+  <div class="nav-bg"></div>
+  <ul>
+    <a id="nav-home" href="{% url 'dashboard:home' %}">
+      <span class="material-icons-outlined"> home </span>
+      <p class="s-l w-h">Home</p>
+    </a>
+
+    <a id="nav-cart" href="{% url 'dashboard:cart' %}">
+      <span class="material-icons-outlined"> shopping_cart </span>
+      <p class="s-l w-h">Cart</p>
+    </a>
+
+    <a id="nav-watchlist" href="{% url 'dashboard:watchlist' %}">
+      <span class="material-icons-outlined"> remove_red_eye </span>
+      <p class="s-l w-h">Watchlist</p>
+    </a>
+
+    <a id="nav-wishlist" href="{% url 'dashboard:wishlist' %}"
+      ><span class="material-icons-outlined"> star_rate </span>
+      <p class="s-l w-h">Wishlist</p>
+    </a>
+
+    <a id="nav-crm" href="{% url 'dashboard:crm' %}"
+      ><span class="material-icons-outlined"> groups </span>
+      <p class="s-l w-h">CRM</p>
+    </a>
+
+    <a id="nav-my-products" href="{% url 'dashboard:my_products' %}"
+      ><span class="material-icons-outlined"> inventory_2 </span>
+      <p class="s-l w-h">My Products</p>
+    </a>
+
+    <a id="nav-add-product" href="{% url 'dashboard:add_product' %}"
+      ><span class="material-icons-outlined"> add_box </span>
+      <p class="s-l w-h">Add Product</p>
+    </a>
+
+    <a id="nav-revenue" href="{% url 'dashboard:revenue' %}"
+      ><span class="material-icons-outlined"> paid </span>
+      <p class="s-l w-h">Revenue</p>
+    </a>
+
+    <a id="nav-settings" href="{% url 'dashboard:settings' %}">
+      <span class="material-icons-outlined"> settings </span>
+      <p class="s-l w-h">Settings</p>
+    </a>
+  </ul>
+
+  <button class="nav__sign-out">
+    <span class="material-icons-outlined"> logout </span>
+
+    <a href="{% url 'authentication:sign_out' %}" style="padding: 0; margin: 0">
+      <p class="s-m w-h c-white">Sign Out</p>
+    </a>
+  </button>
+</nav>
