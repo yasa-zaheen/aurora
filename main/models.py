@@ -1,5 +1,6 @@
 # Imports
 
+from django.utils import timezone
 from django.db import models
 from django.db.models.deletion import SET_NULL
 
@@ -84,9 +85,16 @@ class Filter(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
-    price = models.FloatField()
     seller = models.ForeignKey(
         CustomUser, null=True, on_delete=models.SET_NULL)
+    last_updated = models.DateTimeField(
+        auto_now=False, auto_now_add=False, default=timezone.now())
+
+    price = models.FloatField()
+    old_price = models.FloatField()
+
+    stock = models.IntegerField()
+    old_stock = models.IntegerField()
 
     category = models.ForeignKey(
         Category, null=True, on_delete=models.SET_NULL)
@@ -131,6 +139,26 @@ class Product(models.Model):
             return math.ceil(total / Review.objects.filter(product=self).count())
         except ZeroDivisionError:
             return 0
+
+    def change_price(self, price):
+        self.old_price = self.price
+        self.price = price
+        self.last_updated = timezone.now()
+
+        self.save()
+
+    def change_stock(self, stock):
+        self.old_stock = self.stock
+        self.stock = stock
+        self.last_updated = timezone.now()
+
+        self.save()
+
+    def change_in_price(self):
+        return self.price - self.old_price
+
+    def change_in_stock(self):
+        return self.stock - self.old_stock
 
     # product_type = models.ForeignKey(
     #     ProductType, null=True, on_delete=models.SET_NULL)
