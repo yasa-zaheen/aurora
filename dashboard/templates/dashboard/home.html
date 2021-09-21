@@ -43,7 +43,15 @@
     <div class="home__smallModule shadow bg-orange">
       <p class="s-xxl w-h c-white">Watchlist</p>
       <p class="s-m w-m c-white">
-        Price decreased for 1 product. Stock increased for 2 products.
+        {% if watchlist.updated_items_count == 1 %}
+        <span></span>
+        1 item has been updated.
+        <span></span>
+        {% else %}
+        <span></span>
+        {{watchlist.update_items_count}} items have been updated.
+        <span></span>
+        {% endif %}
       </p>
     </div>
 

@@ -16,10 +16,12 @@ def home(request):
     if request.user.is_authenticated:
         user = CustomUser.objects.get(user=request.user)
         cart = Cart.objects.get(user=user)
+        watchlist = Watchlist.objects.get(id=1)
 
         context = {
             "user": user,
             "cart": cart,
+            "watchlist": watchlist,
         }
 
         return render(request, 'dashboard/home.html', context)

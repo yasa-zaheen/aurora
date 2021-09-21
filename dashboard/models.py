@@ -62,3 +62,6 @@ class Watchlist(models.Model):
                 if product not in arr:
                     arr.append(product)
         return arr
+
+    def updated_items_count(self):
+        return len(self.update())
