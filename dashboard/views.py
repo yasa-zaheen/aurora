@@ -62,8 +62,20 @@ def cart(request):
 
 
 def watchlist(request):
-    context = {}
-    return render(request, "dashboard/watchlist.html", context)
+
+    if request.user.is_authenticated:
+        user = CustomUser.objects.get(user=request.user)
+        watchlist = Watchlist.objects.get(user=user)
+        watchlist.update()
+
+        context = {
+            "user": user,
+            "watchlist": watchlist,
+        }
+
+        return render(request, "dashboard/watchlist.html", context)
+    else:
+        return redirect(reverse("main:index"))
 
 
 def wishlist(request):

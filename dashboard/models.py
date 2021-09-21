@@ -46,13 +46,15 @@ class Watchlist(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     products = models.ManyToManyField(Product, blank=True)
     last_updated = models.DateTimeField(
-        auto_now=False, auto_now_add=False, default=timezone.now())
+        auto_now=False, auto_now_add=False)
 
     def __str__(self):
         return f"{self.user}'s watchlist"
 
     def update(self):
         arr = []
+        self.last_updated = timezone.now()
+        self.save()
         for product in self.products.all():
             date_time_delta = product.last_updated - self.last_updated
             if date_time_delta.days < -7:

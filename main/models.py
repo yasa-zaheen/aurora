@@ -1,6 +1,6 @@
 # Imports
 
-from django.utils import timezone
+from django.utils import timezone, tree
 from django.db import models
 from django.db.models.deletion import SET_NULL
 
@@ -88,13 +88,17 @@ class Product(models.Model):
     seller = models.ForeignKey(
         CustomUser, null=True, on_delete=models.SET_NULL)
     last_updated = models.DateTimeField(
-        auto_now=False, auto_now_add=False, default=timezone.now())
+        auto_now=False, auto_now_add=False)
 
     price = models.FloatField()
     old_price = models.FloatField()
+    price_last_updated = models.DateTimeField(
+        auto_now=False, auto_now_add=False, blank=True, null=True)
 
     stock = models.IntegerField()
     old_stock = models.IntegerField()
+    stock_last_updated = models.DateTimeField(
+        auto_now=False, auto_now_add=False, blank=True, null=True)
 
     category = models.ForeignKey(
         Category, null=True, on_delete=models.SET_NULL)
@@ -144,6 +148,7 @@ class Product(models.Model):
         self.old_price = self.price
         self.price = price
         self.last_updated = timezone.now()
+        self.price_last_updated = timezone.now()
 
         self.save()
 
@@ -151,6 +156,7 @@ class Product(models.Model):
         self.old_stock = self.stock
         self.stock = stock
         self.last_updated = timezone.now()
+        self.price_last_updated = timezone.now()
 
         self.save()
 
@@ -159,6 +165,22 @@ class Product(models.Model):
 
     def change_in_stock(self):
         return self.stock - self.old_stock
+
+    def price_recently_updated(self):
+        current_time = timezone.now()
+        date_time_delta = self.price_last_updated - current_time
+        if date_time_delta.days < -7:
+            return False
+        else:
+            return True
+
+    def stock_recently_updated(self):
+        current_time = timezone.now()
+        date_time_delta = self.stock_last_updated - current_time
+        if date_time_delta.days < -7:
+            return False
+        else:
+            return True
 
     # product_type = models.ForeignKey(
     #     ProductType, null=True, on_delete=models.SET_NULL)

@@ -8,8 +8,8 @@
 <link rel="stylesheet" href="{% static 'dashboard/css/watchlist.css' %}" />
 
 <div class="watchlist">
-  <p class="s-l w-h">3 Items</p>
-  <p class="s-l w-h">Last Updated on 7th June, 2021 at 1:43 PM</p>
+  <p class="s-l w-h">{{ watchlist.products.all.count }} item(s).</p>
+  <p class="s-l w-h">Last Updated on {{ watchlist.last_updated }}</p>
 
   <table class="watchlist__watchlist">
     <thead>
@@ -39,81 +39,77 @@
     </thead>
 
     <tbody>
+      {% for product in watchlist.products.all %}
+
       <tr>
         <td class="watchlist__watchlist__text">
-          <p class="s-m w-m">
-            Apple iPhone 12 Pro Max - 256gb - Unlocked - Factory Sealed -
-            Factory Warranty
-          </p>
+          <p class="s-m w-m">{{ product.name }}</p>
         </td>
 
+        <!-------- Price -------->
+
+        {% if product.price_recently_updated %}
+        <span></span>
+
+        <!-- ** If price has decreased ** -->
+
+        {% if product.change_in_price < 0 %}
         <td class="watchlist__watchlist__text">
           <p
             class="s-m w-m watchlist__watchlist__text__change"
             data-type="price"
             data-change="decrease"
           >
-            USD 1350.75
+            USD {{product.price}}
           </p>
         </td>
 
-        <td class="watchlist__watchlist__text">
-          <p
-            class="s-m w-m watchlist__watchlist__text__change"
-            data-type="stock"
-            data-change="none"
-          >
-            5
-          </p>
-        </td>
-      </tr>
-
-      <tr>
-        <td class="watchlist__watchlist__text">
-          <p class="s-m w-m">
-            ASUS ROG ZEPHYRUS GU502LV GX502LXS CORE I7-10750H MOTHERBOARD
-            90NR04F0-R00051
-          </p>
-        </td>
-
-        <td class="watchlist__watchlist__text">
-          <p
-            class="s-m w-m watchlist__watchlist__text__change"
-            data-type="price"
-            data-change="none"
-          >
-            USD 914.41
-          </p>
-        </td>
-
-        <td class="watchlist__watchlist__text">
-          <p
-            class="s-m w-m watchlist__watchlist__text__change"
-            data-type="stock"
-            data-change="decrease"
-          >
-            2
-          </p>
-        </td>
-      </tr>
-
-      <tr>
-        <td class="watchlist__watchlist__text">
-          <p class="s-m w-m">
-            iPhone 12 Pro Max 12 Mini 12 Fast Charging 20W Wireless Magnetic
-            Magsafe Charger
-          </p>
-        </td>
-
+        <!-- ** If price has increased ** -->
+        {% elif product.change_in_price > 0 %}
         <td class="watchlist__watchlist__text">
           <p
             class="s-m w-m watchlist__watchlist__text__change"
             data-type="price"
             data-change="increase"
           >
-            USD 16.45
+            USD {{product.price}}
           </p>
         </td>
+        {% endif %}
+
+        <!-- ** If price is unchanged ** -->
+
+        {% else %}
+        <td class="watchlist__watchlist__text">
+          <p
+            class="s-m w-m watchlist__watchlist__text__change"
+            data-type="price"
+            data-change="none"
+          >
+            USD {{product.price}}
+          </p>
+        </td>
+        {% endif %}
+
+        <!-------- Stock -------->
+
+        {% if product.stock_recently_updated %}
+        <span></span>
+
+        <!-- ** If stock has decreased ** -->
+        {% if product.change_in_stock < 0 %}
+        <td class="watchlist__watchlist__text">
+          <p
+            class="s-m w-m watchlist__watchlist__text__change"
+            data-type="stock"
+            data-change="decrease"
+          >
+            {{product.stock}}
+          </p>
+        </td>
+
+        <!-- ** If stock has increased ** -->
+        {% elif product.change_in_stock > 0 %}
 
         <td class="watchlist__watchlist__text">
           <p
@@ -121,10 +117,27 @@
             data-type="stock"
             data-change="increase"
           >
-            53
+            {{product.stock}}
           </p>
         </td>
+
+        {% endif %}
+
+        <!-- ** If stock is unchanged ** -->
+
+        {% else %}
+        <td class="watchlist__watchlist__text">
+          <p
+            class="s-m w-m watchlist__watchlist__text__change"
+            data-type="stock"
+            data-change="none"
+          >
+            {{product.stock}}
+          </p>
+        </td>
+        {% endif %}
       </tr>
+      {% endfor %}
     </tbody>
   </table>
 
