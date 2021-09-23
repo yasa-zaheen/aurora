@@ -18,11 +18,13 @@ def home(request):
     if request.user.is_authenticated:
         user = CustomUser.objects.get(user=request.user)
         cart = Cart.objects.get(user=user)
-        watchlist = Watchlist.objects.get(id=1)
+        wishlist = Wishlist.objects.get(user=user)
+        watchlist = Watchlist.objects.get(user=user)
 
         context = {
             "user": user,
             "cart": cart,
+            "wishlist": wishlist,
             "watchlist": watchlist,
         }
 
@@ -36,7 +38,7 @@ def cart(request):
     if request.user.is_authenticated:
         user = CustomUser.objects.get(user=request.user)
         cart = Cart.objects.get(user=user)
-        watchlist = Watchlist.objects.get(id=1)
+        watchlist = Watchlist.objects.get(user=user)
 
         context = {
             "user": user,

@@ -57,7 +57,9 @@
 
     <div class="home__smallModule shadow bg-mediumBlue">
       <p class="s-xxl w-h c-white">Wishlist</p>
-      <p class="s-m w-m c-white">You have 3 items in your wishlist.</p>
+      <p class="s-m w-m c-white">
+        You have {{ wishlist.products.all.count }} item(s) in your wishlist.
+      </p>
     </div>
   </div>
 
