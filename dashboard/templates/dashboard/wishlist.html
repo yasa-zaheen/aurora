@@ -6,7 +6,11 @@
 
 <div class="wishlist">
   <div class="wishlist__products">
-    {% for product in wishlist.products.all %}
+    {% if messages %} {% for message in messages %}
+    <p class="s-l w-h {{ message.tags }}" style="margin: 25px 0px 0px 0px">
+      {{ message }}
+    </p>
+    {% endfor %} {% endif %} {% for product in wishlist.products.all %}
 
     <div class="product">
       <!-- * TODO: Picture Link -->
@@ -54,15 +58,18 @@
             <input type="submit" name="cart" value="{{ product.id }}" />
             <span class="material-icons-outlined s-l">add_shopping_cart</span>
           </button>
-          {% endif %}
-
+          {% endif %} {% if product in wishlist.products.all %}
+          <button class="toggled c-dark-blue" data-color="#3d5a80">
+            <input type="submit" name="wishlist" value="{{ product.id }}" />
+            <span class="material-icons-outlined s-l">star_border</span>
+          </button>
+          {% else %}
           <button class="toggle" data-color="#3d5a80">
             <input type="submit" name="wishlist" value="{{ product.id }}" />
             <span class="material-icons-outlined s-l">star_border</span>
           </button>
-
-          {% if product in watchlist.products.all %}
-          <button class="toggled c-dark-blue" data-color="#ee6c4d">
+          {% endif %} {% if product in watchlist.products.all %}
+          <button class="toggled c-orange" data-color="#ee6c4d">
             <input type="submit" name="watchlist" value="{{ product.id }}" />
             <span class="material-icons-outlined s-l">remove_red_eye</span>
           </button>

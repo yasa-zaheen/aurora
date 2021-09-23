@@ -7,7 +7,7 @@ from dashboard.models import *
 from django.contrib import messages
 from django.contrib.auth import authenticate
 
-from main.views import cart_btn_handler, watchlist_btn_handler
+from main.views import cart_btn_handler, wishlist_btn_handler, watchlist_btn_handler
 
 
 # Views
@@ -38,11 +38,13 @@ def cart(request):
     if request.user.is_authenticated:
         user = CustomUser.objects.get(user=request.user)
         cart = Cart.objects.get(user=user)
+        wishlist = Wishlist.objects.get(user=user)
         watchlist = Watchlist.objects.get(user=user)
 
         context = {
             "user": user,
             "cart": cart,
+            "wishlist": wishlist,
             "watchlist": watchlist,
 
         }
@@ -50,6 +52,9 @@ def cart(request):
         if request.method == "POST":
             if "cart" in request.POST:
                 cart_btn_handler(request, cart)
+
+            if "wishlist" in request.POST:
+                wishlist_btn_handler(request, wishlist)
 
             if "watchlist" in request.POST:
                 watchlist_btn_handler(request, watchlist)
@@ -94,6 +99,9 @@ def wishlist(request):
         if request.method == "POST":
             if "cart" in request.POST:
                 cart_btn_handler(request, cart)
+
+            if "wishlist" in request.POST:
+                wishlist_btn_handler(request, wishlist)
 
             if "watchlist" in request.POST:
                 watchlist_btn_handler(request, watchlist)

@@ -47,6 +47,21 @@ def watchlist_btn_handler(request, watchlist):
     watchlist.save()
 
 
+def wishlist_btn_handler(request, wishlist):
+    product = Product.objects.get(id=request.POST["wishlist"])
+
+    if product in wishlist.products.all():
+        wishlist.products.remove(product)
+        messages.add_message(
+            request, messages.ERROR, f"{product.name} has been removed from your wishlist.")
+    else:
+        wishlist.products.add(product)
+        messages.add_message(
+            request, messages.SUCCESS, f"{product.name} has been added to your wishlist.")
+
+    wishlist.save()
+
+
 def index(request):
     all_categories = Category.objects.order_by('name')
 
@@ -55,18 +70,23 @@ def index(request):
     user = request.user
     custom_user = CustomUser.objects.get(user=user)
     cart = Cart.objects.get(user=custom_user)
+    wishlist = Wishlist.objects.get(user=custom_user)
     watchlist = Watchlist.objects.get(user=custom_user)
 
     context = {
         'all_categories': all_categories,
         "products": products,
         "cart": cart,
+        "wishlist": wishlist,
         "watchlist": watchlist
     }
 
     if request.method == "POST":
         if "cart" in request.POST:
             cart_btn_handler(request, cart)
+
+        if "wishlist" in request.POST:
+            wishlist_btn_handler(request, wishlist)
 
         if "watchlist" in request.POST:
             watchlist_btn_handler(request, watchlist)
@@ -82,18 +102,23 @@ def products(request):
     user = request.user
     custom_user = CustomUser.objects.get(user=user)
     cart = Cart.objects.get(user=custom_user)
+    wishlist = Wishlist.objects.get(user=custom_user)
     watchlist = Watchlist.objects.get(user=custom_user)
 
     context = {
         "all_categories": all_categories,
         "products": products,
         "cart": cart,
+        "wishlist": wishlist,
         "watchlist": watchlist
     }
 
     if request.method == "POST":
         if "cart" in request.POST:
             cart_btn_handler(request, cart)
+
+        if "wishlist" in request.POST:
+            wishlist_btn_handler(request, wishlist)
 
         if "watchlist" in request.POST:
             watchlist_btn_handler(request, watchlist)
@@ -119,6 +144,7 @@ def product(request, id):
     user = request.user
     custom_user = CustomUser.objects.get(user=user)
     cart = Cart.objects.get(user=custom_user)
+    wishlist = Wishlist.objects.get(user=custom_user)
     watchlist = Watchlist.objects.get(user=custom_user)
 
     context = {
@@ -128,12 +154,17 @@ def product(request, id):
         "seller_products": seller_products,
         "reviews": reviews,
         "cart": cart,
-        "watchlist": watchlist
+        "wishlist": wishlist,
+        "watchlist": watchlist,
+
     }
 
     if request.method == "POST":
         if "cart" in request.POST:
             cart_btn_handler(request, cart)
+
+        if "wishlist" in request.POST:
+            wishlist_btn_handler(request, wishlist)
 
         if "watchlist" in request.POST:
             watchlist_btn_handler(request, watchlist)
@@ -154,6 +185,7 @@ def category(request, id):
     user = request.user
     custom_user = CustomUser.objects.get(user=user)
     cart = Cart.objects.get(user=custom_user)
+    wishlist = Wishlist.objects.get(user=custom_user)
     watchlist = Watchlist.objects.get(user=custom_user)
 
     context = {
@@ -162,12 +194,16 @@ def category(request, id):
         'all_categories': all_categories,
         "products": products,
         "cart": cart,
+        "wishlist": wishlist,
         "watchlist": watchlist
     }
 
     if request.method == "POST":
         if "cart" in request.POST:
             cart_btn_handler(request, cart)
+
+        if "wishlist" in request.POST:
+            wishlist_btn_handler(request, wishlist)
 
         if "watchlist" in request.POST:
             watchlist_btn_handler(request, watchlist)
