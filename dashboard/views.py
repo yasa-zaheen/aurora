@@ -75,8 +75,30 @@ def watchlist(request):
 
 
 def wishlist(request):
-    context = {}
-    return render(request, "dashboard/wishlist.html", context)
+
+    if request.user.is_authenticated:
+        user = CustomUser.objects.get(user=request.user)
+        cart = Cart.objects.get(user=user)
+        wishlist = Wishlist.objects.get(user=user)
+        watchlist = Watchlist.objects.get(user=user)
+
+        context = {
+            "user": user,
+            "cart": cart,
+            "wishlist": wishlist,
+            "watchlist": watchlist,
+        }
+
+        if request.method == "POST":
+            if "cart" in request.POST:
+                cart_btn_handler(request, cart)
+
+            if "watchlist" in request.POST:
+                watchlist_btn_handler(request, watchlist)
+
+        return render(request, "dashboard/wishlist.html", context)
+    else:
+        return redirect(reverse("main:index"))
 
 
 def crm(request):

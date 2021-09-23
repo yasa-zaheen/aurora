@@ -5,97 +5,109 @@
 <link rel="stylesheet" href="{% static 'dashboard/css/wishlist.css' %}" />
 
 <div class="wishlist">
-  <div class="wishlist__product">
-    <button class="wishlist__product__delete">
-      <span class="material-icons-outlined s-l w-h"> delete </span>
-    </button>
+  <div class="wishlist__products">
+    {% for product in wishlist.products.all %}
 
-    <div class="wishlist__product__image">
-      <img
-        src="https://images.pexels.com/photos/3707744/pexels-photo-3707744.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-        alt=""
-        class="vis"
-      />
+    <div class="product">
+      <!-- * TODO: Picture Link -->
+      <div
+        class="product__img"
+        style="
+            background-image: url('{{product.image_1.url}}');
+          "
+      ></div>
+
+      <div class="product__content">
+        <!-- * TODO: Product Name -->
+        <a href="{% url 'main:product' product.id %}">
+          <p
+            class="s-l w-h"
+            style="height: 7.05vh; align-items: start; overflow: hidden"
+          >
+            {{product.name}}
+          </p>
+        </a>
+
+        <!-- * TODO: Product Ratings -->
+        <div style="display: flex; margin: 6.25px 0px">
+          {% with ratings=product.ratings %}
+          <span></span>
+          {% include "templates/ratings.html" %}
+          <span></span>
+          {% endwith %}
+        </div>
+        <!-- * TODO: Product Price -->
+        <p class="s-l w-h">USD {{ product.price }}</p>
+        <!-- * TODO: Product Shipping Estimate -->
+        <p class="s-m w-l">
+          +USD {{ product.shipping_price }} shipping estimate
+        </p>
+        <!-- * TODO: Add to cart, watchlist and wishlist buttons -->
+        <form method="POST" style="display: flex; margin-top: 6.25px">
+          {% csrf_token %} {% if product in cart.products.all %}
+          <button class="toggled c-red" type="submit" data-color="#ef233c">
+            <input type="submit" name="cart" value="{{ product.id }}" />
+            <span class="material-icons-outlined s-l">add_shopping_cart</span>
+          </button>
+          {% else %}
+          <button class="toggle" type="submit" data-color="#ef233c">
+            <input type="submit" name="cart" value="{{ product.id }}" />
+            <span class="material-icons-outlined s-l">add_shopping_cart</span>
+          </button>
+          {% endif %}
+
+          <button class="toggle" data-color="#3d5a80">
+            <input type="submit" name="wishlist" value="{{ product.id }}" />
+            <span class="material-icons-outlined s-l">star_border</span>
+          </button>
+
+          {% if product in watchlist.products.all %}
+          <button class="toggled c-dark-blue" data-color="#ee6c4d">
+            <input type="submit" name="watchlist" value="{{ product.id }}" />
+            <span class="material-icons-outlined s-l">remove_red_eye</span>
+          </button>
+          {% else %}
+          <button class="toggle" data-color="#ee6c4d">
+            <input type="submit" name="watchlist" value="{{ product.id }}" />
+            <span class="material-icons-outlined s-l">remove_red_eye</span>
+          </button>
+          {% endif %}
+        </form>
+
+        <!-- * TODO: Account Type -->
+
+        {% if product.seller.account_type == "New Seller" %}
+
+        <div class="product__account-type bg-red c-white">
+          <span class="material-icons-outlined s-l">new_releases</span>
+          <p class="s-s w-h" style="margin-left: 5px">
+            {{ product.seller.account_type }}
+          </p>
+        </div>
+
+        {% elif product.seller.account_type == "Top Rated Seller" %}
+
+        <div class="product__account-type bg-orange c-white">
+          <span class="material-icons-outlined s-l">auto_graph</span>
+          <p class="s-s w-h" style="margin-left: 5px">
+            {{ product.seller.account_type }}
+          </p>
+        </div>
+
+        {% elif product.seller.account_type == "Verified Seller" %}
+
+        <div class="product__account-type bg-darkBlue c-white">
+          <span class="material-icons-outlined s-l">verified</span>
+          <p class="s-s w-h" style="margin-left: 5px">
+            {{ product.seller.account_type }}
+          </p>
+        </div>
+
+        {% endif %}
+      </div>
     </div>
 
-    <div class="wishlist__product__information">
-      <p class="s-l w-h">
-        Apple iPhone 12 Pro Max - 256gb - Unlocked - Factory Sealed - Factory
-        Warranty
-      </p>
-      <p class="s-m w-h" style="opacity: 0.5; position: relative; bottom: 5px">
-        John Doe
-      </p>
-      <p class="s-l w-h" style="position: relative; bottom: 5px">USD 1299.99</p>
-      <p class="s-m w-h" style="opacity: 0.5; position: relative; bottom: 10px">
-        +USD 50.76 shipping estimate
-      </p>
-      <p class="s-l w-h" style="position: absolute; bottom: 25px; right: 25px">
-        Total Price: USD 1350.75
-      </p>
-    </div>
-  </div>
-
-  <div class="wishlist__product">
-    <button class="wishlist__product__delete">
-      <span class="material-icons-outlined s-l w-h"> delete </span>
-    </button>
-
-    <div class="wishlist__product__image">
-      <img
-        src="https://images.pexels.com/photos/2582928/pexels-photo-2582928.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-        alt=""
-        class="vis"
-      />
-    </div>
-
-    <div class="wishlist__product__information">
-      <p class="s-l w-h">
-        ASUS ROG ZEPHYRUS GU502LV GX502LXS CORE I7-10750H MOTHERBOARD
-        90NR04F0-R00051
-      </p>
-      <p class="s-m w-h" style="opacity: 0.5; position: relative; bottom: 5px">
-        John Doe
-      </p>
-      <p class="s-l w-h" style="position: relative; bottom: 5px">USD 846.39</p>
-      <p class="s-m w-h" style="opacity: 0.5; position: relative; bottom: 10px">
-        +USD 52.73 shipping estimate
-      </p>
-      <p class="s-l w-h" style="position: absolute; bottom: 25px; right: 25px">
-        Total Price: USD 914.41
-      </p>
-    </div>
-  </div>
-
-  <div class="wishlist__product">
-    <button class="wishlist__product__delete">
-      <span class="material-icons-outlined s-l w-h"> delete </span>
-    </button>
-
-    <div class="wishlist__product__image">
-      <img
-        src="https://images.pexels.com/photos/7742585/pexels-photo-7742585.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-        alt=""
-        class="vis"
-      />
-    </div>
-
-    <div class="wishlist__product__information">
-      <p class="s-l w-h">
-        iPhone 12 Pro Max 12 Mini 12 Fast Charging 20W Wireless Magnetic Magsafe
-        Charger
-      </p>
-      <p class="s-m w-h" style="opacity: 0.5; position: relative; bottom: 5px">
-        John Doe
-      </p>
-      <p class="s-l w-h" style="position: relative; bottom: 5px">USD 14.99</p>
-      <p class="s-m w-h" style="opacity: 0.5; position: relative; bottom: 10px">
-        +USD 24.74 shipping estimate
-      </p>
-      <p class="s-l w-h" style="position: absolute; bottom: 25px; right: 25px">
-        Total Price: USD 16.45
-      </p>
-    </div>
+    {% endfor %}
   </div>
 </div>
 
