@@ -67,3 +67,11 @@ class Watchlist(models.Model):
 
     def updated_items_count(self):
         return len(self.update())
+
+
+class Wishlist(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    products = models.ManyToManyField(Product, blank=True)
+
+    def __str__(self):
+        return f"{self.user}'s wishlist"
