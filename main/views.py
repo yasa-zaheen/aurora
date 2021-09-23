@@ -17,6 +17,36 @@ from asgiref.sync import sync_to_async
 # Views
 
 
+def cart_btn_handler(request, cart):
+    product = Product.objects.get(id=request.POST["cart"])
+
+    if product in cart.products.all():
+        cart.products.remove(product)
+        messages.add_message(
+            request, messages.ERROR, f"{product.name} has been removed from your cart.")
+    else:
+        cart.products.add(product)
+        messages.add_message(
+            request, messages.SUCCESS, f"{product.name} has been added to your cart.")
+
+    cart.save()
+
+
+def watchlist_btn_handler(request, watchlist):
+    product = Product.objects.get(id=request.POST["watchlist"])
+
+    if product in watchlist.products.all():
+        watchlist.products.remove(product)
+        messages.add_message(
+            request, messages.ERROR, f"{product.name} has been removed from your watchlist.")
+    else:
+        watchlist.products.add(product)
+        messages.add_message(
+            request, messages.SUCCESS, f"{product.name} has been added to your watchlist.")
+
+    watchlist.save()
+
+
 def index(request):
     all_categories = Category.objects.order_by('name')
 
@@ -25,28 +55,21 @@ def index(request):
     user = request.user
     custom_user = CustomUser.objects.get(user=user)
     cart = Cart.objects.get(user=custom_user)
+    watchlist = Watchlist.objects.get(user=custom_user)
 
     context = {
         'all_categories': all_categories,
         "products": products,
-        "cart": cart
+        "cart": cart,
+        "watchlist": watchlist
     }
 
     if request.method == "POST":
-        if request.POST["cart"]:
-            product = Product.objects.get(id=request.POST["cart"])
+        if "cart" in request.POST:
+            cart_btn_handler(request, cart)
 
-            if product in cart.products.all():
-                cart.products.remove(product)
-                messages.add_message(
-                    request, messages.ERROR, f"{product.name} has been removed from your cart.")
-            else:
-                cart.products.add(product)
-                messages.add_message(
-                    request, messages.SUCCESS, f"{product.name} has been added to your cart.")
-
-            cart.save()
-            return render(request, "main/index.html", context)
+        if "watchlist" in request.POST:
+            watchlist_btn_handler(request, watchlist)
 
     return render(request, "main/index.html", context)
 
@@ -59,28 +82,21 @@ def products(request):
     user = request.user
     custom_user = CustomUser.objects.get(user=user)
     cart = Cart.objects.get(user=custom_user)
+    watchlist = Watchlist.objects.get(user=custom_user)
 
     context = {
         "all_categories": all_categories,
         "products": products,
-        "cart": cart
+        "cart": cart,
+        "watchlist": watchlist
     }
 
     if request.method == "POST":
-        if request.POST["cart"]:
-            product = Product.objects.get(id=request.POST["cart"])
+        if "cart" in request.POST:
+            cart_btn_handler(request, cart)
 
-            if product in cart.products.all():
-                cart.products.remove(product)
-                messages.add_message(
-                    request, messages.ERROR, f"{product.name} has been removed from your cart.")
-            else:
-                cart.products.add(product)
-                messages.add_message(
-                    request, messages.SUCCESS, f"{product.name} has been added to your cart.")
-
-            cart.save()
-            return render(request, "main/products.html", context)
+        if "watchlist" in request.POST:
+            watchlist_btn_handler(request, watchlist)
 
     return render(request, "main/products.html", context)
 
@@ -103,6 +119,7 @@ def product(request, id):
     user = request.user
     custom_user = CustomUser.objects.get(user=user)
     cart = Cart.objects.get(user=custom_user)
+    watchlist = Watchlist.objects.get(user=custom_user)
 
     context = {
         'all_categories': all_categories,
@@ -110,24 +127,16 @@ def product(request, id):
         "features": features,
         "seller_products": seller_products,
         "reviews": reviews,
-        "cart": cart
+        "cart": cart,
+        "watchlist": watchlist
     }
 
     if request.method == "POST":
-        if request.POST["cart"]:
-            product = Product.objects.get(id=request.POST["cart"])
+        if "cart" in request.POST:
+            cart_btn_handler(request, cart)
 
-            if product in cart.products.all():
-                cart.products.remove(product)
-                messages.add_message(
-                    request, messages.ERROR, f"{product.name} has been removed from your cart.")
-            else:
-                cart.products.add(product)
-                messages.add_message(
-                    request, messages.SUCCESS, f"{product.name} has been added to your cart.")
-
-            cart.save()
-            return render(request, "main/product.html", context)
+        if "watchlist" in request.POST:
+            watchlist_btn_handler(request, watchlist)
 
     return render(request, "main/product.html", context)
 
@@ -145,30 +154,23 @@ def category(request, id):
     user = request.user
     custom_user = CustomUser.objects.get(user=user)
     cart = Cart.objects.get(user=custom_user)
+    watchlist = Watchlist.objects.get(user=custom_user)
 
     context = {
         "category": category,
         "sub_categories": sub_categories,
         'all_categories': all_categories,
         "products": products,
-        "cart": cart
+        "cart": cart,
+        "watchlist": watchlist
     }
 
     if request.method == "POST":
-        if request.POST["cart"]:
-            product = Product.objects.get(id=request.POST["cart"])
+        if "cart" in request.POST:
+            cart_btn_handler(request, cart)
 
-            if product in cart.products.all():
-                cart.products.remove(product)
-                messages.add_message(
-                    request, messages.ERROR, f"{product.name} has been removed from your cart.")
-            else:
-                cart.products.add(product)
-                messages.add_message(
-                    request, messages.SUCCESS, f"{product.name} has been added to your cart.")
-
-            cart.save()
-            return render(request, "main/category.html", context)
+        if "watchlist" in request.POST:
+            watchlist_btn_handler(request, watchlist)
 
     return render(request, "main/category.html", context)
 

@@ -51,22 +51,31 @@
           {% csrf_token %} {% if product in cart.products.all %}
           <button class="toggled c-red" type="submit" data-color="#ef233c">
             <input type="submit" name="cart" value="{{ product.id }}" />
-            <span class="material-icons-outlined s-xl">add_shopping_cart</span>
+            <span class="material-icons-outlined s-l">add_shopping_cart</span>
           </button>
           {% else %}
           <button class="toggle" type="submit" data-color="#ef233c">
             <input type="submit" name="cart" value="{{ product.id }}" />
-            <span class="material-icons-outlined s-xl">add_shopping_cart</span>
+            <span class="material-icons-outlined s-l">add_shopping_cart</span>
           </button>
           {% endif %}
+
           <button class="toggle" data-color="#3d5a80">
             <input type="submit" name="wishlist" value="{{ product.id }}" />
-            <span class="material-icons-outlined s-xl">star_border</span>
+            <span class="material-icons-outlined s-l">star_border</span>
           </button>
+
+          {% if product in watchlist.products.all %}
+          <button class="toggled c-dark-blue" data-color="#ee6c4d">
+            <input type="submit" name="watchlist" value="{{ product.id }}" />
+            <span class="material-icons-outlined s-l">remove_red_eye</span>
+          </button>
+          {% else %}
           <button class="toggle" data-color="#ee6c4d">
             <input type="submit" name="watchlist" value="{{ product.id }}" />
-            <span class="material-icons-outlined s-xl">remove_red_eye</span>
+            <span class="material-icons-outlined s-l">remove_red_eye</span>
           </button>
+          {% endif %}
         </form>
 
         <!-- * TODO: Account Type -->

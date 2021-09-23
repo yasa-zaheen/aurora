@@ -7,6 +7,8 @@ from dashboard.models import *
 from django.contrib import messages
 from django.contrib.auth import authenticate
 
+from main.views import cart_btn_handler, watchlist_btn_handler
+
 
 # Views
 
@@ -34,27 +36,21 @@ def cart(request):
     if request.user.is_authenticated:
         user = CustomUser.objects.get(user=request.user)
         cart = Cart.objects.get(user=user)
+        watchlist = Watchlist.objects.get(id=1)
 
         context = {
             "user": user,
             "cart": cart,
+            "watchlist": watchlist,
+
         }
 
         if request.method == "POST":
-            if request.POST["cart"]:
-                product = Product.objects.get(id=request.POST["cart"])
+            if "cart" in request.POST:
+                cart_btn_handler(request, cart)
 
-                if product in cart.products.all():
-                    cart.products.remove(product)
-                    messages.add_message(
-                        request, messages.ERROR, f"{product.name} has been removed from your cart.")
-                else:
-                    cart.products.add(product)
-                    messages.add_message(
-                        request, messages.SUCCESS, f"{product.name} has been added to your cart.")
-
-                cart.save()
-                return render(request, "main/cart.html", context)
+            if "watchlist" in request.POST:
+                watchlist_btn_handler(request, watchlist)
 
         return render(request, "dashboard/cart.html", context)
     else:
