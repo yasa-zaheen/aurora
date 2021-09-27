@@ -47,7 +47,7 @@ class Watchlist(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     products = models.ManyToManyField(Product, blank=True)
     last_updated = models.DateTimeField(
-        auto_now=False, auto_now_add=False)
+        auto_now_add=True)
 
     def __str__(self):
         return f"{self.user}'s watchlist"

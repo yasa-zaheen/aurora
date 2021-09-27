@@ -29,30 +29,29 @@
   display: grid;
   grid-template-columns: 50% 50%;
   grid-row-gap: 25px;
-  overflow: hidden;
 }
 
-/** Information **/
+/** Finances **/
 
-.cart__information {
-  height: 50vh;
-  width: 100%;
+.cart__finances {
+  display: flex;
+  justify-content: space-between;
   padding: 0px 25px;
 }
 
-.information__finances {
-  display: flex;
-  justify-content: space-between;
-}
-
-.information__finances .module {
+.cart__finances .module {
   width: calc((100% - 50px) / 3);
 }
 
-.information__delivery {
-  margin-top: 25px;
+/** Delivery **/
+
+.cart__delivery {
+  margin: 25px;
   padding: 25px;
   border-radius: 15px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
 }
 
 .delivery__input-container {

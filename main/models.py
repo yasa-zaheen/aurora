@@ -86,9 +86,9 @@ class Filter(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=255)
     seller = models.ForeignKey(
-        CustomUser, null=True, on_delete=models.SET_NULL)
+        CustomUser, on_delete=models.CASCADE)
     last_updated = models.DateTimeField(
-        auto_now=False, auto_now_add=False)
+        auto_now=True)
 
     price = models.FloatField()
     old_price = models.FloatField()

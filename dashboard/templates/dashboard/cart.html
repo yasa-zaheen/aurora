@@ -117,137 +117,144 @@
     {% endfor %}
   </div>
 
-  <!-- TODO: Information -->
-  <div class="cart__information">
-    <!-- TODO: Finances -->
-    <div class="information__finances">
-      <div class="module shadow bg-darkBlue c-white">
-        <p class="s-l w-h">Total Price</p>
-        <p class="s-m w-m">USD {{cart.get_total_price|floatformat:2}}</p>
-      </div>
-      <div class="module shadow bg-mediumBlue c-white">
-        <p class="s-l w-h">Total Shipping</p>
-        <p class="s-m w-m">USD {{cart.get_total_shipping|floatformat:2}}</p>
-      </div>
-      <div class="module shadow bg-orange c-white">
-        <p class="s-l w-h">Total Payable Amount</p>
-        <p class="s-m w-m">USD {{cart.get_total_cost|floatformat:2}}</p>
-      </div>
+  <!-- TODO: Finances -->
+  <div class="cart__finances">
+    <div class="module shadow bg-darkBlue c-white">
+      <p class="s-l w-h">Total Price</p>
+      <p class="s-m w-m">USD {{cart.get_total_price|floatformat:2}}</p>
+    </div>
+    <div class="module shadow bg-mediumBlue c-white">
+      <p class="s-l w-h">Total Shipping</p>
+      <p class="s-m w-m">USD {{cart.get_total_shipping|floatformat:2}}</p>
+    </div>
+    <div class="module shadow bg-orange c-white">
+      <p class="s-l w-h">Total Payable Amount</p>
+      <p class="s-m w-m">USD {{cart.get_total_cost|floatformat:2}}</p>
+    </div>
+  </div>
+
+  <!-- TODO: Delivery -->
+  <form class="cart__delivery shadow" method="POST">
+    {% csrf_token %}
+    <!------ Name ------>
+    <div class="delivery__input-container">
+      <p class="s-l w-h">Name</p>
+      <input
+        type="text"
+        placeholder="John Appleseed..."
+        value="{{user.full_name}}"
+        name="order-name"
+      />
+      <p class="s-s w-l">Please enter your full name.</p>
     </div>
 
-    <!-- TODO: Delivery -->
-    <div class="information__delivery shadow">
-      <!------ Name ------>
-      <div class="delivery__input-container">
-        <p class="s-l w-h">Name</p>
+    <div style="display: flex">
+      <!------ Email ------>
+      <div class="delivery__input-container" style="margin-right: 12.5px">
+        <p class="s-l w-h">Email</p>
         <input
           type="text"
-          placeholder="John Appleseed..."
-          value="{{user.full_name}}"
+          placeholder="johnappleseed@aurora.com"
+          value="{{user.user.email}}"
+          name="order-email"
         />
-        <p class="s-s w-l">Please enter your full name.</p>
+        <p class="s-s w-l">Please enter your email.</p>
       </div>
 
-      <div style="display: flex">
-        <!------ Email ------>
-        <div class="delivery__input-container" style="margin-right: 12.5px">
-          <p class="s-l w-h">Email</p>
-          <input
-            type="text"
-            placeholder="johnappleseed@aurora.com"
-            value="{{user.user.email}}"
-          />
-          <p class="s-s w-l">Please enter your email.</p>
-        </div>
-
-        <!------ Email ------>
-        <div class="delivery__input-container" style="margin-left: 12.5px">
-          <p class="s-l w-h">Contact</p>
-          <input
-            type="text"
-            placeholder="(555) 555-1234..."
-            value="{{user.contact}}"
-          />
-          <p class="s-s w-l">Please enter your contact number.</p>
-        </div>
+      <!------ Email ------>
+      <div class="delivery__input-container" style="margin-left: 12.5px">
+        <p class="s-l w-h">Contact</p>
+        <input
+          type="text"
+          placeholder="(555) 555-1234..."
+          value="{{user.contact}}"
+          name="order-contact"
+        />
+        <p class="s-s w-l">Please enter your contact number.</p>
       </div>
-
-      <div style="display: flex">
-        <!------ Address ------>
-        <div class="delivery__input-container">
-          <p class="s-l w-h">Address</p>
-          <input
-            type="text"
-            placeholder="Capsule 510, SOL 218, Mars."
-            value="{{user.address}}"
-          />
-          <p class="s-s w-l">Please enter your full address.</p>
-        </div>
-
-        <!------ Zip code ------>
-        <div
-          class="delivery__input-container"
-          style="width: 25%; margin-left: 25px"
-        >
-          <p class="s-l w-h">Zip code</p>
-          <input
-            type="text"
-            placeholder="XYZ-123456"
-            value="{{user.zip_code}}"
-          />
-          <p class="s-s w-l">Please enter your area's zip code</p>
-        </div>
-      </div>
-
-      <div style="display: flex; justify-content: space-between">
-        <!------ Country ------>
-        <div
-          class="delivery__input-container"
-          style="width: calc((100% - 50px) / 3)"
-        >
-          <p class="s-l w-h">Country</p>
-          <input
-            type="text"
-            placeholder="Bangladesh"
-            value="{{user.country}}"
-          />
-          <p class="s-s w-l">Please enter your countries name.</p>
-        </div>
-
-        <!------ Email ------>
-        <div
-          class="delivery__input-container"
-          style="width: calc((100% - 50px) / 3)"
-        >
-          <p class="s-l w-h">State/Province</p>
-          <input
-            type="text"
-            placeholder="(555) 555-1234..."
-            value="{{user.state_province}}"
-          />
-          <p class="s-s w-l">Please enter the name of your state/province.</p>
-        </div>
-
-        <!------ City ------>
-        <div
-          class="delivery__input-container"
-          style="width: calc((100% - 50px) / 3)"
-        >
-          <p class="s-l w-h">City</p>
-          <input
-            type="text"
-            placeholder="(555) 555-1234..."
-            value="{{user.city}}"
-          />
-          <p class="s-s w-l">Please enter the name of your city.</p>
-        </div>
-      </div>
-
-      <button style="margin-top: 12.5px">Proceed to payment</button>
     </div>
 
-    <div style="height: 25px; width: 100%"></div>
-  </div>
+    <div style="display: flex">
+      <!------ Address ------>
+      <div class="delivery__input-container">
+        <p class="s-l w-h">Address</p>
+        <input
+          type="text"
+          placeholder="Capsule 510, SOL 218, Mars."
+          value="{{user.address}}"
+          name="order-address"
+        />
+        <p class="s-s w-l">Please enter your full address.</p>
+      </div>
+
+      <!------ Zip code ------>
+      <div
+        class="delivery__input-container"
+        style="width: 25%; margin-left: 25px"
+      >
+        <p class="s-l w-h">Zip code</p>
+        <input
+          type="text"
+          placeholder="XYZ-123456"
+          value="{{user.zip_code}}"
+          name="order-zip-code"
+        />
+        <p class="s-s w-l">Please enter your area's zip code</p>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between">
+      <!------ Country ------>
+      <div
+        class="delivery__input-container"
+        style="width: calc((100% - 50px) / 3)"
+      >
+        <p class="s-l w-h">Country</p>
+        <input
+          type="text"
+          placeholder="Bangladesh"
+          value="{{user.country}}"
+          name="order-country"
+        />
+        <p class="s-s w-l">Please enter your countries name.</p>
+      </div>
+
+      <!------ Email ------>
+      <div
+        class="delivery__input-container"
+        style="width: calc((100% - 50px) / 3)"
+      >
+        <p class="s-l w-h">State/Province</p>
+        <input
+          type="text"
+          placeholder="(555) 555-1234..."
+          value="{{user.state_province}}"
+          name="order-state-province"
+        />
+        <p class="s-s w-l">Please enter the name of your state/province.</p>
+      </div>
+
+      <!------ City ------>
+      <div
+        class="delivery__input-container"
+        style="width: calc((100% - 50px) / 3)"
+      >
+        <p class="s-l w-h">City</p>
+        <input
+          type="text"
+          placeholder="(555) 555-1234..."
+          value="{{user.city}}"
+          name="order-city"
+        />
+        <p class="s-s w-l">Please enter the name of your city.</p>
+      </div>
+    </div>
+
+    <button class="bg-red c-white shadow">
+      Place order
+      <input type="submit" name="submit-cart" value="Click me " />
+    </button>
+  </form>
 </div>
 
 <script src="{% static 'dashboard/js/cart.js' %}"></script>

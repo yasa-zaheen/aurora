@@ -8,7 +8,7 @@ from main.webscraper import permission
 from main.product_types import *
 from main.filters import *
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 
 from asgiref.sync import sync_to_async
@@ -64,70 +64,79 @@ def wishlist_btn_handler(request, wishlist):
 
 def index(request):
     all_categories = Category.objects.order_by('name')
-
     products = Product.objects.all()
 
-    user = request.user
-    custom_user = CustomUser.objects.get(user=user)
-    cart = Cart.objects.get(user=custom_user)
-    wishlist = Wishlist.objects.get(user=custom_user)
-    watchlist = Watchlist.objects.get(user=custom_user)
-
     context = {
-        'all_categories': all_categories,
+        "all_categories": all_categories,
         "products": products,
-        "cart": cart,
-        "wishlist": wishlist,
-        "watchlist": watchlist
     }
 
+    if request.user.is_authenticated:
+        user = request.user
+        custom_user = CustomUser.objects.get(user=user)
+        cart = Cart.objects.get(user=custom_user)
+        wishlist = Wishlist.objects.get(user=custom_user)
+        watchlist = Watchlist.objects.get(user=custom_user)
+
+        context["cart"] = cart
+        context["wishlist"] = wishlist
+        context["watchlist"] = watchlist
+
     if request.method == "POST":
-        if "cart" in request.POST:
-            cart_btn_handler(request, cart)
+        if request.user.is_authenticated:
+            if "cart" in request.POST:
+                cart_btn_handler(request, cart)
 
-        if "wishlist" in request.POST:
-            wishlist_btn_handler(request, wishlist)
+            if "wishlist" in request.POST:
+                wishlist_btn_handler(request, wishlist)
 
-        if "watchlist" in request.POST:
-            watchlist_btn_handler(request, watchlist)
+            if "watchlist" in request.POST:
+                watchlist_btn_handler(request, watchlist)
+
+        else:
+            return redirect(reverse("authentication:sign_in"))
 
     return render(request, "main/index.html", context)
 
 
 def products(request):
-
     all_categories = Category.objects.order_by('name')
-
     products = Product.objects.all()
-    user = request.user
-    custom_user = CustomUser.objects.get(user=user)
-    cart = Cart.objects.get(user=custom_user)
-    wishlist = Wishlist.objects.get(user=custom_user)
-    watchlist = Watchlist.objects.get(user=custom_user)
 
     context = {
         "all_categories": all_categories,
         "products": products,
-        "cart": cart,
-        "wishlist": wishlist,
-        "watchlist": watchlist
     }
 
+    if request.user.is_authenticated:
+        user = request.user
+        custom_user = CustomUser.objects.get(user=user)
+        cart = Cart.objects.get(user=custom_user)
+        wishlist = Wishlist.objects.get(user=custom_user)
+        watchlist = Watchlist.objects.get(user=custom_user)
+
+        context["cart"] = cart
+        context["wishlist"] = wishlist
+        context["watchlist"] = watchlist
+
     if request.method == "POST":
-        if "cart" in request.POST:
-            cart_btn_handler(request, cart)
+        if request.user.is_authenticated:
+            if "cart" in request.POST:
+                cart_btn_handler(request, cart)
 
-        if "wishlist" in request.POST:
-            wishlist_btn_handler(request, wishlist)
+            if "wishlist" in request.POST:
+                wishlist_btn_handler(request, wishlist)
 
-        if "watchlist" in request.POST:
-            watchlist_btn_handler(request, watchlist)
+            if "watchlist" in request.POST:
+                watchlist_btn_handler(request, watchlist)
+
+        else:
+            return redirect(reverse("authentication:sign_in"))
 
     return render(request, "main/products.html", context)
 
 
 def product(request, id):
-
     all_categories = Category.objects.order_by('name')
 
     product = Product.objects.get(id=id)
@@ -141,33 +150,38 @@ def product(request, id):
     for i in features_split_n:
         features.append(i.split(":"))
 
-    user = request.user
-    custom_user = CustomUser.objects.get(user=user)
-    cart = Cart.objects.get(user=custom_user)
-    wishlist = Wishlist.objects.get(user=custom_user)
-    watchlist = Watchlist.objects.get(user=custom_user)
-
     context = {
         'all_categories': all_categories,
         "product": product,
         "features": features,
         "seller_products": seller_products,
         "reviews": reviews,
-        "cart": cart,
-        "wishlist": wishlist,
-        "watchlist": watchlist,
-
     }
 
+    if request.user.is_authenticated:
+        user = request.user
+        custom_user = CustomUser.objects.get(user=user)
+        cart = Cart.objects.get(user=custom_user)
+        wishlist = Wishlist.objects.get(user=custom_user)
+        watchlist = Watchlist.objects.get(user=custom_user)
+
+        context["cart"] = cart
+        context["wishlist"] = wishlist
+        context["watchlist"] = watchlist
+
     if request.method == "POST":
-        if "cart" in request.POST:
-            cart_btn_handler(request, cart)
+        if request.user.is_authenticated:
+            if "cart" in request.POST:
+                cart_btn_handler(request, cart)
 
-        if "wishlist" in request.POST:
-            wishlist_btn_handler(request, wishlist)
+            if "wishlist" in request.POST:
+                wishlist_btn_handler(request, wishlist)
 
-        if "watchlist" in request.POST:
-            watchlist_btn_handler(request, watchlist)
+            if "watchlist" in request.POST:
+                watchlist_btn_handler(request, watchlist)
+
+        else:
+            return redirect(reverse("authentication:sign_in"))
 
     return render(request, "main/product.html", context)
 

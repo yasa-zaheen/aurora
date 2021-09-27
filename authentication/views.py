@@ -1,6 +1,7 @@
 # Imports
 
 
+from dashboard.views import watchlist
 from authentication.models import CustomUser
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -11,6 +12,8 @@ from django.shortcuts import redirect, render, reverse
 from django.core.mail import send_mail
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.http.response import HttpResponsePermanentRedirect
+
+from dashboard.models import *
 
 import hashlib
 
@@ -75,6 +78,15 @@ def sign_up(request):
             custom_user = CustomUser.objects.create(
                 user=user, huid=hashlib.md5(str(user.id).encode()).hexdigest(), is_verified=False)
             custom_user.save()
+
+            cart = Cart.objects.create(user=custom_user)
+            cart.save()
+
+            watchlist = Watchlist.objects.create(user=custom_user)
+            watchlist.save()
+
+            wishlist = Wishlist.objects.create(user=custom_user)
+            wishlist.save()
 
             send_mail(
                 subject="Verify Account",

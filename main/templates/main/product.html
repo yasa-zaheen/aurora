@@ -130,7 +130,7 @@
       <td class="features__cell">
         <p class="s-l w-h">{{ feature_cat }}</p>
       </td>
-      <td>
+      <td class="features__cell">
         <p class="s-l w-l">{{ feature_specs }}</p>
       </td>
     </tr>
@@ -143,19 +143,19 @@
     <div
       class="seller-info__seller"
       style="
-        background-image: url(https://images.unsplash.com/photo-1435820394963-a15297f976fd?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGFic3RyYWN0fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=60);
+        background-image: url('{{product.seller.cover_image.url}}');
       "
     >
       <div
         class="seller__dp"
         style="
-          background-image: url(https://docs.google.com/uc?export=download&id=114zREg2jyA9hJG9KlU7-h1M5jEMo8C7G);
+          background-image: url('{{product.seller.profile_image.url}}');
         "
       ></div>
       <pre class="s-l w-h c-white">
-      Yasa Zaheen <span class="material-icons" style="font-size: 12.5px;">verified</span>
+      {{product.seller}} <span class="material-icons" style="font-size: 12.5px;">verified</span>
     </pre>
-      <p class="s-m w-m c-white">yasazaheen@gmail.com</p>
+      <p class="s-m w-m c-white">{{product.seller.user.email}}</p>
       <p class="s-s w-m c-white" style="width: 25%">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam autem
         accusantium culpa, odit dicta eum tempora quod adipisci alias commodi
