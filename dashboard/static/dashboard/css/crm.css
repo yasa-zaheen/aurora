@@ -9,46 +9,64 @@
 
 .crm {
   height: calc(100vh);
-  border-radius: 15px;
-  padding: 25px;
-}
-
-.crm__search {
-  height: 50px;
   width: 100%;
   border-radius: 15px;
-  margin-bottom: 12.5px;
-  display: flex;
-  align-items: center;
+  display: grid;
+  padding: 25px;
+  padding-right: 0px;
+  grid-template-columns: calc(100% / 2) calc(100% / 2);
 }
 
-.crm__search__search {
+/** Orders **/
+
+.crm__order {
+  width: calc(100% - 25px);
+}
+
+.order__link {
+  padding: 0px !important;
+  color: #3d5a80 !important;
+  text-decoration: underline !important;
+}
+
+.order__table {
+  width: 100%;
+  background-color: #fafafa;
+  border-radius: 15px;
+  padding: 12.5px;
+  margin-bottom: 25px;
+}
+
+.order__status {
+  height: fit-content;
+  width: fit-content;
+  padding: 6.25px 12.5px;
+  border-radius: 15px;
+}
+
+.order__product {
+  width: 100%;
+  height: 100px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: start;
+  align-self: flex-start;
+}
+
+.product-imgs {
+  height: 100px;
+  min-width: 100px;
+  display: grid;
+  grid-template-columns: 50px 50px;
+  grid-template-rows: 50px 50px;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-right: 25px;
+}
+
+.product-imgs img {
   height: 100%;
   width: 100%;
-  outline: none;
-  border: none;
-  border: 1px solid #2f2f2f2f;
-  border-radius: 15px 0px 0px 15px;
-  padding: 6.25px 12.5px;
-}
-
-.searchBtn {
-  height: 100% !important;
-  width: 50px;
-  border-radius: 0px 15px 15px 0px;
-}
-
-.crm__crm {
-  width: 100%;
-}
-
-.crm__crm__header,
-.crm__crm__text {
-  border-bottom: 1px solid #2f2f2f2f;
-  padding: 12.5px 0px;
-}
-
-.table__detailsBtn {
-  background-color: #2f2f2f2f;
-  color: black;
+  object-fit: cover;
 }

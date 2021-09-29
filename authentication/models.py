@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+from django.apps import apps
+
 # Create your models here.
 
 
@@ -33,3 +35,20 @@ class CustomUser(models.Model):
 
     def __str__(self):
         return self.user.username
+
+    def get_seller_orders(self):
+
+        product_object = apps.get_model("main", "Product")
+        order_object = apps.get_model("dashboard", "Order")
+
+        products = product_object.objects.filter(seller=self)
+
+        arr = []
+
+        for product in products:
+            set = order_object.objects.filter(products=product)
+            if len(set) != 0:
+                if set[0] not in arr:
+                    arr.append(set[0])
+
+        return arr
