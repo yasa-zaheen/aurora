@@ -74,32 +74,33 @@
       <table class="home__crm">
         <thead>
           <th align="center" class="home__crm__header" style="width: 50%">
-            <p class="s-l w-h c-white">Order ID</p>
+            <p class="s-l w-h c-white">Order no.</p>
           </th>
           <th align="center" class="home__crm__header" style="width: 25%">
-            <p class="s-l w-h c-white">Price</p>
+            <p class="s-l w-h c-white">Status</p>
           </th>
           <th align="center" class="home__crm__header" style="width: 25%">
-            <p class="s-l w-h c-white">Detail</p>
+            <p class="s-l w-h c-white">Date of order</p>
           </th>
         </thead>
         <tbody>
+          {% for order in user.get_seller_orders %}
           <tr>
             <td class="home__crm__text">
+              <a href="#">
+                <p class="s-s w-m c-white">{{order}}</p>
+              </a>
+            </td>
+            <td class="home__crm__text">
+              <p class="s-s w-m c-white">{{order.status}}</p>
+            </td>
+            <td class="home__crm__text">
               <p class="s-s w-m c-white">
-                Apple iPhone 12 Pro Max - 256gb - Unlocked - Factory Sealed -
-                Factory Warranty
+                {{ order.date_of_order|date:"d M Y" }}
               </p>
             </td>
-            <td class="home__crm__text">
-              <p class="s-s w-m c-white">USD 1350.75</p>
-            </td>
-            <td class="home__crm__text">
-              <button class="c-black bg-white">
-                <p class="s-s w-m">Details</p>
-              </button>
-            </td>
           </tr>
+          {% endfor %}
         </tbody>
       </table>
     </div>

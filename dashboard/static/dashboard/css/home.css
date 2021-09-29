@@ -83,3 +83,12 @@
   border-bottom: 1px solid #ffffff2f;
   padding: 12.5px 0px;
 }
+
+.home__crm__text a {
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+.home__crm__text a:hover {
+  background-color: #2f2f2f !important;
+}
