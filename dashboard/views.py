@@ -148,6 +148,34 @@ def crm(request):
         return redirect(reverse("main:index"))
 
 
+def order(request, id):
+
+    if request.user.is_authenticated:
+        user = CustomUser.objects.get(user=request.user)
+        order = Order.objects.get(id=id)
+
+        total_product_price, total_shipping, total_revenue = order.get_seller_revenue(
+            request.user)
+
+        if request.method == "POST":
+            order.status = request.POST['order-status']
+
+        order.save()
+
+        context = {
+            "user": user,
+            "order": order,
+            "total_product_price": total_product_price,
+            "total_shipping": total_shipping,
+            "total_revenue": total_revenue,
+        }
+
+        return render(request, 'dashboard/order.html', context)
+
+    else:
+        return redirect(reverse("main:index"))
+
+
 def my_products(request):
     context = {}
     return render(request, "dashboard/my_products.html", context)

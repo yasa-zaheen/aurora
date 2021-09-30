@@ -85,7 +85,7 @@ class Order(models.Model):
     status = models.CharField(max_length=255, choices=[
         ("Packaging", "Packaging"),
         ("Delivering", "Delivering"),
-        ("Deliverd", "Deliverd")
+        ("Delivered", "Delivered")
     ], default="Packaging")
 
     name = models.CharField(default="",  max_length=255)
@@ -102,12 +102,19 @@ class Order(models.Model):
     def __str__(self):
         return f"{self.user}'s order no. {self.id}."
 
-    def get_total_price(self, user):
+    def get_seller_revenue(self, user):
         seller = CustomUser.objects.get(user=user)
-        total = 0
+
+        total_product_price = 0
+        total_shipping = 0
+        total_revenue = 0
+
         for product in self.products.all():
             if product.seller == seller:
-                total += product.shipping_price
-                total += product.price
+                total_product_price += product.price
+                total_shipping += product.shipping_price
 
-        return total
+                total_revenue += product.shipping_price
+                total_revenue += product.price
+
+        return total_product_price, total_shipping, total_revenue

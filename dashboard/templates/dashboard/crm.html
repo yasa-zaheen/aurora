@@ -13,7 +13,9 @@
       <p class="s-l w-h" style="margin-bottom: 12.5px">
         Order no. #{{order.id}}
       </p>
-      <a href="#" class="order__link">View Details</a>
+      <a href="{% url 'dashboard:order' order.id %}" class="order__link"
+        >View Details</a
+      >
     </div>
     <!-- TODO: Table -->
 

@@ -1,0 +1,204 @@
+{% extends "dashboard/dashboard.html" %} {% load static %}
+
+<hr />
+{% block viewContent %}
+
+<link rel="stylesheet" href="{% static 'dashboard/css/order.css' %}" />
+
+<div class="order">
+  <!-- TODO: Information -->
+
+  <div class="order__info shadow">
+    <div class="info__user">
+      <img
+        src="{{order.user.cover_image.url}}"
+        alt=""
+        class="user__cover-img"
+      />
+      <div
+        style="
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <img
+          src="{{order.user.profile_image.url}}"
+          alt=""
+          class="user__profile-img"
+        />
+        <p class="s-l w-h c-white">{{order.user.user.username}}</p>
+        <p class="s-m w-m c-white">{{order.user.user.email}}</p>
+        <p class="s- w-m c-white">{{order.user.contact}}</p>
+      </div>
+    </div>
+    <div class="info__order">
+      <table>
+        <tr>
+          <td style="width: 25%">
+            <p class="s-m w-h">Name</p>
+          </td>
+          <td style="width: 75%">
+            <p class="s-m w-l">{{order.name}}</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="width: 25%">
+            <p class="s-m w-h">Email</p>
+          </td>
+          <td style="width: 75%">
+            <p class="s-m w-l">{{order.email}}</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="width: 25%">
+            <p class="s-m w-h">Contact</p>
+          </td>
+          <td style="width: 75%">
+            <p class="s-m w-l">{{order.contact}}</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="width: 25%">
+            <p class="s-m w-h">Address</p>
+          </td>
+          <td style="width: 75%">
+            <p class="s-m w-l">{{order.address}}</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="width: 25%">
+            <p class="s-m w-h">ZIP Code</p>
+          </td>
+          <td style="width: 25%">
+            <p class="s-m w-l">{{order.zip_code}}</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="width: 25%">
+            <p class="s-m w-h">Country</p>
+          </td>
+          <td style="width: 75%">
+            <p class="s-m w-l">{{order.country}}</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="width: 25%">
+            <p class="s-m w-h">State Province</p>
+          </td>
+          <td style="width: 75%">
+            <p class="s-m w-l">{{order.state_province}}</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="width: 25%">
+            <p class="s-m w-h">City</p>
+          </td>
+          <td style="width: 75%">
+            <p class="s-m w-l">{{order.city}}</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="width: 25%">
+            <p class="s-m w-h">Date of order</p>
+          </td>
+          <td style="width: 75%">
+            <p class="s-m w-l">{{ order.date_of_order|date:"d M Y" }}</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- TODO: Products -->
+
+  <div class="order__products">
+    {% for product in order.products.all %} {% if product.seller == user %}
+    <div class="products__product shadow">
+      <div class="product-imgs">
+        <img src="{{product.image_1.url}}" alt="" />
+        <img src="{{product.image_2.url}}" alt="" />
+        <img src="{{product.image_3.url}}" alt="" />
+        <img src="{{product.image_4.url}}" alt="" />
+      </div>
+      <div
+        style="display: flex; flex-direction: column; justify-content: center"
+      >
+        <p class="s-m w-h" style="height: fit-content">{{product.name}}</p>
+        <pre><p class="s-l w-h">USD {{product.price}}</p><p class="s-s w-l"> + USD {{product.shipping_price}} shipping estimate.</p></pre>
+      </div>
+    </div>
+    {% endif %} {% endfor %}
+  </div>
+
+  <!-- TODO: Status -->
+
+  <form class="order__status" method="POST">
+    {% csrf_token %}
+    <p class="s-l w-h">Order Status</p>
+    <div
+      style="display: flex; justify-content: space-between; margin-top: 12.5px"
+    >
+      <p class="s-m w-h">
+        <input
+          type="radio"
+          name="order-status"
+          value="Packaging"
+          id="Packaging"
+        />
+        Packaging
+      </p>
+      <p class="s-m w-h">
+        <input
+          type="radio"
+          name="order-status"
+          value="Delivering"
+          id="Delivering"
+        />
+        Delivering
+      </p>
+      <p class="s-m w-h">
+        <input
+          type="radio"
+          name="order-status"
+          value="Delivered"
+          id="Delivered"
+        />
+        Delivered
+      </p>
+    </div>
+    <button type="submit" class="bg-red c-white">Save Changes</button>
+  </form>
+
+  <!-- TODO: Revenue -->
+
+  <div class="order__revenue">
+    <div class="module bg-darkBlue c-white shadow">
+      <p class="s-l w-h">Total Price of Products</p>
+      <p class="s-m w-h">USD {{total_product_price}}</p>
+    </div>
+    <div class="module bg-mediumBlue c-white shadow">
+      <p class="s-l w-h">Total Shipping Price of Products</p>
+      <p class="s-m w-h">USD {{total_shipping}}</p>
+    </div>
+    <div class="module bg-orange c-white shadow">
+      <p class="s-l w-h">Total Revenue Received</p>
+      <p class="s-m w-h">USD {{total_revenue}}</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var orderStatus = "{{order.status}}";
+
+  var radioBtn = document.querySelector(`input#${orderStatus}`);
+
+  console.log(radioBtn);
+  console.log(orderStatus);
+
+  radioBtn.checked = true;
+</script>
+
+{% endblock viewContent %}
