@@ -42,6 +42,36 @@ class Cart(models.Model):
 
         return total
 
+    def create_order(self, request):
+        sellers = []
+
+        for product in self.products.all():
+            if product.seller not in sellers:
+                sellers.append(product.seller)
+
+        for seller in sellers:
+            order = Order.objects.create(user=self.user)
+
+            for product in self.products.all():
+                if product.seller == seller:
+                    order.products.add(product)
+                    self.products.remove(product)
+
+            order.status = "Packaging"
+            order.name = request.POST["order-name"]
+            order.email = request.POST["order-email"]
+            order.contact = request.POST["order-contact"]
+            order.address = request.POST["order-address"]
+            order.zip_code = request.POST["order-zip-code"]
+            order.country = request.POST["order-country"]
+            order.state_province = request.POST["order-state-province"]
+            order.city = request.POST["order-city"]
+
+            order.payment_made = True
+
+            order.save()
+            self.save()
+
 
 class Watchlist(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)

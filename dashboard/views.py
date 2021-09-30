@@ -60,26 +60,7 @@ def cart(request):
                 watchlist_btn_handler(request, watchlist)
 
             if "submit-cart" in request.POST:
-                order = Order.objects.create(user=user)
-
-                for product in cart.products.all():
-                    order.products.add(product)
-                    cart.products.remove(product)
-
-                order.status = "Packaging"
-                order.name = request.POST["order-name"]
-                order.email = request.POST["order-email"]
-                order.contact = request.POST["order-contact"]
-                order.address = request.POST["order-address"]
-                order.zip_code = request.POST["order-zip-code"]
-                order.country = request.POST["order-country"]
-                order.state_province = request.POST["order-state-province"]
-                order.city = request.POST["order-city"]
-
-                order.payment_made = True
-
-                order.save()
-                cart.save()
+                cart.create_order(request)
 
         return render(request, "dashboard/cart.html", context)
     else:
