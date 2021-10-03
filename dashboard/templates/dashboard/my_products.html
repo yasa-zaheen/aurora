@@ -42,7 +42,11 @@
       <!-- * TODO: Product Shipping Estimate -->
       <p class="s-m w-l">+USD {{ product.shipping_price }} shipping estimate</p>
       <!-- * TODO: Details Btn -->
-      <a href="" class="product__link">View Details</a>
+      <a
+        href="{% url 'dashboard:edit_product' product.id %}"
+        class="product__link"
+        >View Details</a
+      >
     </div>
   </div>
 

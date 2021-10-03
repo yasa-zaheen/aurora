@@ -1,0 +1,138 @@
+{% extends "dashboard/dashboard.html" %} {% load static %}
+
+<hr />
+{% block viewContent %}
+<link rel="stylesheet" href="{% static 'dashboard/css/edit_product.css' %}" />
+
+<div class="editProduct">
+  <!-- TODO: General Product Information -->
+  <p class="s-2l w-h" style="margin-bottom: 12.5px">
+    General Product Information
+  </p>
+
+  <!-- !Name -->
+  <div class="editProduct__inputContainer">
+    <p class="s-l w-h">Name</p>
+    <input type="text" class="editProduct__input" />
+    <p class="s-s w-l">Name should be accurate and descriptive.</p>
+  </div>
+
+  <!-- !Images -->
+  <div class="editProduct__inputContainer">
+    <p class="s-l w-h">Product Images</p>
+    <div style="display: flex">
+      <div class="editProduct__imgUploadContainer dashed">
+        <img class="vis" />
+        <input class="editProduct__uploadBtn" type="file" />
+      </div>
+      <div class="editProduct__imgUploadContainer dashed">
+        <img class="vis" />
+        <input class="editProduct__uploadBtn" type="file" />
+      </div>
+      <div class="editProduct__imgUploadContainer dashed">
+        <img class="vis" />
+        <input class="editProduct__uploadBtn" type="file" />
+      </div>
+      <div class="editProduct__imgUploadContainer dashed">
+        <img class="vis" />
+        <input class="editProduct__uploadBtn" type="file" />
+      </div>
+    </div>
+    <p class="s-s w-l">
+      You can upload a maximum of 4 images. Make sure that the images are
+      detailed and appealing to get more views.
+    </p>
+  </div>
+
+  <div style="display: flex">
+    <!-- !Condition -->
+    <div class="editProduct__inputContainer" style="padding-right: 12.5px">
+      <p class="s-l w-h">Condition</p>
+      <input type="text" class="editProduct__input" />
+      <p class="s-s w-l">
+        Write a short description about the condition of the product.
+      </p>
+    </div>
+
+    <!-- !Returns -->
+    <div class="editProduct__inputContainer" style="padding-left: 12.5px">
+      <p class="s-l w-h">Returns</p>
+      <input type="text" class="editProduct__input" />
+      <p class="s-s w-l">
+        Write a short description about the return policy of the product.
+      </p>
+    </div>
+  </div>
+
+  <div style="display: flex">
+    <!-- !Price -->
+    <div class="editProduct__inputContainer" style="padding-right: 12.5px">
+      <p class="s-l w-h">Stock</p>
+      <input type="text" class="editProduct__input" />
+      <p class="s-s w-l">
+        Set a reasonable price for increasing the chances of selling the
+        product.
+      </p>
+    </div>
+    <!-- !Stock -->
+    <div class="editProduct__inputContainer" style="padding-left: 12.5px">
+      <p class="s-l w-h">Price</p>
+      <input type="text" class="editProduct__input" />
+      <p class="s-s w-l">How many of these products do you have in stock?</p>
+    </div>
+  </div>
+
+  <div style="display: flex">
+    <!-- !Payments -->
+    <div class="editProduct__inputContainer" style="padding-right: 12.5px">
+      <p class="s-l w-h">Payment</p>
+      <input class="editProduct__input" />
+      <p class="s-s w-l">How do you accept payments?</p>
+    </div>
+    <!-- !Product location -->
+    <div class="editProduct__inputContainer" style="padding-left: 12.5px">
+      <p class="s-l w-h">Product Location</p>
+      <input class="editProduct__input" />
+      <p class="s-s w-l">Where is the product located?</p>
+    </div>
+  </div>
+
+  <!-- TODO: Shipping Information -->
+
+  <p class="s-2l w-h" style="margin-bottom: 12.5px">Shipping Information</p>
+
+  <div style="display: flex">
+    <!-- !Shipping -->
+    <div class="editProduct__inputContainer" style="padding-right: 12.5px">
+      <p class="s-l w-h">Shipping</p>
+      <input class="editProduct__input" />
+      <p class="s-s w-l">
+        Write a short description about the shipping of the product.
+      </p>
+    </div>
+
+    <!--!Shipping Price -->
+
+    <div class="editProduct__inputContainer" style="padding-left: 12.5px">
+      <p class="s-l w-h">Estimated Shipping Price</p>
+      <input class="editProduct__input" />
+      <p class="s-s w-l">
+        The cheaper the shipping price, the higher are your chances of selling
+        the product.
+      </p>
+    </div>
+  </div>
+
+  <!-- !Product does not ship to -->
+  <div class="editProduct__inputContainer">
+    <p class="s-l w-h">Product does not ship to</p>
+    <input class="editProduct__input" />
+    <p class="s-s w-l">Where won't the products be shipped?</p>
+  </div>
+
+  <!-- Product does not ship to -->
+</div>
+
+<script src="{% static 'dashboard/js/add_product.js' %}"></script>
+
+{% endblock viewContent %}

@@ -15,6 +15,8 @@ urlpatterns = [
     path('crm/', views.crm, name="crm"),
     path('crm/order/<int:id>', views.order, name="order"),
     path("my_products/", views.my_products, name="my_products"),
+    path("my_products/edit_product/<int:id>",
+         views.edit_product, name="edit_product"),
     path("add_product/", views.add_product, name="add_product"),
     path('revenue/', views.revenue, name="revenue"),
     path('settings/', views.settings, name="settings")

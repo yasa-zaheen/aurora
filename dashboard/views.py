@@ -173,6 +173,21 @@ def my_products(request):
         return redirect(reverse("main:index"))
 
 
+def edit_product(request, id):
+    if request.user.is_authenticated:
+        user = CustomUser.objects.get(user=request.user)
+        product = Product.objects.get(id=id)
+
+        context = {
+            "product": product
+        }
+
+        return render(request, "dashboard/edit_product.html", context)
+
+    else:
+        return redirect(reverse("main:index"))
+
+
 def add_product(request):
     context = {}
     return render(request, "dashboard/add_product.html", context)
