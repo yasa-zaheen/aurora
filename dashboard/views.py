@@ -8,7 +8,7 @@ from django.shortcuts import render, redirect, reverse
 from authentication.models import *
 from dashboard.models import *
 
-from main.views import cart_btn_handler, wishlist_btn_handler, watchlist_btn_handler
+from main.views import cart_btn_handler, product, wishlist_btn_handler, watchlist_btn_handler
 
 # Views
 
@@ -158,8 +158,19 @@ def order(request, id):
 
 
 def my_products(request):
-    context = {}
-    return render(request, "dashboard/my_products.html", context)
+
+    if request.user.is_authenticated:
+        user = CustomUser.objects.get(user=request.user)
+        products = Product.objects.filter(seller=user)
+
+        context = {
+            "products": products
+        }
+
+        return render(request, "dashboard/my_products.html", context)
+
+    else:
+        return redirect(reverse("main:index"))
 
 
 def add_product(request):
