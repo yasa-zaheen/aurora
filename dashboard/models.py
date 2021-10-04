@@ -87,13 +87,17 @@ class Watchlist(models.Model):
         self.last_updated = timezone.now()
         self.save()
         for product in self.products.all():
-            date_time_delta = product.last_updated - self.last_updated
-            if date_time_delta.days < -7:
-                if product in arr:
-                    arr.remove(product)
+            if product.last_updated is not None:
+                date_time_delta = product.last_updated - self.last_updated
+                if date_time_delta.days < -7:
+                    if product in arr:
+                        arr.remove(product)
+                else:
+                    if product not in arr:
+                        arr.append(product)
             else:
-                if product not in arr:
-                    arr.append(product)
+                arr.append(product)
+
         return arr
 
     def updated_items_count(self):

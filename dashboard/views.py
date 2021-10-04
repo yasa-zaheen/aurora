@@ -178,6 +178,9 @@ def edit_product(request, id):
         user = CustomUser.objects.get(user=request.user)
         product = Product.objects.get(id=id)
 
+        if request.method == "POST":
+            product.edit_product(request)
+
         context = {
             "product": product
         }

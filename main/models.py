@@ -167,20 +167,71 @@ class Product(models.Model):
         return self.stock - self.old_stock
 
     def price_recently_updated(self):
-        current_time = timezone.now()
-        date_time_delta = self.price_last_updated - current_time
-        if date_time_delta.days < -7:
-            return False
+
+        if self.price_last_updated is not None:
+            current_time = timezone.now()
+            date_time_delta = self.price_last_updated - current_time
+            if date_time_delta.days < -7:
+                return False
+            else:
+                return True
         else:
-            return True
+            return False
 
     def stock_recently_updated(self):
-        current_time = timezone.now()
-        date_time_delta = self.stock_last_updated - current_time
-        if date_time_delta.days < -7:
-            return False
+
+        if self.stock_last_updated is not None:
+            current_time = timezone.now()
+            date_time_delta = self.stock_last_updated - current_time
+            if date_time_delta.days < -7:
+                return False
+            else:
+                return True
         else:
-            return True
+            return False
+
+    def edit_product(self, request):
+
+        # General Information
+
+        self.name = request.POST["name"]
+        self.condition = request.POST["condition"]
+        self.returns = request.POST["returns"]
+        self.payments = request.POST["payments"]
+        self.product_location = request.POST["product-location"]
+        self.features = request.POST["features"]
+
+        # Shipping Information
+
+        self.shipping = request.POST["shipping"]
+        self.shipping_price = request.POST["shipping-price"]
+        self.product_does_not_ship_to = request.POST["product-does-not-ship-to"]
+
+        # Images
+
+        if "image-1" in request.FILES:
+            self.image_1 = request.FILES["image-1"]
+
+        if "image-2" in request.FILES:
+            self.image_2 = request.FILES["image-2"]
+
+        if "image-3" in request.FILES:
+            self.image_3 = request.FILES["image-3"]
+
+        if "image-4" in request.FILES:
+            self.image_4 = request.FILES["image-4"]
+
+        # Price
+
+        if self.price != request.POST["price"]:
+            self.change_price(request.POST["price"])
+
+        # Stock
+
+        if self.stock != request.POST["stock"]:
+            self.change_stock(request.POST["stock"])
+
+        self.save()
 
     # product_type = models.ForeignKey(
     #     ProductType, null=True, on_delete=models.SET_NULL)
