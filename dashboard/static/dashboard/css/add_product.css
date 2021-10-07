@@ -65,6 +65,10 @@
   background-color: transparent;
 }
 
+.addProduct__imgUploadContainer span {
+  position: absolute;
+}
+
 .addProduct__uploadBtn {
   position: absolute;
   top: 0;
