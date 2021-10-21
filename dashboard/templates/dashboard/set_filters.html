@@ -1,0 +1,53 @@
+{% extends "dashboard/dashboard.html" %} {% load static %}
+
+<hr />
+{% block viewContent %}
+<link rel="stylesheet" href="{% static 'dashboard/css/set_filters.css' %}" />
+
+<div class="set-filters">
+  <form method="POST">
+    <div
+      style="display: flex; align-items: center; justify-content: space-between"
+    >
+      <p class="s-2l w-h">Set Filters</p>
+      <button
+        type="submit"
+        disabled
+        class="bg-red c-white"
+        style="margin-right: 25px"
+      >
+        Proceed
+      </button>
+    </div>
+
+    {% csrf_token %}
+    <div class="set-filters__filters">
+      {% for filter_category in filter_categories %}
+      <div class="filters__filter-category">
+        <p class="s-l w-h">{{ filter_category }}</p>
+        <!-- <input type="text" /> -->
+        <div>
+          <select name="{{filter_category}}">
+            <option value="none" selected hidden disabled>
+              Select an Option {% for filter in filters %}
+              <span></span>
+              {% if filter.filter_category == filter_category %}
+              <span></span>
+            </option>
+
+            <option value="{{filter.id}}">{{filter.name}}</option>
+            <span></span>
+            {% endif %}
+            <span></span>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </form>
+</div>
+
+<script src="{% static 'dashboard/js/set_filters.js' %}"></script>
+
+{% endblock viewContent %}

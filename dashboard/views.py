@@ -7,8 +7,9 @@ from django.shortcuts import render, redirect, reverse
 
 from authentication.models import *
 from dashboard.models import *
+from main.models import Category, Filter, ProductType, SubCategory
 
-from main.views import cart_btn_handler, product, wishlist_btn_handler, watchlist_btn_handler
+from main.views import cart_btn_handler, category, product, product_type, sub_category, wishlist_btn_handler, watchlist_btn_handler
 
 # Views
 
@@ -30,7 +31,7 @@ def home(request):
 
         return render(request, 'dashboard/home.html', context)
     else:
-        return redirect(reverse("main:index"))
+        return redirect(reverse("dashboard:set_sub_category", kwargs={"id": 8}))
 
 
 def cart(request):
@@ -192,8 +193,135 @@ def edit_product(request, id):
 
 
 def add_product(request):
-    context = {}
-    return render(request, "dashboard/add_product.html", context)
+
+    if request.user.is_authenticated:
+        user = CustomUser.objects.get(user=request.user)
+
+        if request.method == "POST":
+            product = user.add_product(request)
+            return redirect(reverse("dashboard:set_category", kwargs={"id": product.id}))
+
+        context = {}
+
+        return render(request, "dashboard/add_product.html", context)
+
+    else:
+        return redirect(reverse("main:index"))
+
+
+def set_category(request, id):
+
+    if request.user.is_authenticated:
+
+        categories = Category.objects.all()
+        product = Product.objects.get(id=id)
+
+        if product.category == None:
+            if request.method == "POST":
+                category = Category.objects.get(id=request.POST["category"])
+                product.category = category
+                product.save()
+                return redirect(reverse("dashboard:set_sub_category", kwargs={"id": product.id}))
+
+        else:
+            return redirect(reverse("dashboard:home"))
+
+        context = {
+            "categories": categories
+        }
+
+        return render(request, "dashboard/set_category.html", context)
+
+    else:
+        return redirect(reverse("main:index"))
+
+
+def set_sub_category(request, id):
+
+    if request.user.is_authenticated:
+
+        product = Product.objects.get(id=id)
+        sub_categories = SubCategory.objects.filter(category=product.category)
+
+        if product.sub_category == None:
+            if request.method == "POST":
+                sub_category = SubCategory.objects.get(
+                    id=request.POST["sub-category"])
+                product.sub_category = sub_category
+                product.save()
+                return redirect(reverse("dashboard:set_product_type", kwargs={"id": product.id}))
+
+        else:
+            return redirect(reverse("dashboard:home"))
+
+        context = {
+            "sub_categories": sub_categories
+        }
+
+        return render(request, "dashboard/set_sub_category.html", context)
+
+    else:
+        return redirect(reverse("main:index"))
+
+
+def set_product_type(request, id):
+
+    if request.user.is_authenticated:
+
+        product = Product.objects.get(id=id)
+        product_types = ProductType.objects.filter(
+            sub_category=product.sub_category)
+
+        if product.product_type == None:
+            if request.method == "POST":
+                product_type = ProductType.objects.get(
+                    id=request.POST["product-type"])
+                product.product_type = product_type
+                product.save()
+                return redirect(reverse("dashboard:set_filters", kwargs={"id": product.id}))
+
+        else:
+            return redirect(reverse("dashboard:home"))
+
+        context = {
+            "product_types": product_types
+        }
+
+        return render(request, "dashboard/set_product_type.html", context)
+
+    else:
+        return redirect(reverse("main:index"))
+
+
+def set_filters(request, id):
+
+    if request.user.is_authenticated:
+
+        product = Product.objects.get(id=id)
+        filters = Filter.objects.filter(
+            product_type=product.product_type)
+        filter_categories = []
+
+        for filter in filters:
+            if filter.filter_category not in filter_categories:
+                filter_categories.append(filter.filter_category)
+
+        if request.method == "POST":
+            for i in request.POST:
+                if i != "csrfmiddlewaretoken":
+                    filter = Filter.objects.get(id=request.POST[i])
+                    product.filters.add(filter)
+                    product.save()
+
+        context = {
+            "filters": filters,
+            "filter_categories": filter_categories
+        }
+
+        return render(request, "dashboard/set_filters.html", context)
+
+    else:
+        return redirect(reverse("main:index"))
 
 
 def revenue(request):

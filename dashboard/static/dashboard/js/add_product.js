@@ -28,3 +28,25 @@ const uploadedImgThumbnailHandler = () => {
 };
 
 uploadedImgThumbnailHandler();
+
+const paymentViaBtnHandler = () => {
+  const btns = document.querySelectorAll("div.toggle");
+
+  btns.forEach((btn) => {
+    const checkBox = document.querySelector(
+      `input#${btn.getAttribute("data-type")}`
+    );
+
+    btn.addEventListener("click", () => {
+      if (btn.classList.contains("toggled")) {
+        btn.classList.remove("toggled");
+        checkBox.checked = false;
+      } else {
+        btn.classList.add("toggled");
+        checkBox.checked = true;
+      }
+    });
+  });
+};
+
+paymentViaBtnHandler();

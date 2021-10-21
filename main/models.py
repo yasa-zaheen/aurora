@@ -1,5 +1,6 @@
 # Imports
 
+from django.db.models import base
 from django.utils import timezone, tree
 from django.db import models
 from django.db.models.deletion import SET_NULL
@@ -91,12 +92,12 @@ class Product(models.Model):
         auto_now=True)
 
     price = models.FloatField()
-    old_price = models.FloatField()
+    old_price = models.FloatField(blank=True, null=True)
     price_last_updated = models.DateTimeField(
         auto_now=False, auto_now_add=False, blank=True, null=True)
 
     stock = models.IntegerField()
-    old_stock = models.IntegerField()
+    old_stock = models.IntegerField(blank=True, null=True)
     stock_last_updated = models.DateTimeField(
         auto_now=False, auto_now_add=False, blank=True, null=True)
 
@@ -104,6 +105,10 @@ class Product(models.Model):
         Category, null=True, on_delete=models.SET_NULL)
     sub_category = models.ForeignKey(
         SubCategory, null=True, on_delete=models.SET_NULL)
+    product_type = models.ForeignKey(
+        ProductType, null=True, on_delete=models.SET_NULL)
+    filters = models.ManyToManyField(
+        Filter, null=True, editable=False)
 
     image_1 = models.ImageField(blank=True, null=True,
                                 upload_to="products")
@@ -117,7 +122,6 @@ class Product(models.Model):
     condition = models.CharField(max_length=255)
     shipping = models.CharField(max_length=255)
     returns = models.CharField(max_length=255)
-    payments = models.CharField(max_length=255)
 
     product_does_not_ship_to = models.TextField()
     shipping_price = models.FloatField()
@@ -131,6 +135,21 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def payments(self):
+
+        paypal = f"{'Paypal' if self.payments_paypal else ''}"
+        visa = f"{'Visa' if self.payments_visa else ''}"
+        mastercard = f"{'Mastercard' if self.payments_master_card else ''}"
+
+        sys = [paypal, visa, mastercard]
+        msg = ""
+
+        for i in sys:
+            if i != "":
+                msg += f"{i}, "
+
+        return f"{msg[:-2]}."
 
     def ratings(self):
         import math

@@ -1,0 +1,36 @@
+{% extends "dashboard/dashboard.html" %} {% load static %}
+
+<hr />
+{% block viewContent %}
+<link
+  rel="stylesheet"
+  href="{% static 'dashboard/css/set_sub_category.css' %}"
+/>
+
+<div class="set-sub-category">
+  <form method="POST">
+    <div
+      style="display: flex; align-items: center; justify-content: space-between"
+    >
+      <p class="s-2l w-h">Set Sub Category</p>
+      <button type="submit" class="bg-red c-white" style="margin-right: 25px">
+        Proceed
+      </button>
+    </div>
+
+    {% csrf_token %}
+    <div class="set-sub-category__sub-categories">
+      {% for sub_category in sub_categories %}
+      <div class="sub-category shadow">
+        <img src="{{sub_category.image.url}}" alt="" />
+        <p class="s-s w-m c-black bg-white">{{sub_category.name}}</p>
+        <input type="radio" name="sub-category" value="{{sub_category.id}}" />
+      </div>
+      {% endfor %}
+    </div>
+  </form>
+</div>
+
+<script src="{% static 'dashboard/js/set_sub_category.js' %}"></script>
+
+{% endblock viewContent %}

@@ -96,28 +96,21 @@
 
       <!-- ** Product Information ** -->
       <div class="info-container__product-info">
-        <div style="display: flex; flex-direction: column; padding-right: 25px">
-          <div class="module shadow bg-darkBlue c-white">
-            <p class="s-l w-h">Condition</p>
-            <p class="s-m w-m">{{ product.condition }}</p>
-          </div>
-
-          <div class="module shadow bg-orange c-white">
-            <p class="s-l w-h">Shipping</p>
-            <p class="s-m w-m">{{ product.shipping }}</p>
-          </div>
+        <div class="bg-darkBlue">
+          <p class="s-l w-h">Condition</p>
+          <p class="s-m w-m">{{product.condition}}</p>
         </div>
-
-        <div style="display: flex; flex-direction: column">
-          <div class="module shadow bg-paleBlue c-black">
-            <p class="s-l w-h">Returns</p>
-            <p class="s-m w-m">{{ product.returns }}</p>
-          </div>
-
-          <div class="module shadow bg-black c-white">
-            <p class="s-l w-h">Payments</p>
-            <p class="s-m w-m">{{ product.payments }}</p>
-          </div>
+        <div class="bg-orange">
+          <p class="s-l w-h">Shipping</p>
+          <p class="s-m w-m">{{product.shipping}}</p>
+        </div>
+        <div class="bg-mediumBlue">
+          <p class="s-l w-h">Returns</p>
+          <p class="s-m w-m">{{product.returns}}</p>
+        </div>
+        <div class="bg-red">
+          <p class="s-l w-h">Payments</p>
+          <p class="s-m w-m">{{product.payments}}</p>
         </div>
       </div>
     </div>
@@ -125,13 +118,13 @@
 
   <!-- ** Features Container ** -->
   <table class="main__features shadow">
-    {% for feature_cat, feature_specs in features %}
+    {% for filter in product.filters.all %}
     <tr>
       <td class="features__cell">
-        <p class="s-l w-h">{{ feature_cat }}</p>
+        <p class="s-l w-h">{{ filter.filter_category }}</p>
       </td>
       <td class="features__cell">
-        <p class="s-l w-l">{{ feature_specs }}</p>
+        <p class="s-l w-l">{{ filter.name }}</p>
       </td>
     </tr>
     {% endfor %}

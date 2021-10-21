@@ -141,19 +141,10 @@ def product(request, id):
 
     product = Product.objects.get(id=id)
     seller_products = Product.objects.filter(seller=product.seller)
-
-    features_split_n = product.features.split("\n")
-    features = []
-
     reviews = Review.objects.filter(product=product)
-
-    for i in features_split_n:
-        features.append(i.split(":"))
-
     context = {
         'all_categories': all_categories,
         "product": product,
-        "features": features,
         "seller_products": seller_products,
         "reviews": reviews,
     }
@@ -239,10 +230,14 @@ def sub_category(request, id):
     product_types = ProductType.objects.filter(
         sub_category=sub_category, parent_product_type="").order_by('name')
 
+    products = Product.objects.all()
+
     context = {
         "sub_category": sub_category,
         "product_types": product_types,
-        'all_categories': all_categories
+        'all_categories': all_categories,
+        "products": products,
+
 
     }
     return render(request, "main/sub_category.html", context)
@@ -254,6 +249,8 @@ def product_type(request, id):
 
     filter_categories = []
     filter_categorys_num = 0
+
+    products = Product.objects.all()
 
     product_type = ProductType.objects.get(id=id)
     children_product_types = ProductType.objects.filter(
@@ -280,8 +277,8 @@ def product_type(request, id):
         "filters": filters,
         "filter_categories": filter_categories,
         "children_product_types_exists": children_product_types_exists,
-        'all_categories': all_categories
-
+        'all_categories': all_categories,
+        "products": products,
     }
     return render(request, "main/product_type.html", context)
 

@@ -52,3 +52,42 @@ class CustomUser(models.Model):
                     arr.append(set[0])
 
         return arr
+
+    def add_product(self, request):
+
+        product_object = apps.get_model("main", "Product")
+
+        product = product_object.objects.create(
+            name=request.POST['name'],
+            seller=self,
+
+            price=request.POST['price'],
+            stock=request.POST['stock'],
+
+            image_1=request.FILES["image-1"],
+            image_2=request.FILES["image-2"],
+            image_3=request.FILES["image-3"],
+            image_4=request.FILES["image-4"],
+
+            condition=request.POST["condition"],
+            shipping=request.POST["shipping"],
+            returns=request.POST["returns"],
+
+            product_does_not_ship_to=request.POST["product-does-not-ship-to"],
+            shipping_price=request.POST["shipping-price"],
+            product_location=request.POST["product-location"],
+
+            payments_paypal=True
+            if "paypal" in request.POST else False,
+            payments_master_card=True
+            if "mastercard" in request.POST else False,
+            payments_visa=True
+            if "visa" in request.POST else False,
+
+            features=request.POST["features"]
+
+        )
+
+        product.save()
+
+        return product

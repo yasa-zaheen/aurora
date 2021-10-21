@@ -1,0 +1,35 @@
+{% extends "dashboard/dashboard.html" %} {% load static %}
+
+<hr />
+{% block viewContent %}
+<link
+  rel="stylesheet"
+  href="{% static 'dashboard/css/set_product_type.css' %}"
+/>
+
+<div class="set-product-type">
+  <form method="POST">
+    <div
+      style="display: flex; align-items: center; justify-content: space-between"
+    >
+      <p class="s-2l w-h">Set Product Type</p>
+      <button type="submit" class="bg-red c-white" style="margin-right: 25px">
+        Proceed
+      </button>
+    </div>
+
+    {% csrf_token %}
+    <div class="set-product-type__product-types">
+      {% for product_type in product_types %}
+      <div class="product-type shadow module">
+        <p class="s-s w-m">{{product_type.name}}</p>
+        <input type="radio" name="product-type" value="{{product_type.id}}" />
+      </div>
+      {% endfor %}
+    </div>
+  </form>
+</div>
+
+<script src="{% static 'dashboard/js/set_product_type.js' %}"></script>
+
+{% endblock viewContent %}
