@@ -312,6 +312,7 @@ def set_filters(request, id):
                     filter = Filter.objects.get(id=request.POST[i])
                     product.filters.add(filter)
                     product.save()
+                    return redirect(reverse("main:product"), kwargs={"id": product.id})
 
         context = {
             "filters": filters,
