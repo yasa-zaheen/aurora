@@ -29,6 +29,7 @@
   padding: 25px;
   border-radius: 15px;
   width: calc((100% - 75px) / 4);
+  cursor: pointer;
 }
 
 /* Revenue and Sales */
@@ -42,11 +43,11 @@
 }
 
 .revenueSales__info {
-  width: 30%;
+  width: 20%;
 }
 
 .revenueSales__graph {
-  width: 70%;
+  width: 80%;
   padding: 0px 25px;
   border-left: 1px solid #2f2f2f2f;
   padding: 0px 25px;

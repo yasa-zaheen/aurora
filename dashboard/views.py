@@ -1,8 +1,10 @@
 # Imports
 
 
+from datetime import time
 from django.contrib import messages
 from django.contrib.auth import authenticate
+from django.db import connections
 from django.shortcuts import render, redirect, reverse
 
 from authentication.models import *
@@ -326,8 +328,137 @@ def set_filters(request, id):
 
 
 def revenue(request):
-    context = {}
-    return render(request, "dashboard/revenue.html", context)
+
+    if request.user.is_authenticated:
+
+        user = CustomUser.objects.get(user=request.user)
+
+        todays_revenue, todays_sale, todays_orders = user.get_todays()
+        yesterdays_revenue, yesterdays_sale, yesterdays_orders = user.get_yesterdays()
+        lastweeks_revenue, lastweeks_sale, lastweeks_orders = user.get_lastweeks()
+        last28_revenue, last28_sale, last28_orders = user.get_last28()
+
+        total_revenue, total_sales = user.get_total_revenuesales()
+
+        # DONE: Today
+
+        t_graph_revenue = [0, 0, 0, 0, 0, 0, 0, 0, 0,
+                           0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        t_graph_sales = [0, 0, 0, 0, 0, 0, 0, 0, 0,
+                         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+        for order in todays_orders:
+            total_product_price, total_shipping, total_revenue = order.get_seller_revenue(
+                request.user)
+
+            t_graph_revenue.insert(
+                order.time_of_order.astimezone(tz=None).hour - 1, total_revenue)
+            t_graph_sales.insert(
+                order.time_of_order.astimezone(tz=None).hour - 1, order.products.all().count())
+
+        # DONE: Yesterday
+
+        y_graph_revenue = [0, 0, 0, 0, 0, 0, 0, 0, 0,
+                           0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        y_graph_sales = [0, 0, 0, 0, 0, 0, 0, 0, 0,
+                         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+        for order in yesterdays_orders:
+            total_product_price, total_shipping, total_revenue = order.get_seller_revenue(
+                request.user)
+
+            y_graph_revenue.insert(
+                order.time_of_order.astimezone(tz=None).hour - 1, total_revenue)
+            y_graph_sales.insert(
+                order.time_of_order.astimezone(tz=None).hour - 1, order.products.all().count())
+
+        # DONE: Lastweeks
+
+        lw_graph_revenue = [0, 0, 0, 0, 0, 0, 0]
+        lw_graph_sales = [0, 0, 0, 0, 0, 0, 0]
+
+        for order in lastweeks_orders:
+            total_product_price, total_shipping, total_revenue = order.get_seller_revenue(
+                request.user)
+            lw_graph_revenue.insert(
+                order.time_of_order.astimezone(tz=None).weekday(), total_revenue)
+            lw_graph_sales.insert(
+                order.time_of_order.astimezone(tz=None).weekday(), order.products.all().count())
+
+        # DONE: 28 Days
+
+        te_graph_revenue = [0, 0, 0, 0]
+        te_graph_sales = [0, 0, 0, 0]
+
+        for order in last28_orders:
+            delta = order.time_of_order.astimezone(
+                tz=None) - timezone.now().astimezone(tz=None)
+
+            print(delta.days)
+
+            if delta.days >= -7:
+                print(f"This week {order}")
+                total_product_price, total_shipping, total_revenue = order.get_seller_revenue(
+                    request.user)
+                te_graph_revenue.insert(
+                    0, total_revenue)
+                te_graph_sales.insert(
+                    0, order.products.all().count())
+            elif delta.days < -7 and delta.days > -14:
+                print(f"Last week {order}")
+
+                total_product_price, total_shipping, total_revenue = order.get_seller_revenue(
+                    request.user)
+                te_graph_revenue.insert(
+                    1, total_revenue)
+                te_graph_sales.insert(
+                    1, order.products.all().count())
+            elif delta.days < -14 and delta.days > -21:
+                print(f"3 weeks ago {order}")
+
+                total_product_price, total_shipping, total_revenue = order.get_seller_revenue(
+                    request.user)
+                te_graph_revenue.insert(
+                    2, total_revenue)
+                te_graph_sales.insert(
+                    2, order.products.all().count())
+            elif delta.days < -21 and delta.days > -28:
+                print(f"4 weeks ago {order}")
+
+                total_product_price, total_shipping, total_revenue = order.get_seller_revenue(
+                    request.user)
+                te_graph_revenue.insert(
+                    3, total_revenue)
+                te_graph_sales.insert(
+                    3, order.products.all().count())
+
+        context = {
+            "todays_revenue": todays_revenue,
+            "todays_sale": todays_sale,
+            "yesterdays_revenue": yesterdays_revenue,
+            "yesterdays_sale": yesterdays_sale,
+            "lastweeks_revenue": lastweeks_revenue,
+            "lastweeks_sale": lastweeks_sale,
+            "last28_revenue": last28_revenue,
+            "last28_sale": last28_sale,
+            "total_revenue": total_revenue,
+            "total_sales": total_sales,
+
+            "t_graph_revenue": t_graph_revenue,
+            "t_graph_sales": t_graph_sales,
+            "y_graph_revenue": y_graph_revenue,
+            "y_graph_sales": y_graph_sales,
+            "lw_graph_revenue": lw_graph_revenue,
+            "lw_graph_sales": lw_graph_sales,
+            "te_graph_revenue": te_graph_revenue,
+            "te_graph_sales": te_graph_sales,
+
+        }
+
+        return render(request, "dashboard/revenue.html", context)
+
+    else:
+        return redirect(reverse("main:index"))
 
 
 def settings(request):

@@ -8,36 +8,44 @@
   <!-- Revenue -->
   <p class="s-xl w-h">Revenue</p>
   <div class="revenue__revenue">
-    <div class="revenue__timePeriod bg-darkBlue c-white">
+    <div class="revenue__timePeriod bg-darkBlue c-white" data-time="today">
       <!-- Today -->
       <p class="s-l w-h">Today</p>
       <div style="margin-top: 12.5px">
-        <p class="s-m w-h">USD 3655.00</p>
-        <p class="s-s w-l" style="opacity: 0.5">/ 10 products sold</p>
+        <p class="s-m w-h">USD {{todays_revenue}}</p>
+        <p class="s-s w-l" style="opacity: 0.5">
+          / {{todays_sale}} products sold
+        </p>
       </div>
     </div>
     <!-- Yesterday -->
-    <div class="revenue__timePeriod bg-white">
+    <div class="revenue__timePeriod bg-white" data-time="yesterday">
       <p class="s-l w-h">Yesterday</p>
       <div style="margin-top: 12.5px">
-        <p class="s-m w-h">USD 1950.00</p>
-        <p class="s-s w-l" style="opacity: 0.5">/ 8 products sold</p>
+        <p class="s-m w-h">USD {{yesterdays_revenue}}</p>
+        <p class="s-s w-l" style="opacity: 0.5">
+          / {{yesterdays_sale}} products sold
+        </p>
       </div>
     </div>
     <!-- Last Week -->
-    <div class="revenue__timePeriod bg-white">
+    <div class="revenue__timePeriod bg-white" data-time="lastweek">
       <p class="s-l w-h">Last Week</p>
       <div style="margin-top: 12.5px">
-        <p class="s-m w-h">USD 35674.00</p>
-        <p class="s-s w-l" style="opacity: 0.5">/ 10 products sold</p>
+        <p class="s-m w-h">USD {{lastweeks_revenue}}</p>
+        <p class="s-s w-l" style="opacity: 0.5">
+          / {{lastweeks_sale}} products sold
+        </p>
       </div>
     </div>
     <!-- Last 28 Days -->
-    <div class="revenue__timePeriod bg-white">
+    <div class="revenue__timePeriod bg-white" data-time="28days">
       <p class="s-l w-h">Last 28 Days</p>
       <div style="margin-top: 12.5px">
-        <p class="s-m w-h">USD 443.28K.00</p>
-        <p class="s-s w-l" style="opacity: 0.5">/ 10 products sold</p>
+        <p class="s-m w-h">USD {{last28_revenue}}</p>
+        <p class="s-s w-l" style="opacity: 0.5">
+          / {{last28_sale}} products sold
+        </p>
       </div>
     </div>
   </div>
@@ -47,10 +55,10 @@
   <div class="revenue__revenueSales">
     <!-- Revenue and Sales Info -->
     <div class="revenueSales__info">
-      <p class="s-l w-h">Total Earned</p>
-      <p class="s-m w-m">USD 3655.00</p>
-      <p class="s-l w-h" style="margin-top: 25px">Total Products Sold</p>
-      <p class="s-m w-m">10</p>
+      <p class="s-l w-h">Total Revenue</p>
+      <p class="s-m w-m">USD {{total_revenue}}</p>
+      <p class="s-l w-h" style="margin-top: 25px">Total Sales</p>
+      <p class="s-m w-m">{{total_sales}}</p>
     </div>
 
     <!-- Revenue and Sales Graph -->
@@ -313,6 +321,218 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
-<script src="{% static 'dashboard/js/revenue.js' %}"></script>
 
+{{t_graph_revenue|json_script:"t_graph_revenue"}}
+{{t_graph_sales|json_script:"t_graph_sales"}}
+{{y_graph_revenue|json_script:"y_graph_revenue"}}
+{{y_graph_sales|json_script:"y_graph_sales"}}
+{{lw_graph_revenue|json_script:"lw_graph_revenue"}}
+{{lw_graph_sales|json_script:"lw_graph_sales"}}
+{{te_graph_revenue|json_script:"te_graph_revenue"}}
+{{te_graph_sales|json_script:"te_graph_sales"}}
+
+<script>
+  // SALES-REVENUE GRAPH
+  const timeRevenues = document.querySelectorAll("div.revenue__timePeriod");
+
+  let ctx = document.getElementById("revenueSales__graph").getContext("2d");
+  let revenueGraph = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: [
+        "",
+        "2am",
+        "",
+        "4am",
+        "",
+        "6am",
+        "",
+        "8am",
+        "",
+        "10am",
+        "",
+        "12pm",
+        "",
+        "2pm",
+        "",
+        "4pm",
+        "",
+        "6pm",
+        "",
+        "8pm",
+        "",
+        "10pm",
+        "",
+        "12am",
+      ],
+      datasets: [
+        {
+          label: "Revenue",
+          data: JSON.parse(
+            document.getElementById("t_graph_revenue").textContent
+          ),
+          backgroundColor: "#ee6c4d",
+          borderRadius: 5,
+          barThickness: 15,
+        },
+        {
+          label: "Sales",
+          data: JSON.parse(
+            document.getElementById("t_graph_sales").textContent
+          ),
+          backgroundColor: "#293241",
+          borderRadius: 5,
+          barThickness: 15,
+        },
+      ],
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        x: {
+          grid: {
+            display: false,
+          },
+        },
+        y: {
+          display: false,
+        },
+      },
+    },
+  });
+
+  Chart.defaults.font.family = "Poppins";
+  Chart.defaults.font.weight = "500";
+  Chart.defaults.font.size = 12.5;
+
+  const updateRevenueGraph = (chart, labels, revenue, sales) => {
+    chart.data.labels = labels;
+    chart.data.datasets[0].data = revenue;
+    chart.data.datasets[1].data = sales;
+    chart.update();
+  };
+
+  timeRevenues.forEach((timeRevenue) => {
+    timeRevenue.addEventListener("click", () => {
+      timeRevenues.forEach((timeRevenue) => {
+        timeRevenue.style.backgroundColor = "#fafafa";
+        timeRevenue.style.color = "#2f2f2f";
+      });
+      timeRevenue.style.backgroundColor = "#293241";
+      timeRevenue.style.color = "#fafafa";
+
+      if (timeRevenue.getAttribute("data-time") === "today") {
+        labels = [
+          "",
+          "2am",
+          "",
+          "4am",
+          "",
+          "6am",
+          "",
+          "8am",
+          "",
+          "10am",
+          "",
+          "12pm",
+          "",
+          "2pm",
+          "",
+          "4pm",
+          "",
+          "6pm",
+          "",
+          "8pm",
+          "",
+          "10pm",
+          "",
+          "12am",
+        ];
+
+        let revenue = JSON.parse(
+          document.getElementById("t_graph_revenue").textContent
+        );
+        let sales = JSON.parse(
+          document.getElementById("t_graph_sales").textContent
+        );
+
+        updateRevenueGraph(revenueGraph, labels, revenue, sales);
+      } else if (timeRevenue.getAttribute("data-time") === "yesterday") {
+        labels = [
+          "",
+          "2am",
+          "",
+          "4am",
+          "",
+          "6am",
+          "",
+          "8am",
+          "",
+          "10am",
+          "",
+          "12pm",
+          "",
+          "2pm",
+          "",
+          "4pm",
+          "",
+          "6pm",
+          "",
+          "8pm",
+          "",
+          "10pm",
+          "",
+          "12am",
+        ];
+
+        let revenue = JSON.parse(
+          document.getElementById("y_graph_revenue").textContent
+        );
+        let sales = JSON.parse(
+          document.getElementById("y_graph_sales").textContent
+        );
+
+        updateRevenueGraph(revenueGraph, labels, revenue, sales);
+      } else if (timeRevenue.getAttribute("data-time") === "lastweek") {
+        labels = [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ];
+
+        let revenue = JSON.parse(
+          document.getElementById("lw_graph_revenue").textContent
+        );
+        let sales = JSON.parse(
+          document.getElementById("lw_graph_sales").textContent
+        );
+
+        updateRevenueGraph(revenueGraph, labels, revenue, sales);
+      } else if (timeRevenue.getAttribute("data-time") === "28days") {
+        labels = ["This week", "Last week", "3 weeks ago", "4 weeks ago"];
+
+        let revenue = JSON.parse(
+          document.getElementById("te_graph_revenue").textContent
+        );
+        let sales = JSON.parse(
+          document.getElementById("te_graph_sales").textContent
+        );
+
+        updateRevenueGraph(revenueGraph, labels, revenue, sales);
+      }
+    });
+  });
+</script>
+
+<script src="{% static 'dashboard/js/revenue.js' %}"></script>
 {% endblock viewContent %}

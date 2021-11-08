@@ -1,56 +1,66 @@
-const revenueSalesGraph = () => {
-  let ctx = document.getElementById("revenueSales__graph").getContext("2d");
-  let myChart = new Chart(ctx, {
-    type: "bar",
-    data: {
-      labels: ["9:00", "10:00", "11:00", "12:00", "13:00", "14:00"],
-      datasets: [
-        {
-          label: "Revenue",
-          data: [6, 2, 8, 7, 3, 10],
-          backgroundColor: "#ee6c4d",
-          borderRadius: 15,
-          barThickness: 15,
-        },
-        {
-          label: "Sales",
-          data: [6, 2, 8, 7, 3, 10],
-          backgroundColor: "#293241",
-          borderRadius: 15,
-          barThickness: 15,
-        },
-      ],
-    },
-    options: {
-      plugins: {
-        legend: {
-          display: false,
-        },
-      },
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        x: {
-          grid: {
-            display: false,
-          },
-        },
-        y: {
-          grid: {
-            display: true,
-          },
-          display: false,
-        },
-      },
-    },
-  });
+// const revenueGraph = () => {
+//   let labels = [
+//     "Monday",
+//     "Tuesday",
+//     "Wednesday",
+//     "Thursday",
+//     "Friday",
+//     "Saturday",
+//     "Sunday",
+//   ];
+//   let revenue = [6, 0, 5, 0, 5, 0, 2.5];
+//   let sales = [6, 0, 5, 0, 5, 0, 2.5];
 
-  Chart.defaults.font.family = "Poppins";
-  Chart.defaults.font.weight = "600";
-  Chart.defaults.font.size = 12.5;
-};
+//   let ctx = document.getElementById("revenueSales__graph").getContext("2d");
+//   let myChart = new Chart(ctx, {
+//     type: "bar",
+//     data: {
+//       labels: labels,
+//       datasets: [
+//         {
+//           label: "Revenue",
+//           data: revenue,
+//           backgroundColor: "#ee6c4d",
+//           borderRadius: 15,
+//           barThickness: 15,
+//         },
+//         {
+//           label: "Sales",
+//           data: sales,
+//           backgroundColor: "#293241",
+//           borderRadius: 15,
+//           barThickness: 15,
+//         },
+//       ],
+//     },
+//     options: {
+//       plugins: {
+//         legend: {
+//           display: false,
+//         },
+//       },
+//       responsive: true,
+//       maintainAspectRatio: false,
+//       scales: {
+//         x: {
+//           grid: {
+//             display: false,
+//           },
+//         },
+//         y: {
+//           grid: {
+//             display: true,
+//           },
+//           display: false,
+//         },
+//       },
+//     },
+//   });
 
-revenueSalesGraph();
+//   Chart.defaults.font.family = "Poppins";
+//   Chart.defaults.font.weight = "500";
+//   Chart.defaults.font.size = 12.5;
+// };
 
 const trafficGraph = () => {
   let ctx = document.getElementById("traffic__graph").getContext("2d");

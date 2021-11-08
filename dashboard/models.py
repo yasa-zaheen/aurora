@@ -115,7 +115,7 @@ class Wishlist(models.Model):
 class Order(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     products = models.ManyToManyField(Product, blank=True)
-    date_of_order = models.DateField(auto_now_add=True)
+    time_of_order = models.DateTimeField(default=timezone.now())
     status = models.CharField(max_length=255, choices=[
         ("Packaging", "Packaging"),
         ("Delivering", "Delivering"),

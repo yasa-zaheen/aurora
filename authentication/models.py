@@ -1,7 +1,10 @@
-from django.contrib.auth.models import User
+# Imports
+from datetime import date
 from django.db import models
-
 from django.apps import apps
+from django.utils import timezone
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 
@@ -91,3 +94,116 @@ class CustomUser(models.Model):
         product.save()
 
         return product
+
+    def get_todays(self):
+
+        orders = self.get_seller_orders()
+        todays_orders = []
+
+        revenue = 0
+        sold = 0
+
+        for order in orders:
+            date_time_delta = order.time_of_order.astimezone(
+                tz=None) - timezone.now().astimezone(tz=None)
+
+            if date_time_delta.days == -1:
+                todays_orders.append(order)
+
+        for order in todays_orders:
+            total_product_price, total_shipping, total_revenue = order.get_seller_revenue(
+                self.user)
+
+            sold += order.products.all().count()
+            revenue += total_revenue
+
+        return revenue, sold, todays_orders
+
+    def get_yesterdays(self):
+
+        orders = self.get_seller_orders()
+        yesterdays_orders = []
+
+        revenue = 0
+        sold = 0
+
+        for order in orders:
+            date_time_delta = order.time_of_order.astimezone(
+                tz=None) - timezone.now().astimezone(tz=None)
+
+            if date_time_delta.days == -2:
+                yesterdays_orders.append(order)
+
+        for order in yesterdays_orders:
+            total_product_price, total_shipping, total_revenue = order.get_seller_revenue(
+                self.user)
+
+            sold += order.products.all().count()
+
+            revenue += total_revenue
+
+        return revenue, sold, yesterdays_orders
+
+    def get_lastweeks(self):
+
+        orders = self.get_seller_orders()
+        lastweeks_orders = []
+
+        revenue = 0
+        sold = 0
+
+        for order in orders:
+            date_time_delta = order.time_of_order - timezone.now()
+
+            if date_time_delta.days <= 0 and date_time_delta.days >= -7:
+                lastweeks_orders.append(order)
+
+        for order in lastweeks_orders:
+            total_product_price, total_shipping, total_revenue = order.get_seller_revenue(
+                self.user)
+
+            sold += order.products.all().count()
+
+            revenue += total_revenue
+
+        return revenue, sold, lastweeks_orders
+
+    def get_last28(self):
+
+        orders = self.get_seller_orders()
+        last28_orders = []
+
+        revenue = 0
+        sold = 0
+
+        for order in orders:
+            date_time_delta = order.time_of_order - timezone.now()
+
+            if date_time_delta.days <= 0 and date_time_delta.days >= -28:
+                last28_orders.append(order)
+
+        for order in last28_orders:
+            total_product_price, total_shipping, total_revenue = order.get_seller_revenue(
+                self.user)
+
+            sold += order.products.all().count()
+
+            revenue += total_revenue
+
+        return revenue, sold, last28_orders
+
+    def get_total_revenuesales(self):
+
+        orders = self.get_seller_orders()
+
+        revenue = 0
+        sold = 0
+
+        for order in orders:
+            total_product_price, total_shipping, total_revenue = order.get_seller_revenue(
+                self.user)
+
+            revenue += total_revenue
+            sold += order.products.all().count()
+
+        return revenue, sold
