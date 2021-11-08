@@ -432,6 +432,11 @@ def revenue(request):
                 te_graph_sales.insert(
                     3, order.products.all().count())
 
+        #TODO: Bestsellers
+
+        bestsellers = Product.objects.filter(
+            seller=user).order_by("revenue").reverse()[:3]
+
         context = {
             "todays_revenue": todays_revenue,
             "todays_sale": todays_sale,
@@ -452,6 +457,8 @@ def revenue(request):
             "lw_graph_sales": lw_graph_sales,
             "te_graph_revenue": te_graph_revenue,
             "te_graph_sales": te_graph_sales,
+
+            "bestsellers": bestsellers,
 
         }
 

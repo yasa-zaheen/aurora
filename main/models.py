@@ -1,6 +1,7 @@
 # Imports
 
 from django.db.models import base
+from django.db.models.fields import FloatField, IntegerField
 from django.utils import timezone, tree
 from django.db import models
 from django.db.models.deletion import SET_NULL
@@ -90,6 +91,8 @@ class Product(models.Model):
         CustomUser, on_delete=models.CASCADE)
     last_updated = models.DateTimeField(
         auto_now=True)
+    sold = models.IntegerField(default=0)
+    revenue = models.FloatField(default=0)
 
     price = models.FloatField()
     old_price = models.FloatField(blank=True, null=True)

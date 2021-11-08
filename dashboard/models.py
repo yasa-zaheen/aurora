@@ -56,6 +56,9 @@ class Cart(models.Model):
                 if product.seller == seller:
                     order.products.add(product)
                     self.products.remove(product)
+                    product.sold += 1
+                    product.revenue += product.price + product.shipping_price
+                    product.save()
 
             order.status = "Packaging"
             order.name = request.POST["order-name"]
