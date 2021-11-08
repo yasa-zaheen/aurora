@@ -351,10 +351,10 @@ def revenue(request):
             total_product_price, total_shipping, total_revenue = order.get_seller_revenue(
                 request.user)
 
-            t_graph_revenue.insert(
-                order.time_of_order.astimezone(tz=None).hour - 1, total_revenue)
-            t_graph_sales.insert(
-                order.time_of_order.astimezone(tz=None).hour - 1, order.products.all().count())
+            t_graph_revenue[order.time_of_order.astimezone(
+                tz=None).hour - 1] += total_revenue
+            t_graph_sales[order.time_of_order.astimezone(
+                tz=None).hour - 1] += order.products.all().count()
 
         # DONE: Yesterday
 
@@ -367,10 +367,10 @@ def revenue(request):
             total_product_price, total_shipping, total_revenue = order.get_seller_revenue(
                 request.user)
 
-            y_graph_revenue.insert(
-                order.time_of_order.astimezone(tz=None).hour - 1, total_revenue)
-            y_graph_sales.insert(
-                order.time_of_order.astimezone(tz=None).hour - 1, order.products.all().count())
+            y_graph_revenue[order.time_of_order.astimezone(
+                tz=None).hour - 1] += total_revenue
+            y_graph_sales[order.time_of_order.astimezone(
+                tz=None).hour - 1] += order.products.all().count()
 
         # DONE: Lastweeks
 
@@ -380,10 +380,11 @@ def revenue(request):
         for order in lastweeks_orders:
             total_product_price, total_shipping, total_revenue = order.get_seller_revenue(
                 request.user)
-            lw_graph_revenue.insert(
-                order.time_of_order.astimezone(tz=None).weekday(), total_revenue)
-            lw_graph_sales.insert(
-                order.time_of_order.astimezone(tz=None).weekday(), order.products.all().count())
+
+            lw_graph_revenue[order.time_of_order.astimezone(
+                tz=None).weekday()] += total_revenue
+            lw_graph_sales[order.time_of_order.astimezone(
+                tz=None).weekday()] += order.products.all().count()
 
         # DONE: 28 Days
 
@@ -394,43 +395,20 @@ def revenue(request):
             delta = order.time_of_order.astimezone(
                 tz=None) - timezone.now().astimezone(tz=None)
 
-            print(delta.days)
+            total_product_price, total_shipping, total_revenue = order.get_seller_revenue(
+                request.user)
 
             if delta.days >= -7:
-                print(f"This week {order}")
-                total_product_price, total_shipping, total_revenue = order.get_seller_revenue(
-                    request.user)
-                te_graph_revenue.insert(
-                    0, total_revenue)
-                te_graph_sales.insert(
-                    0, order.products.all().count())
+                index = 0
             elif delta.days < -7 and delta.days > -14:
-                print(f"Last week {order}")
-
-                total_product_price, total_shipping, total_revenue = order.get_seller_revenue(
-                    request.user)
-                te_graph_revenue.insert(
-                    1, total_revenue)
-                te_graph_sales.insert(
-                    1, order.products.all().count())
+                index = 1
             elif delta.days < -14 and delta.days > -21:
-                print(f"3 weeks ago {order}")
-
-                total_product_price, total_shipping, total_revenue = order.get_seller_revenue(
-                    request.user)
-                te_graph_revenue.insert(
-                    2, total_revenue)
-                te_graph_sales.insert(
-                    2, order.products.all().count())
+                index = 2
             elif delta.days < -21 and delta.days > -28:
-                print(f"4 weeks ago {order}")
+                index = 3
 
-                total_product_price, total_shipping, total_revenue = order.get_seller_revenue(
-                    request.user)
-                te_graph_revenue.insert(
-                    3, total_revenue)
-                te_graph_sales.insert(
-                    3, order.products.all().count())
+            te_graph_revenue[index] += total_revenue
+            te_graph_sales[index] += order.products.all().count()
 
         #TODO: Bestsellers
 

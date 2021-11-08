@@ -12,7 +12,7 @@
       <!-- Today -->
       <p class="s-l w-h">Today</p>
       <div style="margin-top: 12.5px">
-        <p class="s-m w-h">USD {{todays_revenue}}</p>
+        <p class="s-m w-h">USD {{ todays_revenue|floatformat:2 }}</p>
         <p class="s-s w-l" style="opacity: 0.5">
           / {{todays_sale}} products sold
         </p>
@@ -22,7 +22,7 @@
     <div class="revenue__timePeriod bg-white" data-time="yesterday">
       <p class="s-l w-h">Yesterday</p>
       <div style="margin-top: 12.5px">
-        <p class="s-m w-h">USD {{yesterdays_revenue}}</p>
+        <p class="s-m w-h">USD {{ yesterdays_revenue|floatformat:2 }}</p>
         <p class="s-s w-l" style="opacity: 0.5">
           / {{yesterdays_sale}} products sold
         </p>
@@ -32,7 +32,7 @@
     <div class="revenue__timePeriod bg-white" data-time="lastweek">
       <p class="s-l w-h">Last Week</p>
       <div style="margin-top: 12.5px">
-        <p class="s-m w-h">USD {{lastweeks_revenue}}</p>
+        <p class="s-m w-h">USD {{ lastweeks_revenue|floatformat:2 }}</p>
         <p class="s-s w-l" style="opacity: 0.5">
           / {{lastweeks_sale}} products sold
         </p>
@@ -42,7 +42,7 @@
     <div class="revenue__timePeriod bg-white" data-time="28days">
       <p class="s-l w-h">Last 28 Days</p>
       <div style="margin-top: 12.5px">
-        <p class="s-m w-h">USD {{last28_revenue}}</p>
+        <p class="s-m w-h">USD {{ last28_revenue|floatformat:2 }}</p>
         <p class="s-s w-l" style="opacity: 0.5">
           / {{last28_sale}} products sold
         </p>
