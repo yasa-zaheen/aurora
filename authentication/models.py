@@ -104,10 +104,8 @@ class CustomUser(models.Model):
         sold = 0
 
         for order in orders:
-            date_time_delta = order.time_of_order.astimezone(
-                tz=None) - timezone.now().astimezone(tz=None)
 
-            if date_time_delta.days == -1:
+            if order.time_of_order.astimezone(tz=None).date() == timezone.localdate():
                 todays_orders.append(order)
 
         for order in todays_orders:
@@ -131,8 +129,9 @@ class CustomUser(models.Model):
             date_time_delta = order.time_of_order.astimezone(
                 tz=None) - timezone.now().astimezone(tz=None)
 
-            if date_time_delta.days == -2:
-                yesterdays_orders.append(order)
+            if order.time_of_order.astimezone(tz=None).date() != timezone.localdate():
+                if date_time_delta.days == -1:
+                    yesterdays_orders.append(order)
 
         for order in yesterdays_orders:
             total_product_price, total_shipping, total_revenue = order.get_seller_revenue(
