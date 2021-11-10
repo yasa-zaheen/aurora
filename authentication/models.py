@@ -51,9 +51,11 @@ class CustomUser(models.Model):
         for product in products:
             set = order_object.objects.filter(products=product)
             if len(set) != 0:
-                if set[0] not in arr:
-                    arr.append(set[0])
+                for i in set:
+                    if i not in arr:
+                        arr.append(i)
 
+        print(arr)
         return arr
 
     def add_product(self, request):
