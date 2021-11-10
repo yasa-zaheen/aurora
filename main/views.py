@@ -29,6 +29,8 @@ def cart_btn_handler(request, cart):
             request, messages.ERROR, f"{product.name} has been removed from your cart.")
     else:
         cart.products.add(product)
+        product_cart = ProductCart.objects.create(product=product)
+        product_cart.save()
         messages.add_message(
             request, messages.SUCCESS, f"{product.name} has been added to your cart.")
 

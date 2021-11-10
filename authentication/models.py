@@ -230,5 +230,29 @@ class CustomUser(models.Model):
             if delta >= -7:
                 lastweeks_views.append(product_view)
 
-
         return total_views, lastweeks_views
+
+    def get_total_atc(self):
+        product_object = apps.get_model("main", "Product")
+        product_cart_object = apps.get_model("main", "ProductCart")
+
+        total_atc = 0
+        products = product_object.objects.filter(seller=self)
+
+        for product in products:
+            total_atc += product_cart_object.objects.filter(
+                product=product).count()
+
+        product_carts = []
+        for product in products:
+            product_carts += product_cart_object.objects.filter(
+                product=product)
+
+        lastweeks_carts = []
+        for product_cart in product_carts:
+            delta = product_cart.time.astimezone(
+                tz=None).day - timezone.now().astimezone(tz=None).day
+            if delta >= -7:
+                lastweeks_carts.append(product_cart)
+
+        return total_atc, lastweeks_carts

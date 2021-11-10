@@ -4,7 +4,6 @@
 from datetime import time
 from django.contrib import messages
 from django.contrib.auth import authenticate
-from django.db import connections
 from django.shortcuts import render, redirect, reverse
 
 from authentication.models import *
@@ -415,13 +414,22 @@ def revenue(request):
         bestsellers = Product.objects.filter(
             seller=user).order_by("revenue").reverse()[:3]
 
-        # TODO: Views
+        # DONE: Views
 
         lw_graph_views = [0, 0, 0, 0, 0, 0, 0]
         total_views, lastweeks_views = user.get_total_views()
 
         for lastweeks_view in lastweeks_views:
             lw_graph_views[lastweeks_view.time.astimezone(
+                tz=None).weekday()] += 1
+
+        # TODO: Add to carts
+
+        lw_graph_atc = [0, 0, 0, 0, 0, 0, 0]
+        total_atc, lastweeks_carts = user.get_total_atc()
+
+        for lastweeks_cart in lastweeks_carts:
+            lw_graph_atc[lastweeks_cart.time.astimezone(
                 tz=None).weekday()] += 1
 
         context = {
@@ -451,6 +459,8 @@ def revenue(request):
 
             "total_views": total_views,
             "lw_graph_views": lw_graph_views,
+            "total_atc": total_atc,
+            "lw_graph_atc": lw_graph_atc,
         }
 
         return render(request, "dashboard/revenue.html", context)
