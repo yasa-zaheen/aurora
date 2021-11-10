@@ -441,6 +441,15 @@ def revenue(request):
             lw_graph_atwa[lastweeks_watchlist.time.astimezone(
                 tz=None).weekday()] += 1
 
+        # TODO: Add to wishlist
+
+        lw_graph_atwi = [0, 0, 0, 0, 0, 0, 0]
+        total_atwi, lastweeks_wishlists = user.get_total_atwi()
+
+        for lastweeks_wishlist in lastweeks_wishlists:
+            lw_graph_atwi[lastweeks_wishlist.time.astimezone(
+                tz=None).weekday()] += 1
+
         context = {
             "user": user,
 
@@ -472,6 +481,8 @@ def revenue(request):
             "lw_graph_atc": lw_graph_atc,
             "total_atwa": total_atwa,
             "lw_graph_atwa": lw_graph_atwa,
+            "total_atwi": total_atwi,
+            "lw_graph_atwi": lw_graph_atwi,
         }
 
         return render(request, "dashboard/revenue.html", context)

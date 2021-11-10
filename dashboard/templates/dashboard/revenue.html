@@ -133,6 +133,7 @@
       <button class="traffic__btn bg-orange c-white">Views</button>
       <button class="traffic__btn bg-white c-black">Added to Carts</button>
       <button class="traffic__btn bg-white c-black">Added to Watchlist</button>
+      <button class="traffic__btn bg-white c-black">Added to Wishlist</button>
     </div>
     <div style="display: flex; align-items: center">
       <!-- Info -->
@@ -289,11 +290,13 @@
 {{lw_graph_views|json_script:"lw_graph_views"}}
 {{lw_graph_atc|json_script:"lw_graph_atc"}}
 {{lw_graph_atwa|json_script:"lw_graph_atwa"}}
+{{lw_graph_atwi|json_script:"lw_graph_atwi"}}
 
 <script type="text/javascript">
   var totalProductViews = "{{total_views}}";
   var totalProductsAddedToCart = "{{total_atc}}";
   var totalProductsAddedToWatchlist = "{{total_atwa}}";
+  var totalProductsAddedToWishlist = "{{total_atwi}}";
 </script>
 <script
   type="text/javascript"

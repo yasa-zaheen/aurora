@@ -297,6 +297,13 @@ const trafficGraphHandler = () => {
           "Total products added to watchlists";
         trafficCurrentlyViewingTextValue.innerText =
           totalProductsAddedToWatchlist;
+      } else if (trafficGraphButton.innerText === "Added to Wishlist") {
+        data = JSON.parse(document.getElementById("lw_graph_atwi").textContent);
+        updateTimeGraph(trafficGraph, data);
+        trafficCurrentlyViewingText.innerText =
+          "Total products added to wishlists";
+        trafficCurrentlyViewingTextValue.innerText =
+          totalProductsAddedToWishlist;
       }
     });
   });

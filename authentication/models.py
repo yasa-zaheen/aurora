@@ -282,3 +282,29 @@ class CustomUser(models.Model):
                 lastweeks_watchlists.append(product_watchlist)
 
         return total_atwa, lastweeks_watchlists
+
+    def get_total_atwi(self):
+        product_object = apps.get_model("main", "Product")
+        product_wishlist_object = apps.get_model(
+            "main", "ProductsAddedToWishlist")
+
+        total_atwi = 0
+        products = product_object.objects.filter(seller=self)
+
+        for product in products:
+            total_atwi += product_wishlist_object.objects.filter(
+                product=product).count()
+
+        product_wishlists = []
+        for product in products:
+            product_wishlists += product_wishlist_object.objects.filter(
+                product=product)
+
+        lastweeks_wishlists = []
+        for product_wishlist in product_wishlists:
+            delta = product_wishlist.time.astimezone(
+                tz=None).day - timezone.now().astimezone(tz=None).day
+            if delta >= -7:
+                lastweeks_wishlists.append(product_wishlist)
+
+        return total_atwi, lastweeks_wishlists

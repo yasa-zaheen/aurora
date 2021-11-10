@@ -64,6 +64,9 @@ def wishlist_btn_handler(request, wishlist):
             request, messages.ERROR, f"{product.name} has been removed from your wishlist.")
     else:
         wishlist.products.add(product)
+        product_wishlist = ProductsAddedToWishlist.objects.create(
+            product=product)
+        product_wishlist.save()
         messages.add_message(
             request, messages.SUCCESS, f"{product.name} has been added to your wishlist.")
 

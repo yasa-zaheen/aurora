@@ -272,6 +272,11 @@ class ProductsAddedToWatchlist(models.Model):
     time = models.DateTimeField(auto_now_add=True)
 
 
+class ProductsAddedToWishlist(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    time = models.DateTimeField(auto_now_add=True)
+
+
 class Review(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
