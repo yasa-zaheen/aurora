@@ -127,10 +127,10 @@ class CustomUser(models.Model):
 
         for order in orders:
             date_time_delta = order.time_of_order.astimezone(
-                tz=None) - timezone.now().astimezone(tz=None)
+                tz=None).day - timezone.now().astimezone(tz=None).day
 
             if order.time_of_order.astimezone(tz=None).date() != timezone.localdate():
-                if date_time_delta.days == -1:
+                if date_time_delta == -1:
                     yesterdays_orders.append(order)
 
         for order in yesterdays_orders:
@@ -206,3 +206,29 @@ class CustomUser(models.Model):
             sold += order.products.all().count()
 
         return revenue, sold
+
+    def get_total_views(self):
+        product_object = apps.get_model("main", "Product")
+        product_view_object = apps.get_model("main", "ProductView")
+
+        total_views = 0
+        products = product_object.objects.filter(seller=self)
+
+        for product in products:
+            total_views += product_view_object.objects.filter(
+                product=product).count()
+
+        product_views = []
+        for product in products:
+            product_views += product_view_object.objects.filter(
+                product=product)
+
+        lastweeks_views = []
+        for product_view in product_views:
+            delta = product_view.time.astimezone(
+                tz=None).day - timezone.now().astimezone(tz=None).day
+            if delta >= -7:
+                lastweeks_views.append(product_view)
+
+
+        return total_views, lastweeks_views

@@ -132,15 +132,12 @@
     <div style="display: flex; margin-bottom: 25px">
       <button class="traffic__btn bg-orange c-white">Views</button>
       <button class="traffic__btn bg-white c-black">Add to Carts</button>
-      <button class="traffic__btn bg-white c-black">Reached Checkout</button>
     </div>
     <div style="display: flex; align-items: center">
       <!-- Info -->
       <div class="traffic__info">
         <p class="s-l w-h">Product Views</p>
-        <p class="s-m w-m">23566</p>
-        <p class="s-l w-h" style="margin-top: 25px">Unique Viewers</p>
-        <p class="s-m w-m">1567</p>
+        <p class="s-m w-m">{{ total_views }}</p>
       </div>
       <!-- Graph -->
       <div class="traffic__graph">
@@ -148,13 +145,6 @@
           <p class="s-m w-h" style="margin-right: 6.25px">Product Views</p>
           <div
             class="bg-orange"
-            style="width: 10px; height: 10px; border-radius: 2.5px"
-          ></div>
-          <p class="s-m w-h" style="margin: 0px 6.25px 0px 12.5px">
-            Unique Viewers
-          </p>
-          <div
-            class="bg-darkBlue"
             style="width: 10px; height: 10px; border-radius: 2.5px"
           ></div>
         </div>
@@ -295,177 +285,223 @@
 {{lw_graph_sales|json_script:"lw_graph_sales"}}
 {{te_graph_revenue|json_script:"te_graph_revenue"}}
 {{te_graph_sales|json_script:"te_graph_sales"}}
+{{lw_graph_views|json_script:"lw_graph_views"}}
 
 <script>
-  // SALES-REVENUE GRAPH
-  const timeRevenues = document.querySelectorAll("div.revenue__timePeriod");
+  const revenueSalesGraph = () => {
+    const timeRevenues = document.querySelectorAll("div.revenue__timePeriod");
 
-  let ctx = document.getElementById("revenueSales__graph").getContext("2d");
-  let revenueGraph = new Chart(ctx, {
-    type: "bar",
-    data: {
-      labels: [
-        "",
-        "2am",
-        "",
-        "4am",
-        "",
-        "6am",
-        "",
-        "8am",
-        "",
-        "10am",
-        "",
-        "12pm",
-        "",
-        "2pm",
-        "",
-        "4pm",
-        "",
-        "6pm",
-        "",
-        "8pm",
-        "",
-        "10pm",
-        "",
-        "12am",
-      ],
-      datasets: [
-        {
-          label: "Revenue",
-          data: JSON.parse(
-            document.getElementById("t_graph_revenue").textContent
-          ),
-          backgroundColor: "#ee6c4d",
-          borderRadius: 5,
-          barThickness: 15,
-        },
-        {
-          label: "Sales",
-          data: JSON.parse(
-            document.getElementById("t_graph_sales").textContent
-          ),
-          backgroundColor: "#293241",
-          borderRadius: 5,
-          barThickness: 15,
-        },
-      ],
-    },
-    options: {
-      plugins: {
-        legend: {
-          display: false,
-        },
+    let ctx = document.getElementById("revenueSales__graph").getContext("2d");
+    let revenueGraph = new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: [
+          "",
+          "2am",
+          "",
+          "4am",
+          "",
+          "6am",
+          "",
+          "8am",
+          "",
+          "10am",
+          "",
+          "12pm",
+          "",
+          "2pm",
+          "",
+          "4pm",
+          "",
+          "6pm",
+          "",
+          "8pm",
+          "",
+          "10pm",
+          "",
+          "12am",
+        ],
+        datasets: [
+          {
+            label: "Revenue",
+            data: JSON.parse(
+              document.getElementById("t_graph_revenue").textContent
+            ),
+            backgroundColor: "#ee6c4d",
+            borderRadius: 5,
+            barThickness: 15,
+          },
+          {
+            label: "Sales",
+            data: JSON.parse(
+              document.getElementById("t_graph_sales").textContent
+            ),
+            backgroundColor: "#293241",
+            borderRadius: 5,
+            barThickness: 15,
+          },
+        ],
       },
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        x: {
-          grid: {
+      options: {
+        plugins: {
+          legend: {
             display: false,
           },
         },
-        y: {
-          display: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            grid: {
+              display: false,
+            },
+          },
+          y: {
+            display: false,
+          },
         },
       },
-    },
-  });
+    });
 
-  Chart.defaults.font.family = "Poppins";
-  Chart.defaults.font.weight = "500";
-  Chart.defaults.font.size = 12.5;
+    Chart.defaults.font.family = "Poppins";
+    Chart.defaults.font.weight = "500";
+    Chart.defaults.font.size = 12.5;
 
-  const updateRevenueGraph = (chart, labels, revenue, sales) => {
-    chart.data.labels = labels;
-    chart.data.datasets[0].data = revenue;
-    chart.data.datasets[1].data = sales;
-    chart.update();
+    const updateRevenueGraph = (chart, labels, revenue, sales) => {
+      chart.data.labels = labels;
+      chart.data.datasets[0].data = revenue;
+      chart.data.datasets[1].data = sales;
+      chart.update();
+    };
+
+    timeRevenues.forEach((timeRevenue) => {
+      timeRevenue.addEventListener("click", () => {
+        timeRevenues.forEach((timeRevenue) => {
+          timeRevenue.style.backgroundColor = "#fafafa";
+          timeRevenue.style.color = "#2f2f2f";
+        });
+        timeRevenue.style.backgroundColor = "#293241";
+        timeRevenue.style.color = "#fafafa";
+
+        if (timeRevenue.getAttribute("data-time") === "today") {
+          labels = [
+            "",
+            "2am",
+            "",
+            "4am",
+            "",
+            "6am",
+            "",
+            "8am",
+            "",
+            "10am",
+            "",
+            "12pm",
+            "",
+            "2pm",
+            "",
+            "4pm",
+            "",
+            "6pm",
+            "",
+            "8pm",
+            "",
+            "10pm",
+            "",
+            "12am",
+          ];
+
+          let revenue = JSON.parse(
+            document.getElementById("t_graph_revenue").textContent
+          );
+          let sales = JSON.parse(
+            document.getElementById("t_graph_sales").textContent
+          );
+
+          updateRevenueGraph(revenueGraph, labels, revenue, sales);
+        } else if (timeRevenue.getAttribute("data-time") === "yesterday") {
+          labels = [
+            "",
+            "2am",
+            "",
+            "4am",
+            "",
+            "6am",
+            "",
+            "8am",
+            "",
+            "10am",
+            "",
+            "12pm",
+            "",
+            "2pm",
+            "",
+            "4pm",
+            "",
+            "6pm",
+            "",
+            "8pm",
+            "",
+            "10pm",
+            "",
+            "12am",
+          ];
+
+          let revenue = JSON.parse(
+            document.getElementById("y_graph_revenue").textContent
+          );
+          let sales = JSON.parse(
+            document.getElementById("y_graph_sales").textContent
+          );
+
+          updateRevenueGraph(revenueGraph, labels, revenue, sales);
+        } else if (timeRevenue.getAttribute("data-time") === "lastweek") {
+          labels = [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
+          ];
+
+          let revenue = JSON.parse(
+            document.getElementById("lw_graph_revenue").textContent
+          );
+          let sales = JSON.parse(
+            document.getElementById("lw_graph_sales").textContent
+          );
+
+          updateRevenueGraph(revenueGraph, labels, revenue, sales);
+        } else if (timeRevenue.getAttribute("data-time") === "28days") {
+          labels = ["This week", "Last week", "3 weeks ago", "4 weeks ago"];
+
+          let revenue = JSON.parse(
+            document.getElementById("te_graph_revenue").textContent
+          );
+          let sales = JSON.parse(
+            document.getElementById("te_graph_sales").textContent
+          );
+
+          updateRevenueGraph(revenueGraph, labels, revenue, sales);
+        }
+      });
+    });
   };
 
-  timeRevenues.forEach((timeRevenue) => {
-    timeRevenue.addEventListener("click", () => {
-      timeRevenues.forEach((timeRevenue) => {
-        timeRevenue.style.backgroundColor = "#fafafa";
-        timeRevenue.style.color = "#2f2f2f";
-      });
-      timeRevenue.style.backgroundColor = "#293241";
-      timeRevenue.style.color = "#fafafa";
+  revenueSalesGraph();
 
-      if (timeRevenue.getAttribute("data-time") === "today") {
-        labels = [
-          "",
-          "2am",
-          "",
-          "4am",
-          "",
-          "6am",
-          "",
-          "8am",
-          "",
-          "10am",
-          "",
-          "12pm",
-          "",
-          "2pm",
-          "",
-          "4pm",
-          "",
-          "6pm",
-          "",
-          "8pm",
-          "",
-          "10pm",
-          "",
-          "12am",
-        ];
+  console.log(
+    JSON.parse(document.getElementById("lw_graph_views").textContent)
+  );
 
-        let revenue = JSON.parse(
-          document.getElementById("t_graph_revenue").textContent
-        );
-        let sales = JSON.parse(
-          document.getElementById("t_graph_sales").textContent
-        );
-
-        updateRevenueGraph(revenueGraph, labels, revenue, sales);
-      } else if (timeRevenue.getAttribute("data-time") === "yesterday") {
-        labels = [
-          "",
-          "2am",
-          "",
-          "4am",
-          "",
-          "6am",
-          "",
-          "8am",
-          "",
-          "10am",
-          "",
-          "12pm",
-          "",
-          "2pm",
-          "",
-          "4pm",
-          "",
-          "6pm",
-          "",
-          "8pm",
-          "",
-          "10pm",
-          "",
-          "12am",
-        ];
-
-        let revenue = JSON.parse(
-          document.getElementById("y_graph_revenue").textContent
-        );
-        let sales = JSON.parse(
-          document.getElementById("y_graph_sales").textContent
-        );
-
-        updateRevenueGraph(revenueGraph, labels, revenue, sales);
-      } else if (timeRevenue.getAttribute("data-time") === "lastweek") {
-        labels = [
+  const timeGraph = () => {
+    let ctx = document.getElementById("traffic__graph").getContext("2d");
+    let myChart = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: [
           "Monday",
           "Tuesday",
           "Wednesday",
@@ -473,30 +509,44 @@
           "Friday",
           "Saturday",
           "Sunday",
-        ];
-
-        let revenue = JSON.parse(
-          document.getElementById("lw_graph_revenue").textContent
-        );
-        let sales = JSON.parse(
-          document.getElementById("lw_graph_sales").textContent
-        );
-
-        updateRevenueGraph(revenueGraph, labels, revenue, sales);
-      } else if (timeRevenue.getAttribute("data-time") === "28days") {
-        labels = ["This week", "Last week", "3 weeks ago", "4 weeks ago"];
-
-        let revenue = JSON.parse(
-          document.getElementById("te_graph_revenue").textContent
-        );
-        let sales = JSON.parse(
-          document.getElementById("te_graph_sales").textContent
-        );
-
-        updateRevenueGraph(revenueGraph, labels, revenue, sales);
-      }
+        ],
+        datasets: [
+          {
+            label: "Product Views",
+            data: JSON.parse(
+              document.getElementById("lw_graph_views").textContent
+            ),
+            backgroundColor: "#ee6c4d",
+            borderColor: "#ee6c4d2f",
+          },
+        ],
+      },
+      options: {
+        plugins: {
+          legend: {
+            display: false,
+          },
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            grid: {
+              display: false,
+            },
+          },
+          y: {
+            grid: {
+              display: true,
+            },
+            display: false,
+          },
+        },
+      },
     });
-  });
+  };
+
+  timeGraph();
 </script>
 
 <script src="{% static 'dashboard/js/revenue.js' %}"></script>

@@ -1,6 +1,7 @@
 # Imports
 
 
+from datetime import time
 from main.models import *
 from dashboard.models import *
 
@@ -12,6 +13,8 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 
 from asgiref.sync import sync_to_async
+
+import json
 
 
 # Views
@@ -140,8 +143,12 @@ def product(request, id):
     all_categories = Category.objects.order_by('name')
 
     product = Product.objects.get(id=id)
+    product_view = ProductView.objects.create(product=product)
+    product_view.save()
+
     seller_products = Product.objects.filter(seller=product.seller)
     reviews = Review.objects.filter(product=product)
+
     context = {
         'all_categories': all_categories,
         "product": product,

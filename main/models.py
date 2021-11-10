@@ -2,6 +2,7 @@
 
 from django.db.models import base
 from django.db.models.fields import FloatField, IntegerField
+from django.db.models.fields.related import ForeignKey
 from django.utils import timezone, tree
 from django.db import models
 from django.db.models.deletion import SET_NULL
@@ -255,12 +256,10 @@ class Product(models.Model):
 
         self.save()
 
-    # product_type = models.ForeignKey(
-    #     ProductType, null=True, on_delete=models.SET_NULL)
-    # filters = models.ManyToManyField(
-    #     Filter)
-    # sub_category = models.ForeignKey(
-    #     SubCategory, null=True, on_delete=models.SET_NULL)
+
+class ProductView(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    time = models.DateTimeField(auto_now_add=True)
 
 
 class Review(models.Model):

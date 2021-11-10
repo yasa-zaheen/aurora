@@ -410,12 +410,23 @@ def revenue(request):
             te_graph_revenue[index] += total_revenue
             te_graph_sales[index] += order.products.all().count()
 
-        #TODO: Bestsellers
+        #DONE: Bestsellers
 
         bestsellers = Product.objects.filter(
             seller=user).order_by("revenue").reverse()[:3]
 
+        # TODO: Views
+
+        lw_graph_views = [0, 0, 0, 0, 0, 0, 0]
+        total_views, lastweeks_views = user.get_total_views()
+
+        for lastweeks_view in lastweeks_views:
+            lw_graph_views[lastweeks_view.time.astimezone(
+                tz=None).weekday()] += 1
+
         context = {
+            "user": user,
+
             "todays_revenue": todays_revenue,
             "todays_sale": todays_sale,
             "yesterdays_revenue": yesterdays_revenue,
@@ -438,6 +449,8 @@ def revenue(request):
 
             "bestsellers": bestsellers,
 
+            "total_views": total_views,
+            "lw_graph_views": lw_graph_views,
         }
 
         return render(request, "dashboard/revenue.html", context)
