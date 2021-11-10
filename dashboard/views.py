@@ -423,13 +423,22 @@ def revenue(request):
             lw_graph_views[lastweeks_view.time.astimezone(
                 tz=None).weekday()] += 1
 
-        # TODO: Add to carts
+        # DONE: Add to carts
 
         lw_graph_atc = [0, 0, 0, 0, 0, 0, 0]
         total_atc, lastweeks_carts = user.get_total_atc()
 
         for lastweeks_cart in lastweeks_carts:
             lw_graph_atc[lastweeks_cart.time.astimezone(
+                tz=None).weekday()] += 1
+
+        # DONE: Add to watchlists
+
+        lw_graph_atwa = [0, 0, 0, 0, 0, 0, 0]
+        total_atwa, lastweeks_watchlists = user.get_total_atwa()
+
+        for lastweeks_watchlist in lastweeks_watchlists:
+            lw_graph_atwa[lastweeks_watchlist.time.astimezone(
                 tz=None).weekday()] += 1
 
         context = {
@@ -461,6 +470,8 @@ def revenue(request):
             "lw_graph_views": lw_graph_views,
             "total_atc": total_atc,
             "lw_graph_atc": lw_graph_atc,
+            "total_atwa": total_atwa,
+            "lw_graph_atwa": lw_graph_atwa,
         }
 
         return render(request, "dashboard/revenue.html", context)

@@ -285,11 +285,18 @@ const trafficGraphHandler = () => {
         updateTimeGraph(trafficGraph, data);
         trafficCurrentlyViewingText.innerText = "Total products views";
         trafficCurrentlyViewingTextValue.innerText = totalProductViews;
-      } else if (trafficGraphButton.innerText === "Add to Carts") {
+      } else if (trafficGraphButton.innerText === "Added to Carts") {
         data = JSON.parse(document.getElementById("lw_graph_atc").textContent);
         updateTimeGraph(trafficGraph, data);
         trafficCurrentlyViewingText.innerText = "Total products added to carts";
         trafficCurrentlyViewingTextValue.innerText = totalProductsAddedToCart;
+      } else if (trafficGraphButton.innerText === "Added to Watchlist") {
+        data = JSON.parse(document.getElementById("lw_graph_atwa").textContent);
+        updateTimeGraph(trafficGraph, data);
+        trafficCurrentlyViewingText.innerText =
+          "Total products added to watchlists";
+        trafficCurrentlyViewingTextValue.innerText =
+          totalProductsAddedToWatchlist;
       }
     });
   });

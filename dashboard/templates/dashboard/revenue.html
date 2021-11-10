@@ -131,7 +131,8 @@
     <!-- Buttons -->
     <div style="display: flex; margin-bottom: 25px">
       <button class="traffic__btn bg-orange c-white">Views</button>
-      <button class="traffic__btn bg-white c-black">Add to Carts</button>
+      <button class="traffic__btn bg-white c-black">Added to Carts</button>
+      <button class="traffic__btn bg-white c-black">Added to Watchlist</button>
     </div>
     <div style="display: flex; align-items: center">
       <!-- Info -->
@@ -287,10 +288,12 @@
 {{te_graph_sales|json_script:"te_graph_sales"}}
 {{lw_graph_views|json_script:"lw_graph_views"}}
 {{lw_graph_atc|json_script:"lw_graph_atc"}}
+{{lw_graph_atwa|json_script:"lw_graph_atwa"}}
 
 <script type="text/javascript">
   var totalProductViews = "{{total_views}}";
   var totalProductsAddedToCart = "{{total_atc}}";
+  var totalProductsAddedToWatchlist = "{{total_atwa}}";
 </script>
 <script
   type="text/javascript"

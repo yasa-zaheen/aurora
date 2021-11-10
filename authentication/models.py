@@ -256,3 +256,29 @@ class CustomUser(models.Model):
                 lastweeks_carts.append(product_cart)
 
         return total_atc, lastweeks_carts
+
+    def get_total_atwa(self):
+        product_object = apps.get_model("main", "Product")
+        product_watchlist_object = apps.get_model(
+            "main", "ProductsAddedToWatchlist")
+
+        total_atwa = 0
+        products = product_object.objects.filter(seller=self)
+
+        for product in products:
+            total_atwa += product_watchlist_object.objects.filter(
+                product=product).count()
+
+        product_watchlists = []
+        for product in products:
+            product_watchlists += product_watchlist_object.objects.filter(
+                product=product)
+
+        lastweeks_watchlists = []
+        for product_watchlist in product_watchlists:
+            delta = product_watchlist.time.astimezone(
+                tz=None).day - timezone.now().astimezone(tz=None).day
+            if delta >= -7:
+                lastweeks_watchlists.append(product_watchlist)
+
+        return total_atwa, lastweeks_watchlists

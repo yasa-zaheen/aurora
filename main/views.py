@@ -46,6 +46,9 @@ def watchlist_btn_handler(request, watchlist):
             request, messages.ERROR, f"{product.name} has been removed from your watchlist.")
     else:
         watchlist.products.add(product)
+        product_watchlist = ProductsAddedToWatchlist.objects.create(
+            product=product)
+        product_watchlist.save()
         messages.add_message(
             request, messages.SUCCESS, f"{product.name} has been added to your watchlist.")
 
