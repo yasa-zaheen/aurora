@@ -441,7 +441,7 @@ def revenue(request):
             lw_graph_atwa[lastweeks_watchlist.time.astimezone(
                 tz=None).weekday()] += 1
 
-        # TODO: Add to wishlist
+        # DONE: Add to wishlist
 
         lw_graph_atwi = [0, 0, 0, 0, 0, 0, 0]
         total_atwi, lastweeks_wishlists = user.get_total_atwi()
@@ -449,6 +449,32 @@ def revenue(request):
         for lastweeks_wishlist in lastweeks_wishlists:
             lw_graph_atwi[lastweeks_wishlist.time.astimezone(
                 tz=None).weekday()] += 1
+
+        # TODO: Latest orders
+
+        latest_orders = user.get_seller_orders()
+        sorted_latest_orders = []
+
+        for latest_order in latest_orders:
+            if len(sorted_latest_orders) == 0:
+                sorted_latest_orders.append(latest_order)
+                continue
+
+            for sorted_latest_order in sorted_latest_orders:
+                if latest_order.time_of_order > sorted_latest_order.time_of_order:
+                    if len(sorted_latest_orders) == 1:
+                        sorted_latest_orders.append(latest_order)
+                    else:
+                        continue
+                elif latest_order.time_of_order < sorted_latest_order.time_of_order:
+                    if len(sorted_latest_orders) == 1:
+                        [latest_order] + sorted_latest_orders
+                    else:
+                        sorted_latest_orders.insert(sorted_latest_orders.index(
+                            sorted_latest_order), latest_order)
+                        break
+
+        print(sorted_latest_orders[::-1])
 
         context = {
             "user": user,
@@ -483,6 +509,8 @@ def revenue(request):
             "lw_graph_atwa": lw_graph_atwa,
             "total_atwi": total_atwi,
             "lw_graph_atwi": lw_graph_atwi,
+
+            "sorted_latest_orders": sorted_latest_orders[::-1]
         }
 
         return render(request, "dashboard/revenue.html", context)

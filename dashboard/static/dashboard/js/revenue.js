@@ -320,16 +320,16 @@ const crmCrmStatusButtonChangeUI = () => {
     crmCrmStatusButton.style.color = "#2f2f2f";
 
     switch (crmCrmStatusButton.getAttribute("data-status")) {
-      case "pending":
+      case "Packaging":
         crmCrmStatusButton.style.backgroundColor = "#ef233c2f";
-        crmCrmStatusButton.innerText = "Pending";
+        crmCrmStatusButton.innerText = "Packaging";
         break;
-      case "delivering":
+      case "Delivering":
         crmCrmStatusButton.style.backgroundColor = "#2f2f2f2f";
         crmCrmStatusButton.innerText = "Delivering";
         break;
-      case "delivered":
-        crmCrmStatusButton.style.backgroundColor = "#2932412f";
+      case "Delivered":
+        crmCrmStatusButton.style.backgroundColor = "#98c1d92f";
         crmCrmStatusButton.innerText = "Delivered";
         break;
     }

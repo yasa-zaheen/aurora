@@ -129,3 +129,15 @@
 .latestOrders__table {
   width: 100%;
 }
+
+
+
+.table__detailsBtn{
+  width: fit-content;
+  margin: 0px !important;
+}
+
+.table__detailsBtn:hover{
+  background-color: initial !important;
+  color: initial;
+}
